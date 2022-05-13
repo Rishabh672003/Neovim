@@ -10,6 +10,11 @@ if you want to apply this configs on your system do this (first take the backup 
 ![image](https://user-images.githubusercontent.com/53911515/168277485-a2822566-1c1d-442a-9c13-db72c0ea764d.png)
 ![image](https://user-images.githubusercontent.com/53911515/168277629-530bb449-60b8-4f58-940c-d4f871b6d66b.png)
 
+if you want to remove all the config do this
+```
+rm -rf $HOME/.config/nvim/* $HOME/.local/share/nvim/* $HOME/.cache/nvim/*
+```
+
 the credit of this config goes to @ChristianChiarulli from whom and by his playlist https://www.youtube.com/playlist?list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ i learned to configure neovim with all the extensions and also configuring them,
 so watch his playlist and support him for his awesome work. 
 
