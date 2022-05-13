@@ -15,7 +15,7 @@ mv ~/.config/nvim ~/.config/nvimbackup
 git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim
 ```
 ```
-nvim +PackerSync
+nvim
 ```
 
 ## Preview screenshots
