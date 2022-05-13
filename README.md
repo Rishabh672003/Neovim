@@ -19,6 +19,8 @@ nvim
 ```
 after launching the nvim for the first time after installation packer will automatically install all the extension and most likely it will give you some errors, just ignore them and reopen neovim the errors should be resolved
 
+also in my configs i have set tree-sitter to download java, python and lua automatically so if you son't want them remove them from tree-sitter.lua before installation or after installation by doing :TSUninstall java or python or lua
+
 ## Preview screenshots
 ![image](https://user-images.githubusercontent.com/53911515/168277253-37fccf26-4ee9-4550-9fb4-3c6c62a896c7.png)
 ![image](https://user-images.githubusercontent.com/53911515/168277426-ba588d49-3ba8-45bb-b474-8370543e1753.png)
