@@ -25,7 +25,7 @@ installing the configs will give you some errors, just ignore them and reopen ne
 ![image](https://user-images.githubusercontent.com/53911515/168277485-a2822566-1c1d-442a-9c13-db72c0ea764d.png)
 ![image](https://user-images.githubusercontent.com/53911515/168277629-530bb449-60b8-4f58-940c-d4f871b6d66b.png)
 
-## Uninstallation
+## Uninstallation and Cleanup
 ```
 rm -rf $HOME/.config/nvim/* $HOME/.local/share/nvim/* $HOME/.cache/nvim/*
 ```
