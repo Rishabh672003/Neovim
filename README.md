@@ -17,6 +17,7 @@ git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim
 ```
 nvim
 ```
+installing the configs will give you some errors, just ignore them and reopen neovim the error should be gone
 
 ## Preview screenshots
 ![image](https://user-images.githubusercontent.com/53911515/168277253-37fccf26-4ee9-4550-9fb4-3c6c62a896c7.png)
