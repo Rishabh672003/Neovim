@@ -1,2 +1,3 @@
 # Neovim
-my neovim config
+This repo contains all my neovim config files which i use.
+
