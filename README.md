@@ -30,7 +30,7 @@ also in my configs i have set tree-sitter to download java, python and lua autom
 
 ## Uninstallation and Cleanup
 ```
-rm -rf $HOME/.config/nvim/* $HOME/.local/share/nvim/* $HOME/.cache/nvim/*
+rm -rf $HOME/.config/nvim $HOME/.local/share/nvim $HOME/.cache/nvim
 ```
 
 the credit of this config goes to @ChristianChiarulli from whom and by his playlist https://www.youtube.com/playlist?list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ i learned to configure neovim with all the extensions and also configuring them,
