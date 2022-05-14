@@ -110,7 +110,7 @@ return packer.startup(function(use)
 
   --nvim-tree
   use 'kyazdani42/nvim-tree.lua'
-  --use "jaypei/emacs-neotree"
+  --use "nvim-neo-tree/neo-tree"
 
   --bufferline
   use "akinsho/bufferline.nvim"
@@ -122,8 +122,9 @@ return packer.startup(function(use)
   --toggle-term
   use "akinsho/toggleterm.nvim"
 
-  --lualine
+  --Statuslines
   use "nvim-lualine/lualine.nvim"
+  --require('hardline').setup {}
 
   --project-manager
   use "ahmedkhalf/project.nvim"
@@ -133,6 +134,9 @@ return packer.startup(function(use)
 
   -- This is needed to fix lsp doc highlight
   use "antoinemadec/FixCursorHold.nvim"
+
+  --notifier
+  use "rcarriga/nvim-notify"
 
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
