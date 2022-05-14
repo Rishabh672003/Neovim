@@ -66,7 +66,7 @@ cmp.setup {
     ["<C-e>"] = cmp.mapping {
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
-    
+
     --chris@machine's keymappings
     --["<C-k>"] = cmp.mapping.select_prev_item(),
 		--["<C-j>"] = cmp.mapping.select_next_item(),
