@@ -53,7 +53,7 @@ return packer.startup(function(use)
   })
   --use "Mofiqul/dracula.nvim"
   --use 'marko-cerovac/material.nvim'
-  use 'folke/tokyonight.nvim'
+  -- use 'folke/tokyonight.nvim'
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -70,11 +70,11 @@ return packer.startup(function(use)
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
   use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
-  use 'nvim-telescope/telescope-media-files.nvim'
-
+  
   --Treesitter
   use {
     "nvim-treesitter/nvim-treesitter",
@@ -100,7 +100,7 @@ return packer.startup(function(use)
   use "Darazaki/indent-o-matic"
 
   --neovim-ui-enhancerususe
-  use "MunifTanjim/nui.nvim"
+  -- use "MunifTanjim/nui.nvim"
 
   --comments
   use 'JoosepAlviste/nvim-ts-context-commentstring'
@@ -125,19 +125,12 @@ return packer.startup(function(use)
 
   --Statuslines
   use "nvim-lualine/lualine.nvim"
-  --require('hardline').setup {}
-
+ 
   --project-manager
   use "ahmedkhalf/project.nvim"
 
   --indenter
   use "lukas-reineke/indent-blankline.nvim"
-
-  -- This is needed to fix lsp doc highlight
-  use "antoinemadec/FixCursorHold.nvim"
-
-  --notifier
-  use "rcarriga/nvim-notify"
 
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
