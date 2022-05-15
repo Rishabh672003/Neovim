@@ -31,7 +31,8 @@ also in my configs i have set tree-sitter to download java, python and lua autom
 ```
 rm -rf $HOME/.config/nvim $HOME/.local/share/nvim $HOME/.cache/nvim
 ```
+## Credit
 
-the credit of this config goes to @ChristianChiarulli from whom and by his playlist https://www.youtube.com/playlist?list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ i learned to configure neovim with all the extensions and also configuring them,
-so watch his playlist and support him for his awesome work. 
+the credit goes to [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch) and its author, this is from where i learned how to make and structure the configs and actually make it work and also i used his configs as a basic and modified them for my needs
+also i took configs and ideas from [Lunarvim](https://github.com/LunarVim/LunarVim) and [Astronvim](https://github.com/AstroNvim/AstroNvim) 
 
