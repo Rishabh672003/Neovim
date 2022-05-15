@@ -126,7 +126,7 @@ return packer.startup(function(use)
 
   --Statuslines
   use "nvim-lualine/lualine.nvim"
- 
+
   --project-manager
   use "ahmedkhalf/project.nvim"
 
