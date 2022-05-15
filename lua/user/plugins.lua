@@ -53,7 +53,7 @@ return packer.startup(function(use)
   })
   --use "Mofiqul/dracula.nvim"
   --use 'marko-cerovac/material.nvim'
-  use 'folke/tokyonight.nvim'
+  --use 'folke/tokyonight.nvim'
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
