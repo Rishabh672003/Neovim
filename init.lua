@@ -19,4 +19,4 @@ require "user.project"
 require "user.indentline"
 require "user.whichkey"
 require "user.autocommands"
-require 'colorizer'.setup()
+require 'user.colorizer'
