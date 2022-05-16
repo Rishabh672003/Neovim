@@ -54,6 +54,7 @@ return packer.startup(function(use)
   --use "Mofiqul/dracula.nvim"
   --use 'marko-cerovac/material.nvim'
   --use 'folke/tokyonight.nvim'
+  --use "shaunsingh/nord.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -132,6 +133,9 @@ return packer.startup(function(use)
 
   --indenter
   use "lukas-reineke/indent-blankline.nvim"
+
+  --colorizer
+  use "norcalli/nvim-colorizer.lua"
 
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
