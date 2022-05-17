@@ -96,5 +96,5 @@ nvim_tree.setup {
     --files = 1,
     --folder_arrows = 1,
     --tree_width = 30,
-  }
+}
 

@@ -14,7 +14,7 @@ local setup = {
     -- the presets plugin, adds help for a bunch of default keybindings in Neovim
     -- No actual key bindings are created
     presets = {
-      operators = false, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+      operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
       motions = true, -- adds help for motions
       text_objects = true, -- help for text objects triggered after entering an operator
       windows = true, -- default bindings on <c-w>
@@ -43,7 +43,7 @@ local setup = {
     scroll_up = "<c-u>", -- binding to scroll up inside the popup
   },
   window = {
-    border = "none", -- none, single, double, shadow
+    border = "shadow", -- none, single, double, shadow
     position = "bottom", -- bottom, top
     margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
     padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
@@ -103,15 +103,6 @@ local mappings = {
     s = { "<cmd>PackerSync<cr>", "Sync" },
     S = { "<cmd>PackerStatus<cr>", "Status" },
     u = { "<cmd>PackerUpdate<cr>", "Update" },
-  },
-
-  T = {
-  name = "Treesitter",
-  i = {"<cmd>TSInstallInfo<cr>", "Install info"},
-  u = {"<cmd>TSUpdate<cr>", "Update"},
-  s = {"<cmd>TSUpdateSync<cr>","Update and sync"},
-  e = {"<cmd>TSEnable<cr>","Enable"},
-  d = {"<cmd>TSDisable<cr>","Disable"},
   },
 
   g = {
@@ -178,6 +169,15 @@ local mappings = {
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
+  },
+
+  T = {
+    name = "Treesitter",
+    i = {"<cmd>TSInstallInfo<cr>", "Install info"},
+    u = {"<cmd>TSUpdate<cr>", "Update"},
+    s = {"<cmd>TSUpdateSync<cr>","Update and sync"},
+    e = {"<cmd>TSEnable<cr>","Enable"},
+    d = {"<cmd>TSDisable<cr>","Disable"},
   },
 
   t = {

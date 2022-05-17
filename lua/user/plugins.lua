@@ -84,6 +84,11 @@ return packer.startup(function(use)
   }
   use "p00f/nvim-ts-rainbow"
   use "nvim-treesitter/playground"
+  --required-for-lualine2
+  -- use {
+	  -- "SmiteshP/nvim-gps",
+	  -- requires = "nvim-treesitter/nvim-treesitter"
+  -- }
 
   --alpha-nvim-dashboard
   use {
@@ -112,7 +117,13 @@ return packer.startup(function(use)
   use "lewis6991/gitsigns.nvim"
 
   --nvim-tree
-  use 'kyazdani42/nvim-tree.lua'
+  use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+}
   --use "nvim-neo-tree/neo-tree"
 
   --bufferline
@@ -127,6 +138,7 @@ return packer.startup(function(use)
 
   --Statuslines
   use "nvim-lualine/lualine.nvim"
+  --use "feline-nvim/feline.nvim"
 
   --project-manager
   use "ahmedkhalf/project.nvim"
@@ -136,6 +148,11 @@ return packer.startup(function(use)
 
   --colorizer
   use "norcalli/nvim-colorizer.lua"
+
+  use {
+    'declancm/cinnamon.nvim',
+      config = function() require('cinnamon').setup() end
+  }
 
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

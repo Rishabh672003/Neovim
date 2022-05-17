@@ -5,7 +5,7 @@ vim.cmd [[
     autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
-    autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+    "autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
   augroup end
 
   augroup _git
