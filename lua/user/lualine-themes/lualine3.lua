@@ -73,6 +73,7 @@ require('lualine').setup {
     theme = theme,
     component_separators = '',
     section_separators = { left = '', right = '' },
+    disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
   },
   sections = process_sections {
     lualine_a = { 'mode' },
@@ -91,7 +92,7 @@ require('lualine').setup {
         sections = { 'warn' },
         diagnostics_color = { warn = { bg = colors.orange, fg = colors.white } },
       },
-      { 'filename', file_status = false, path = 1 },
+      { 'filename', file_status = false, path = 3 },
       { modified, color = { bg = colors.red } },
       {
         '%w',
