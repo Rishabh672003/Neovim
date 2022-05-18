@@ -24,7 +24,7 @@ also in my configs i have set tree-sitter to download java, python and lua autom
 
 ## Preview screenshots
 ![image](https://user-images.githubusercontent.com/53911515/168277253-37fccf26-4ee9-4550-9fb4-3c6c62a896c7.png)
-![image](https://user-images.githubusercontent.com/53911515/169095326-c2766eb3-a280-4947-bbf7-2b089200fce8.png)
+![image](https://user-images.githubusercontent.com/53911515/169095446-128140ee-60c8-4a77-86e4-70eefd7f10e1.png)
 ![image](https://user-images.githubusercontent.com/53911515/168479997-4969b3f1-fe27-4ff0-86b5-acb629a29a0b.png)
 
 ## Uninstallation and Cleanup
