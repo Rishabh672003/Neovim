@@ -127,6 +127,8 @@ local mappings = {
       "Diff",
     },
   },
+  
+  ["G"] = {"<cmd>Glow<CR>", "Glow"},
 
   l = {
     name = "LSP",

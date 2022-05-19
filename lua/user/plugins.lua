@@ -154,6 +154,9 @@ return packer.startup(function(use)
       config = function() require('cinnamon').setup() end
   }
 
+  --markdown viewer
+  use "ellisonleao/glow.nvim"
+
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
     require("packer").sync()
