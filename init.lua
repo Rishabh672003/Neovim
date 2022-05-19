@@ -19,4 +19,4 @@ require "user.indentline"
 require "user.whichkey"
 require "user.autocommands"
 require 'user.colorizer'
-require "user.lualine-themes.lualine"
+require "user.lualine-themes.lualine1"
