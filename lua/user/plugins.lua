@@ -123,7 +123,7 @@ return packer.startup(function(use)
       'kyazdani42/nvim-web-devicons', -- optional, for file icon
     },
     tag = 'nightly' -- optional, updated every week. (see issue #1193)
-}
+  }
   --use "nvim-neo-tree/neo-tree"
 
   --bufferline
