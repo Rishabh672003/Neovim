@@ -13,4 +13,4 @@ this is a theme i found on internet and the credit goes to ![Navepnow](https://g
 ![image](https://user-images.githubusercontent.com/53911515/169336597-c56d5a48-6467-43db-b73e-dabb735f4886.png)
 
 ##### i am working on the third one
-you can still use it but it doesn't looks any good
+this theme doesn't looks very you but you still can use it 
