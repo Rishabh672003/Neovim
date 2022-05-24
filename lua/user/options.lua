@@ -33,7 +33,7 @@ local options = {
 	scrolloff = 8, -- is one of my fav
 	sidescrolloff = 8,
 	virtualedit = "onemore",
-	guifont = "monospace:h17", -- the font used in graphical neovim applications
+	guifont = "monospace:h12", -- the font used in graphical neovim applications
 }
 
 vim.api.nvim_set_var("nvim_tree_group_empty", "1")
