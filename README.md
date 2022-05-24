@@ -28,7 +28,7 @@ For null-ls to work for formating and stuff get the apps which i have configured
 
 ```
 #for arch
-sudo pacman -S stylua prettier
+sudo pacman -S stylua prettier astyle
 ```
 
 ## Preview
