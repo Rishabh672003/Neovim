@@ -52,8 +52,8 @@ return packer.startup(function(use)
 		as = "catppuccin",
 	})
 	-- use "Mofiqul/dracula.nvim"
-	--use 'marko-cerovac/material.nvim'
-	--use 'folke/tokyonight.nvim'
+	-- use 'marko-cerovac/material.nvim'
+	-- use 'folke/tokyonight.nvim'
 	-- use "shaunsingh/nord.nvim"
 	-- use( "mangeshrex/everblush.vim" )
 
@@ -149,13 +149,6 @@ return packer.startup(function(use)
 
 	--colorizer
 	use("norcalli/nvim-colorizer.lua")
-
-	use({
-		"declancm/cinnamon.nvim",
-		config = function()
-			require("cinnamon").setup()
-		end,
-	})
 
 	--markdown viewer
 	use("ellisonleao/glow.nvim")

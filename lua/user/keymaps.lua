@@ -77,3 +77,10 @@ keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 --keymap-bufferline
 keymap("n", "<TAB>", ":BufferLineCycleNext <CR>", opts )
 -- keymap("n", "<C-TAB>", ":BufferLineCyclePrev <CR>", opts )
+
+--keymaps for tabs
+keymap("n", "<A-l>", ":tabNext<CR>", opts)
+keymap("n", "<A-h>", ":tabprevious<CR>", opts)
+keymap("n", "<A-i>", ":tabnew<CR>", opts)
+
+
