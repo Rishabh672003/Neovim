@@ -33,7 +33,7 @@ end
 packer.init({
 	display = {
 		open_fn = function()
-			return require("packer.util").float({ border = "rounded" })
+			return require("packer.util").float({ border = "single" })
 		end,
 	},
 })
@@ -51,9 +51,9 @@ return packer.startup(function(use)
 		"catppuccin/nvim",
 		as = "catppuccin",
 	})
-	-- use "Mofiqul/dracula.nvim"
+	-- use("Mofiqul/dracula.nvim")
 	-- use 'marko-cerovac/material.nvim'
-	-- use 'folke/tokyonight.nvim'
+	-- use("folke/tokyonight.nvim")
 	-- use "shaunsingh/nord.nvim"
 	-- use( "mangeshrex/everblush.vim" )
 
@@ -153,6 +153,16 @@ return packer.startup(function(use)
 	--markdown viewer
 	use("ellisonleao/glow.nvim")
 
+	use {
+		"xiyaowong/accelerated-jk.nvim",
+		config = function()
+			require("accelerated-jk").setup()
+		end,
+		opt = true,
+		setup = function()
+			-- lazy "accelerated-jk.nvim"
+		end,
+	}
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
