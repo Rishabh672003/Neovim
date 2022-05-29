@@ -104,6 +104,8 @@ local mappings = {
 		S = { "<cmd>PackerStatus<cr>", "Status" },
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
 	},
+	["r"]={ "<cmd>:Telescope oldfiles<cr>", "Recent Files" },
+	["C"]={ "<cmd>:Telescope colorscheme<cr>", "Colorschemes" },
 
 	g = {
 		name = "Git",
