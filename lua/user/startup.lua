@@ -1,3 +1,4 @@
+
 local status_ok, alpha = pcall(require, "alpha")
 if not status_ok then
   return
@@ -66,7 +67,7 @@ local mru_opts = {
 --- @param items_number number optional number of items to generate, default = 10
 local function mru(start, cwd, items_number, opts)
     opts = opts or mru_opts
-    items_number = items_number or 9
+    items_number = items_number or 15
 
     local oldfiles = {}
     for _, v in pairs(vim.v.oldfiles) do
@@ -226,3 +227,4 @@ local opts = {
 }
 
 alpha.setup(opts)
+

@@ -2,7 +2,7 @@
 
 This repo contains all my neovim config files which i use.
 
-### 🛠️ If you also want to use it
+### 🛠️  If you also want to use it
 
 #### Make a backup of your current nvim folder
 
