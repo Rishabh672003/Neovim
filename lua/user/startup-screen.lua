@@ -10,8 +10,8 @@ end
 
 local dashboard = require("alpha.themes.dashboard")
 local nvim_web_devicons = {
-    enabled = true,
-    highlight = true,
+	enabled = true,
+	highlight = true,
 }
 local cdir = vim.fn.getcwd()
 
@@ -160,7 +160,7 @@ local function header_color()
 			type = "text",
 			val = line_chars,
 			opts = {
-				hl = "Type",
+				hl = hi,
 				shrink_margin = false,
 				position = "center",
 			},
@@ -171,12 +171,11 @@ local function header_color()
 	local output = {
 		type = "group",
 		val = lines,
-		opts = { position = "center", hl = "Type" },
+		opts = { position = "center" },
 	}
 
 	return output
 end
-
 local section_mru = {
 	type = "group",
 	val = {

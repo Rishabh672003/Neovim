@@ -95,9 +95,9 @@ return packer.startup(function(use)
 	use({
 		"goolord/alpha-nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
-		-- config = function()
-		-- 	require("alpha").setup(require("alpha.themes.theta").config)
-		-- end,
+		config = function()
+			require("alpha").setup(require("alpha.themes.startify").config)
+		end,
 	})
 
 	-- Is using a standard Neovim install, i.e. built from source or using a
