@@ -11,11 +11,11 @@ catppuccin.setup({
 	},
 })
 
-local colorscheme = "material"
--- vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+local colorscheme = "catppuccin"
+vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 
 --configuration for material theme
-vim.g.material_style = "deep ocean"
+--vim.g.material_style = "deep ocean"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
