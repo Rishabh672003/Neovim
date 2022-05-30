@@ -51,8 +51,8 @@ return packer.startup(function(use)
 		"catppuccin/nvim",
 		as = "catppuccin",
 	})
+	use("marko-cerovac/material.nvim")
 	-- use("Mofiqul/dracula.nvim")
-	-- use 'marko-cerovac/material.nvim'
 	-- use("folke/tokyonight.nvim")
 	-- use "shaunsingh/nord.nvim"
 	-- use( "mangeshrex/everblush.vim" )
@@ -153,7 +153,7 @@ return packer.startup(function(use)
 	--markdown viewer
 	use("ellisonleao/glow.nvim")
 
-	use {
+	use({
 		"xiyaowong/accelerated-jk.nvim",
 		config = function()
 			require("accelerated-jk").setup()
@@ -162,7 +162,7 @@ return packer.startup(function(use)
 		setup = function()
 			-- lazy "accelerated-jk.nvim"
 		end,
-	}
+	})
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
