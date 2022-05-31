@@ -1,6 +1,6 @@
 local catppuccin = require("catppuccin")
 
--- configure it
+--this doesn't seems to work have opened an issue on there github lets see what happens
 catppuccin.setup({
 	integration = {
 		nvimtree = {
@@ -13,9 +13,8 @@ catppuccin.setup({
 
 local colorscheme = "catppuccin"
 vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
--- local colorscheme = "material"
+-- vim.g.tokyonight_style = "night"
 --vim.g.material_style = "deep ocean"
-
 
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)

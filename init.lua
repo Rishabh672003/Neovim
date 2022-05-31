@@ -22,7 +22,7 @@ local core_modules = {
 	"user.autocommands",
 	"user.colorizer",
 	"user.lualine-themes.lualine1",
-	"user.startup-screen"
+	-- "user.startup-screen"
 }
 
 -- Using pcall we can handle better any loading issues

@@ -46,14 +46,16 @@ return packer.startup(function(use)
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
 
-	--themes
+	--themes that i use and like
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",
 	})
-	use("marko-cerovac/material.nvim")
+	use("norcalli/nvim-base16.lua")
+	-- use("marko-cerovac/material.nvim")
+	-- use("rafamadriz/neon")
 	-- use("Mofiqul/dracula.nvim")
-	-- use("folke/tokyonight.nvim")
+	use("folke/tokyonight.nvim")
 	-- use "shaunsingh/nord.nvim"
 	-- use( "mangeshrex/everblush.vim" )
 
