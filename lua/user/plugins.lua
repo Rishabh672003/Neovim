@@ -41,6 +41,7 @@ packer.init({
 -- plugins installed
 return packer.startup(function(use)
 	-- My plugins here
+	use("lewis6991/impatient.nvim")
 	use({ "wbthomason/packer.nvim", auto_clean = true, auto_reload_compiled = true })
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
@@ -51,11 +52,11 @@ return packer.startup(function(use)
 		"catppuccin/nvim",
 		as = "catppuccin",
 	})
-	use("norcalli/nvim-base16.lua")
+	-- use("norcalli/nvim-base16.lua")
+	-- use("folke/tokyonight.nvim")
 	-- use("marko-cerovac/material.nvim")
 	-- use("rafamadriz/neon")
 	-- use("Mofiqul/dracula.nvim")
-	use("folke/tokyonight.nvim")
 	-- use "shaunsingh/nord.nvim"
 	-- use( "mangeshrex/everblush.vim" )
 
@@ -102,10 +103,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Is using a standard Neovim install, i.e. built from source or using a
-	-- provided appimage.
-	use("lewis6991/impatient.nvim")
-
 	--indentation-plugin
 	use("Darazaki/indent-o-matic")
 
@@ -113,7 +110,6 @@ return packer.startup(function(use)
 	use("MunifTanjim/nui.nvim")
 
 	--comments
-	use("JoosepAlviste/nvim-ts-context-commentstring")
 	use("numToStr/Comment.nvim") -- Easily comment stuff
 
 	--git-support

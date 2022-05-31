@@ -4,6 +4,7 @@ local core_modules = {
 	"user.keymaps",
 	"user.plugins",
 	"user.colorscheme",
+	-- "user.theme",
 	"user.cmp",
 	"user.lsp",
 	"user.telescope",
@@ -21,6 +22,7 @@ local core_modules = {
 	"user.autocommands",
 	"user.colorizer",
 	"user.lualine-themes.lualine1",
+	-- "user.startup-screen"
 }
 
 -- Using pcall we can handle better any loading issues
