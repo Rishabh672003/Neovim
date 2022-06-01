@@ -52,6 +52,8 @@ return packer.startup(function(use)
 		"catppuccin/nvim",
 		as = "catppuccin",
 	})
+	-- use("")
+	use("shaunsingh/moonlight.nvim")
 	-- use("norcalli/nvim-base16.lua")
 	-- use("folke/tokyonight.nvim")
 	-- use("marko-cerovac/material.nvim")
@@ -88,6 +90,7 @@ return packer.startup(function(use)
 	})
 	use("p00f/nvim-ts-rainbow")
 	use("nvim-treesitter/playground")
+	use("JoosepAlviste/nvim-ts-context-commentstring")
 	--required-for-lualine2
 	-- use {
 	-- "SmiteshP/nvim-gps",
