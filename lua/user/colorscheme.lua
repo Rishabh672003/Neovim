@@ -11,10 +11,10 @@ catppuccin.setup({
 	},
 })
 
-local colorscheme = "catppuccin"
+local colorscheme = "catppuccin" -- tokyonight, material --make sure the plugins are installed of these
 vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 -- vim.g.tokyonight_style = "night"
---vim.g.material_style = "deep ocean"
+-- vim.g.material_style = "deep ocean"
 
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
