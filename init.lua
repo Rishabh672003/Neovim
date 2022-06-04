@@ -3,7 +3,7 @@ local core_modules = {
 	"user.options",
 	"user.keymaps",
 	"user.plugins",
-	"user.colorscheme",
+	"user.colorschemes.catppuccin",
 	-- "user.theme",
 	"user.cmp",
 	"user.lsp",

@@ -53,7 +53,6 @@ return packer.startup(function(use)
 		as = "catppuccin",
 	})
 	-- use("")
-	-- use("norcalli/nvim-base16.lua")
 	use("folke/tokyonight.nvim")
 	-- use("marko-cerovac/material.nvim")
 	-- use("rafamadriz/neon")
