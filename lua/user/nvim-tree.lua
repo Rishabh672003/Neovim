@@ -1,25 +1,5 @@
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
--- vim.g.nvim_tree_icons = {
--- 	default = "",
--- 	symlink = "",
--- 	git = {
--- 		unstaged = "",
--- 		staged = "S",
--- 		unmerged = "",
--- 		renamed = "➜",
--- 		deleted = "",
--- 		untracked = "U",
--- 		ignored = "◌",
--- 	},
--- 	folder = {
--- 		default = "",
--- 		open = "",
--- 		empty = "",
--- 		empty_open = "",
--- 		symlink = "",
--- 	},
--- }
 
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
@@ -42,29 +22,36 @@ nvim_tree.setup({
 		"dashboard",
 		"alpha",
 	},
- 	 renderer = {
-     group_empty = true,
-	   glyphs = {
-	 	default = "",
-	 symlink = "",
-	 git = {
-	 	unstaged = "",
-	 	staged = "S",
-	 	unmerged = "",
-	 	renamed = "➜",
-	 	deleted = "",
-	 	untracked = "U",
-	 	ignored = "◌",
-	 },
-	 folder = {
-	 	default = "",
-	 	open = "",
-	 	empty = "",
-	 	empty_open = "",
-	 	symlink = "",
-	 },
-	}
+	renderer = {
+		group_empty = true,
+		icons = {
+			webdev_colors = true,
+			glyphs = {
+				default = "",
+				symlink = "",
+				folder = {
+					arrow_closed = "",
+					arrow_open = "",
+					default = "",
+					open = "",
+					empty = "",
+					empty_open = "",
+					symlink = "",
+					symlink_open = "",
+				},
+				git = {
+					unstaged = "✗",
+					staged = "✓",
+					unmerged = "",
+					renamed = "➜",
+					untracked = "★",
+					deleted = "",
+					ignored = "◌",
+				},
+			},
+		},
 	},
+
 	-- auto_close = true,
 	open_on_tab = false,
 	hijack_cursor = false,
