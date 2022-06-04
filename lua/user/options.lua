@@ -36,7 +36,7 @@ local options = {
 	guifont = "monospace:h12", -- the font used in graphical neovim applications
 }
 
-vim.api.nvim_set_var("nvim_tree_group_empty", "1")
+--vim.api.nvim_set_var("nvim_tree_group_empty", "1")
 vim.opt.shortmess:append("c")
 
 for k, v in pairs(options) do
