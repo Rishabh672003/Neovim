@@ -5,7 +5,7 @@ end
 
 local lspconfig = require("lspconfig")
 
-local servers = { "sumneko_lua" , "bashls", "ltex" }
+local servers = { "sumneko_lua" , "bashls" }
 
 lsp_installer.setup {
 	ensure_installed = servers

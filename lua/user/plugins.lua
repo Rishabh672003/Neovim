@@ -52,13 +52,10 @@ return packer.startup(function(use)
 		"catppuccin/nvim",
 		as = "catppuccin",
 	})
-	-- use("")
-	use("folke/tokyonight.nvim")
-	-- use("marko-cerovac/material.nvim")
-	-- use("rafamadriz/neon")
+	--use("marko-cerovac/material.nvim")
+	-- use("yashguptaz/calvera-dark.nvim")
+	-- use("folke/tokyonight.nvim")
 	-- use("Mofiqul/dracula.nvim")
-	-- use "shaunsingh/nord.nvim"
-	-- use( "mangeshrex/everblush.vim" )
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
