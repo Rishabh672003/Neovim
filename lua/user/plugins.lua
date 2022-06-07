@@ -52,7 +52,7 @@ return packer.startup(function(use)
 		"catppuccin/nvim",
 		as = "catppuccin",
 	})
-	--use("marko-cerovac/material.nvim")
+	-- use("marko-cerovac/material.nvim")
 	-- use("yashguptaz/calvera-dark.nvim")
 	-- use("folke/tokyonight.nvim")
 	-- use("Mofiqul/dracula.nvim")
