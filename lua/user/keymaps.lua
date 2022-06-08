@@ -25,7 +25,6 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 --keymap("n", "<leader>q", ":wq<cr>", opts)
 
 -- Resize with arrows
@@ -82,5 +81,3 @@ keymap("n", "<TAB>", ":BufferLineCycleNext <CR>", opts )
 keymap("n", "<A-l>", ":tabNext<CR>", opts)
 keymap("n", "<A-h>", ":tabprevious<CR>", opts)
 keymap("n", "<A-i>", ":tabnew<CR>", opts)
-
-
