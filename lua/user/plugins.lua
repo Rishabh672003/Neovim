@@ -86,6 +86,7 @@ return packer.startup(function(use)
 	use("p00f/nvim-ts-rainbow")
 	use("nvim-treesitter/playground")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
+	-- use("nvim-treesitter/nvim-treesitter-context")
 	--required-for-lualine2
 	-- use {
 	-- "SmiteshP/nvim-gps",
@@ -162,6 +163,7 @@ return packer.startup(function(use)
 			-- lazy "accelerated-jk.nvim"
 		end,
 	})
+
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
