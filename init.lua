@@ -4,7 +4,6 @@ local core_modules = {
 	"user.keymaps",
 	"user.plugins",
 	"user.colorschemes.catppuccin",
-	-- "user.theme",
 	"user.cmp",
 	"user.lsp",
 	"user.telescope",
