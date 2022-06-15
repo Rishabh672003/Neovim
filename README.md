@@ -6,7 +6,7 @@ This repo contains all my neovim config files which i use.
 
 #### Install neovim and git
 ```
-pacman -Sy git neovim
+pacman -Sy git neovim unzip
 ```
 #### Make a backup of your current nvim folder
 ```
