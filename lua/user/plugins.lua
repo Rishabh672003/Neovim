@@ -74,7 +74,7 @@ return packer.startup(function(use)
 	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("jose-elias-alvarez/null-ls.nvim")
-	use("RRethy/vim-illuminate")
+	-- use("RRethy/vim-illuminate")
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
