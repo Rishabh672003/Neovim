@@ -48,6 +48,7 @@ local function lsp_highlight_document(client)
 	-- Set autocommands conditional on server_capabilities
 	local status_ok, illuminate = pcall(require, "illuminate")
 	if not status_ok then
+		print("illuminate not found")
 		return
 	end
 	illuminate.on_attach(client)
