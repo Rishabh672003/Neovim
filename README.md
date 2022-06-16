@@ -28,11 +28,9 @@ nvim
 after launching the nvim for the first time packer will automatically install all the extension and will give you some errors, just ignore them and reopen neovim the errors should be resolved
 
 For null-ls to work for formating and stuff get the apps which i have configured it to work with
-
-```
-#for arch
-sudo pacman -S stylua prettier astyle
-```
+` 
+sudo pacman -S stylua prettier astyle shfmt
+`
 
 ## Preview
 
