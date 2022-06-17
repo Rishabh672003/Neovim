@@ -5,8 +5,7 @@ This repo contains all my neovim config files which i use.
 ### 🛠️  If you also want to use it
 
 #### Install neovim and git
-##### also i have started using the neovim developement branch, so because of that you will have to build neovim from the source, I will make a branch for the neovim point release
-
+also i have started using the neovim developement branch, so because of that you will have to build neovim from the source or you can use there nightly released appimages if you dont want to build it 
 ```
 #build dependencies
 sudo pacman -Sy --needed git base-devel cmake unzip ninja tree-sitter curl
