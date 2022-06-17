@@ -37,7 +37,7 @@ after launching the nvim for the first time packer will automatically install al
 
 For null-ls to work for formating and stuff get the apps which i have configured it to work with
 ` 
-sudo pacman -S stylua prettier astyle shfmt
+sudo pacman -S --needed --noconfirm stylua prettier astyle shfmt
 `
 
 ## Preview
