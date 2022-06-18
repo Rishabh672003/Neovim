@@ -10,7 +10,7 @@ i use the neovim developement branch, so because of that you will have to build 
 #### Steps to build neovim
 ```
 #build dependencies
-sudo pacman -Sy --needed git base-devel cmake unzip ninja tree-sitter curl
+sudo pacman -Sy --needed --noconfirm git base-devel cmake unzip ninja tree-sitter curl
 ```
 ```
 git clone https://github.com/neovim/neovim && cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install
