@@ -49,7 +49,7 @@ sudo pacman -S --needed --noconfirm stylua prettier astyle shfmt
 ## Uninstallation and Cleanup
 
 ```
-rm -rf $HOME/.config/nvim $HOME/.local/share/nvim $HOME/.cache/nvim
+rm -rf $XDG_CONFIG_HOME/nvim $XDG_DATA_HOME/nvim $XDG_CACHE_HOME/nvim
 ```
 
 ### Credit
