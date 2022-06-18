@@ -21,6 +21,7 @@ local core_modules = {
 	"user.autocommands",
 	"user.colorizer",
 	"user.lualine-themes.lualine1",
+	"user.illuminate"
 	-- "user.startup-screen"
 }
 
@@ -28,7 +29,7 @@ local core_modules = {
 for _, module in ipairs(core_modules) do
 	local ok, err = pcall(require, module)
 	if not ok then
-		print("config missing!!")
+		print("config missing!!, or not loaded")
 	return
 	end
 end

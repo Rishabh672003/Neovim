@@ -104,8 +104,8 @@ local mappings = {
 		S = { "<cmd>PackerStatus<cr>", "Status" },
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
 	},
-	["r"]={ "<cmd>:Telescope oldfiles<cr>", "Recent Files" },
-	["C"]={ "<cmd>:Telescope colorscheme<cr>", "Colorschemes" },
+	["r"] = { "<cmd>:Telescope oldfiles<cr>", "Recent Files" },
+	["C"] = { "<cmd>:Telescope colorscheme<cr>", "Colorschemes" },
 
 	g = {
 		name = "Git",
@@ -143,7 +143,7 @@ local mappings = {
 			"<cmd>Telescope lsp_workspace_diagnostics<cr>",
 			"Workspace Diagnostics",
 		},
-		f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+		f = { "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", "Format" },
 		i = { "<cmd>LspInfo<cr>", "Info" },
 		I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
 		j = {
