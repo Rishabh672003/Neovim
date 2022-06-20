@@ -31,8 +31,8 @@ notify.setup({
 		ERROR = "",
 		WARN = "",
 		INFO = "",
-		-- DEBUG = icons.ui.Bug,
-		-- TRACE = icons.ui.Pencil,
+		DEBUG = "",
+		TRACE = "",
 	},
 })
 
