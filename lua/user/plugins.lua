@@ -151,6 +151,8 @@ return packer.startup(function(use)
 	--markdown viewer
 	use("ellisonleao/glow.nvim")
 
+	use"rcarriga/nvim-notify"
+
 	--this runs code directly from nvim; does not supports most of the languages
 	--use("arjunmahishi/run-code.nvim")
 

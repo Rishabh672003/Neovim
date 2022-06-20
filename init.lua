@@ -21,7 +21,8 @@ local core_modules = {
 	"user.autocommands",
 	"user.colorizer",
 	"user.lualine-themes.lualine1",
-	"user.illuminate"
+	"user.illuminate",
+	"user.notify",
 	-- "user.startup-screen"
 }
 
@@ -29,7 +30,7 @@ local core_modules = {
 for _, module in ipairs(core_modules) do
 	local ok, err = pcall(require, module)
 	if not ok then
-		print("config missing!!, or not loaded")
-	return
+		print("config missing!!, or not loaded, see all config files are available and if they are restart neovim")
+		return
 	end
 end

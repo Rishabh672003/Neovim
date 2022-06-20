@@ -79,8 +79,8 @@ M.on_attach = function(client, bufnr)
 	if client.server == "sumneko_lua" then
 		client.server.document_formatting = false
 	end
-	lsp_keymaps(					bufnr)
-							lsp_highlight_document(client)
+	lsp_keymaps(bufnr)
+	lsp_highlight_document(client)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
