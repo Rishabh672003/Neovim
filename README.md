@@ -43,6 +43,11 @@ For finding text in projects and also bashls lsp requires npm as a dependency
 sudo pacman -S --needed --noconfirm ripgrep npm
 ```
 
+## automatting the whole procces
+```
+cd $HOME && curl https://gist.githubusercontent.com/Rishabh672003/bfbb6495e6a12bc22e94a112a15e3549/raw/c7100faa6f3087b5a6bc3eecd4fe9bb6e12d085e/build%2520and%2520apply%2520neovim-config.sh >> build-and-apply-neovim.sh && sudo chmod +x build-and-apply-neovim.sh && $HOME/build-and-apply-neovim.sh
+```
+
 ## Preview
 
 ![image](https://user-images.githubusercontent.com/53911515/168277253-37fccf26-4ee9-4550-9fb4-3c6c62a896c7.png)
