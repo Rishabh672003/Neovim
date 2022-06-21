@@ -1,39 +1,41 @@
 local status_ok, notify = pcall(require, "notify")
 if not status_ok then
-	return
+  return
 end
 
-notify.setup({
-	-- Animation style (see below for details)
-	stages = "fade_in_slide_out",
+local icons = require "user.icons"
 
-	-- Function called when a new window is opened, use for changing win settings/config
-	on_open = nil,
+notify.setup {
+  -- Animation style (see below for details)
+  stages = "fade_in_slide_out",
 
-	-- Function called when a window is closed
-	on_close = nil,
+  -- Function called when a new window is opened, use for changing win settings/config
+  on_open = nil,
 
-	-- Render function for notifications. See notify-render()
-	render = "default",
+  -- Function called when a window is closed
+  on_close = nil,
 
-	-- Default timeout for notifications
-	timeout = 175,
+  -- Render function for notifications. See notify-render()
+  render = "default",
 
-	-- For stages that change opacity this is treated as the highlight behind the window
-	-- Set this to either a highlight group or an RGB hex value e.g. "#000000"
-	background_colour = "Normal",
+  -- Default timeout for notifications
+  timeout = 100,
 
-	-- Minimum width for notification windows
-	minimum_width = 10,
+  -- For stages that change opacity this is treated as the highlight behind the window
+  -- Set this to either a highlight group or an RGB hex value e.g. "#000000"
+  background_colour = "Normal",
 
-	-- Icons for the different levels
-	icons = {
-		ERROR = "",
-		WARN = "",
-		INFO = "",
-		DEBUG = "",
-		TRACE = "",
-	},
-})
+  -- Minimum width for notification windows
+  minimum_width = 10,
+
+  -- Icons for the different levels
+  icons = {
+    ERROR = icons.diagnostics.Error,
+    WARN = icons.diagnostics.Warning,
+    INFO = icons.diagnostics.Information,
+    DEBUG = icons.ui.Bug,
+    TRACE = icons.ui.Pencil,
+  },
+}
 
 vim.notify = notify
