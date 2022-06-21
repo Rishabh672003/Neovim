@@ -45,7 +45,7 @@ sudo pacman -S --needed --noconfirm ripgrep npm
 
 ## automatting the whole procces
 ```
-cd $HOME && curl https://gist.githubusercontent.com/Rishabh672003/bfbb6495e6a12bc22e94a112a15e3549/raw/c7100faa6f3087b5a6bc3eecd4fe9bb6e12d085e/build%2520and%2520apply%2520neovim-config.sh >> build-and-apply-neovim.sh && sudo chmod +x build-and-apply-neovim.sh && $HOME/build-and-apply-neovim.sh
+curl https://gist.githubusercontent.com/Rishabh672003/bfbb6495e6a12bc22e94a112a15e3549/raw/c7100faa6f3087b5a6bc3eecd4fe9bb6e12d085e/build%2520and%2520apply%2520neovim-config.sh >> $HOME/build-and-apply-neovim.sh && sudo chmod +x $HOME/build-and-apply-neovim.sh && $HOME/build-and-apply-neovim.sh
 ```
 
 ## Preview
