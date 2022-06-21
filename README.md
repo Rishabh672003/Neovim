@@ -21,23 +21,26 @@ git clone https://github.com/neovim/neovim && cd neovim && make CMAKE_BUILD_TYPE
 mv ~/.config/nvim ~/.config/nvimbackup
 ```
 
-#### Clone the repository
+#### Clone the repository and open nvim
 
 ```
-git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim
-```
-
-```
-nvim
+git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
 ```
 
 ## After Installation
 
-after launching the nvim for the first time packer will automatically install all the extension and will give you some errors, just ignore them and reopen neovim the errors should be resolved
+after launching the nvim for the first time packer will automatically install all the extension and will give you some errors, just ignore them and reopen neovim the errors should be resolved.
 
-For null-ls to work for formating and stuff get the apps which i have configured it to work with
+## optional dependencies
+As the name suggest these are the optional dependencies if you dont want anything just remove them neovim should work fine either way
+
+For null-ls to work for formating and stuff-
 ```
-sudo pacman -S --needed --noconfirm stylua prettier astyle shfmt ripgrep npm
+sudo pacman -S --needed --noconfirm stylua prettier astyle shfmt
+```
+For finding text in projects and also bashls lsp requires npm as a dependency
+```
+sudo pacman -S --needed --noconfirm ripgrep npm
 ```
 
 ## Preview
@@ -49,7 +52,7 @@ sudo pacman -S --needed --noconfirm stylua prettier astyle shfmt ripgrep npm
 ## Uninstallation and Cleanup
 
 ```
-rm -rf $XDG_CONFIG_HOME/nvim $XDG_DATA_HOME/nvim $XDG_CACHE_HOME/nvim
+rm -rf $HOME/.config/nvim $HOME/.local/share/nvim $HOME/.cache/nvim
 ```
 
 ### Credit
