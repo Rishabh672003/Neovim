@@ -12,7 +12,7 @@ i use the neovim developement branch, so because of that you will have to build 
 #build dependencies
 yay -Sy --needed --noconfirm git base-devel cmake unzip ninja tree-sitter curl
 ```
-```
+```bash
 git clone https://github.com/neovim/neovim && cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install
 ```
 or you can install it from AUR
