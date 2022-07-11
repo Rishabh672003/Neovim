@@ -10,7 +10,7 @@ i use the neovim developement branch, so because of that you will have to build 
 #### Steps to build neovim
 ```
 #build dependencies
-sudo pacman -Sy --needed --noconfirm git base-devel cmake unzip ninja tree-sitter curl
+yay -Sy --needed --noconfirm git base-devel cmake unzip ninja tree-sitter curl
 ```
 ```
 git clone https://github.com/neovim/neovim && cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install
@@ -40,11 +40,11 @@ As the name suggest these are the optional dependencies if you dont want anythin
 
 For null-ls to work for formating and stuff-
 ```
-sudo pacman -S --needed --noconfirm stylua prettier astyle beautysh
+yay -S --needed --noconfirm stylua prettier astyle beautysh
 ```
 For finding text in projects and also bashls lsp requires npm as a dependency
 ```
-sudo pacman -S --needed --noconfirm ripgrep npm
+yay -S --needed --noconfirm ripgrep npm
 ```
 
 ## automatting the whole procces
