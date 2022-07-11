@@ -40,7 +40,7 @@ As the name suggest these are the optional dependencies if you dont want anythin
 
 For null-ls to work for formating and stuff-
 ```
-sudo pacman -S --needed --noconfirm stylua prettier astyle shfmt
+sudo pacman -S --needed --noconfirm stylua prettier astyle beautysh
 ```
 For finding text in projects and also bashls lsp requires npm as a dependency
 ```
