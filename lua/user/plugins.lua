@@ -51,6 +51,7 @@ return packer.startup(function(use)
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",
+		commit = 'd87fa3a826a28c309f066c3464edd2a4a1205700'
 	})
 	-- use("marko-cerovac/material.nvim")
 	-- use("yashguptaz/calvera-dark.nvim")
@@ -152,10 +153,21 @@ return packer.startup(function(use)
 	use("ellisonleao/glow.nvim")
 
 	--used to give notifications
-	use"rcarriga/nvim-notify"
+	use("rcarriga/nvim-notify")
 
 	--this runs code directly from nvim; does not supports most of the languages
 	--use("arjunmahishi/run-code.nvim")
+
+	use("stevearc/dressing.nvim")
+	use({
+		"ziontee113/icon-picker.nvim",
+		config = function()
+			require("icon-picker")
+		end,
+	})
+
+	--java
+	-- use("mfussenegger/nvim-jdtls")
 
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
