@@ -48,12 +48,8 @@ return packer.startup(function(use)
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
 
 	--themes that i use and like
-	-- use({
-	-- 	"catppuccin/nvim",
-	-- 	as = "catppuccin",
-	-- 	commit = 'd87fa3a826a28c309f066c3464edd2a4a1205700'
-	-- })
-
+	--this is my fork of catppuccin
+	--the only thing i have change is that i have added borders to telescope
 	use({
 		"Rishabh672003/catppuccin-nvim",
 		as = "catppuccin",
