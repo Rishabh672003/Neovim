@@ -8,22 +8,22 @@ This repo contains all my neovim config files which i use.
 i use the neovim developement branch, so because of that you will have to build neovim from the source or you can use there nightly released appimages if you dont want to build it
 
 #### Steps to build neovim
-```
+```bash
 #build dependencies
 sudo pacman -Sy --needed --noconfirm git base-devel cmake unzip ninja tree-sitter curl
 ```
-```
+```bash
 git clone https://github.com/neovim/neovim && cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install
 ```
 
 #### Make a backup of your current nvim folder
-```
+```bash
 mv ~/.config/nvim ~/.config/nvimbackup
 ```
 
 #### Clone the repository and open nvim
 
-```
+```bash
 git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
 ```
 
@@ -35,16 +35,16 @@ after launching the nvim for the first time packer will automatically install al
 As the name suggest these are the optional dependencies if you dont want anything just remove them neovim should work fine either way
 
 For null-ls to work for formating and stuff-
-```
+```bash
 sudo pacman -S --needed --noconfirm stylua prettier astyle beautysh
 ```
 For finding text in projects and also bashls lsp requires npm as a dependency
-```
+```bash
 sudo pacman -S --needed --noconfirm ripgrep npm
 ```
 
 ## automatting the whole procces
-```
+```bash
 curl https://gist.githubusercontent.com/Rishabh672003/bfbb6495e6a12bc22e94a112a15e3549/raw/c7100faa6f3087b5a6bc3eecd4fe9bb6e12d085e/build%2520and%2520apply%2520neovim-config.sh >> $HOME/build-and-apply-neovim.sh && sudo chmod +x $HOME/build-and-apply-neovim.sh && $HOME/build-and-apply-neovim.sh
 ```
 
@@ -56,7 +56,7 @@ curl https://gist.githubusercontent.com/Rishabh672003/bfbb6495e6a12bc22e94a112a1
 
 ## Uninstallation and Cleanup
 
-```
+```bash
 rm -rf $HOME/.config/nvim $HOME/.local/share/nvim $HOME/.cache/nvim
 ```
 
