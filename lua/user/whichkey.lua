@@ -132,6 +132,12 @@ local mappings = {
 
 	["G"] = { "<cmd>Glow<CR>", "Glow" },
 
+	-- i = {
+	-- 	name = "Icons and emojis",
+	-- 	p = {"<cmd>PickIconsInsert<cr>", "Pick icons"},
+	-- 	i = {"<cmd>PickIconsInsert<cr>", "Insert Icons"},
+	-- },
+
 	l = {
 		name = "LSP",
 		a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },

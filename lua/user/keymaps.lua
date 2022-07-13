@@ -80,5 +80,9 @@ keymap("n", "<A-l>", ":tabNext<CR>", opts)
 keymap("n", "<A-h>", ":tabprevious<CR>", opts)
 keymap("n", "<A-i>", ":tabnew<CR>", opts)
 
+keymap("n", "<leader><leader>i", "<cmd>PickIcons<cr>", opts)
+-- keymap("i", "<C-i>", "<cmd>PickIconsInsert<cr>", opts)
+-- keymap("i", "<A-i>", "<cmd>PickAltFontAndSymbolsInsert<cr>", opts)
+
 -- keymap('n', '<C-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', {noremap=true})
 -- keymap('n', '<C-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true})
