@@ -18,7 +18,7 @@ git clone https://github.com/neovim/neovim && cd neovim && make CMAKE_BUILD_TYPE
 
 #### Make a backup of your current nvim folder
 ```bash
-mv ~/.config/nvim ~/.config/nvim.backup
+mv ~/.config/nvim ~/.config/nvimbackup
 ```
 
 #### Clone the repository and open nvim

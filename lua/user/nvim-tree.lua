@@ -69,11 +69,11 @@ nvim_tree.setup({
 			error = "",
 		},
 	},
-	-- update_focused_file = {
-	-- 	enable = true,
-	-- 	update_cwd = true,
-	-- 	ignore_list = {},
-	-- },
+	update_focused_file = {
+		enable = true,
+		update_cwd = true,
+		ignore_list = {},
+	},
 	git = {
 		enable = true,
 		ignore = true,
