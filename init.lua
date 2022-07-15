@@ -1,9 +1,9 @@
 local core_modules = {
+	"user.plugins",
 	"user.colorschemes.catppuccin",
 	"user.impatient",
 	"user.options",
 	"user.keymaps",
-	"user.plugins",
 	"user.cmp",
 	"user.lsp",
 	"user.telescope",

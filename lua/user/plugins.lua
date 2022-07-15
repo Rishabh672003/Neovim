@@ -1,4 +1,5 @@
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#181825"  })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#181825" })
+
 local fn = vim.fn
 
 -- Automatically install packer
@@ -164,6 +165,9 @@ return packer.startup(function(use)
 			require("icon-picker")
 		end,
 	})
+
+	--java
+	-- use("mfussenegger/nvim-jdtls")
 
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
