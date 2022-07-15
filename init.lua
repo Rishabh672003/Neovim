@@ -17,7 +17,6 @@ local core_modules = {
 	"user.toggleterm",
 	"user.project",
 	"user.indentline",
-	"user.whichkey",
 	"user.autocommands",
 	"user.colorizer",
 	"user.lualine-themes.lualine1",
