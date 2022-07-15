@@ -48,14 +48,12 @@ return packer.startup(function(use)
 	use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
 
 	--themes that i use and like
-	--My fork of catppuccin
 	use({
-		"Rishabh672003/catppuccin-nvim",
+		"catppuccin/nvim",
 		as = "catppuccin",
-		-- commit = "d87fa3a826a28c309f066c3464edd2a4a1205700",
 	})
 	-- use("marko-cerovac/material.nvim")
-	use("folke/tokyonight.nvim")
+	-- use("folke/tokyonight.nvim")
 	-- use("Mofiqul/dracula.nvim")
 
 	-- cmp plugins
