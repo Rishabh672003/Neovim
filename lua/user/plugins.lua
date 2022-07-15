@@ -1,10 +1,8 @@
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#181825"  })
 local fn = vim.fn
 
 -- Automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#181825"  })
-
 if fn.empty(fn.glob(install_path)) > 0 then
 	PACKER_BOOTSTRAP = fn.system({
 		"git",
