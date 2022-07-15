@@ -88,10 +88,10 @@ return packer.startup(function(use)
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	-- use("nvim-treesitter/nvim-treesitter-context")
 	--required-for-lualine2
-	-- use {
-	-- "SmiteshP/nvim-gps",
-	-- requires = "nvim-treesitter/nvim-treesitter"
-	-- }
+	-- use({
+	-- 	"SmiteshP/nvim-navic",
+	-- 	requires = "neovim/nvim-lspconfig",
+	-- })
 
 	--alpha-nvim-dashboard
 	use({
@@ -163,9 +163,6 @@ return packer.startup(function(use)
 			require("icon-picker")
 		end,
 	})
-
-	--java
-	-- use("mfussenegger/nvim-jdtls")
 
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
