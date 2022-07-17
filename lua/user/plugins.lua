@@ -53,6 +53,7 @@ return packer.startup(function(use)
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",
+		run = "CatppuccinCompile",
 	})
 	-- use("marko-cerovac/material.nvim")
 	-- use("folke/tokyonight.nvim")
@@ -98,7 +99,7 @@ return packer.startup(function(use)
 	--alpha-nvim-dashboard
 	use({
 		"goolord/alpha-nvim",
-		requires = { "kyazdani42/nvim-web-devicons" }
+		requires = { "kyazdani42/nvim-web-devicons" },
 	})
 
 	--indentation-plugin
