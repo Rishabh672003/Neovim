@@ -1,7 +1,8 @@
 local core_modules = {
 	"user.plugins",
-	"user.colorschemes.catppuccin",
 	"user.impatient",
+	"user.colorschemes.catppuccin",
+	"user.startup-screen",
 	"user.options",
 	"user.keymaps",
 	"user.cmp",
@@ -22,7 +23,6 @@ local core_modules = {
 	"user.lualine-themes.lualine1",
 	"user.illuminate",
 	"user.notify",
-	-- "user.startup-screen"
 }
 
 -- Using pcall we can handle better any loading issues

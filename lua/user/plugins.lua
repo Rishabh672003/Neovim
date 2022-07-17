@@ -1,4 +1,4 @@
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#181825" })
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#181825" })
 
 local fn = vim.fn
 
@@ -98,10 +98,7 @@ return packer.startup(function(use)
 	--alpha-nvim-dashboard
 	use({
 		"goolord/alpha-nvim",
-		requires = { "kyazdani42/nvim-web-devicons" },
-		config = function()
-			require("alpha").setup(require("alpha.themes.startify").config)
-		end,
+		requires = { "kyazdani42/nvim-web-devicons" }
 	})
 
 	--indentation-plugin
