@@ -2,7 +2,7 @@ local core_modules = {
 	"user.plugins",
 	"user.impatient",
 	"user.colorschemes.catppuccin",
-	"user.startup-screen",
+	"user.startup-screens.theta",
 	"user.options",
 	"user.keymaps",
 	"user.cmp",
