@@ -1,5 +1,3 @@
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#181825" })
-
 local fn = vim.fn
 
 -- Automatically install packer
@@ -30,6 +28,8 @@ local status_ok, packer = pcall(require, "packer")
 if not status_ok then
 	return
 end
+
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#181825" })
 
 -- Have packer use a popup window
 packer.init({
