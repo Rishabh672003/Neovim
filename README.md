@@ -58,8 +58,8 @@ curl https://gist.githubusercontent.com/Rishabh672003/bfbb6495e6a12bc22e94a112a1
 ## Preview
 
 ![image](https://user-images.githubusercontent.com/53911515/179395376-a42e590d-cf53-4393-86aa-5eb84f77cdef.png)
-![image](https://user-images.githubusercontent.com/53911515/169095446-128140ee-60c8-4a77-86e4-70eefd7f10e1.png)
-![image](https://user-images.githubusercontent.com/53911515/168479997-4969b3f1-fe27-4ff0-86b5-acb629a29a0b.png)
+![image](https://user-images.githubusercontent.com/53911515/179547660-33be75ce-81ae-4a5f-bc5d-0de3b6e7d3c6.png)
+![image](https://user-images.githubusercontent.com/53911515/179548015-4e6473a8-f9a3-42c0-8018-044190dd3292.png)
 
 ## Uninstallation and Cleanup
 
