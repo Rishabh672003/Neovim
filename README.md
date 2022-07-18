@@ -52,7 +52,7 @@ sudo pacman -S --needed --noconfirm ripgrep npm
 ## Automatting the whole process of building neovim from source and applying the config
 
 ```bash
-curl https://gist.githubusercontent.com/Rishabh672003/bfbb6495e6a12bc22e94a112a15e3549/raw/74ffa3031104bdee1924dc50bd2a1c962beb27f6/build%2520and%2520apply%2520neovim-config.sh >> $HOME/build-and-apply-neovim.sh && sudo chmod +x $HOME/build-and-apply-neovim.sh && $HOME/build-and-apply-neovim.sh
+curl https://gist.githubusercontent.com/Rishabh672003/bfbb6495e6a12bc22e94a112a15e3549/raw/5ca7165da2434af9531b36c956555056eae9b7c6/build%2520and%2520apply%2520neovim-config.sh >> $HOME/build-and-apply-neovim.sh && sudo chmod +x $HOME/build-and-apply-neovim.sh && $HOME/build-and-apply-neovim.sh
 ```
 
 ## Preview
