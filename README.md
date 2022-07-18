@@ -40,7 +40,7 @@ These are all the optional dependencies if you dont want anything just remove th
 For null-ls to work for formating and stuff
 
 ```bash
-sudo pacman -S --needed --noconfirm stylua prettier astyle beautysh
+sudo pacman -S --needed --noconfirm stylua prettier astyle zsh ; yay -S beautysh shellcheck-bin
 ```
 
 For finding text in projects and also bashls lsp requires npm as a dependency
