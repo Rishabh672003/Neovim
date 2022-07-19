@@ -4,7 +4,13 @@ This repo contains all my neovim configs files which i use.
 
 ### 🛠️ If you also want to use it
 
-#### My configs are for development branch of neovim so they might not work for any other version (they work as of now for the stable branch)
+#### The Main branch of this repo is configured by me for the developement branch of Neovim which i use, if you are not using the developement branch but the 0.7.2 version of Neovim use that branch, its very stable and will always work for 0.7 version of Neovim  
+
+#### if you are using the 0.7.2 neovim
+
+```bash
+git clone -b neovim-0.7.2 https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
+```
 
 #### Steps to build neovim
 
@@ -29,12 +35,6 @@ For main branch
 
 ```bash
 git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
-```
-
-For 0.7.2 branch
-
-```bash
-git clone -b neovim-0.7.2 https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
 ```
 
 ## After Installation
