@@ -61,9 +61,6 @@ return packer.startup(function(use)
 		run = "CatppuccinCompile",
 		commit = "5e9358d68b17792821d6f673ab30f6f8633bf2a5",
 	})
-	-- use("marko-cerovac/material.nvim")
-	-- use("folke/tokyonight.nvim")
-	-- use("Mofiqul/dracula.nvim")
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp", commit = "9897465a7663997b7b42372164ffc3635321a2fe" }) -- The completion plugin
@@ -96,12 +93,6 @@ return packer.startup(function(use)
 	use({ "p00f/nvim-ts-rainbow", commit = "9dd019e84dc3b470dfdb5b05e3bb26158fef8a0c" })
 	use({ "nvim-treesitter/playground", commit = "ce7e4b757598f1c785ed0fd94fc65959acd7d39c" })
 	use({ "JoosepAlviste/nvim-ts-context-commentstring", commit = "88343753dbe81c227a1c1fd2c8d764afb8d36269" })
-	-- use("nvim-treesitter/nvim-treesitter-context")
-	--required-for-lualine2
-	-- use({
-	-- 	"SmiteshP/nvim-navic",
-	-- 	requires = "neovim/nvim-lspconfig",
-	-- })
 
 	--alpha-nvim-dashboard
 	use({
@@ -131,7 +122,6 @@ return packer.startup(function(use)
 		tag = "nightly", -- optional, updated every week. (see issue #1193)
 		commit = "ecca8118f8327d66722d8e24361e1ebcacc121dd",
 	})
-	--use "nvim-neo-tree/neo-tree"
 
 	--bufferline
 	use({ "akinsho/bufferline.nvim", commit = "d7b775a35be9c80ed591d3335b35ec84e5c5d81e" })
@@ -145,7 +135,6 @@ return packer.startup(function(use)
 
 	--Statuslines
 	use({ "nvim-lualine/lualine.nvim", commit = "655411fb7aa3cf4d46094132d684d815453f5043" })
-	--use "feline-nvim/feline.nvim"
 
 	--project-manager
 	use({ "ahmedkhalf/project.nvim", commit = "541115e762764bc44d7d3bf501b6e367842d3d4f" })
@@ -162,9 +151,6 @@ return packer.startup(function(use)
 	--used to give notifications
 	use({ "rcarriga/nvim-notify", commit = "74ba257b6cf7fe2b7bb0f6813088ed488baa4a2a" })
 
-	--this runs code directly from nvim; does not supports most of the languages
-	--use("arjunmahishi/run-code.nvim")
-
 	use({ "stevearc/dressing.nvim", commit = "1e60c07ae9a8557ac6395144606c3a5335ad47e0" })
 	use({
 		"ziontee113/icon-picker.nvim",
@@ -173,9 +159,6 @@ return packer.startup(function(use)
 		end,
 		commit = "fddd49e084d67ed9b98e4c56b1a2afe6bf58f236",
 	})
-
-	--java
-	-- use("mfussenegger/nvim-jdtls")
 
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
