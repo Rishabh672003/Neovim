@@ -181,6 +181,7 @@ local buttons = {
 		dashboard.button("e", "  New file", "<cmd>ene<CR>"),
 		dashboard.button("SPC f", "  Find file"),
 		dashboard.button("SPC F", "  Live grep"),
+		dashboard.button("SPC p", "  Projects"),
 		dashboard.button("c", "  Configuration", "<cmd>e ~/.config/nvim/init.lua <CR>"),
 		dashboard.button("u", "  Update plugins", "<cmd>PackerSync<CR>"),
 		dashboard.button("q", "  Quit", "<cmd>qa<CR>"),
