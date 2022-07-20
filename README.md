@@ -9,7 +9,7 @@ This repo contains all my neovim configs files which i use.
 #### if you are using the 0.7.2 neovim
 
 ```bash
-git clone -b neovim-0.7.2 https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
+sudo pacman -S neovim ; git clone -b neovim-0.7.2 https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
 ```
 
 #### Steps to build neovim
