@@ -4,7 +4,7 @@ This repo contains all my neovim configs files which i use.
 
 ### 🛠️ If you also want to use it
 
-#### The Main branch of this repo is configured by me for the developement branch of Neovim which i use, if you are not using the developement branch but the 0.7.2 version of Neovim use that branch, its very stable and will always work for 0.7 version of Neovim  
+#### The Main branch of this repo is configured by me for the developement branch of Neovim which i use, if you are not using the developement branch but the 0.7.2 version of Neovim use that branch, its very stable and will always work for 0.7 version of Neovim
 
 #### if you are using the 0.7.2 neovim
 
