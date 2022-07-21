@@ -100,6 +100,8 @@ return packer.startup(function(use)
 	use({
 		"goolord/alpha-nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
+		config = function() require("config.alpha") end,
+
 	})
 
 	--indentation-plugin

@@ -5,6 +5,10 @@ if not path_ok then
 	return
 end
 
+-- local path_ok1, fortune = pcall(require, "alpha.fortune")
+-- if not path_ok1 then
+-- 	return
+-- end
 
 local path_ok, plenary_path = pcall(require, "plenary.path")
 if not path_ok then
@@ -77,7 +81,7 @@ local mru_opts = {
 --- @param items_number number optional number of items to generate, default = 10
 local function mru(start, cwd, items_number, opts)
 	opts = opts or mru_opts
-	items_number = if_nil(items_number, 15)
+	items_number = if_nil(items_number, 11)
 
 	local oldfiles = {}
 	for _, v in pairs(vim.v.oldfiles) do
@@ -175,16 +179,34 @@ local buttons = {
 	type = "group",
 	val = {
 		{ type = "text", val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
-		{ type = "padding", val = 1 },
+		{ type = "padding", val = 0 },
 		dashboard.button("e", "  New file", "<cmd>ene<CR>"),
 		dashboard.button("SPC f", "  Find file"),
 		dashboard.button("SPC F", "  Live grep"),
 		dashboard.button("SPC p", "  Projects"),
 		dashboard.button("c", "  Configuration", "<cmd>e ~/.config/nvim/init.lua <CR>"),
-		dashboard.button("u", "  Update plugins", "<cmd>PackerSync<CR>"),
+		-- dashboard.button("u", "  Update plugins", "<cmd>PackerSync<CR>"),
 		dashboard.button("q", "  Quit", "<cmd>qa<CR>"),
 	},
 	position = "center",
+}
+
+local end_text = {
+	type = "text",
+	val = "Quotes",
+	opts = {
+		position = "center",
+		hl = "SpecialComment",
+	},
+}
+
+local fortune = {
+	type = "text",
+	val = require("alpha.fortune")(),
+	opts = {
+		position = "center",
+		max_width = 50,
+	},
 }
 
 local config = {
@@ -195,6 +217,10 @@ local config = {
 		section_mru,
 		{ type = "padding", val = 2 },
 		buttons,
+		{ type = "padding", val = 1 },
+		end_text,
+		{ type = "padding", val = 0 },
+		fortune,
 	},
 	opts = {
 		margin = 5,
