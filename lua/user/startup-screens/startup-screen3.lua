@@ -202,7 +202,7 @@ local end_text = {
 
 local fortune = {
 	type = "text",
-	val = require("alpha.fortune")(),
+	val = require("user.startup-screens.fortune")(),
 	opts = {
 		position = "center",
 		-- max_width = 100,
