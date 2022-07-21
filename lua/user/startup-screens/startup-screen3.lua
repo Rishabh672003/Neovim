@@ -81,7 +81,7 @@ local mru_opts = {
 --- @param items_number number optional number of items to generate, default = 10
 local function mru(start, cwd, items_number, opts)
 	opts = opts or mru_opts
-	items_number = if_nil(items_number, 11)
+	items_number = if_nil(items_number, 10)
 
 	local oldfiles = {}
 	for _, v in pairs(vim.v.oldfiles) do
@@ -99,7 +99,7 @@ local function mru(start, cwd, items_number, opts)
 			oldfiles[#oldfiles + 1] = v
 		end
 	end
-	local target_width = 35
+	local target_width = 40
 
 	local tbl = {}
 	for i, fn in ipairs(oldfiles) do
@@ -185,7 +185,7 @@ local buttons = {
 		dashboard.button("SPC F", "  Live grep"),
 		dashboard.button("SPC p", "  Projects"),
 		dashboard.button("c", "  Configuration", "<cmd>e ~/.config/nvim/init.lua <CR>"),
-		-- dashboard.button("u", "  Update plugins", "<cmd>PackerSync<CR>"),
+		dashboard.button("u", "  Update plugins", "<cmd>PackerSync<CR>"),
 		dashboard.button("q", "  Quit", "<cmd>qa<CR>"),
 	},
 	position = "center",
@@ -205,13 +205,13 @@ local fortune = {
 	val = require("alpha.fortune")(),
 	opts = {
 		position = "center",
-		max_width = 50,
+		-- max_width = 100,
 	},
 }
 
 local config = {
 	layout = {
-		{ type = "padding", val = 2 },
+		{ type = "padding", val = 1 },
 		default_header,
 		{ type = "padding", val = 2 },
 		section_mru,

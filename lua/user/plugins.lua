@@ -156,7 +156,7 @@ return packer.startup(function(use)
 	use("rcarriga/nvim-notify")
 
 	--this runs code directly from nvim; does not supports most of the languages
-	--use("arjunmahishi/run-code.nvim")
+	use("arjunmahishi/run-code.nvim")
 
 	use("stevearc/dressing.nvim")
 	use({
