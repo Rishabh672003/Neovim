@@ -100,7 +100,7 @@ return packer.startup(function(use)
 	use({
 		"goolord/alpha-nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
-		config = function() require("config.alpha") end,
+		-- config = function() require("config.alpha") end,
 
 	})
 
@@ -155,10 +155,8 @@ return packer.startup(function(use)
 	--used to give notifications
 	use("rcarriga/nvim-notify")
 
-	--this runs code directly from nvim; does not supports most of the languages
-	use("arjunmahishi/run-code.nvim")
-
 	use("stevearc/dressing.nvim")
+
 	use({
 		"ziontee113/icon-picker.nvim",
 		config = function()

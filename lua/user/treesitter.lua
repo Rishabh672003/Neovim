@@ -1,4 +1,4 @@
-local status_ok, treesitter= pcall(require, "nvim-treesitter")
+local status_ok, treesitter = pcall(require, "nvim-treesitter")
 if not status_ok then
   return
 end
@@ -8,11 +8,11 @@ if not status_ok1 then
   return
 end
 
-configs.setup {
-  ensure_installed = { "lua", "markdown", "markdown_inline" ,"bash"}, -- put the language you want in this array
+configs.setup({
+  ensure_installed = { "lua", "markdown", "markdown_inline" ,"bash", "python"}, -- put the language you want in this array
   -- ensure_installed = "all",
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
-  ignore_install = { }, -- List of parsers to ignore installing
+  ignore_install = {}, -- List of parsers to ignore installing
   autopairs = {
     enable = true,
   },
@@ -26,4 +26,4 @@ configs.setup {
     enable = true,
     enable_autocmd = false,
   },
-}
+})
