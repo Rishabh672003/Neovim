@@ -1,6 +1,6 @@
 # Neovim
 
-This repo contains all my neovim configs files which i use.
+This repo contains all my [neovim](https://github,com/neovim/neovim) configs files which i use.
 
 ### 🛠️ If you also want to use it
 
