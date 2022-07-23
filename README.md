@@ -54,7 +54,7 @@ sudo pacman -S --needed --noconfirm stylua prettier astyle zsh ; yay -S beautysh
 For finding text in projects and also bashls lsp requires npm as a dependency
 
 ```bash
-sudo pacman -S --needed --noconfirm ripgrep npm
+sudo pacman -S --needed --noconfirm ripgrep npm unzip
 ```
 
 ## Automatting the whole process of building neovim from source and applying the config
