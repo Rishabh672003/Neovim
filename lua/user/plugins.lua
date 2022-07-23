@@ -90,18 +90,12 @@ return packer.startup(function(use)
 	use("nvim-treesitter/playground")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	-- use("nvim-treesitter/nvim-treesitter-context")
-	--required-for-lualine2
-	-- use({
-	-- 	"SmiteshP/nvim-navic",
-	-- 	requires = "neovim/nvim-lspconfig",
-	-- })
 
 	--alpha-nvim-dashboard
 	use({
 		"goolord/alpha-nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
 		-- config = function() require("config.alpha") end,
-
 	})
 
 	--indentation-plugin
@@ -137,7 +131,9 @@ return packer.startup(function(use)
 	use("akinsho/toggleterm.nvim")
 
 	--Statuslines
-	use("nvim-lualine/lualine.nvim")
+	use({ "nvim-lualine/lualine.nvim",
+		-- commit = "8d956c18258bb128ecf42f95411bb26efd3a5d23"
+	})
 	--use "feline-nvim/feline.nvim"
 
 	--project-manager

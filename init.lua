@@ -2,6 +2,7 @@ local core_modules = {
 	"user.plugins",
 	"user.impatient",
 	"user.colorschemes.catppuccin",
+	"user.lualine-themes.lualine1",
 	"user.startup-screens.startup-screen3",
 	"user.options",
 	"user.keymaps",
@@ -20,7 +21,6 @@ local core_modules = {
 	"user.indentline",
 	"user.autocommands",
 	"user.colorizer",
-	"user.lualine-themes.lualine1",
 	"user.illuminate",
 	"user.notify",
 }

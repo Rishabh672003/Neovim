@@ -47,7 +47,7 @@ local location = {
 	"location",
 	padding = 0,
 }
-
+vim.go.statusline = ' '
 -- cool function for progress
 local progress = function()
 	local current_line = vim.fn.line(".")
@@ -68,7 +68,10 @@ lualine.setup({
 		theme = "auto",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = { "alpha", "dashboard" },
+		disabled_filetypes = { -- "alpha", "dashboard"
+			statusline = {"alpha", "dashboard"},
+			-- winbar = {"alpha", "dashboard"}
+		},
 		always_divide_middle = true,
 		globalstatus=true,
 	},
