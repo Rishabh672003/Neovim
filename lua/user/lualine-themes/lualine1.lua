@@ -47,7 +47,7 @@ local location = {
 	"location",
 	padding = 0,
 }
-vim.go.statusline = ' '
+-- vim.go.statusline = ' '
 -- cool function for progress
 local progress = function()
 	local current_line = vim.fn.line(".")

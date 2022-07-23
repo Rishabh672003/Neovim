@@ -174,7 +174,7 @@ local buttons = {
 	type = "group",
 	val = {
 		{ type = "text", val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
-		{ type = "padding", val = 0 },
+		{ type = "padding", val = 1 },
 		dashboard.button("e", "  New file", "<cmd>ene<CR>"),
 		dashboard.button("SPC f", "  Find file"),
 		dashboard.button("SPC F", "  Live grep"),
@@ -206,13 +206,13 @@ local fortune = {
 
 local config = {
 	layout = {
-		{ type = "padding", val = 1 },
+		{ type = "padding", val = 2 },
 		default_header,
 		{ type = "padding", val = 2 },
 		section_mru,
 		{ type = "padding", val = 2 },
 		buttons,
-		{ type = "padding", val = 1 },
+		{ type = "padding", val = 2 },
 		end_text,
 		{ type = "padding", val = 0 },
 		fortune,
