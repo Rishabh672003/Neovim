@@ -78,6 +78,13 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("RRethy/vim-illuminate")
 
+	-- use({
+	-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+	-- 	config = function()
+	-- 		require("lsp_lines").setup()
+	-- 	end,
+	-- })
+
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
 
@@ -131,7 +138,8 @@ return packer.startup(function(use)
 	use("akinsho/toggleterm.nvim")
 
 	--Statuslines
-	use({ "nvim-lualine/lualine.nvim",
+	use({
+		"nvim-lualine/lualine.nvim",
 		-- commit = "8d956c18258bb128ecf42f95411bb26efd3a5d23"
 	})
 	--use "feline-nvim/feline.nvim"
