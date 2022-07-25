@@ -72,11 +72,17 @@ return packer.startup(function(use)
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use -- Automatically set up your configuration after cloning packer.nvim
 
 	-- LSP
-	use("neovim/nvim-lspconfig") -- enable LSP
-	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("RRethy/vim-illuminate")
+	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+	use("neovim/nvim-lspconfig") -- enable LSP
+	-- this will replace lsp-installer
+	-- use {
+	--     "williamboman/mason.nvim",
+	--     "williamboman/mason-lspconfig.nvim",
+	--     "neovim/nvim-lspconfig",
+	-- }
 
 	-- use({
 	-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
