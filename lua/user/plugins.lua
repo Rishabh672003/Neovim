@@ -33,6 +33,7 @@ end
 
 -- Have packer use a popup window
 packer.init({
+	snapshot_path = fn.stdpath("config") .. "/snapshots",
 	display = {
 		open_fn = function()
 			return require("packer.util").float({ border = "single" })
