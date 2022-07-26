@@ -82,7 +82,12 @@ local fortune_list = {
     {"To fear love is to fear life, and those who fear life are already 3-parts dead",
     "",
     "- Bertrand Russel"},
-
+    {"And if there were a God, I think it very unlikely that He would have such an uneasy vanity as to be offended by those who doubt His existence",
+    "",
+    "- Bertrand Russel"},
+    {"It has been said that man is a rational animal. All my life I have been searching for evidence which could support this.",
+    "",
+    "- Bertrand Russel"},
     {"If you don’t understand what your program does, you can read it 100 times and never see the error, because the error is in your head.",
     "",
     "- Dr. Charles R. Severance"},
