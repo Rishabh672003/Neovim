@@ -5,8 +5,8 @@ if not path_ok then
 	return
 end
 
-local path_ok, plenary_path = pcall(require, "plenary.path")
-if not path_ok then
+local path_ok1, plenary_path = pcall(require, "plenary.path")
+if not path_ok1 then
 	return
 end
 
@@ -76,7 +76,7 @@ local mru_opts = {
 --- @param items_number number optional number of items to generate, default = 10
 local function mru(start, cwd, items_number, opts)
 	opts = opts or mru_opts
-	items_number = if_nil(items_number, 10)
+	items_number = if_nil(items_number, 11)
 
 	local oldfiles = {}
 	for _, v in pairs(vim.v.oldfiles) do
@@ -206,7 +206,7 @@ local fortune = {
 
 local config = {
 	layout = {
-		{ type = "padding", val = 2 },
+		{ type = "padding", val = 1 },
 		default_header,
 		{ type = "padding", val = 2 },
 		section_mru,

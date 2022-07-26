@@ -84,7 +84,6 @@ return packer.startup(function(use)
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 	})
-	use("folke/lua-dev.nvim")
 
 	-- use({
 	-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",

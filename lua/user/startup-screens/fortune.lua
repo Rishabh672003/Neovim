@@ -76,6 +76,13 @@ end
 
 -- Credit to @mhinz for compiling this list in vim-startify
 local fortune_list = {
+    {"There are two motives for reading a book; one, that you enjoy it; the other, that you can boast about it.",
+    "",
+    "- Bertrand Russel"},
+    {"To fear love is to fear life, and those who fear life are already 3-parts dead",
+    "",
+    "- Bertrand Russel"},
+
     {"If you don’t understand what your program does, you can read it 100 times and never see the error, because the error is in your head.",
     "",
     "- Dr. Charles R. Severance"},

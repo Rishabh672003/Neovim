@@ -1,7 +1,7 @@
 local servers = {
 	"sumneko_lua",
 	"pyright",
-	"bashls"
+	"bashls",
 }
 
 local settings = {
@@ -39,39 +39,19 @@ for _, server in pairs(servers) do
 	server = vim.split(server, "@")[1]
 
 	if server == "sumneko_lua" then
-		local l_status_ok, lua_dev = pcall(require, "lua-dev")
-		if not l_status_ok then
-			return
-		end
-		-- local sumneko_opts = require "user.lsp.settings.sumneko_lua"
-		-- opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+		local sumneko_opts = require "user.lsp.settings.sumneko_lua"
+		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
 		-- opts = vim.tbl_deep_extend("force", require("lua-dev").setup(), opts)
-		local luadev = lua_dev.setup({
-			--   -- add any options here, or leave empty to use the default settings
-			-- lspconfig = opts,
-			lspconfig = {
-				on_attach = opts.on_attach,
-				capabilities = opts.capabilities,
-				--   -- settings = opts.settings,
-			},
-		})
-		lspconfig.sumneko_lua.setup(luadev)
-		goto continue
 	end
-
-	-- if server == "tsserver" then
-	-- 	local tsserver_opts = require("user.lsp.settings.tsserver")
-	-- 	opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
-	-- end
 
 	if server == "pyright" then
 		local pyright_opts = require("user.lsp.settings.pyright")
 		opts = vim.tbl_deep_extend("force", pyright_opts, opts)
 	end
 
-		lspconfig[server].setup(opts)
-	::continue::
+	lspconfig[server].setup(opts)
 end
 
 -- TODO: add something to installer later
 -- require("lspconfig").motoko.setup {}
+

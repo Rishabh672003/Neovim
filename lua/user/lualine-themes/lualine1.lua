@@ -69,7 +69,7 @@ lualine.setup({
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { -- "alpha", "dashboard"
-			statusline = {"alpha", "dashboard"},
+			statusline = {"alpha", "dashboard",} -- "toggleterm"},
 			-- winbar = {"alpha", "dashboard"}
 		},
 		always_divide_middle = true,
