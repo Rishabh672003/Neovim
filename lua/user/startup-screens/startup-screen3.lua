@@ -221,8 +221,8 @@ local config = {
 		margin = 5,
 		setup = function()
 			vim.cmd([[
-            autocmd alpha_temp DirChanged * lua require('alpha').redraw()
-            ]])
+      	autocmd alpha_temp DirChanged * lua require('alpha').redraw()
+      ]])
 		end,
 	},
 }
