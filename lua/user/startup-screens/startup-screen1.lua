@@ -24,7 +24,6 @@ local default_header = {
 		-- [[ ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ]],
 		-- [[ ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ]],
 		-- [[ ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ]],
-
 	},
 	opts = {
 		hl = "Type",
@@ -245,8 +244,8 @@ local config = {
 		redraw_on_resize = false,
 		setup = function()
 			vim.cmd([[
-            autocmd alpha_temp DirChanged * lua require('alpha').redraw()
-            ]])
+      autocmd alpha_temp DirChanged * lua require('alpha').redraw()
+      ]])
 		end,
 	},
 }
