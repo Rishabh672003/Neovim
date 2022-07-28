@@ -119,7 +119,7 @@ return packer.startup(function(use)
 	use("MunifTanjim/nui.nvim")
 
 	--comments
-	use("numToStr/Comment.nvim") -- Easily comment stuff
+	use({ "numToStr/Comment.nvim", tag = "v0.6.1" })
 
 	--git-support
 	use("lewis6991/gitsigns.nvim")
