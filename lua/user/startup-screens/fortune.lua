@@ -1,14 +1,5 @@
 -- fortune printing (from vim-startify)
 
--- To add this to the footer, simply add the following lines to the config:
--- use {
---     'goolord/alpha-nvim',
---     config = function ()
---         require'alpha.themes.dashboard'.section.footer.val = require'alpha.fortune'()
---         require'alpha'.setup(require'alpha.themes.dashboard'.opts)
---     end
--- }
-
 local list_extend = vim.list_extend
 
 --- @param line string
