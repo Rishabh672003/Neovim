@@ -70,22 +70,22 @@ local fortune_list = {
 	{
 		"There are two motives for reading a book; one, that you enjoy it; the other, that you can boast about it.",
 		"",
-		"- Bertrand Russel",
+		"- Bertrand Russell",
 	},
 	{
 		"To fear love is to fear life, and those who fear life are already 3-parts dead",
 		"",
-		"- Bertrand Russel",
+		"- Bertrand Russell",
 	},
 	{
 		"And if there were a God, I think it very unlikely that He would have such an uneasy vanity as to be offended by those who doubt His existence",
 		"",
-		"- Bertrand Russel",
+		"- Bertrand Russell",
 	},
 	{
 		"It has been said that man is a rational animal. All my life I have been searching for evidence which could support this.",
 		"",
-		"- Bertrand Russel",
+		"- Bertrand Russell",
 	},
 	{
 		"If you don’t understand what your program does, you can read it 100 times and never see the error, because the error is in your head.",
@@ -343,7 +343,11 @@ local fortune_list = {
 		"",
 		"Turn off the autopilot and take control. Constantly critique and appraise your work.",
 	},
-	{ "Don't live with broken windows.", "", "Fix bad designs, wrong decisions, and poor code when you see them." },
+	{
+		"Don't live with broken windows.",
+		"",
+		"Fix bad designs, wrong decisions, and poor code when you see them.",
+	},
 	{
 		"Remember the big picture.",
 		"",

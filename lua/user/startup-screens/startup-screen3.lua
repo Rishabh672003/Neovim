@@ -200,6 +200,7 @@ local fortune = {
 	val = require("user.startup-screens.fortune")(),
 	opts = {
 		position = "center",
+		hl = "group"
 		-- max_width = 100,
 	},
 }
