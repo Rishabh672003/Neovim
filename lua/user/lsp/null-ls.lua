@@ -19,6 +19,7 @@ null_ls.setup({
 		formatting.astyle,
 		diagnostics.shellcheck,
 		diagnostics.zsh,
+		diagnostics.fish,
 		-- diagnostics.flake8
 	},
 })

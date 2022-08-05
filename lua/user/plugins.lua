@@ -76,9 +76,6 @@ return packer.startup(function(use)
 	use("antoinemadec/FixCursorHold.nvim") -- This is needed to fix lsp doc highlight
 	use("jose-elias-alvarez/null-ls.nvim")
 	use("RRethy/vim-illuminate")
-	-- use("williamboman/nvim-lsp-installer") -- simple to use language server installer
-	-- use("neovim/nvim-lspconfig") -- enable LSP
-	-- this will replace lsp-installer
 	use({
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
@@ -119,7 +116,9 @@ return packer.startup(function(use)
 	use("MunifTanjim/nui.nvim")
 
 	--comments
-	use({ "numToStr/Comment.nvim", tag = "v0.6.1" })
+	use({ "numToStr/Comment.nvim",
+		-- tag = "v0.6.1"
+	})
 
 	--git-support
 	use("lewis6991/gitsigns.nvim")
@@ -173,6 +172,11 @@ return packer.startup(function(use)
 		config = function()
 			require("icon-picker")
 		end,
+	})
+
+	use({
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig",
 	})
 
 	--java
