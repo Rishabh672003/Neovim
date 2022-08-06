@@ -12,6 +12,12 @@ This repo contains all my [neovim](https://github.com/neovim/neovim) configs fil
 sudo pacman -S neovim ; git clone -b neovim-0.7.2 https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
 ```
 
+#### Neovim-nightly as an appimage
+
+```bash
+curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage && sudo chmod +x nvim.appimage
+```
+
 #### Steps to build neovim
 
 ```bash
