@@ -21,7 +21,7 @@ local diff = {
 	"diff",
 	colored = false,
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-  cond = hide_in_width
+	cond = hide_in_width,
 }
 
 local mode = {
@@ -47,7 +47,9 @@ local location = {
 	"location",
 	padding = 0,
 }
--- vim.go.statusline = ' '
+
+--[[ local navic = require("nvim-navic") ]]
+
 -- cool function for progress
 local progress = function()
 	local current_line = vim.fn.line(".")
@@ -69,20 +71,20 @@ lualine.setup({
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { -- "alpha", "dashboard"
-			statusline = {"alpha", "dashboard",} -- "toggleterm"},
+			statusline = { "alpha", "dashboard" }, -- "toggleterm"},
 			-- winbar = {"alpha", "dashboard"}
 		},
 		always_divide_middle = true,
-		globalstatus=true,
+		globalstatus = true,
 	},
 	sections = {
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
-		lualine_c =  {
-			{'filename', file_status = true, path = 3 },
+		lualine_c = {
+			{ "filename", file_status = true, path = 3 },
 		},
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_x = { diff, filetype },
+		lualine_x = { diff },
 		lualine_y = { location },
 		lualine_z = { progress },
 	},
@@ -93,6 +95,25 @@ lualine.setup({
 		lualine_y = {},
 		lualine_z = {},
 	},
+
+	--[[ winbar = { ]]
+	--[[ 	lualine_a = {}, ]]
+	--[[ 	lualine_b = {}, ]]
+	--[[ 	lualine_c = { { navic.get_location, cond = navic.is_available } }, ]]
+	--[[ 	lualine_x = {}, ]]
+	--[[ 	lualine_y = {}, ]]
+	--[[ 	lualine_z = {}, ]]
+	--[[ }, ]]
+ --[[]]
+	--[[ inactive_winbar = { ]]
+	--[[ 	lualine_a = {}, ]]
+	--[[ 	lualine_b = {}, ]]
+	--[[ 	lualine_c = {}, ]]
+	--[[ 	lualine_x = {}, ]]
+	--[[ 	lualine_y = {}, ]]
+	--[[ 	lualine_z = {}, ]]
+	--[[ }, ]]
 	tabline = {},
 	extensions = {},
 })
+

@@ -2,24 +2,19 @@ local colorscheme = "catppuccin"
 vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 
 require("catppuccin").setup({
+	transparent_background = false,
 	integrations = {
 		telescope = true,
 	},
-	custom_highlights = {
-		NvimTreeRootFolder = { fg = "#89B4FA" },
-	},
+	-- custom_highlights = {
+	-- 	NvimTreeRootFolder = { fg = "#89B4FA" },
+	-- },
 	compile = {
 		enabled = true,
 		path = vim.fn.stdpath("cache") .. "/catppuccin",
 		suffix = "_compiled",
 	},
 })
-
-local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
-if not status_ok then
-	vim.notify("colorscheme " .. colorscheme .. " not found!")
-	return
-end
 
 -- Create an autocmd User PackerCompileDone to update it every time packer is compiled
 vim.api.nvim_create_autocmd("User", {
@@ -31,3 +26,9 @@ vim.api.nvim_create_autocmd("User", {
 		end, 50) -- Debounced for live reloading
 	end,
 })
+
+local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
+if not status_ok then
+	vim.notify("colorscheme " .. colorscheme .. " not found!")
+	return
+end
