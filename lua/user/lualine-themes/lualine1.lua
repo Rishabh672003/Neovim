@@ -48,7 +48,7 @@ local location = {
 	padding = 0,
 }
 
---[[ local navic = require("nvim-navic") ]]
+-- local navic = require("nvim-navic")
 
 -- cool function for progress
 local progress = function()
@@ -84,7 +84,7 @@ lualine.setup({
 			{ "filename", file_status = true, path = 3 },
 		},
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_x = { diff },
+		lualine_x = { diff, filetype },
 		lualine_y = { location },
 		lualine_z = { progress },
 	},
