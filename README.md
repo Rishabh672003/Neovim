@@ -71,6 +71,7 @@ curl https://gist.githubusercontent.com/Rishabh672003/bfbb6495e6a12bc22e94a112a1
 
 ## Preview
 
+You can change the startup-screen if you dont like this one go to lua/user/startup-screens and read the readme there
 ![image](https://user-images.githubusercontent.com/53911515/180160349-bdd9d9ec-5485-4ca2-89b1-8d2af5dd6311.png)
 ![image](https://user-images.githubusercontent.com/53911515/179547660-33be75ce-81ae-4a5f-bc5d-0de3b6e7d3c6.png)
 ![image](https://user-images.githubusercontent.com/53911515/179548270-33d15215-28b7-46ac-bf9a-62f20b32ba21.png)
