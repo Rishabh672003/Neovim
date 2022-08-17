@@ -8,29 +8,6 @@ This repo contains all my neovim configs files which i use.
 
 #### Steps to build neovim
 
-```bash
-#build dependencies
-sudo pacman -Sy --needed --noconfirm git base-devel cmake unzip ninja tree-sitter curl
-```
-
-```bash
-git clone https://github.com/neovim/neovim && cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install
-```
-
-#### Make a backup of your current nvim folder
-
-```bash
-mv ~/.config/nvim ~/.config/nvimbackup
-```
-
-#### Clone the repository and open nvim
-
-For main branch
-
-```bash
-git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
-```
-
 For 0.7.2 branch
 
 ```bash
@@ -55,12 +32,6 @@ For finding text in projects and also bashls lsp requires npm as a dependency
 
 ```bash
 sudo pacman -S --needed --noconfirm ripgrep npm
-```
-
-## Automatting the whole process of building neovim from source and applying the config
-
-```bash
-curl https://gist.githubusercontent.com/Rishabh672003/bfbb6495e6a12bc22e94a112a15e3549/raw/5ca7165da2434af9531b36c956555056eae9b7c6/build%2520and%2520apply%2520neovim-config.sh >> $HOME/build-and-apply-neovim.sh && sudo chmod +x $HOME/build-and-apply-neovim.sh && $HOME/build-and-apply-neovim.sh
 ```
 
 ## Preview
