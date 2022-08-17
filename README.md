@@ -4,8 +4,6 @@ This repo contains all my neovim configs files which i use.
 
 ### 🛠️ If you also want to use it
 
-#### My configs are for development branch of neovim so they might not work for any other version (they work as of now for the stable branch)
-
 #### Install neovim and apply the configs
 
 ```bash
