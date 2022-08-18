@@ -180,6 +180,7 @@ local mappings = {
 		R = { "<cmd>Telescope registers<cr>", "Registers" },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 		C = { "<cmd>Telescope commands<cr>", "Commands" },
+		f = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Find in current buffer" }
 	},
 
 	T = {
