@@ -1,3 +1,7 @@
+vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
+vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
+vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
+
 -- default configuration
 require("illuminate").configure {
   -- providers: provider used to get references in the buffer, ordered by priority
@@ -7,7 +11,7 @@ require("illuminate").configure {
     "regex",
   },
   -- delay: delay in milliseconds
-  delay = 120,
+  delay = 200,
   -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
   filetypes_denylist = {
     "dirvish",
