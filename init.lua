@@ -21,7 +21,7 @@ local core_modules = {
 	"user.indentline",
 	"user.autocommands",
 	"user.colorizer",
-	"user.illuminate",
+	-- "user.illuminate",
 	"user.notify",
 }
 
