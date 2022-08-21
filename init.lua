@@ -3,7 +3,7 @@ local core_modules = {
 	"user.impatient",
 	"user.colorschemes.catppuccin",
 	"user.lualine-themes.lualine1",
-	"user.startup-screens.startup-screen3",
+	"user.startup-screens.startup-screen1",
 	"user.options",
 	"user.keymaps",
 	"user.cmp",
