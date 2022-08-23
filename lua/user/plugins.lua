@@ -56,6 +56,7 @@ return packer.startup(function(use)
 		as = "catppuccin",
 		run = "CatppuccinCompile",
 	})
+	use("EdenEast/nightfox.nvim")
 	-- use("marko-cerovac/material.nvim")
 	-- use("folke/tokyonight.nvim")
 	-- use("Mofiqul/dracula.nvim")
@@ -116,7 +117,8 @@ return packer.startup(function(use)
 	use("MunifTanjim/nui.nvim")
 
 	--comments
-	use({ "numToStr/Comment.nvim",
+	use({
+		"numToStr/Comment.nvim",
 		-- tag = "v0.6.1"
 	})
 

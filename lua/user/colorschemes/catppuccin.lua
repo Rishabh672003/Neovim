@@ -6,9 +6,6 @@ require("catppuccin").setup({
 	integrations = {
 		telescope = true,
 	},
-	-- custom_highlights = {
-	-- 	NvimTreeRootFolder = { fg = "#89B4FA" },
-	-- },
 	compile = {
 		enabled = true,
 		path = vim.fn.stdpath("cache") .. "/catppuccin",
