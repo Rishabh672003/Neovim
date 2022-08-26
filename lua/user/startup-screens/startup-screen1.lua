@@ -28,7 +28,7 @@ local default_header = {
 	opts = {
 		hl = "Type",
 		shrink_margin = false,
-		position = "center",
+		position = "left",
 		-- wrap = "overflow";
 	},
 }
