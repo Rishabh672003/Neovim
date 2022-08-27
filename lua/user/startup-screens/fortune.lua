@@ -78,7 +78,7 @@ local fortune_list = {
 		"- Bertrand Russell",
 	},
 	{
-		"And if there were a God, I think it very unlikely that He would have such an uneasy vanity as to be offended by those who doubt His existence",
+		"And if there were a God, I think it is very unlikely that He would have such an uneasy vanity as to be offended by those who doubt His existence",
 		"",
 		"- Bertrand Russell",
 	},
