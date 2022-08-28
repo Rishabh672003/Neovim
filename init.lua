@@ -1,24 +1,35 @@
-require("user.plugins")
-require("user.impatient")
-require("user.colorschemes.catppuccin")
-require("user.startup-screens.startup-screen1")
-require("user.options")
-require("user.keymaps")
-require("user.cmp")
-require("user.lsp")
-require("user.telescope")
-require("user.treesitter")
-require("user.autopairs")
-require("user.comment")
-require("user.gitsigns")
-require("user.nvim-tree")
-require("user.bufferline")
-require("user.whichkey")
-require("user.toggleterm")
-require("user.project")
-require("user.indentline")
-require("user.autocommands")
-require("user.colorizer")
-require("user.lualine-themes.lualine1")
-require("user.illuminate")
-require("user.notify")
+local core_modules = {
+	"user.plugins",
+	"user.impatient",
+	"user.colorschemes.catppuccin",
+	"user.startup-screens.startup-screen1",
+	"user.options",
+	"user.keymaps",
+	"user.cmp",
+	"user.lsp",
+	"user.telescope",
+	"user.treesitter",
+	"user.autopairs",
+	"user.comment",
+	"user.gitsigns",
+	"user.nvim-tree",
+	"user.bufferline",
+	"user.whichkey",
+	"user.toggleterm",
+	"user.project",
+	"user.indentline",
+	"user.autocommands",
+	"user.colorizer",
+	"user.lualine-themes.lualine1",
+	"user.illuminate",
+	"user.notify",
+}
+
+-- Using pcall we can handle better any loading issues
+for _, module in ipairs(core_modules) do
+	local ok, err = pcall(require, module)
+	if not ok then
+		print("config missing!!, or not loaded, see all config files are available and if they are restart neovim")
+		return
+	end
+end
