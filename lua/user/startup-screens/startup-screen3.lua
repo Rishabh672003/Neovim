@@ -94,7 +94,7 @@ local function mru(start, cwd, items_number, opts)
 			oldfiles[#oldfiles + 1] = v
 		end
 	end
-	local target_width = 37
+	local target_width = 39
 
 	local tbl = {}
 	for i, fn in ipairs(oldfiles) do
