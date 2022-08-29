@@ -56,7 +56,7 @@ return packer.startup(function(use)
 		as = "catppuccin",
 		run = "CatppuccinCompile",
 	})
-	use("EdenEast/nightfox.nvim")
+	-- use("EdenEast/nightfox.nvim")
 	-- use("marko-cerovac/material.nvim")
 	-- use("folke/tokyonight.nvim")
 	-- use("Mofiqul/dracula.nvim")
