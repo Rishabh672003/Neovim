@@ -10,6 +10,7 @@ require("catppuccin").setup({
 	custom_highlights = {
 		-- WhichKeyDesc = { fg = "#CA9EE6" },
 		-- WhichKeyGroup = { fg = "#FAB387" }
+		WhichKeySeparator = {fg = "#cdd6f4"}
 	},
 	compile = {
 		enabled = true,
