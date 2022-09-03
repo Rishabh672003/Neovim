@@ -82,6 +82,8 @@ return packer.startup(function(use)
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 	})
+	use({"j-hui/fidget.nvim",
+	run = require"fidget".setup{}})
 
 	-- use({
 	-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
