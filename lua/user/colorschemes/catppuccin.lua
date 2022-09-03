@@ -5,12 +5,10 @@ require("catppuccin").setup({
 	transparent_background = false,
 	integrations = {
 		telescope = true,
-		-- which_key = true
 	},
 	custom_highlights = {
-		-- WhichKeyDesc = { fg = "#CA9EE6" },
 		WhichKeyGroup = { fg = "#FAB387" },
-		WhichKeySeparator = {fg = "#cdd6f4"}
+		WhichKeySeparator = { fg = "#cdd6f4" },
 	},
 	compile = {
 		enabled = true,
