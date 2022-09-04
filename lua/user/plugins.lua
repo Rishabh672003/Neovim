@@ -82,8 +82,7 @@ return packer.startup(function(use)
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 	})
-	use({"j-hui/fidget.nvim",
-	run = require"fidget".setup{}})
+	use({ "j-hui/fidget.nvim", run = require("fidget").setup({}) })
 
 	-- use({
 	-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
@@ -161,8 +160,8 @@ return packer.startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 
 	--colorizer
-	use("norcalli/nvim-colorizer.lua")
-
+	-- use("norcalli/nvim-colorizer.lua")
+	use("NvChad/nvim-colorizer.lua")
 	--markdown viewer
 	use("ellisonleao/glow.nvim")
 
