@@ -180,7 +180,7 @@ local mappings = {
 		R = { "<cmd>Telescope registers<cr>", "Registers" },
 		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 		C = { "<cmd>Telescope commands<cr>", "Commands" },
-		f = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Find in current buffer" }
+		f = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Find in current buffer" },
 	},
 
 	T = {
@@ -198,6 +198,7 @@ local mappings = {
 		u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
 		H = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
 		p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+		m = { "<cmd>lua _MOCP_TOGGLE()<cr>", "MOCP" },
 		f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
 		h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
 		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
