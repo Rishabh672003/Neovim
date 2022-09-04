@@ -108,7 +108,6 @@ return packer.startup(function(use)
 	use({
 		"goolord/alpha-nvim",
 		requires = { "kyazdani42/nvim-web-devicons" },
-		-- config = function() require("config.alpha") end,
 	})
 
 	--indentation-plugin
@@ -120,7 +119,6 @@ return packer.startup(function(use)
 	--comments
 	use({
 		"numToStr/Comment.nvim",
-		-- tag = "v0.6.1"
 	})
 
 	--git-support
@@ -134,7 +132,6 @@ return packer.startup(function(use)
 		},
 		tag = "nightly", -- optional, updated every week. (see issue #1193)
 	})
-	--use "nvim-neo-tree/neo-tree"
 
 	--bufferline
 	use("akinsho/bufferline.nvim")
@@ -149,9 +146,7 @@ return packer.startup(function(use)
 	--Statuslines
 	use({
 		"nvim-lualine/lualine.nvim",
-		-- commit = "8d956c18258bb128ecf42f95411bb26efd3a5d23"
 	})
-	--use "feline-nvim/feline.nvim"
 
 	--project-manager
 	use("ahmedkhalf/project.nvim")
@@ -167,7 +162,6 @@ return packer.startup(function(use)
 
 	--used to give notifications
 	use("rcarriga/nvim-notify")
-
 	use("stevearc/dressing.nvim")
 
 	use({
