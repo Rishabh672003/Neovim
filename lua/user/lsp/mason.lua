@@ -39,7 +39,7 @@ for _, server in pairs(servers) do
 	server = vim.split(server, "@")[1]
 
 	if server == "sumneko_lua" then
-		local sumneko_opts = require "user.lsp.settings.sumneko_lua"
+		local sumneko_opts = require("user.lsp.settings.sumneko_lua")
 		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
 		-- opts = vim.tbl_deep_extend("force", require("lua-dev").setup(), opts)
 	end
@@ -54,4 +54,3 @@ end
 
 -- TODO: add something to installer later
 -- require("lspconfig").motoko.setup {}
-

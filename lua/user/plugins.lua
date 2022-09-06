@@ -130,7 +130,7 @@ return packer.startup(function(use)
 		requires = {
 			"kyazdani42/nvim-web-devicons", -- optional, for file icon
 		},
-		tag = "nightly", -- optional, updated every week. (see issue #1193)
+		-- tag = "nightly", -- optional, updated every week. (see issue #1193)
 	})
 
 	--bufferline
@@ -171,10 +171,10 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use({
-		"SmiteshP/nvim-navic",
-		requires = "neovim/nvim-lspconfig",
-	})
+	-- use({
+	-- 	"SmiteshP/nvim-navic",
+	-- 	requires = "neovim/nvim-lspconfig",
+	-- })
 
 	--java
 	-- use("mfussenegger/nvim-jdtls")
