@@ -5,6 +5,7 @@ require("catppuccin").setup({
 	transparent_background = false,
 	integrations = {
 		telescope = true,
+		whichkey = true,
 	},
 	custom_highlights = {
 		WhichKeyGroup = { fg = "#FAB387" },
