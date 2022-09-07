@@ -23,6 +23,7 @@ local core_modules = {
 	"user.colorizer",
 	"user.illuminate",
 	"user.notify",
+	"user.fidget",
 }
 
 -- Using pcall we can handle better any loading issues
