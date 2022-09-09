@@ -1,4 +1,4 @@
-local colorscheme = "tokyonight" -- tokyonight, material --make sure the plugins are installed of these
+local colorscheme = "tokyonight-night" -- tokyonight, material --make sure the plugins are installed of these
 vim.g.tokyonight_style = "night" -- storm, night, day
 vim.g.tokyonight_terminal_colors = false
 vim.g.tokyonight_italic_keywords = false
