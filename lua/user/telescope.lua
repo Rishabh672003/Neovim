@@ -89,3 +89,4 @@ telescope.setup({
 		-- builtin picker
 	},
 })
+require("telescope").load_extension "file_browser"

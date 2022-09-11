@@ -9,7 +9,6 @@ local core_modules = {
 	"user.cmp",
 	"user.lsp",
 	"user.telescope",
-	"user.file-browser",
 	"user.treesitter",
 	"user.autopairs",
 	"user.comment",

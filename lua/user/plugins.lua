@@ -93,6 +93,7 @@ return packer.startup(function(use)
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
+	use({ "nvim-telescope/telescope-file-browser.nvim" })
 
 	--Treesitter
 	use({
@@ -157,6 +158,7 @@ return packer.startup(function(use)
 	--colorizer
 	-- use("norcalli/nvim-colorizer.lua")
 	use("NvChad/nvim-colorizer.lua")
+
 	--markdown viewer
 	use("ellisonleao/glow.nvim")
 
