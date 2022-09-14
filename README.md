@@ -85,5 +85,5 @@ rm -rf $HOME/.config/nvim $HOME/.local/share/nvim $HOME/.cache/nvim
 
 ### Credit
 
-the credit goes to [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch) and its author who made this awesome repo and video playlist, this is from where i learned how to make and structure the configs and actually make it work, i used his configs as a base for most of the plugins and modified them for my needs.
+the credit goes to [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch) and its author Christian who made this awesome repo and video playlist, this is from where i learned how to make and structure the configs and actually make it work, i used his configs as a base for most of the plugins and modified them for my needs.
 also i took configs and ideas from [Lunarvim](https://github.com/LunarVim/LunarVim) and [Astronvim](https://github.com/AstroNvim/AstroNvim)
