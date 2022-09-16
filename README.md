@@ -51,10 +51,10 @@ After launching neovim for the first time, packer will automatically install all
 
 These are all the optional dependencies if you dont want anything just remove them neovim should work fine either way
 
-For null-ls to work for formating and stuff
+For null-ls to work for formatting and stuff
 
 ```bash
-sudo pacman -S --needed --noconfirm stylua prettier astyle zsh ; yay -S beautysh shellcheck-bin ; pip install blue
+sudo pacman -S --needed --noconfirm stylua prettier astyle zsh autopep8 ; yay -S beautysh shellcheck-bin
 ```
 
 For finding text in projects and also bashls lsp requires npm as a dependency
