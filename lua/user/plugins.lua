@@ -56,10 +56,10 @@ return packer.startup(function(use)
 		as = "catppuccin",
 		run = "CatppuccinCompile",
 	})
-	use("EdenEast/nightfox.nvim")
-	use("marko-cerovac/material.nvim")
-	use("folke/tokyonight.nvim")
-	use("Mofiqul/dracula.nvim")
+	-- use("EdenEast/nightfox.nvim")
+	-- use("marko-cerovac/material.nvim")
+	-- use("folke/tokyonight.nvim")
+	-- use("Mofiqul/dracula.nvim")
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -131,7 +131,7 @@ return packer.startup(function(use)
 		requires = {
 			"kyazdani42/nvim-web-devicons", -- optional, for file icon
 		},
-		tag = "nightly", -- optional, updated every week. (see issue #1193)
+		-- tag = "nightly", -- optional, updated every week. (see issue #1193)
 	})
 
 	--bufferline
