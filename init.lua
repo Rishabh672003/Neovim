@@ -15,7 +15,6 @@ local core_modules = {
   "user.gitsigns",
   "user.nvim-tree",
   "user.bufferline",
-  -- "user.winbar",
   "user.whichkey",
   "user.toggleterm",
   "user.project",
@@ -36,3 +35,4 @@ for _, module in ipairs(core_modules) do
     return
   end
 end
+

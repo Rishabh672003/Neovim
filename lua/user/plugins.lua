@@ -82,7 +82,11 @@ return packer.startup(function(use)
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
 	})
+	-- shows progress of lsp
 	use("j-hui/fidget.nvim")
+
+	-- lua options and stuff
+	use("folke/lua-dev.nvim")
 
 	-- Quickrun Plugin
 	use({ "is0n/jaq-nvim" })
@@ -176,10 +180,10 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- use({
-	-- 	"SmiteshP/nvim-navic",
-	-- 	requires = "neovim/nvim-lspconfig",
-	-- })
+	use({
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig",
+	})
 
 	--java
 	-- use("mfussenegger/nvim-jdtls")
