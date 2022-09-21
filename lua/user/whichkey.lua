@@ -90,7 +90,8 @@ local mappings = {
 	["q"] = { "<cmd>q!<CR>", "Quit" },
 	["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-	["m"] = { "<cmd>lua _MOCP_TOGGLE()<cr>", "MOCP" },
+	["m"] = { "<cmd>lua _MOCP_TOGGLE()<CR>", "MOCP" },
+	["j"] = { "<cmd>Jaq<CR>", "Jaq" },
 	["f"] = {
 		"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes'))<cr>",
 		"Find files",

@@ -32,7 +32,7 @@ jaq_nvim.setup {
 
   behavior = {
     -- Default type
-    default = "terminal",
+    default = "bang",
 
     -- Start in insert mode
     startinsert = false,
@@ -67,13 +67,13 @@ jaq_nvim.setup {
 
     terminal = {
       -- Position of terminal
-      position = "vert",
+      position = "bot",
 
       -- Open the terminal without line numbers
       line_no = false,
 
       -- Size of terminal
-      size = 60,
+      size = 10,
     },
   },
 }
