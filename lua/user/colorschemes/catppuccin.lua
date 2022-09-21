@@ -11,23 +11,23 @@ require("catppuccin").setup({
 		WhichKeyGroup = { fg = "#FAB387" },
 		WhichKeySeparator = { fg = "#cdd6f4" },
 	},
-	compile = {
-		enabled = true,
-		path = vim.fn.stdpath("cache") .. "/catppuccin",
-		suffix = "_compiled",
-	},
+	-- compile = {
+	-- 	enabled = true,
+	-- 	path = vim.fn.stdpath("cache") .. "/catppuccin",
+	-- 	suffix = "_compiled",
+	-- },
 })
 
 -- Create an autocmd User PackerCompileDone to update it every time packer is compiled
-vim.api.nvim_create_autocmd("User", {
-	pattern = "PackerCompileDone",
-	callback = function()
-		vim.cmd("CatppuccinCompile")
-		vim.defer_fn(function()
-			vim.cmd("colorscheme catppuccin")
-		end, 50) -- Debounced for live reloading
-	end,
-})
+-- vim.api.nvim_create_autocmd("User", {
+-- 	pattern = "PackerCompileDone",
+-- 	callback = function()
+-- 		vim.cmd("CatppuccinCompile")
+-- 		vim.defer_fn(function()
+-- 			vim.cmd("colorscheme catppuccin")
+-- 		end, 50) -- Debounced for live reloading
+-- 	end,
+-- })
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
