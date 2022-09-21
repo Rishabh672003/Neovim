@@ -14,6 +14,7 @@ jaq_nvim.setup {
     external = {
       typescript = "deno run %",
       javascript = "node %",
+      java = "java %",
       -- markdown = "glow %",
       python = "python %",
       -- rust = "rustc % && ./$fileBase && rm $fileBase",
@@ -21,6 +22,7 @@ jaq_nvim.setup {
       cpp = "g++ % -o $fileBase && ./$fileBase",
       go = "go run %",
       sh = "sh %",
+      zsh = "zsh %"
     },
 
     -- Uses internal commands such as 'source' and 'luafile'
@@ -32,7 +34,7 @@ jaq_nvim.setup {
 
   behavior = {
     -- Default type
-    default = "bang",
+    default = "terminal",
 
     -- Start in insert mode
     startinsert = false,
