@@ -24,6 +24,7 @@ local core_modules = {
 	"user.illuminate",
 	"user.notify",
 	"user.fidget",
+	"user.jaq",
 }
 
 -- Using pcall we can handle better any loading issues

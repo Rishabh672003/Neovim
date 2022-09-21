@@ -56,9 +56,9 @@ return packer.startup(function(use)
 		as = "catppuccin",
 		run = "CatppuccinCompile",
 	})
+	use("folke/tokyonight.nvim")
 	-- use("EdenEast/nightfox.nvim")
 	-- use("marko-cerovac/material.nvim")
-	-- use("folke/tokyonight.nvim")
 	-- use("Mofiqul/dracula.nvim")
 
 	-- cmp plugins
@@ -83,6 +83,9 @@ return packer.startup(function(use)
 		"neovim/nvim-lspconfig",
 	})
 	use("j-hui/fidget.nvim")
+
+	-- Quickrun Plugin
+	use({ "is0n/jaq-nvim" })
 
 	-- use({
 	-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
