@@ -35,7 +35,7 @@ M.get_filename = function()
 
   if not f.isempty(filename) then
     local file_icon, file_icon_color =
-      require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
+    require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
 
     local hl_group = "FileIconColor" .. extension
 
@@ -45,7 +45,7 @@ M.get_filename = function()
       file_icon_color = ""
     end
 
-    local navic_text = vim.api.nvim_get_hl_by_name("NavicText", true)
+    local navic_text = vim.api.nvim_get_hl_by_name("Normal", true)
     vim.api.nvim_set_hl(0, "Winbar", { fg = navic_text.foreground })
 
     return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#Winbar#" .. filename .. "%*"

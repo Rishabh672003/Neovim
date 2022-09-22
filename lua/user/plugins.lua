@@ -86,7 +86,7 @@ return packer.startup(function(use)
 	use("j-hui/fidget.nvim")
 
 	-- lua options and stuff
-	use("folke/lua-dev.nvim")
+	-- use("folke/lua-dev.nvim")
 
 	-- Quickrun Plugin
 	use({ "is0n/jaq-nvim" })
@@ -142,8 +142,8 @@ return packer.startup(function(use)
 	})
 
 	--bufferline
-	use("akinsho/bufferline.nvim")
-	use("moll/vim-bbye")
+	-- use("akinsho/bufferline.nvim")
+	-- use("moll/vim-bbye")
 
 	--which-key
 	use("folke/which-key.nvim")
