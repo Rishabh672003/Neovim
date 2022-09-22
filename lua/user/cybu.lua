@@ -24,7 +24,7 @@ cybu.setup {
     hide_buffer_id = true,
     devicons = {
       enabled = true, -- enable or disable web dev icons
-      colored = true, -- enable color for web dev icons
+      -- colored = true, -- enable color for web dev icons
     },
   },
 }
