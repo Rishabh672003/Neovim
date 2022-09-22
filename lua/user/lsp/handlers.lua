@@ -44,16 +44,14 @@ M.setup = function()
 	})
 end
 
--- local function lsp_highlight_document(client)
--- 	-- Set autocommands conditional on server_capabilities
--- 	local status_ok, illuminate = pcall(require, "illuminate")
--- 	if not status_ok then
--- 		print("illuminate not found")
--- 		return
--- 	end
--- 	illuminate.on_attach(client)
--- 	-- end
--- end
+local function attach_navic(client, bufnr)
+	vim.g.navic_silence = true
+	local status_ok, navic = pcall(require, "nvim-navic")
+	if not status_ok then
+		return
+	end
+	navic.attach(client, bufnr)
+end
 
 local function lsp_keymaps(bufnr)
 	local opts = { noremap = true, silent = true }
@@ -75,7 +73,7 @@ end
 
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
-	-- lsp_highlight_document(client)
+	attach_navic(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
