@@ -24,13 +24,10 @@ cybu.setup {
     hide_buffer_id = true,
     devicons = {
       enabled = true, -- enable or disable web dev icons
-      -- colored = true, -- enable color for web dev icons
+      colored = true, -- enable color for web dev icons
     },
   },
 }
--- vim.keymap.set("n", "<up>", "<Plug>(CybuPrev)")
--- vim.keymap.set("n", "<down>", "<Plug>(CybuNext)")
 
 vim.keymap.set("n", "<TAB>", "<Plug>(CybuNext)" )
-vim.keymap.set("n", "<c-h>", "<Plug>(CybuPrev)")
--- vim.keymap.set("n", "<c-l>", "<Plug>(CybuNext)")
+vim.keymap.set("n", "<c-TAB>", "<Plug>(CybuPrev)")
