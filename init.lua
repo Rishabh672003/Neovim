@@ -1,4 +1,5 @@
 local core_modules = {
+<<<<<<< HEAD
   "user.plugins",
   "user.impatient",
   "user.colorschemes.catppuccin",
@@ -26,6 +27,35 @@ local core_modules = {
   "user.notify",
   "user.fidget",
   "user.jaq",
+=======
+	"user.plugins",
+	"user.impatient",
+	"user.colorschemes.tokyonight",
+	"user.lualine-themes.lualine1",
+	"user.startup-screens.startup-screen3",
+	"user.options",
+	"user.keymaps",
+	"user.cmp",
+	"user.lsp",
+	"user.telescope",
+	"user.treesitter",
+	"user.autopairs",
+	"user.comment",
+	"user.gitsigns",
+	"user.nvim-tree",
+	"user.winbar",
+	"user.cybu",
+	"user.whichkey",
+	"user.toggleterm",
+	"user.project",
+	"user.indentline",
+	"user.autocommands",
+	"user.colorizer",
+	"user.illuminate",
+	"user.notify",
+	"user.fidget",
+	"user.jaq",
+>>>>>>> main
 }
 
 -- Using pcall we can handle better any loading issues
