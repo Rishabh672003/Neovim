@@ -141,13 +141,7 @@ return packer.startup(function(use)
 		tag = "nightly", -- optional, updated every week. (see issue #1193)
 	})
 
-<<<<<<< HEAD
 	use("ghillb/cybu.nvim")
-=======
-	--bufferline
-	-- use("akinsho/bufferline.nvim")
-	-- use("moll/vim-bbye")
->>>>>>> main
 
 	--which-key
 	use("folke/which-key.nvim")
