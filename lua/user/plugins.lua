@@ -178,10 +178,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use({
-		"SmiteshP/nvim-navic",
-		requires = "neovim/nvim-lspconfig",
-	})
+	use("SmiteshP/nvim-navic")
 
 	--java
 	-- use("mfussenegger/nvim-jdtls")

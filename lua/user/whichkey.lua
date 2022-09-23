@@ -19,7 +19,7 @@ local setup = {
 			text_objects = true, -- help for text objects triggered after entering an operator
 			windows = true, -- default bindings on <c-w>
 			nav = true, -- misc bindings to work with windows
-			z = true, -- bindings for folds, spelling and others prefixed with z
+			z = false, -- bindings for folds, spelling and others prefixed with z
 			g = true, -- bindings for prefixed with g
 		},
 	},
@@ -88,7 +88,7 @@ local mappings = {
 	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["q"] = { "<cmd>q!<CR>", "Quit" },
-	["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
+	["c"] = { "<cmd>bdelete!<CR>", "Close Buffer" },
 	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	["m"] = { "<cmd>lua _MOCP_TOGGLE()<CR>", "MOCP" },
 	["j"] = { "<cmd>Jaq bang<CR>", "Jaq" },
@@ -97,7 +97,7 @@ local mappings = {
 		"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes'))<cr>",
 		"Find files",
 	},
-	["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
+	["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
 	["p"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
 	P = {
