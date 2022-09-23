@@ -48,8 +48,6 @@ local location = {
 	padding = 0,
 }
 
--- local navic = require("nvim-navic")
-
 -- cool function for progress
 local progress = function()
 	local current_line = vim.fn.line(".")
