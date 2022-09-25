@@ -25,7 +25,6 @@ local core_modules = {
   "user.colorizer",
   "user.illuminate",
   "user.notify",
-  "user.fidget",
   "user.jaq",
 }
 

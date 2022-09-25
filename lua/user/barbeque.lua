@@ -1,5 +1,7 @@
 local barbecue = require("barbecue")
 
+vim.api.nvim_set_hl(0, "NavicSeparator", { link = "Normal" })
+
 barbecue.setup({
   ---whether to create winbar updater autocmd
   ---@type boolean
@@ -34,7 +36,6 @@ barbecue.setup({
     ---@type string
     separator = require("user.icons").ui.ChevronRight,
 
-    -- separator ="" ,
     ---string to be shown when buffer is modified
     ---@type string
     modified = require("user.icons").ui.Circle,
@@ -125,3 +126,5 @@ barbecue.setup({
     Object = "",
   },
 })
+
+

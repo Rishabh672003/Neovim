@@ -17,7 +17,7 @@ cybu.setup {
   display_time = 1750, -- time the cybu window is displayed
   style = {
     path = "relative", -- absolute, relative, tail (filename only)
-    border = "rounded", -- single, double, rounded, none
+    border = "single", -- single, double, rounded, none
     separator = " ", -- string used as separator
     prefix = "…", -- string used as prefix for truncated paths
     padding = 1, -- left & right padding in number of spaces
@@ -30,4 +30,4 @@ cybu.setup {
 }
 
 vim.keymap.set("n", "<TAB>", "<Plug>(CybuNext)" )
-vim.keymap.set("n", "<c-TAB>", "<Plug>(CybuPrev)")
+vim.keymap.set("n", "<S-TAB>", "<Plug>(CybuPrev)")

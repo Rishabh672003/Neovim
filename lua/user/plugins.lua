@@ -181,8 +181,8 @@ return packer.startup(function(use)
 	-- winbar stuff
 	use("SmiteshP/nvim-navic")
 	use({
-		-- "utilyre/barbecue.nvim",
-		"Rishabh672003/barbecue.nvim",
+		"utilyre/barbecue.nvim",
+		-- "Rishabh672003/barbecue.nvim",
 	})
 
 	--java
