@@ -14,7 +14,6 @@ local core_modules = {
   "user.comment",
   "user.gitsigns",
   "user.nvim-tree",
-  -- "user.winbar",
   "user.barbeque",
   "user.navic",
   "user.cybu",
