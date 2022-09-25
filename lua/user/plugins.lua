@@ -180,6 +180,11 @@ return packer.startup(function(use)
 
 	use("SmiteshP/nvim-navic")
 
+	use({
+		-- "utilyre/barbecue.nvim",
+		"Rishabh672003/barbecue.nvim",
+	})
+
 	--java
 	-- use("mfussenegger/nvim-jdtls")
 

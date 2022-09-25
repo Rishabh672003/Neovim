@@ -6,6 +6,7 @@ require("catppuccin").setup({
 	styles = { "italic", "bold" },
 	integrations = {
 		telescope = true,
+		navic = true,
 	},
 	custom_highlights = {
 		WhichKeyGroup = { fg = "#FAB387" },
