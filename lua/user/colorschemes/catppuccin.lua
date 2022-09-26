@@ -2,21 +2,19 @@ local colorscheme = "catppuccin"
 vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 
 require("catppuccin").setup({
-	transparent_background = false,
 	styles = { "italic", "bold" },
 	integrations = {
 		telescope = true,
-		navic = true,
 	},
-	custom_highlights = {
-		WhichKeyGroup = { fg = "#FAB387" },
-		WhichKeySeparator = { fg = "#cdd6f4" },
-	},
-	compile = {
-		enabled = true,
-		path = vim.fn.stdpath("cache") .. "/catppuccin",
-		suffix = "_compiled",
-	},
+		custom_highlights = {
+			WhichKeyGroup = { fg = "#FAB387" },
+			WhichKeySeparator = { fg = "#cdd6f4" },
+		},
+		compile = {
+			enabled = true,
+			path = vim.fn.stdpath("cache") .. "/catppuccin",
+			suffix = "_compiled",
+		},
 })
 
 -- Create an autocmd User PackerCompileDone to update it every time packer is compiled
