@@ -75,7 +75,7 @@ You can change the startup-screen if you dont like this one go to lua/user/start
 ![image](https://user-images.githubusercontent.com/53911515/192135130-15abc06a-f993-48a0-982c-1a445d6f8aa1.png)
 ![image](https://user-images.githubusercontent.com/53911515/192135280-2b404ffa-586e-44ac-9fbe-9d7dae385d69.png)
 ![image](https://user-images.githubusercontent.com/53911515/192135211-fe1e832a-c04d-4880-be12-dab4fe5af207.png)
-![image](https://user-images.githubusercontent.com/53911515/179548015-4e6473a8-f9a3-42c0-8018-044190dd3292.png)
+![image](https://user-images.githubusercontent.com/53911515/192289071-05fb2f03-c124-44e5-b7de-fd7f418f390a.png)
 
 ## Uninstallation and Cleanup
 
