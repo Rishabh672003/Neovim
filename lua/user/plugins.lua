@@ -85,18 +85,8 @@ return packer.startup(function(use)
 	-- shows progress of lsp
 	use("j-hui/fidget.nvim")
 
-	-- lua options and stuff
-	-- use("folke/lua-dev.nvim")
-
 	-- Quickrun Plugin
 	use({ "is0n/jaq-nvim" })
-
-	-- use({
-	-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-	-- 	config = function()
-	-- 		require("lsp_lines").setup()
-	-- 	end,
-	-- })
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
@@ -110,13 +100,10 @@ return packer.startup(function(use)
 	use("p00f/nvim-ts-rainbow")
 	use("nvim-treesitter/playground")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
-	-- use("nvim-treesitter/nvim-treesitter-context")
+	use("kyazdani42/nvim-web-devicons")
 
 	--alpha-nvim-dashboard
-	use({
-		"goolord/alpha-nvim",
-		requires = { "kyazdani42/nvim-web-devicons" },
-	})
+	use("goolord/alpha-nvim")
 
 	--indentation-plugin
 	use("Darazaki/indent-o-matic")
@@ -125,9 +112,7 @@ return packer.startup(function(use)
 	use("MunifTanjim/nui.nvim")
 
 	--comments
-	use({
-		"numToStr/Comment.nvim",
-	})
+	use("numToStr/Comment.nvim")
 
 	--git-support
 	use("lewis6991/gitsigns.nvim")
@@ -135,9 +120,6 @@ return packer.startup(function(use)
 	--nvim-tree
 	use({
 		"kyazdani42/nvim-tree.lua",
-		requires = {
-			"kyazdani42/nvim-web-devicons", -- optional, for file icon
-		},
 		tag = "nightly", -- optional, updated every week. (see issue #1193)
 	})
 
@@ -150,9 +132,7 @@ return packer.startup(function(use)
 	use("akinsho/toggleterm.nvim")
 
 	--Statuslines
-	use({
-		"nvim-lualine/lualine.nvim",
-	})
+	use("nvim-lualine/lualine.nvim")
 
 	--project-manager
 	use("ahmedkhalf/project.nvim")
@@ -161,7 +141,6 @@ return packer.startup(function(use)
 	use("lukas-reineke/indent-blankline.nvim")
 
 	--colorizer
-	-- use("norcalli/nvim-colorizer.lua")
 	use("NvChad/nvim-colorizer.lua")
 
 	--markdown viewer
@@ -180,10 +159,17 @@ return packer.startup(function(use)
 
 	-- winbar stuff
 	use("SmiteshP/nvim-navic")
-	use({
-		"utilyre/barbecue.nvim",
-		-- "Rishabh672003/barbecue.nvim",
-	})
+	use("utilyre/barbecue.nvim")
+
+	-- lua options and stuff
+	-- use("folke/lua-dev.nvim")
+
+	-- use({
+	-- 	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+	-- 	config = function()
+	-- 		require("lsp_lines").setup()
+	-- 	end,
+	-- })
 
 	--java
 	-- use("mfussenegger/nvim-jdtls")

@@ -38,7 +38,7 @@ barbecue.setup({
 
     ---string to be shown when buffer is modified
     ---@type string
-    modified = require("user.icons").ui.Circle,
+    modified = require("user.icons").ui.BigCircle,
 
     ---string to be shown when context is available but empty
     ---@type string

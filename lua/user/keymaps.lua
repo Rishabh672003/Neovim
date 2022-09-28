@@ -81,6 +81,7 @@ keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 -- keymap("n", "<A-i>", ":tabnew<CR>", opts)
 
 keymap("n", "<leader><leader>i", "<cmd>PickIcons<cr>", opts)
+
 -- keymap("i", "<C-i>", "<cmd>PickIconsInsert<cr>", opts)
 -- keymap("i", "<A-i>", "<cmd>PickAltFontAndSymbolsInsert<cr>", opts)
 
