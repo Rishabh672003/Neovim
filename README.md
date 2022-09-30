@@ -73,9 +73,9 @@ curl https://gist.githubusercontent.com/Rishabh672003/bfbb6495e6a12bc22e94a112a1
 
 You can change the startup-screen if you dont like this one go to lua/user/startup-screens and read the readme there
 ![image](https://user-images.githubusercontent.com/53911515/192135130-15abc06a-f993-48a0-982c-1a445d6f8aa1.png)
-![image](https://user-images.githubusercontent.com/53911515/192135280-2b404ffa-586e-44ac-9fbe-9d7dae385d69.png)
-![image](https://user-images.githubusercontent.com/53911515/192135211-fe1e832a-c04d-4880-be12-dab4fe5af207.png)
-![image](https://user-images.githubusercontent.com/53911515/192289071-05fb2f03-c124-44e5-b7de-fd7f418f390a.png)
+![image](https://user-images.githubusercontent.com/53911515/193240413-a727e1ff-0ce4-4e01-b288-1ddba4714138.png)
+![image](https://user-images.githubusercontent.com/53911515/193240686-3d0f5700-e89b-44bf-a4c1-5f510466ddeb.png)
+![image](https://user-images.githubusercontent.com/53911515/193240772-02dcfc97-7d70-4734-9baa-2007b8d9082f.png)
 
 ## Uninstallation and Cleanup
 
