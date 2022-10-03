@@ -26,6 +26,7 @@ local core_modules = {
 	"user.illuminate",
 	"user.notify",
 	"user.jaq",
+	"user.better-escape",
 }
 
 -- Using pcall we can handle better any loading issues
