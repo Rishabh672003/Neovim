@@ -161,12 +161,7 @@ return packer.startup(function(use)
 	use("SmiteshP/nvim-navic")
 	use("utilyre/barbecue.nvim")
 
-	use({
-		"max397574/better-escape.nvim",
-		config = function()
-			require("better_escape").setup()
-		end,
-	})
+	use("max397574/better-escape.nvim")
 
 	-- lua options and stuff
 	-- use("folke/lua-dev.nvim")

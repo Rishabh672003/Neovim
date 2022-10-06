@@ -3,4 +3,4 @@ if not status_ok then
 	return file_browser
 end
 
-require("telescope").load_extension "file_browser"
+require("telescope").load_extension("file_browser")

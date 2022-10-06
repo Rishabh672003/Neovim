@@ -1,4 +1,7 @@
-local barbecue = require("barbecue")
+local status_ok, barbecue = pcall(require, "barbecue")
+if not status_ok then
+	return
+end
 
 vim.api.nvim_set_hl(0, "NavicSeparator", { link = "Normal" })
 
