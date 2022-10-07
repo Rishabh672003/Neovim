@@ -17,8 +17,18 @@ local settings = {
 	max_concurrent_installers = 4,
 }
 
-require("mason").setup(settings)
-require("mason-lspconfig").setup({
+local _, mason = pcall(require, "mason")
+if not _ then
+	return
+end
+
+local _, mason_lspconfig = pcall(require, "mason-lspconfig")
+if not _ then
+	return
+end
+
+mason.setup(settings)
+mason_lspconfig.setup({
 	ensure_installed = servers,
 	automatic_installation = true,
 })
@@ -51,6 +61,3 @@ for _, server in pairs(servers) do
 
 	lspconfig[server].setup(opts)
 end
-
--- TODO: add something to installer later
--- require("lspconfig").motoko.setup {}
