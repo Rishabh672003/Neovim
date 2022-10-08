@@ -10,11 +10,6 @@ require("catppuccin").setup({
 		WhichKeyGroup = { fg = "#FAB387" },
 		WhichKeySeparator = { fg = "#cdd6f4" },
 	},
-	compile = {
-		enabled = true,
-		path = vim.fn.stdpath("cache") .. "/catppuccin",
-		suffix = "_compiled",
-	},
 })
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
