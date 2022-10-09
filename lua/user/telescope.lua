@@ -1,13 +1,19 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
+local _, telescope = pcall(require, "telescope")
+if not _ then
 	return
 end
 
-local actions = require("telescope.actions")
+local _, actions = pcall(require, "telescope.actions")
+if not _ then
+	return
+end
 
-local icons = require("user.icons")
+local _, icons = pcall(require, "user.icons")
+if not _ then
+	return
+end
 
-require("telescope").load_extension "file_browser"
+require("telescope").load_extension("file_browser")
 
 telescope.setup({
 	defaults = {
@@ -90,7 +96,7 @@ telescope.setup({
 				["<C-v>"] = actions.select_vertical,
 				["<C-t>"] = actions.select_tab,
 
-				["<c-d>"] = require("telescope.actions").delete_buffer,
+				["<c-d>"] = actions.delete_buffer,
 
 				-- ["<C-u>"] = actions.preview_scrolling_up,
 				-- ["<C-d>"] = actions.preview_scrolling_down,
@@ -126,7 +132,7 @@ telescope.setup({
 				["M"] = actions.move_to_middle,
 				["L"] = actions.move_to_bottom,
 				["q"] = actions.close,
-				["dd"] = require("telescope.actions").delete_buffer,
+				["dd"] = actions.delete_buffer,
 				["s"] = actions.select_horizontal,
 				["v"] = actions.select_vertical,
 				["t"] = actions.select_tab,
