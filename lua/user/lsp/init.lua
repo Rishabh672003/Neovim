@@ -3,7 +3,13 @@ if not status_ok then
 	return
 end
 
+local status_ok1, fidget = pcall(require, "fidget")
+if not status_ok1 then
+	return
+end
+
+
 require("user.lsp.mason")
 require("user.lsp.handlers").setup()
 require("user.lsp.null-ls")
-require("fidget").setup({})
+fidget.setup({})

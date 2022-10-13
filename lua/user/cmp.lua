@@ -15,7 +15,7 @@ local check_backspace = function()
 	return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
---   פּ ﯟ   some other good icons
+--   פּ ﯟ   some other gogin for getting the float window for hovers etcod icons
 local kind_icons = {
 	Text = "",
 	Method = "m",
@@ -134,6 +134,5 @@ cmp.setup({
 	},
 	experimental = {
 		ghost_text = true,
-		native_menu = false,
 	},
 })
