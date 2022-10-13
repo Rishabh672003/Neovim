@@ -39,6 +39,9 @@ packer.init({
 			return require("packer.util").float({ border = "single" })
 		end,
 	},
+	git = {
+		clone_timeout = 300, -- Timeout, in seconds, for git clones
+	},
 })
 
 -- plugins installed
