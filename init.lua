@@ -1,7 +1,7 @@
 local core_modules = {
 	"user.impatient",
 	"user.plugins",
-	"user.colorschemes.catppuccin",
+	"user.colorschemes.tokyonight",
 	"user.lualine-themes.lualine1",
 	"user.startup-screens.startup-screen3",
 	"user.options",
