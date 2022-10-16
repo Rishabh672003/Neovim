@@ -2,10 +2,6 @@ local servers = {
 	"sumneko_lua",
 	"pyright",
 	"bashls",
-	"autopep8",
-	"stylua",
-	"beautysh",
-	"shellcheck",
 }
 
 local settings = {
@@ -61,18 +57,6 @@ for _, server in pairs(servers) do
 	if server == "pyright" then
 		local pyright_opts = require("user.lsp.settings.pyright")
 		opts = vim.tbl_deep_extend("force", pyright_opts, opts)
-	end
-
-	if server == "autopep8" then
-		return
-	end
-
-	if server == "beautysh" then
-		return
-	end
-
-	if server == "shellcheck" then
-		return
 	end
 
 	lspconfig[server].setup(opts)
