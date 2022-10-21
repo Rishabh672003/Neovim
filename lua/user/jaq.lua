@@ -26,7 +26,7 @@ jaq_nvim.setup({
 
 		-- Uses internal commands such as 'source' and 'luafile'
 		internal = {
-			-- lua = "luafile %",
+			lua = "luafile %",
 			-- vim = "source %",
 		},
 	},
@@ -42,7 +42,7 @@ jaq_nvim.setup({
 		wincmd = false,
 
 		-- Auto-save files
-		autosave = false,
+		autosave = true,
 	},
 
 	-- UI settings

@@ -40,7 +40,7 @@ packer.init({
 		end,
 	},
 	git = {
-		clone_timeout = 300, -- Timeout, in seconds, for git clones
+		clone_timeout = 600, -- Timeout, in seconds, for git clones
 	},
 })
 
@@ -57,7 +57,7 @@ return packer.startup(function(use)
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",
-		-- run = ":CatppuccinCompile",
+		run = ":CatppuccinCompile",
 	})
 	use("folke/tokyonight.nvim")
 	-- use("EdenEast/nightfox.nvim")

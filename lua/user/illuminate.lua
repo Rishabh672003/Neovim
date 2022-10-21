@@ -3,10 +3,6 @@ if not _ then
 	return
 end
 
-vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
-vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
-vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
-
 -- default configuration
 illuminate.configure({
 	-- providers: provider used to get references in the buffer, ordered by priority

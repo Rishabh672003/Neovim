@@ -45,6 +45,7 @@ vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
 		vim.cmd("quit")
 	end,
 })
+
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 	callback = function()
 		vim.cmd("set formatoptions-=cro")
@@ -67,6 +68,15 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	callback = function()
 		vim.cmd("hi link illuminatedWord LspReferenceText")
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+	callback = function()
+	local a = vim.api.nvim_buf_line_count(0)
+		if a >= 5000 then
+			vim.cmd("IlluminatePauseBuf")
+		end
 	end,
 })
 
