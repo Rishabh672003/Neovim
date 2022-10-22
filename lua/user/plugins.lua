@@ -57,7 +57,6 @@ return packer.startup(function(use)
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",
-		run = ":CatppuccinCompile",
 	})
 	use("folke/tokyonight.nvim")
 	-- use("EdenEast/nightfox.nvim")
