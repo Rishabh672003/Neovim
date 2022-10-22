@@ -9,21 +9,12 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "gitcommit"},
+	pattern = { "gitcommit", "markdown" },
 	callback = function()
 		vim.opt_local.wrap = true
 		vim.opt_local.spell = true
 	end,
 })
-
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "markdown" },
-	callback = function()
-		vim.opt_local.wrap = true
-		vim.opt_local.spell = true
-	end,
-})
-
 
 vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
 -- vim.api.nvim_create_autocmd({ "BufEnter" }, {
@@ -81,9 +72,9 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "zsh",
-  callback = function()
-    -- let treesitter use bash highlight for zsh files as well
-    require("nvim-treesitter.highlight").attach(0, "bash")
-  end,
+	pattern = "zsh",
+	callback = function()
+		-- let treesitter use bash highlight for zsh files as well
+		require("nvim-treesitter.highlight").attach(0, "bash")
+	end,
 })
