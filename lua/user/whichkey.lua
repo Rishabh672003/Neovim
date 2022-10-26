@@ -193,6 +193,8 @@ local mappings = {
 		t = { "<cmd>ToggleTerm<cr>", "toggle" },
 		T = { "<cmd>terminal<cr>", "Neoterminal" },
 	},
+
+	["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
 }
 
 which_key.setup(setup)

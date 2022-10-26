@@ -20,6 +20,7 @@ end
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	pattern = { "plugins.lua" },
 	callback = function()
+		vim.cmd("luafile %")
 		vim.cmd("PackerSync")
 	end,
 })
@@ -167,6 +168,8 @@ return packer.startup(function(use)
 		"phaazon/hop.nvim",
 		branch = "v2", -- optional but strongly recommended
 	})
+
+	use("folke/zen-mode.nvim")
 
 	-- graveyard of plugins
 

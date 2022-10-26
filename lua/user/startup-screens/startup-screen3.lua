@@ -200,7 +200,7 @@ local fortune = {
 	val = require("user.startup-screens.fortune")(),
 	opts = {
 		position = "center",
-		hl = "group"
+		hl = "group",
 		-- max_width = 100,
 	},
 }
@@ -221,9 +221,7 @@ local config = {
 	opts = {
 		margin = 5,
 		setup = function()
-			vim.cmd([[
-      	autocmd alpha_temp DirChanged * lua require('alpha').redraw()
-      ]])
+			vim.cmd("autocmd alpha_temp DirChanged * lua require('alpha').redraw()")
 		end,
 	},
 }
