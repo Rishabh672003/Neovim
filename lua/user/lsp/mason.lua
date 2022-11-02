@@ -12,6 +12,7 @@ local servers = {
 	"sumneko_lua",
 	"pyright",
 	"bashls",
+	"jsonls"
 }
 
 local settings = {
@@ -48,20 +49,15 @@ for _, server in pairs(servers) do
 
 	server = vim.split(server, "@")[1]
 
-	if server == "jsonls" then
-		local jsonls_opts = require("user.lsp.settings.jsonls")
-		opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-	end
-
 	if server == "sumneko_lua" then
 		local sumneko_opts = require("user.lsp.settings.sumneko_lua")
 		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
 		-- opts = vim.tbl_deep_extend("force", require("lua-dev").setup(), opts)
 	end
 
-	if server == "tsserver" then
-		local tsserver_opts = require("user.lsp.settings.tsserver")
-		opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+	if server == "json-lsp" then
+		local json_lsp = require("user.lsp.settings.json-lsp")
+		opts = vim.tbl_deep_extend("force", json_lsp, opts)
 	end
 
 	if server == "pyright" then
