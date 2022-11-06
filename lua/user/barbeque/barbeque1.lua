@@ -14,6 +14,8 @@ barbecue.setup({
 	---@type table
 	include_buftypes = { "" },
 
+	exclude_filetypes = { "toggleterm", "Jaq" },
+
 	---returns a string to be shown at the end of winbar
 	-- param bufnr number
 	---@return string

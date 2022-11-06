@@ -78,3 +78,10 @@ vim.api.nvim_create_autocmd("FileType", {
 		require("nvim-treesitter.highlight").attach(0, "bash")
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+	pattern = "*.conf",
+	callback = function()
+		vim.cmd("set ft=conf")
+	end,
+})

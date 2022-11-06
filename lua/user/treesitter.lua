@@ -21,7 +21,7 @@ configs.setup({
 		disable = {}, -- list of language that will be disabled
 		-- additional_vim_regex_highlighting = true,
 	},
-	indent = { enable = true, disable = {} },
+	indent = { enable = true, disable = {"python"} },
 	context_commentstring = {
 		enable = true,
 		enable_autocmd = false,

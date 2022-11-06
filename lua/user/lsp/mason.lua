@@ -12,7 +12,7 @@ local servers = {
 	"sumneko_lua",
 	"pyright",
 	"bashls",
-	"jsonls"
+	"jsonls",
 }
 
 local settings = {

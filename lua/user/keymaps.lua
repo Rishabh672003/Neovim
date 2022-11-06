@@ -84,8 +84,8 @@ keymap("t", "<M-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
 -- keymap("n", "<C-TAB>", ":BufferLineCyclePrev <CR>", opts )
 
 --keymaps for tabs
--- keymap("n", "<A-l>", ":tabNext<CR>", opts)
--- keymap("n", "<A-h>", ":tabprevious<CR>", opts)
+keymap("n", "<M-l>", ":tabNext<CR>", opts)
+keymap("n", "<M-h>", ":tabprevious<CR>", opts)
 -- keymap("n", "<A-i>", ":tabnew<CR>", opts)
 
 keymap("n", "<leader><leader>i", "<cmd>PickIcons<cr>", opts)
