@@ -13,7 +13,7 @@ if not _ then
 	return
 end
 
-require("telescope").load_extension("file_browser")
+telescope.load_extension("file_browser")
 
 telescope.setup({
 	defaults = {

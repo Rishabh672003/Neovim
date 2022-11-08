@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
-vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
+-- vim.cmd("autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif")
 -- vim.api.nvim_create_autocmd({ "BufEnter" }, {
 --   callback = function()
 --     vim.cmd [[
@@ -34,12 +34,6 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 vim.api.nvim_create_autocmd({ "CmdWinEnter" }, {
 	callback = function()
 		vim.cmd("quit")
-	end,
-})
-
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-	callback = function()
-		vim.cmd("set formatoptions-=cro")
 	end,
 })
 
@@ -65,8 +59,11 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 	callback = function()
 		local line_count = vim.api.nvim_buf_line_count(0)
-		if line_count >= 10000 then
+		if line_count >= 1000 then
 			vim.cmd("IlluminatePauseBuf")
+			vim.cmd("Gitsigns detach")
+			vim.cmd("LspStop")
+			vim.cmd("set eventignore=all")
 		end
 	end,
 })
