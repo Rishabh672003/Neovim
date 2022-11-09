@@ -32,6 +32,7 @@ local options = {
 	scrolloff = 8, -- is one of my fav
 	sidescrolloff = 8,
 	virtualedit = "onemore",
+	linebreak = true,
 	guifont = "JetBrainsMono Nerd Font Regular:h13", -- the font used in graphical neovim applications
 }
 
@@ -41,8 +42,7 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-vim.opt.formatoptions:remove({ "r", "o" })
+vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.opt.iskeyword:append("-")
-
-vim.cmd("set whichwrap+=<,>,[,],h,l")
+vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.cmd("set diffopt+=linematch:60")
