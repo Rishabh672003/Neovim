@@ -22,6 +22,7 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	callback = function()
 		vim.cmd("luafile %")
 		vim.cmd("PackerSync")
+		vim.cmd("ASToggle")
 	end,
 })
 
@@ -173,6 +174,7 @@ return packer.startup(function(use)
 
 	use("folke/zen-mode.nvim")
 	use("ThePrimeagen/vim-be-good")
+	use("Pocco81/auto-save.nvim")
 
 	-- DAP
 	use({ "mfussenegger/nvim-dap", commit = "6b12294a57001d994022df8acbe2ef7327d30587" })
