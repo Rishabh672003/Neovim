@@ -22,7 +22,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	callback = function()
 		vim.cmd("luafile %")
 		vim.cmd("PackerSync")
-		vim.cmd("ASToggle")
 	end,
 })
 
