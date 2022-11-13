@@ -13,6 +13,7 @@ local servers = {
 	"pyright",
 	"bashls",
 	"jsonls",
+	"taplo",
 }
 
 local settings = {
