@@ -163,7 +163,9 @@ return packer.startup(function(use)
 
 	-- winbar stuff
 	use("SmiteshP/nvim-navic")
-	use({ "utilyre/barbecue.nvim"--[[ , branch = "issue/14"  ]]})
+	use({
+		"utilyre/barbecue.nvim",
+	})
 
 	use("max397574/better-escape.nvim")
 	use({

@@ -84,6 +84,7 @@ local mappings = {
 		"<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 		"Buffers",
 	},
+
 	["d"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
 	["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 	["w"] = { "<cmd>w!<CR>", "Save" },
@@ -96,6 +97,7 @@ local mappings = {
 		"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes'))<cr>",
 		"Find files",
 	},
+
 	["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
 	["p"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
@@ -107,6 +109,7 @@ local mappings = {
 		S = { "<cmd>PackerStatus<cr>", "Status" },
 		u = { "<cmd>PackerUpdate<cr>", "Update" },
 	},
+
 	["r"] = { "<cmd>:Telescope oldfiles<cr>", "Recent Files" },
 	["C"] = { "<cmd>:Telescope colorscheme<cr>", "Colorschemes" },
 
@@ -134,17 +137,17 @@ local mappings = {
 	},
 
 	D = {
-    name = "Debug",
-    b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
-    c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-    i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
-    o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
-    O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
-    r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
-    l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
-    u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
-    x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
-  },
+		name = "Debug",
+		b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
+		c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+		i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
+		o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
+		O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
+		r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
+		l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
+		u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
+		x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
+	},
 
 	["G"] = { "<cmd>Glow<CR>", "Glow" },
 
@@ -159,6 +162,7 @@ local mappings = {
 			"<cmd>lua vim.diagnostic.goto_next()<CR>",
 			"Next Diagnostic",
 		},
+
 		k = {
 			"<cmd>lua vim.diagnostic.goto_prev()<cr>",
 			"Prev Diagnostic",
@@ -172,6 +176,7 @@ local mappings = {
 			"Workspace Symbols",
 		},
 	},
+
 	s = {
 		name = "Search",
 		b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
