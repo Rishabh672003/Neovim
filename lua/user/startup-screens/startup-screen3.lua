@@ -142,7 +142,7 @@ local default_header = {
 	},
 	opts = {
 		position = "center",
-		hl = "Type",
+		hl = "function",
 		-- wrap = "overflow";
 	},
 }
