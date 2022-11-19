@@ -61,18 +61,25 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "zsh",
-	callback = function()
-		-- let treesitter use bash highlight for zsh files as well
-		require("nvim-treesitter.highlight").attach(0, "bash")
-	end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+-- 	pattern = "zsh",
+-- 	callback = function()
+-- 		-- let treesitter use bash highlight for zsh files as well
+-- 		require("nvim-treesitter.highlight").attach(0, "bash")
+-- 	end,
+-- })
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 	pattern = "*.conf",
 	callback = function()
 		vim.cmd("set ft=conf")
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+	pattern = "*.rasi",
+	callback = function()
+		vim.cmd("set ft=rasi")
 	end,
 })
 
