@@ -1,7 +1,7 @@
 local options = {
 	backup = false, -- creates a backup file
 	clipboard = "unnamedplus", -- allows neovim to access the system clipboard
-	cmdheight = 0, -- more space in the neovim command line for displaying messages
+	cmdheight = 1, -- more space in the neovim command line for displaying messages
 	completeopt = { "menuone", "noselect" }, -- mostly just for cmp
 	conceallevel = 0, -- so that `` is visible in markdown files
 	fileencoding = "utf-8", -- the encoding written to a file
@@ -36,13 +36,12 @@ local options = {
 	guifont = "JetBrainsMono Nerd Font Regular:h13", -- the font used in graphical neovim applications
 }
 
---vim.api.nvim_set_var("nvim_tree_group_empty", "1")
-vim.opt.shortmess:append("c")
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
+vim.opt.shortmess:append("c")
 vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.opt.iskeyword:append("-")
 vim.opt.whichwrap:append("<,>,[,],h,l")
-vim.cmd("set diffopt+=linematch:60")
+vim.opt.diffopt:append("linematch:60")
