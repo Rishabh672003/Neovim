@@ -90,7 +90,6 @@ local mappings = {
 	["w"] = { "<cmd>w!<CR>", "Save" },
 	["q"] = { "<cmd>q!<CR>", "Quit" },
 	["c"] = { "<cmd>bdelete!<CR>", "Close Buffer" },
-	["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
 	["m"] = { "<cmd>lua _MOCP_TOGGLE()<CR>", "MOCP" },
 	["j"] = { "<cmd>Jaq<CR>", "Jaq" },
 	["f"] = {
@@ -112,6 +111,7 @@ local mappings = {
 
 	["r"] = { "<cmd>:Telescope oldfiles<cr>", "Recent Files" },
 	["C"] = { "<cmd>:Telescope colorscheme<cr>", "Colorschemes" },
+	["n"] = { "<cmd>lua _NAP_TOGGLE()<CR>", "nap" },
 
 	g = {
 		name = "Git",

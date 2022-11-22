@@ -51,6 +51,12 @@ function _NODE_TOGGLE()
 	node:toggle()
 end
 
+local nap = Terminal:new({ cmd = "nap", hidden = true })
+
+function _NAP_TOGGLE()
+	nap:toggle()
+end
+
 local ncdu = Terminal:new({ cmd = "ncdu", hidden = true })
 
 function _NCDU_TOGGLE()
