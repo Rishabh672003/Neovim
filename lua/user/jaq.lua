@@ -19,6 +19,7 @@ jaq_nvim.setup({
 			python = "python %",
 			rust = "cargo run",
 			cpp = "g++ % -o $fileBase && ./$fileBase",
+			c = "g++ % -o $fileBase && ./$fileBase",
 			go = "go run %",
 			sh = "sh %",
 			zsh = "zsh %",
@@ -42,7 +43,7 @@ jaq_nvim.setup({
 		wincmd = false,
 
 		-- Auto-save files
-		autosave = true,
+		autosave = false,
 	},
 
 	-- UI settings

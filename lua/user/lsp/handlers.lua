@@ -30,6 +30,7 @@ M.setup = function()
 			source = "always",
 			header = "",
 			prefix = "",
+			suffix = "",
 		},
 	}
 

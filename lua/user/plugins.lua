@@ -183,6 +183,8 @@ return packer.startup(function(use)
 	use({ "ravenxrz/DAPInstall.nvim", commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de" })
 	use({ "mfussenegger/nvim-dap-python", commit = "27a0eff2bd3114269bb010d895b179e667e712bd" })
 
+	use("p00f/clangd_extensions.nvim")
+
 	-- graveyard of plugins
 
 	-- use({
