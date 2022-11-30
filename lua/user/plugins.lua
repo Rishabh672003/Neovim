@@ -57,6 +57,7 @@ return packer.startup(function(use)
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",
+		commit = "34249bae518db0e9815b344fb8ea29c35904f8e2",
 	})
 	use("folke/tokyonight.nvim")
 	-- use("EdenEast/nightfox.nvim")
@@ -165,6 +166,7 @@ return packer.startup(function(use)
 	use("SmiteshP/nvim-navic")
 	use({
 		"utilyre/barbecue.nvim",
+		-- branch = "feature/truncation",
 	})
 
 	use("max397574/better-escape.nvim")
@@ -176,6 +178,7 @@ return packer.startup(function(use)
 	use("folke/zen-mode.nvim")
 	use("ThePrimeagen/vim-be-good")
 	use("Pocco81/auto-save.nvim")
+	use("andweeb/presence.nvim")
 
 	-- DAP
 	use({ "mfussenegger/nvim-dap", commit = "6b12294a57001d994022df8acbe2ef7327d30587" })

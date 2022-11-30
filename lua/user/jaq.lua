@@ -19,7 +19,7 @@ jaq_nvim.setup({
 			python = "python %",
 			rust = "cargo run",
 			cpp = "g++ % -o $fileBase && ./$fileBase",
-			c = "g++ % -o $fileBase && ./$fileBase",
+			c = "gcc % -o $fileBase.out && ./$fileBase.out",
 			go = "go run %",
 			sh = "sh %",
 			zsh = "zsh %",
