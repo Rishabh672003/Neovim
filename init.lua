@@ -4,7 +4,7 @@ local core_modules = {
 	"user.colorschemes.catppuccin",
 	"user.lualine-themes.lualine1",
 	"user.startup-screens.startup-screen3",
-	"user.barbeque.barbeque1",
+	"user.barbeque.barbeque2",
 	"user.options",
 	"user.keymaps",
 	"user.cmp",
