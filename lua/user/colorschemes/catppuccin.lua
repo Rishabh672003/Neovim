@@ -1,19 +1,41 @@
 local colorscheme = "catppuccin"
--- vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
 
 vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
 vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
 vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
 
 require("catppuccin").setup({
-	styles = { "italic", "bold" },
+	flavour = "mocha", -- latte, frappe, macchiato, mocha
+	background = { -- :h background
+		light = "latte",
+		dark = "mocha",
+	},
+	transparent_background = false,
+	term_colors = false,
+	dim_inactive = {
+		enabled = false,
+		shade = "dark",
+		percentage = 0.15,
+	},
+	no_italic = false, -- Force no italic
+	no_bold = false, -- Force no bold
+	styles = {
+		comments = { "italic" },
+		conditionals = { "italic" },
+	},
+	color_overrides = {},
 	integrations = {
+		cmp = true,
+		gitsigns = true,
+		nvimtree = true,
 		telescope = true,
-		illuminate = true,
+		notify = true,
+		mini = false,
+		-- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
 	},
 	custom_highlights = {
 		WhichKeyGroup = { fg = "#FAB387" },
-		-- WhichKeySeparator = { fg = "#cdd6f4" },
+		WhichKeySeparator = { fg = "#cdd6f4" },
 	},
 })
 

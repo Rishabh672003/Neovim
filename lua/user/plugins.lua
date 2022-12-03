@@ -57,7 +57,6 @@ return packer.startup(function(use)
 	use({
 		"catppuccin/nvim",
 		as = "catppuccin",
-		commit = "34249bae518db0e9815b344fb8ea29c35904f8e2",
 	})
 	use("folke/tokyonight.nvim")
 	-- use("EdenEast/nightfox.nvim")

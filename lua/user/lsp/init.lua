@@ -12,6 +12,7 @@ require("user.lsp.mason")
 require("user.lsp.handlers").setup()
 require("user.lsp.null-ls")
 fidget.setup({})
+require("user.lsp.clangd")
 
 -- this is for the fix of clangd otherwise it keeps giving some error
 local capabilities = vim.lsp.protocol.make_client_capabilities()
