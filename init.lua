@@ -28,6 +28,7 @@ local core_modules = {
 	"user.jaq",
 	"user.better-escape",
 	"user.hop",
+	"user.zen-mode",
 	"user.dap",
 }
 
