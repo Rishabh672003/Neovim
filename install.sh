@@ -2,7 +2,7 @@
 
 sudo pacman -Sy --needed --noconfirm git base-devel cmake unzip ninja \
     tree-sitter curl lua &&\
-    sudo pacman -Sy -needed --noconfirm npm pip stylua prettier astyle \
+    sudo pacman -Sy --needed --noconfirm npm pip stylua prettier astyle \
     ripgrep unzip npm zsh autopep8 ;
 yay -S shellcheck-bin beautysh ;
 git clone https://github.com/neovim/neovim &&
