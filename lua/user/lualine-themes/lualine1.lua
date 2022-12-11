@@ -79,7 +79,7 @@ lualine.setup({
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
 		lualine_c = {
-			{ "filename", file_status = true, path = 3 },
+			-- { "filename", file_status = true, path = 3 },
 		},
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, filetype },
