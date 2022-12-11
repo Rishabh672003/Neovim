@@ -176,7 +176,6 @@ return packer.startup(function(use)
 
 	use("folke/zen-mode.nvim")
 	use("ThePrimeagen/vim-be-good")
-	use("Pocco81/auto-save.nvim")
 	use("andweeb/presence.nvim")
 
 	-- DAP
