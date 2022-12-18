@@ -6,12 +6,6 @@ This repo contains all my [neovim](https://github.com/neovim/neovim) configs fil
 
 #### The Main branch of this repo is configured by me for the developement branch of Neovim which i use, if you are not using the developement branch but the 0.7.2 version of Neovim use that branch, its very stable and will always work for 0.7 version of Neovim
 
-#### if you are using the 0.7.2 neovim
-
-```bash
-sudo pacman -S neovim ; git clone -b neovim-0.7.2 https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
-```
-
 #### Neovim-nightly as an appimage
 
 ```bash
