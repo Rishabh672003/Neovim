@@ -27,6 +27,7 @@ local core_modules = {
 	"user.notify",
 	"user.jaq",
 	"user.better-escape",
+	"user.last_place",
 	"user.hop",
 	"user.zen-mode",
 	"user.dap",
