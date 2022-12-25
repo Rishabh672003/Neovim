@@ -44,6 +44,7 @@ require("lazy").setup({
 		end,
 	},
 	"folke/tokyonight.nvim",
+	"L3MON4D3/LuaSnip",
 	{
 		"hrsh7th/nvim-cmp",
 		-- load cmp on InsertEnter

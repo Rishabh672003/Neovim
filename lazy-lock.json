@@ -2,6 +2,7 @@
   "Comment.nvim": { "branch": "master", "commit": "2a165144ffdf6e1fbe7127f39cd185d5d111927f" },
   "DAPInstall.nvim": { "branch": "main", "commit": "8798b4c36d33723e7bba6ed6e2c202f84bb300de" },
   "FixCursorHold.nvim": { "branch": "master", "commit": "70a9516a64668cbfe59f31b66d0a21678c5e9b12" },
+  "LuaSnip": { "branch": "master", "commit": "5570fd797eae0790affb54ea669a150cad76db5d" },
   "alpha-nvim": { "branch": "main", "commit": "21a0f2520ad3a7c32c0822f943368dc063a569fb" },
   "barbecue.nvim": { "branch": "main", "commit": "894bd7a132832bba4d09155567f9e8114d9cc8d4" },
   "better-escape.nvim": { "branch": "master", "commit": "d5ee0cef56a7e41a86048c14f25e964876ac20c1" },

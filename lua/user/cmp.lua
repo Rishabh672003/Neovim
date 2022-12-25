@@ -1,14 +1,8 @@
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-	return
-end
+local cmp = require("cmp")
 
-local snip_status_ok, luasnip = pcall(require, "luasnip")
-if not snip_status_ok then
-	return
-end
+local luasnip = require("luasnip")
 
-require("luasnip/loaders/from_vscode").lazy_load()
+require("luasnip/loaders/from_vscode")
 
 local check_backspace = function()
 	local col = vim.fn.col(".") - 1
