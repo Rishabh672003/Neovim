@@ -180,7 +180,7 @@ local buttons = {
 		-- dashboard.button("SPC F", "  Live grep"),
 		dashboard.button("p", "  Projects", "<cmd>Telescope projects<CR>"),
 		dashboard.button("c", "  Configuration", "<cmd>e ~/.config/nvim/init.lua <CR>"),
-		dashboard.button("u", "  Update plugins", "<cmd>PackerSync<CR>"),
+		dashboard.button("u", "  Update plugins", "<cmd>lazy<CR>"),
 		dashboard.button("q", "  Quit", "<cmd>qa<CR>"),
 	},
 	position = "center",
