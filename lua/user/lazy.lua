@@ -80,7 +80,7 @@ require("lazy").setup({
 	{
 		"williamboman/mason.nvim",
 		config = function()
-			require("user.lsp")
+			require("user.lsp.mason")
 		end,
 	},
 	"williamboman/mason-lspconfig.nvim",
