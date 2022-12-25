@@ -8,7 +8,7 @@ vim.api.nvim_set_hl(0, "NavicSeparator", { link = "Normal" })
 barbecue.setup({
 	---whether to create winbar updater autocmd
 	---@type boolean
-	create_autocmd = false,
+	create_autocmd = true,
 
 	---buftypes to enable winbar in
 	---@type table
@@ -49,8 +49,6 @@ barbecue.setup({
 		default_context = "",
 	},
 
-	show_modified = true,
-
 	---icons for different context entry kinds
 	kinds = {
 		Array = "",
@@ -88,21 +86,4 @@ barbecue.setup({
 		Value = "",
 		Variable = "",
 	},
-})
-
-vim.api.nvim_create_autocmd({
-	"WinScrolled",
-	"BufWinEnter",
-	"CursorHold",
-	"InsertLeave",
-
-	-- include these if you have set `show_modified` to `true`
-	"BufWritePost",
-	"TextChanged",
-	"TextChangedI",
-}, {
-	group = vim.api.nvim_create_augroup("barbecue", {}),
-	callback = function()
-		require("barbecue.ui").update()
-	end,
 })

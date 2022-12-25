@@ -15,8 +15,6 @@ local servers = {
 	"clangd",
 	"jsonls",
 	"taplo",
-	"lemminx",
-	"tsserver",
 }
 
 local settings = {
