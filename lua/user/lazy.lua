@@ -81,9 +81,13 @@ require("lazy").setup({
 		"williamboman/mason.nvim",
 		config = function()
 			require("user.lsp.mason")
+			require("user.lsp.handlers")
 		end,
 	},
-	"williamboman/mason-lspconfig.nvim",
+	{
+		"williamboman/mason-lspconfig.nvim",
+		config = function() end,
+	},
 	"neovim/nvim-lspconfig",
 	{ "b0o/schemastore.nvim", lazy = true },
 	{
