@@ -4,7 +4,6 @@ local core_modules = {
 	"user.lazy",
 	"user.autocommands",
 	"user.keymaps",
-	"user.lsp",
 }
 
 -- Using pcall we can handle better any loading issues
