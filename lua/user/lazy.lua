@@ -97,7 +97,7 @@ require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			{"nvim-telescope/telescope-file-browser.nvim", lazy = true, cmd = "Telescope file_browser"},
+			{ "nvim-telescope/telescope-file-browser.nvim", lazy = true, cmd = "Telescope file_browser" },
 		},
 		config = function()
 			require("user.telescope")
@@ -269,6 +269,5 @@ require("lazy").setup({
 		config = function()
 			require("user.lsp.clangd")
 		end,
-		lazy = true,
 	},
 })
