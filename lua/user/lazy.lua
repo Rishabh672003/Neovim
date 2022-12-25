@@ -239,7 +239,7 @@ require("lazy").setup({
 		commit = "1cd4764221c91686dcf4d6b62d7a7b2d112e0b13",
 		lazy = true,
 		config = function()
-			require("user.dap")
+			require("user.dapui")
 		end,
 	},
 	{
@@ -247,7 +247,8 @@ require("lazy").setup({
 		commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de",
 		lazy = true,
 		config = function()
-			require("user.dap")
+			require("dap_install").setup({})
+			require("dap_install").config("python", {})
 		end,
 	},
 	{
@@ -255,7 +256,7 @@ require("lazy").setup({
 		commit = "27a0eff2bd3114269bb010d895b179e667e712bd",
 		lazy = true,
 		config = function()
-			require("user.dap")
+			require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
 		end,
 	},
 	{

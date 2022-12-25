@@ -3,7 +3,6 @@ local core_modules = {
 	"user.options",
 	"user.lazy",
 	"user.keymaps",
-	-- "user.lsp",
 	"user.autocommands",
 }
 
