@@ -22,6 +22,13 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		config = function()
+			require("user.colorschemes.catppuccin")
+		end,
+	},
+	{
 		"folke/which-key.nvim",
 		-- lazy = true,
 		config = function()
@@ -34,13 +41,6 @@ require("lazy").setup({
 		"windwp/nvim-autopairs",
 		config = function()
 			require("user.autopairs")
-		end,
-	},
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		config = function()
-			require("user.colorschemes.catppuccin")
 		end,
 	},
 	"folke/tokyonight.nvim",
@@ -81,7 +81,8 @@ require("lazy").setup({
 		"williamboman/mason.nvim",
 		config = function()
 			require("user.lsp.mason")
-			require("user.lsp.handlers")
+			require("user.lsp.diagnostic")
+			require("user.lsp.attach")
 		end,
 	},
 	{
