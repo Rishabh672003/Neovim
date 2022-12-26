@@ -2,9 +2,9 @@ local core_modules = {
 	"user.impatient",
 	"user.options",
 	"user.lazy",
-	"user.colorscheme",
 	"user.keymaps",
 	"user.autocommands",
+	"user.colorscheme",
 }
 
 -- Using pcall we can handle better any loading issues
