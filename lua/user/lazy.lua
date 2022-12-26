@@ -22,13 +22,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		config = function()
-			require("user.colorschemes.catppuccin")
-		end,
-	},
-	{
 		"folke/which-key.nvim",
 		-- lazy = true,
 		config = function()
@@ -274,6 +267,13 @@ require("lazy").setup({
 		"p00f/clangd_extensions.nvim",
 		config = function()
 			require("user.lsp.clangd")
+		end,
+	},
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		config = function()
+			require("user.colorschemes.catppuccin")
 		end,
 	},
 })
