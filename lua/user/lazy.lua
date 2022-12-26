@@ -16,12 +16,6 @@ vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappin
 
 require("lazy").setup({
 	{
-		"lewis6991/impatient.nvim",
-		config = function()
-			require("user.impatient")
-		end,
-	},
-	{
 		"folke/which-key.nvim",
 		-- lazy = true,
 		config = function()
