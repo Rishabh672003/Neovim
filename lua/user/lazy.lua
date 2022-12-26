@@ -159,10 +159,19 @@ require("lazy").setup({
 			require("user.project")
 		end,
 	},
+
+	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		config = function()
+			require("user.colorschemes.catppuccin")
+		end,
+	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
 			require("user.indentline")
+			vim.cmd("colorscheme catppuccin")
 		end,
 	},
 	{
@@ -261,13 +270,6 @@ require("lazy").setup({
 		"p00f/clangd_extensions.nvim",
 		config = function()
 			require("user.lsp.clangd")
-		end,
-	},
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		config = function()
-			require("user.colorschemes.catppuccin")
 		end,
 	},
 })

@@ -1,5 +1,4 @@
 local core_modules = {
-	"user.impatient",
 	"user.options",
 	"user.lazy",
 	"user.keymaps",
