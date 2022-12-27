@@ -89,7 +89,11 @@ require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			{ "nvim-telescope/telescope-file-browser.nvim", lazy = true, cmd = "Telescope file_browser" },
+			{
+				"nvim-telescope/telescope-file-browser.nvim",
+				lazy = true,
+				cmd = "Telescope file_browser",
+			},
 		},
 		config = function()
 			require("user.telescope")
@@ -212,6 +216,9 @@ require("lazy").setup({
 	{
 		"phaazon/hop.nvim",
 		branch = "v2", -- optional but strongly recommended
+		config = function ()
+			require("user.hop")
+		end
 	},
 	{
 		"folke/zen-mode.nvim",

@@ -1,9 +1,4 @@
-local ok, cybu = pcall(require, "cybu")
-if not ok then
-	return
-end
-
-cybu.setup({
+require("cybu").setup({
 	position = {
 		relative_to = "win", -- win, editor, cursor
 		anchor = "topright", -- topleft, topcenter, topright,

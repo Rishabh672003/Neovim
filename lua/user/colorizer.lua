@@ -1,8 +1,4 @@
-local colorizer_status_ok, colorizer = pcall(require, "colorizer")
-if not colorizer_status_ok then
-	return
-end
-colorizer.setup({
+require("colorizer").setup({
 	filetypes = { "*" },
 	user_default_options = {
 		RGB = true, -- #RGB hex codes

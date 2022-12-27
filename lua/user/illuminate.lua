@@ -1,10 +1,4 @@
-local _, illuminate = pcall(require, "illuminate")
-if not _ then
-	return
-end
-
--- default configuration
-illuminate.configure({
+require("illuminate").configure({
 	-- providers: provider used to get references in the buffer, ordered by priority
 	providers = {
 		"lsp",
