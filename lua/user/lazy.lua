@@ -26,6 +26,7 @@ require("lazy").setup({
 		end,
 		dependencies = {
 			"lukas-reineke/indent-blankline.nvim",
+			event = "InsertEnter",
 			config = function()
 				require("user.indentline")
 			end,
@@ -33,7 +34,6 @@ require("lazy").setup({
 	},
 	{
 		"folke/which-key.nvim",
-		-- lazy = true,
 		config = function()
 			require("user.whichkey")
 		end,
@@ -42,12 +42,12 @@ require("lazy").setup({
 	"nvim-lua/plenary.nvim",
 	{
 		"windwp/nvim-autopairs",
+		event = "InsertEnter",
 		config = function()
 			require("user.autopairs")
 		end,
 	},
-	"folke/tokyonight.nvim",
-	"L3MON4D3/LuaSnip",
+	{ "folke/tokyonight.nvim", event = "VeryLazy" },
 	{
 		"hrsh7th/nvim-cmp",
 		-- load cmp on InsertEnter
@@ -61,21 +61,24 @@ require("lazy").setup({
 			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp",
+			"L3MON4D3/LuaSnip",
 		},
 		config = function()
 			require("user.cmp")
 		end,
 	},
 	{ "stevearc/dressing.nvim", event = "VeryLazy" },
-	"antoinemadec/FixCursorHold.nvim",
+	{ "antoinemadec/FixCursorHold.nvim", lazy = true },
 	{
 		"jose-elias-alvarez/null-ls.nvim",
+		event = "InsertEnter",
 		config = function()
 			require("user.lsp.null-ls")
 		end,
 	},
 	{
 		"RRethy/vim-illuminate",
+		lazy = true,
 		config = function()
 			require("user.illuminate")
 		end,
@@ -105,7 +108,13 @@ require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			{ "nvim-telescope/telescope-file-browser.nvim", lazy = true, cmd = "Telescope file_browser" },
+			{ "nvim-telescope/telescope-file-browser.nvim", lazy = true },
+			{
+				"ahmedkhalf/project.nvim",
+				config = function()
+					require("user.project")
+				end,
+			},
 		},
 		config = function()
 			require("user.telescope")
@@ -128,8 +137,8 @@ require("lazy").setup({
 			require("user.startup-screens.startup-screen3")
 		end,
 	},
-	"Darazaki/indent-o-matic",
-	"MunifTanjim/nui.nvim",
+	{ "Darazaki/indent-o-matic" },
+	{ "MunifTanjim/nui.nvim", lazy = true },
 	{
 		"numToStr/Comment.nvim",
 		-- lazy = true,
@@ -146,6 +155,7 @@ require("lazy").setup({
 	},
 	{
 		"kyazdani42/nvim-tree.lua",
+		cmd = "NvimTreeToggle",
 		tag = "nightly", -- optional, updated every week. (see issue #1193)
 		config = function()
 			require("user.nvim-tree")
@@ -153,6 +163,7 @@ require("lazy").setup({
 	},
 	{
 		"ghillb/cybu.nvim",
+		event = "Bufenter",
 		config = function()
 			require("user.cybu")
 		end,
@@ -170,14 +181,7 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"ahmedkhalf/project.nvim",
-		config = function()
-			require("user.project")
-		end,
-	},
-	{
 		"NvChad/nvim-colorizer.lua",
-		lazy = true,
 		config = function()
 			require("user.colorizer")
 		end,
@@ -206,6 +210,7 @@ require("lazy").setup({
 	},
 	{
 		"max397574/better-escape.nvim",
+		lazy = true,
 		config = function()
 			require("user.better-escape")
 		end,
@@ -221,7 +226,7 @@ require("lazy").setup({
 		end,
 		cmd = "ZenMode",
 	},
-	"ThePrimeagen/vim-be-good",
+	{ "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
 	{
 		"andweeb/presence.nvim",
 		config = function()
@@ -269,6 +274,7 @@ require("lazy").setup({
 	},
 	{
 		"p00f/clangd_extensions.nvim",
+		lazy = true,
 		config = function()
 			require("user.lsp.clangd")
 		end,
