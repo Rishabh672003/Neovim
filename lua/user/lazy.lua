@@ -16,6 +16,22 @@ vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappin
 
 require("lazy").setup({
 	{
+		"catppuccin/nvim",
+		name = "catppuccin",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			require("user.colorschemes.catppuccin")
+			vim.cmd("colorscheme catppuccin")
+		end,
+		dependencies = {
+			"lukas-reineke/indent-blankline.nvim",
+			config = function()
+				require("user.indentline")
+			end,
+		},
+	},
+	{
 		"folke/which-key.nvim",
 		-- lazy = true,
 		config = function()
@@ -89,11 +105,7 @@ require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			{
-				"nvim-telescope/telescope-file-browser.nvim",
-				lazy = true,
-				cmd = "Telescope file_browser",
-			},
+			{ "nvim-telescope/telescope-file-browser.nvim", lazy = true, cmd = "Telescope file_browser" },
 		},
 		config = function()
 			require("user.telescope")
@@ -163,21 +175,6 @@ require("lazy").setup({
 			require("user.project")
 		end,
 	},
-
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		config = function()
-			require("user.colorschemes.catppuccin")
-		end,
-	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("user.indentline")
-			vim.cmd("colorscheme catppuccin")
-		end,
-	},
 	{
 		"NvChad/nvim-colorizer.lua",
 		lazy = true,
@@ -216,9 +213,6 @@ require("lazy").setup({
 	{
 		"phaazon/hop.nvim",
 		branch = "v2", -- optional but strongly recommended
-		config = function ()
-			require("user.hop")
-		end
 	},
 	{
 		"folke/zen-mode.nvim",
