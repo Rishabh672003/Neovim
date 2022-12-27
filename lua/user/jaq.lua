@@ -1,10 +1,5 @@
 M = {}
-local status_ok, jaq_nvim = pcall(require, "jaq-nvim")
-if not status_ok then
-	return
-end
-
-jaq_nvim.setup({
+require("jaq-nvim").setup({
 	-- Commands used with 'Jaq'
 	cmds = {
 		-- Default UI used (see `Usage` for options)

@@ -1,9 +1,4 @@
-local dap_ui_status_ok, dapui = pcall(require, "dapui")
-if not dap_ui_status_ok then
-	return
-end
-
-dapui.setup({
+require("dapui").setup({
 	expand_lines = true,
 	icons = { expanded = "", collapsed = "", circular = "" },
 	mappings = {
