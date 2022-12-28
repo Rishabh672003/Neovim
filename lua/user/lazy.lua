@@ -48,6 +48,7 @@ require("lazy").setup({
 		end,
 	},
 	{ "folke/tokyonight.nvim", event = "VeryLazy" },
+	"L3MON4D3/LuaSnip",
 	{
 		"hrsh7th/nvim-cmp",
 		-- load cmp on InsertEnter
@@ -61,7 +62,6 @@ require("lazy").setup({
 			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp",
-			"L3MON4D3/LuaSnip",
 		},
 		config = function()
 			require("user.cmp")
