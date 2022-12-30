@@ -68,7 +68,7 @@ require("lazy").setup({
 		end,
 	},
 	{ "stevearc/dressing.nvim", event = "VeryLazy" },
-	{ "antoinemadec/FixCursorHold.nvim", lazy = true },
+	{ "antoinemadec/FixCursorHold.nvim", lazy = false },
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = "InsertEnter",
@@ -78,7 +78,7 @@ require("lazy").setup({
 	},
 	{
 		"RRethy/vim-illuminate",
-		lazy = true,
+		lazy = false,
 		config = function()
 			require("user.illuminate")
 		end,
@@ -96,10 +96,10 @@ require("lazy").setup({
 		config = function() end,
 	},
 	"neovim/nvim-lspconfig",
-	{ "b0o/schemastore.nvim", lazy = true },
+	{ "b0o/schemastore.nvim", lazy = false },
 	{
 		"is0n/jaq-nvim",
-		lazy = true,
+		lazy = false,
 		cmd = "Jaq",
 		config = function()
 			require("user.jaq")
@@ -108,7 +108,7 @@ require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			{ "nvim-telescope/telescope-file-browser.nvim", lazy = true },
+			{ "nvim-telescope/telescope-file-browser.nvim", lazy = false },
 			{
 				"ahmedkhalf/project.nvim",
 				config = function()
@@ -138,17 +138,17 @@ require("lazy").setup({
 		end,
 	},
 	{ "Darazaki/indent-o-matic" },
-	{ "MunifTanjim/nui.nvim", lazy = true },
+	{ "MunifTanjim/nui.nvim", lazy = false },
 	{
 		"numToStr/Comment.nvim",
-		-- lazy = true,
+		-- lazy=false,
 		config = function()
 			require("user.comment")
 		end,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		-- lazy = true,
+		-- lazy=false,
 		config = function()
 			require("user.gitsigns")
 		end,
@@ -203,6 +203,10 @@ require("lazy").setup({
 	"SmiteshP/nvim-navic",
 	{
 		"utilyre/barbecue.nvim",
+		-- commit = "0e65d1521bab8afbd1b2a40a50f859d7bca5ffbd",
+		commit = "c9a16e6d8198dccfd9613f338669d1fdd970666a",
+		-- commit = "d67e116e6113735fb11f236d4439d7e06b5596af",
+		-- commit = "44f5b37da1a27ec06dc9faf7d5a10740ccbf357c",
 		config = function()
 			require("user.navic")
 			require("user.barbeque.barbeque2")
@@ -210,7 +214,7 @@ require("lazy").setup({
 	},
 	{
 		"max397574/better-escape.nvim",
-		lazy = true,
+		lazy = false,
 		config = function()
 			require("user.better-escape")
 		end,
@@ -218,6 +222,9 @@ require("lazy").setup({
 	{
 		"phaazon/hop.nvim",
 		branch = "v2", -- optional but strongly recommended
+		config = function()
+			require("user.hop")
+		end,
 	},
 	{
 		"folke/zen-mode.nvim",
@@ -236,7 +243,7 @@ require("lazy").setup({
 	{
 		"mfussenegger/nvim-dap",
 		commit = "6b12294a57001d994022df8acbe2ef7327d30587",
-		lazy = true,
+		lazy = false,
 		config = function()
 			require("user.dap")
 		end,
@@ -244,7 +251,7 @@ require("lazy").setup({
 	{
 		"rcarriga/nvim-dap-ui",
 		commit = "1cd4764221c91686dcf4d6b62d7a7b2d112e0b13",
-		lazy = true,
+		lazy = false,
 		config = function()
 			require("user.dapui")
 		end,
@@ -261,7 +268,7 @@ require("lazy").setup({
 	{
 		"mfussenegger/nvim-dap-python",
 		commit = "27a0eff2bd3114269bb010d895b179e667e712bd",
-		lazy = true,
+		lazy = false,
 		config = function()
 			require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
 		end,
@@ -274,9 +281,10 @@ require("lazy").setup({
 	},
 	{
 		"p00f/clangd_extensions.nvim",
-		lazy = true,
+		lazy = false,
 		config = function()
 			require("user.lsp.clangd")
 		end,
 	},
+	{ "LunarVim/bigfile.nvim" },
 })
