@@ -71,7 +71,7 @@ require("lazy").setup({
 	{ "antoinemadec/FixCursorHold.nvim", lazy = false },
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		event = "InsertEnter",
+		-- event = "InsertEnter",
 		config = function()
 			require("user.lsp.null-ls")
 		end,
@@ -97,6 +97,13 @@ require("lazy").setup({
 	},
 	"neovim/nvim-lspconfig",
 	{ "b0o/schemastore.nvim", lazy = false },
+	{
+		"p00f/clangd_extensions.nvim",
+		lazy = false,
+		config = function()
+			require("user.lsp.clangd")
+		end,
+	},
 	{
 		"is0n/jaq-nvim",
 		lazy = false,
@@ -137,7 +144,7 @@ require("lazy").setup({
 			require("user.startup-screens.startup-screen3")
 		end,
 	},
-	{ "Darazaki/indent-o-matic" },
+	-- { "Darazaki/indent-o-matic" },
 	{ "MunifTanjim/nui.nvim", lazy = false },
 	{
 		"numToStr/Comment.nvim",
@@ -277,13 +284,6 @@ require("lazy").setup({
 		"ethanholz/nvim-lastplace",
 		config = function()
 			require("user.last_place")
-		end,
-	},
-	{
-		"p00f/clangd_extensions.nvim",
-		lazy = false,
-		config = function()
-			require("user.lsp.clangd")
 		end,
 	},
 	{ "LunarVim/bigfile.nvim" },
