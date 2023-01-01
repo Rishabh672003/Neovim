@@ -32,6 +32,26 @@ require("lazy").setup({
 			end,
 		},
 	},
+	"neovim/nvim-lspconfig",
+	{
+		"williamboman/mason.nvim",
+		config = function()
+			require("user.lsp.mason")
+			require("user.lsp.diagnostic")
+			require("user.lsp.attach")
+		end,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+	},
+	{
+		"p00f/clangd_extensions.nvim",
+		lazy = false,
+		event = "Bufenter",
+		config = function()
+			require("user.lsp.clangd")
+		end,
+	},
 	{
 		"folke/which-key.nvim",
 		config = function()
@@ -83,27 +103,7 @@ require("lazy").setup({
 			require("user.illuminate")
 		end,
 	},
-	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("user.lsp.mason")
-			require("user.lsp.diagnostic")
-			require("user.lsp.attach")
-		end,
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		config = function() end,
-	},
-	"neovim/nvim-lspconfig",
 	{ "b0o/schemastore.nvim", lazy = false },
-	{
-		"p00f/clangd_extensions.nvim",
-		lazy = false,
-		config = function()
-			require("user.lsp.clangd")
-		end,
-	},
 	{
 		"is0n/jaq-nvim",
 		lazy = false,
