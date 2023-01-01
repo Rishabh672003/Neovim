@@ -53,6 +53,12 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"lewis6991/satellite.nvim",
+		config = function()
+			require("satellite").setup()
+		end,
+	},
+	{
 		"folke/which-key.nvim",
 		config = function()
 			require("user.whichkey")
