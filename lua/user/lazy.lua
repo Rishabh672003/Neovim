@@ -53,14 +53,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"lewis6991/satellite.nvim",
-		config = function()
-			require("satellite").setup({
-				excluded_filetypes = { "NvimTree" },
-			})
-		end,
-	},
-	{
 		"folke/which-key.nvim",
 		config = function()
 			require("user.whichkey")
@@ -151,7 +143,7 @@ require("lazy").setup({
 			require("user.startup-screens.startup-screen3")
 		end,
 	},
-	-- { "Darazaki/indent-o-matic" },
+	{ "Darazaki/indent-o-matic" },
 	{ "MunifTanjim/nui.nvim", lazy = false },
 	{
 		"numToStr/Comment.nvim",
@@ -217,10 +209,7 @@ require("lazy").setup({
 	"SmiteshP/nvim-navic",
 	{
 		"utilyre/barbecue.nvim",
-		-- commit = "0e65d1521bab8afbd1b2a40a50f859d7bca5ffbd",
 		commit = "c9a16e6d8198dccfd9613f338669d1fdd970666a",
-		-- commit = "d67e116e6113735fb11f236d4439d7e06b5596af",
-		-- commit = "44f5b37da1a27ec06dc9faf7d5a10740ccbf357c",
 		config = function()
 			require("user.navic")
 			require("user.barbeque.barbeque2")
@@ -294,4 +283,14 @@ require("lazy").setup({
 		end,
 	},
 	{ "LunarVim/bigfile.nvim" },
+
+	-- graveyard of plugins
+	-- {
+	-- 	"lewis6991/satellite.nvim",
+	-- 	config = function()
+	-- 		require("satellite").setup({
+	-- 			excluded_filetypes = { "NvimTree" },
+	-- 		})
+	-- 	end,
+	-- },
 })
