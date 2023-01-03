@@ -76,7 +76,6 @@ require("lazy").setup({
 		end,
 	},
 	{ "folke/tokyonight.nvim", event = "VeryLazy" },
-	"L3MON4D3/LuaSnip",
 	{
 		"hrsh7th/nvim-cmp",
 		-- load cmp on InsertEnter
@@ -95,6 +94,9 @@ require("lazy").setup({
 			require("user.cmp")
 		end,
 	},
+	{ "L3MON4D3/LuaSnip", dependencies = {
+		"rafamadriz/friendly-snippets",
+	} },
 	{ "stevearc/dressing.nvim", event = "VeryLazy" },
 	{ "antoinemadec/FixCursorHold.nvim", lazy = false },
 	{
