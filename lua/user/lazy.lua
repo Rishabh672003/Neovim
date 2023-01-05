@@ -21,14 +21,44 @@ require("lazy").setup({
 		timeout = 600,
 	},
 	{
-		"lewis6991/impatient.nvim",
+		"catppuccin/nvim",
+		name = "catppuccin",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
-			require("user.impatient")
+			require("user.colorschemes.catppuccin")
+			vim.cmd("colorscheme catppuccin")
+		end,
+		dependencies = {
+			"lukas-reineke/indent-blankline.nvim",
+			event = "InsertEnter",
+			config = function()
+				require("user.indentline")
+			end,
+		},
+	},
+	"neovim/nvim-lspconfig",
+	{
+		"williamboman/mason.nvim",
+		config = function()
+			require("user.lsp.mason")
+			require("user.lsp.diagnostic")
+			require("user.lsp.attach")
+		end,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+	},
+	{
+		"p00f/clangd_extensions.nvim",
+		lazy = false,
+		event = "Bufenter",
+		config = function()
+			require("user.lsp.clangd")
 		end,
 	},
 	{
 		"folke/which-key.nvim",
-		-- lazy = true,
 		config = function()
 			require("user.whichkey")
 		end,
@@ -37,19 +67,12 @@ require("lazy").setup({
 	"nvim-lua/plenary.nvim",
 	{
 		"windwp/nvim-autopairs",
+		event = "InsertEnter",
 		config = function()
 			require("user.autopairs")
 		end,
 	},
-	{
-		"catppuccin/nvim",
-		name = "catppuccin",
-		config = function()
-			require("user.colorschemes.catppuccin")
-		end,
-	},
-	"folke/tokyonight.nvim",
-	"L3MON4D3/LuaSnip",
+	{ "folke/tokyonight.nvim", event = "VeryLazy" },
 	{
 		"hrsh7th/nvim-cmp",
 		-- load cmp on InsertEnter
@@ -68,32 +91,29 @@ require("lazy").setup({
 			require("user.cmp")
 		end,
 	},
+	{ "L3MON4D3/LuaSnip", dependencies = {
+		"rafamadriz/friendly-snippets",
+	} },
 	{ "stevearc/dressing.nvim", event = "VeryLazy" },
-	"antoinemadec/FixCursorHold.nvim",
+	{ "antoinemadec/FixCursorHold.nvim", lazy = false },
 	{
 		"jose-elias-alvarez/null-ls.nvim",
+		-- event = "InsertEnter",
 		config = function()
 			require("user.lsp.null-ls")
 		end,
 	},
 	{
 		"RRethy/vim-illuminate",
+		lazy = false,
 		config = function()
 			require("user.illuminate")
 		end,
 	},
-	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("user.lsp.mason")
-		end,
-	},
-	"williamboman/mason-lspconfig.nvim",
-	"neovim/nvim-lspconfig",
-	{ "b0o/schemastore.nvim", lazy = true },
+	{ "b0o/schemastore.nvim", lazy = false },
 	{
 		"is0n/jaq-nvim",
-		lazy = true,
+		lazy = false,
 		cmd = "Jaq",
 		config = function()
 			require("user.jaq")
@@ -102,7 +122,10 @@ require("lazy").setup({
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			{ "nvim-telescope/telescope-file-browser.nvim", lazy = true, cmd = "Telescope file_browser" },
+			{ "nvim-telescope/telescope-file-browser.nvim", lazy = false },
+			{
+				"ahmedkhalf/project.nvim",
+			},
 		},
 		config = function()
 			require("user.telescope")
@@ -125,24 +148,25 @@ require("lazy").setup({
 			require("user.startup-screens.startup-screen3")
 		end,
 	},
-	"Darazaki/indent-o-matic",
-	"MunifTanjim/nui.nvim",
+	{ "Darazaki/indent-o-matic" },
+	{ "MunifTanjim/nui.nvim", lazy = false },
 	{
 		"numToStr/Comment.nvim",
-		-- lazy = true,
+		-- lazy=false,
 		config = function()
 			require("user.comment")
 		end,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
-		-- lazy = true,
+		-- lazy=false,
 		config = function()
 			require("user.gitsigns")
 		end,
 	},
 	{
 		"kyazdani42/nvim-tree.lua",
+		cmd = "NvimTreeToggle",
 		tag = "nightly", -- optional, updated every week. (see issue #1193)
 		config = function()
 			require("user.nvim-tree")
@@ -150,6 +174,7 @@ require("lazy").setup({
 	},
 	{
 		"ghillb/cybu.nvim",
+		event = "Bufenter",
 		config = function()
 			require("user.cybu")
 		end,
@@ -167,20 +192,7 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"ahmedkhalf/project.nvim",
-		config = function()
-			require("user.project")
-		end,
-	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			require("user.indentline")
-		end,
-	},
-	{
 		"NvChad/nvim-colorizer.lua",
-		lazy = true,
 		config = function()
 			require("user.colorizer")
 		end,
@@ -202,6 +214,7 @@ require("lazy").setup({
 	"SmiteshP/nvim-navic",
 	{
 		"utilyre/barbecue.nvim",
+		commit = "c9a16e6d8198dccfd9613f338669d1fdd970666a",
 		config = function()
 			require("user.navic")
 			require("user.barbeque.barbeque2")
@@ -209,6 +222,7 @@ require("lazy").setup({
 	},
 	{
 		"max397574/better-escape.nvim",
+		lazy = false,
 		config = function()
 			require("user.better-escape")
 		end,
@@ -216,6 +230,9 @@ require("lazy").setup({
 	{
 		"phaazon/hop.nvim",
 		branch = "v2", -- optional but strongly recommended
+		config = function()
+			require("user.hop")
+		end,
 	},
 	{
 		"folke/zen-mode.nvim",
@@ -224,7 +241,7 @@ require("lazy").setup({
 		end,
 		cmd = "ZenMode",
 	},
-	"ThePrimeagen/vim-be-good",
+	{ "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
 	{
 		"andweeb/presence.nvim",
 		config = function()
@@ -234,7 +251,7 @@ require("lazy").setup({
 	{
 		"mfussenegger/nvim-dap",
 		commit = "6b12294a57001d994022df8acbe2ef7327d30587",
-		lazy = true,
+		lazy = false,
 		config = function()
 			require("user.dap")
 		end,
@@ -242,9 +259,9 @@ require("lazy").setup({
 	{
 		"rcarriga/nvim-dap-ui",
 		commit = "1cd4764221c91686dcf4d6b62d7a7b2d112e0b13",
-		lazy = true,
+		lazy = false,
 		config = function()
-			require("user.dap")
+			require("user.dapui")
 		end,
 	},
 	{
@@ -252,15 +269,16 @@ require("lazy").setup({
 		commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de",
 		lazy = true,
 		config = function()
-			require("user.dap")
+			require("dap_install").setup({})
+			require("dap_install").config("python", {})
 		end,
 	},
 	{
 		"mfussenegger/nvim-dap-python",
 		commit = "27a0eff2bd3114269bb010d895b179e667e712bd",
-		lazy = true,
+		lazy = false,
 		config = function()
-			require("user.dap")
+			require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
 		end,
 	},
 	{
@@ -269,11 +287,15 @@ require("lazy").setup({
 			require("user.last_place")
 		end,
 	},
-	{
-		"p00f/clangd_extensions.nvim",
-		config = function()
-			require("user.lsp.clangd")
-		end,
-		lazy = true,
-	},
+	{ "LunarVim/bigfile.nvim" },
+
+	-- graveyard of plugins
+	-- {
+	-- 	"lewis6991/satellite.nvim",
+	-- 	config = function()
+	-- 		require("satellite").setup({
+	-- 			excluded_filetypes = { "NvimTree" },
+	-- 		})
+	-- 	end,
+	-- },
 })
