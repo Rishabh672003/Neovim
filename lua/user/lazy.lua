@@ -15,6 +15,11 @@ vim.opt.runtimepath:prepend(lazypath)
 vim.g.mapleader = " " -- make sure to set `mapleader` before lazy so your mappings are correct
 
 require("lazy").setup({
+	git = {
+		-- defaults for the `Lazy log` command
+		log = { "--since=3 days ago" }, -- show commits from the last 3 days
+		timeout = 600,
+	},
 	{
 		"catppuccin/nvim",
 		name = "catppuccin",
