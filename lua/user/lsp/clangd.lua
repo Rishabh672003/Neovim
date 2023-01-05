@@ -18,7 +18,11 @@ local clangd_configs = vim.tbl_deep_extend("force", clangd_defaults["default_con
 		"--pch-storage=memory",
 	},
 })
-require("clangd_extensions").setup({
+local status_ok, clangd = pcall(require, "clangd_extensions")
+if not status_ok then
+	return
+end
+clangd.setup({
 	server = clangd_configs,
 	extensions = {
 		autoSetHints = true,
