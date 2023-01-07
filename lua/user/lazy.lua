@@ -204,12 +204,15 @@ require("lazy").setup({
 			require("icon-picker")
 		end,
 	},
-	"SmiteshP/nvim-navic",
 	{
-		"utilyre/barbecue.nvim",
-		-- commit = "c9a16e6d8198dccfd9613f338669d1fdd970666a",
+		"SmiteshP/nvim-navic",
 		config = function()
 			require("user.navic")
+		end,
+	},
+	{
+		"utilyre/barbecue.nvim",
+		config = function()
 			require("user.barbeque.barbeque2")
 		end,
 	},
@@ -266,9 +269,12 @@ require("lazy").setup({
 			require("dap_install").config("python", {})
 		end,
 	},
-	{"j-hui/fidget.nvim", config = function ()
-		require("fidget").setup({})
-	end},
+	{
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup({})
+		end,
+	},
 	{
 		"mfussenegger/nvim-dap-python",
 		commit = "27a0eff2bd3114269bb010d895b179e667e712bd",
