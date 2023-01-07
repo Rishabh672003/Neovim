@@ -212,6 +212,7 @@ require("lazy").setup({
 	},
 	{
 		"utilyre/barbecue.nvim",
+		commit = "2c06fe745e721579985b20549acb2dfcf4284a43",
 		config = function()
 			require("user.barbeque.barbeque2")
 		end,
