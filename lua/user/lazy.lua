@@ -103,13 +103,6 @@ require("lazy").setup({
 			require("user.lsp.null-ls")
 		end,
 	},
-	{
-		"RRethy/vim-illuminate",
-		lazy = false,
-		config = function()
-			require("user.illuminate")
-		end,
-	},
 	{ "b0o/schemastore.nvim", lazy = false },
 	{
 		"is0n/jaq-nvim",
@@ -214,7 +207,7 @@ require("lazy").setup({
 	"SmiteshP/nvim-navic",
 	{
 		"utilyre/barbecue.nvim",
-		commit = "c9a16e6d8198dccfd9613f338669d1fdd970666a",
+		-- commit = "c9a16e6d8198dccfd9613f338669d1fdd970666a",
 		config = function()
 			require("user.navic")
 			require("user.barbeque.barbeque2")
@@ -273,6 +266,9 @@ require("lazy").setup({
 			require("dap_install").config("python", {})
 		end,
 	},
+	{"j-hui/fidget.nvim", config = function ()
+		require("fidget").setup({})
+	end},
 	{
 		"mfussenegger/nvim-dap-python",
 		commit = "27a0eff2bd3114269bb010d895b179e667e712bd",
@@ -288,6 +284,13 @@ require("lazy").setup({
 		end,
 	},
 	{ "LunarVim/bigfile.nvim" },
+	{
+		"RRethy/vim-illuminate",
+		lazy = false,
+		config = function()
+			require("user.illuminate")
+		end,
+	},
 
 	-- graveyard of plugins
 	-- {
