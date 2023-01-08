@@ -35,8 +35,9 @@ null_ls.setup({
 		formatting.stylua,
 		formatting.beautysh,
 		formatting.astyle.with({
-			extra_args = { "--indent=spaces=4" },
+			extra_args = { "--indent=spaces=4", "style=google" },
 		}),
+		-- formatting.clang_format,
 		diagnostics.shellcheck,
 		diagnostics.zsh,
 		diagnostics.fish,

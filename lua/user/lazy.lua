@@ -141,7 +141,18 @@ require("lazy").setup({
 			require("user.startup-screens.startup-screen3")
 		end,
 	},
-	-- { "Darazaki/indent-o-matic" },
+	{
+		"Darazaki/indent-o-matic",
+		config = function()
+			require("user.indent")
+		end,
+	},
+	-- {
+	-- 	"NMAC427/guess-indent.nvim",
+	-- 	config = function()
+	-- 		require("guess-indent").setup({})
+	-- 	end,
+	-- },
 	{ "MunifTanjim/nui.nvim", lazy = false },
 	{
 		"numToStr/Comment.nvim",
@@ -296,6 +307,12 @@ require("lazy").setup({
 		lazy = false,
 		config = function()
 			require("user.illuminate")
+		end,
+	},
+	{
+		"jackMort/ChatGPT.nvim",
+		config = function()
+			require("chatgpt").setup({})
 		end,
 	},
 
