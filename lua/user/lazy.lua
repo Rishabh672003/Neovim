@@ -141,7 +141,7 @@ require("lazy").setup({
 			require("user.startup-screens.startup-screen3")
 		end,
 	},
-	{ "Darazaki/indent-o-matic" },
+	-- { "Darazaki/indent-o-matic" },
 	{ "MunifTanjim/nui.nvim", lazy = false },
 	{
 		"numToStr/Comment.nvim",
