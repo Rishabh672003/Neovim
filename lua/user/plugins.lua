@@ -165,8 +165,8 @@ return packer.startup(function(use)
 	use("SmiteshP/nvim-navic")
 	use({
 		"utilyre/barbecue.nvim",
-		commit = "0e65d1521bab8afbd1b2a40a50f859d7bca5ffbd",
-		-- branch = "feature/truncation",
+		-- commit = "0e65d1521bab8afbd1b2a40a50f859d7bca5ffbd",
+		branch = "hotfix/colorscheme-switch",
 	})
 
 	use("max397574/better-escape.nvim")
