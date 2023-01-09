@@ -9,6 +9,7 @@ barbecue.setup({
 	---whether to create winbar updater autocmd
 	---@type boolean
 	create_autocmd = true,
+	theme = "catppuccin",
 
 	---buftypes to enable winbar in
 	---@type table

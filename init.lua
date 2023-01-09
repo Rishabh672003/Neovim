@@ -1,43 +1,11 @@
-local core_modules = {
-	"user.impatient",
-	"user.plugins",
-	"user.colorschemes.catppuccin",
-	"user.lualine-themes.lualine1",
-	"user.startup-screens.startup-screen3",
-	"user.barbeque.barbeque2",
-	"user.options",
-	"user.keymaps",
-	"user.cmp",
-	"user.lsp",
-	"user.telescope",
-	"user.treesitter",
-	"user.autopairs",
-	"user.comment",
-	"user.gitsigns",
-	"user.nvim-tree",
-	"user.navic",
-	"user.cybu",
-	"user.whichkey",
-	"user.toggleterm",
-	"user.project",
-	"user.indentline",
-	"user.autocommands",
-	"user.colorizer",
-	"user.illuminate",
-	"user.notify",
-	"user.jaq",
-	"user.better-escape",
-	"user.last_place",
-	"user.hop",
-	"user.zen-mode",
-	"user.dap",
-}
+require("user.options")
+require("user.lazy")
+require("user.keymaps")
+require("user.autocommands")
+require("user.colorscheme")
 
--- Using pcall we can handle better any loading issues
-for _, module in ipairs(core_modules) do
-	local ok, _ = pcall(require, module)
-	if not ok then
-		print("config missing!!, or not loaded, see all config files are available and if they are restart neovim")
-		return
-	end
-end
+-- this is for the fix of clangd otherwise it keeps giving some error
+-- local capabilities = vim.lsp.protocol.make_client_capabilities()
+-- capabilities.offsetEncoding = { "utf-16" }
+-- require("lspconfig").clangd.setup({ capabilities = capabilities })
+

@@ -72,18 +72,6 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-	callback = function()
-		local line_count = vim.api.nvim_buf_line_count(0)
-		if line_count >= 100000 then
-			vim.cmd("IlluminatePauseBuf")
-			vim.cmd("Gitsigns detach")
-			-- vim.cmd("LspStop")
-			-- vim.cmd("set eventignore=all")
-		end
-	end,
-})
-
 -- vim.api.nvim_create_autocmd("FileType", {
 -- 	pattern = "zsh",
 -- 	callback = function()
@@ -91,6 +79,13 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 -- 		require("nvim-treesitter.highlight").attach(0, "bash")
 -- 	end,
 -- })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "c",
+	callback = function()
+		require("user.lsp.clangd")
+	end,
+})
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 	pattern = "*.conf",

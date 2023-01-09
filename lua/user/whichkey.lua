@@ -100,13 +100,14 @@ local mappings = {
 	["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
 	["p"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
-	P = {
-		name = "Packer",
-		c = { "<cmd>PackerCompile<cr>", "Compile" },
-		i = { "<cmd>PackerInstall<cr>", "Install" },
-		s = { "<cmd>PackerSync<cr>", "Sync" },
-		S = { "<cmd>PackerStatus<cr>", "Status" },
-		u = { "<cmd>PackerUpdate<cr>", "Update" },
+	L = {
+		name = "Lazy",
+		s = { "<cmd>Lazy update<cr>", "Update" },
+		l = { "<cmd>Lazy log<cr>", "Log" },
+		p = { "<cmd>Lazy profile<cr>", "Profile" },
+		d = { "<cmd>Lazy debug<cr>", "Debug" },
+		c = { "<cmd>Lazy clean<cr>", "Clean" },
+		S = { "<cmd>Lazy<cr>", "Lazy" },
 	},
 
 	["r"] = { "<cmd>:Telescope oldfiles<cr>", "Recent Files" },
