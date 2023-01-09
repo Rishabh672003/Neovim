@@ -50,6 +50,13 @@ require("lazy").setup({
 		"williamboman/mason-lspconfig.nvim",
 	},
 	{
+		"jose-elias-alvarez/null-ls.nvim",
+		-- event = "InsertEnter",
+		config = function()
+			require("user.lsp.null-ls")
+		end,
+	},
+	{
 		"p00f/clangd_extensions.nvim",
 		lazy = false,
 		event = "Bufenter",
@@ -96,13 +103,6 @@ require("lazy").setup({
 	} },
 	{ "stevearc/dressing.nvim", event = "VeryLazy" },
 	{ "antoinemadec/FixCursorHold.nvim", lazy = false },
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-		-- event = "InsertEnter",
-		config = function()
-			require("user.lsp.null-ls")
-		end,
-	},
 	{ "b0o/schemastore.nvim", lazy = false },
 	{
 		"is0n/jaq-nvim",
