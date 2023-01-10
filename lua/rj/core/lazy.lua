@@ -54,9 +54,13 @@ require("lazy").setup({
 	{ "L3MON4D3/LuaSnip", dependencies = {
 		"rafamadriz/friendly-snippets",
 	} },
-        {"neovim/nvim-lspconfig"},
-        {"williamboman/mason.nvim"},
-        {"williamboman/mason-lspconfig.nvim"},
-        {"jose-elias-alvarez/null-ls.nvim"},
-        {"nvim-telescope/telescope.nvim"},
+  {"neovim/nvim-lspconfig"},
+  {"williamboman/mason.nvim"},
+  {"williamboman/mason-lspconfig.nvim"},
+  {"jose-elias-alvarez/null-ls.nvim", config = function()
+    require("rj.plugins.lsp.null-ls") 
+  end},
+  {"nvim-telescope/telescope.nvim"},
+  {"nvim-telescope/telescope-media-files.nvim"},
+  { "folke/tokyonight.nvim", event = "VeryLazy" },
 })
