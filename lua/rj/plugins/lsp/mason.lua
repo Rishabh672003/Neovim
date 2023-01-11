@@ -53,7 +53,7 @@ for _, server in pairs(servers) do
 
 	local require_ok, conf_opts = pcall(require, "rj.plugins.lsp.settings." .. server)
 	if require_ok then
-		opts = vim.tbl_deep_extend("force", conf_opts, opts)
+	  opts = vim.tbl_deep_extend("force", conf_opts, opts)
 	end
 
 	lspconfig[server].setup(opts)
