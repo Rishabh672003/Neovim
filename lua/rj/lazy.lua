@@ -43,6 +43,7 @@ require("lazy").setup({
 			end,
 		},
 	},
+	{ "folke/tokyonight.nvim", event = "VeryLazy" },
 	"nvim-lua/popup.nvim",
 	"nvim-lua/plenary.nvim",
 
@@ -94,6 +95,12 @@ require("lazy").setup({
 	},
 	{ "b0o/schemastore.nvim", lazy = false },
 	{
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup({})
+		end,
+	},
+	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			{ "nvim-telescope/telescope-file-browser.nvim", lazy = false },
@@ -127,9 +134,172 @@ require("lazy").setup({
 	},
 	{
 		"utilyre/barbecue.nvim",
-		branch = "hotfix/colorscheme-switch",
+		--branch = "hotfix/colorscheme-switch",
 		config = function()
-			require("barbecue").setup()
+			require("rj.plugins.barbecue")
+		end,
+		dependencies = {
+			{
+				"SmiteshP/nvim-navic",
+				config = function()
+					require("rj.plugins.navic")
+				end,
+			},
+		},
+	},
+	{
+		"kyazdani42/nvim-tree.lua",
+		cmd = "NvimTreeToggle",
+		tag = "nightly", -- optional, updated every week. (see issue #1193)
+		config = function()
+			require("rj.plugins.nvim-tree")
+		end,
+	},
+	{
+		"goolord/alpha-nvim",
+		config = function()
+			require("rj.plugins.alpha-themes.startup-screen3")
+		end,
+	},
+	{
+		"nvim-lualine/lualine.nvim",
+		config = function()
+			require("rj.plugins.lualine-themes.lualine1")
+		end,
+	},
+	{
+		"numToStr/Comment.nvim",
+		config = function()
+			require("rj.plugins.comment")
+		end,
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("rj.plugins.gitsigns")
+		end,
+	},
+	{
+		"ghillb/cybu.nvim",
+		event = "Bufenter",
+		config = function()
+			require("rj.plugins.cybu")
+		end,
+	},
+	{
+		"ethanholz/nvim-lastplace",
+		config = function()
+			require("rj.plugins.lastplace")
+		end,
+	},
+	{ "LunarVim/bigfile.nvim" },
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = function()
+			require("rj.plugins.autopairs")
+		end,
+	},
+	{ "antoinemadec/FixCursorHold.nvim", lazy = false },
+	{
+		"is0n/jaq-nvim",
+		lazy = false,
+		cmd = "Jaq",
+		config = function()
+			require("rj.plugins.jaq")
+		end,
+	},
+	{
+		"Darazaki/indent-o-matic",
+		config = function()
+			require("rj.plugins.indent")
+		end,
+	},
+	{ "MunifTanjim/nui.nvim", lazy = false },
+	{
+		"akinsho/toggleterm.nvim",
+		config = function()
+			require("rj.plugins.toggleterm")
+		end,
+	},
+	{
+		"NvChad/nvim-colorizer.lua",
+		config = function()
+			require("rj.plugins.colorizer")
+		end,
+	},
+	{ "ellisonleao/glow.nvim", cmd = "Glow" },
+	{
+		"rcarriga/nvim-notify",
+		config = function()
+			require("rj.plugins.notify")
+		end,
+	},
+	"stevearc/dressing.nvim",
+	{
+		"ziontee113/icon-picker.nvim",
+		config = function()
+			require("icon-picker")
+		end,
+	},
+	{
+		"andweeb/presence.nvim",
+		config = function()
+			require("rj.plugins.presence")
+		end,
+	},
+	{
+		"phaazon/hop.nvim",
+		branch = "v2", -- optional but strongly recommended
+		config = function()
+			require("rj.plugins.hop")
+		end,
+	},
+	{
+		"folke/zen-mode.nvim",
+		config = function()
+			require("rj.plugins.zen-mode")
+		end,
+		cmd = "ZenMode",
+	},
+	{ "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
+	{
+		"mfussenegger/nvim-dap-python",
+		commit = "27a0eff2bd3114269bb010d895b179e667e712bd",
+		lazy = false,
+		config = function()
+			require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
+		end,
+	},
+	{
+		"mfussenegger/nvim-dap",
+		commit = "6b12294a57001d994022df8acbe2ef7327d30587",
+		lazy = false,
+		config = function()
+			require("rj.plugins.dap")
+		end,
+	},
+	{
+		"rcarriga/nvim-dap-ui",
+		commit = "1cd4764221c91686dcf4d6b62d7a7b2d112e0b13",
+		lazy = false,
+		config = function()
+			require("rj.plugins.dapui")
+		end,
+	},
+	{
+		"ravenxrz/DAPInstall.nvim",
+		commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de",
+		lazy = true,
+		config = function()
+			require("dap_install").setup({})
+			require("dap_install").config("python", {})
+		end,
+	},
+	{
+		"jackMort/ChatGPT.nvim",
+		config = function()
+			require("chatgpt").setup({})
 		end,
 	},
 })
