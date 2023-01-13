@@ -1,4 +1,4 @@
-local icons = require("user.icons")
+local icons = require("rj.icons")
 
 require("nvim-navic").setup({
 	icons = {

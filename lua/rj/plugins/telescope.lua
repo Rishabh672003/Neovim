@@ -1,17 +1,8 @@
-local _, telescope = pcall(require, "telescope")
-if not _ then
-	return
-end
+local telescope = require("telescope")
 
-local _, actions = pcall(require, "telescope.actions")
-if not _ then
-	return
-end
+local actions = require("telescope.actions")
 
-local _, icons = pcall(require, "user.icons")
-if not _ then
-	return
-end
+local icons = require("rj.icons")
 
 telescope.load_extension("file_browser")
 

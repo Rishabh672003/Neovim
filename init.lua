@@ -1,5 +1,5 @@
-require("user.options")
-require("user.lazy")
-require("user.keymaps")
-require("user.autocommands")
--- require("user.colorscheme")
+require("rj.options")
+require("rj.lazy")
+require("rj.keymaps")
+
+vim.cmd("colorscheme catppuccin")

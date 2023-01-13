@@ -1,7 +1,4 @@
-local status_ok, barbecue = pcall(require, "barbecue")
-if not status_ok then
-	return
-end
+local barbecue = require("barbecue")
 
 vim.api.nvim_set_hl(0, "NavicSeparator", { link = "Normal" })
 
@@ -39,11 +36,11 @@ barbecue.setup({
 
 		---entry separator
 		---@type string
-		separator = require("user.icons").ui.ChevronRight,
+		separator = require("rj.icons").ui.ChevronRight,
 
 		---string to be shown when buffer is modified
 		---@type string
-		modified = require("user.icons").ui.BigCircle,
+		modified = require("rj.icons").ui.BigCircle,
 
 		---string to be shown when context is available but empty
 		---@type string

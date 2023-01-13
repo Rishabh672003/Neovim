@@ -1,14 +1,8 @@
 -- originally authored by @AdamWhittingham
 
-local path_ok, alpha = pcall(require, "alpha")
-if not path_ok then
-	return
-end
+local alpha = require("alpha")
 
-local path_ok1, plenary_path = pcall(require, "plenary.path")
-if not path_ok1 then
-	return
-end
+local plenary_path = require("plenary.path")
 
 local dashboard = require("alpha.themes.dashboard")
 local cdir = vim.fn.getcwd()
@@ -197,7 +191,7 @@ local end_text = {
 
 local fortune = {
 	type = "text",
-	val = require("user.startup-screens.fortune")(),
+	val = require("rj.plugins.alpha-themes.fortune")(),
 	opts = {
 		position = "center",
 		hl = "group",

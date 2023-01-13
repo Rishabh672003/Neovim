@@ -1,7 +1,4 @@
-local status_ok, hop = pcall(require, "hop")
-if not status_ok then
-	return
-end
+local hop = require("hop")
 hop.setup()
 
 local opts = { noremap = true, silent = true }
