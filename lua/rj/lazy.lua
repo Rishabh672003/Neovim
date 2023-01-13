@@ -49,10 +49,7 @@ require("lazy").setup({
 	--cmp stuff
 	{
 		"hrsh7th/nvim-cmp",
-		-- load cmp on InsertEnter
 		event = "InsertEnter",
-		-- these dependencies will only be loaded when cmp loads
-		-- dependencies are always lazy-loaded unless specified otherwise
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
@@ -83,7 +80,6 @@ require("lazy").setup({
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		-- event = "InsertEnter",
 		config = function()
 			require("rj.plugins.lsp.null-ls")
 		end,
@@ -127,6 +123,13 @@ require("lazy").setup({
 		},
 		config = function()
 			require("rj.plugins.treesitter")
+		end,
+	},
+	{
+		"utilyre/barbecue.nvim",
+		branch = "hotfix/colorscheme-switch",
+		config = function()
+			require("barbecue").setup()
 		end,
 	},
 })
