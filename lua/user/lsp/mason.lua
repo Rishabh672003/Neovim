@@ -15,6 +15,7 @@ local servers = {
 	"jsonls",
 	"taplo",
 	"tsserver",
+	"lemminx"
 }
 
 local settings = {

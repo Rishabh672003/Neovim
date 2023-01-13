@@ -21,8 +21,8 @@ local options = {
 	updatetime = 300, -- faster completion (4000ms default)
 	writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 	expandtab = true, -- convert tabs to spaces
-	-- shiftwidth = 2, -- the number of spaces inserted for each indentation
-	-- tabstop = 2, -- insert 2 spaces for a tab
+	shiftwidth = 2, -- the number of spaces inserted for each indentation
+	tabstop = 2, -- insert 2 spaces for a tab
 	cursorline = true, -- highlight the current line
 	number = true, -- set numbered lines
 	relativenumber = true, -- set relative numbered lines
@@ -44,4 +44,4 @@ vim.opt.shortmess:append("c")
 vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.opt.iskeyword:append("-")
 vim.opt.whichwrap:append("<,>,[,],h,l")
-vim.opt.diffopt:append("linematch:60")
+-- vim.opt.diffopt:append("linematch:60")
