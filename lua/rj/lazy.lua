@@ -256,6 +256,13 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"max397574/better-escape.nvim",
+		lazy = false,
+		config = function()
+			require("rj.plugins.better-escape")
+		end,
+	},
+	{
 		"folke/zen-mode.nvim",
 		config = function()
 			require("rj.plugins.zen-mode")
