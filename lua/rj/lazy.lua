@@ -36,7 +36,7 @@ require("lazy").setup({
 		end,
 		dependencies = {
 			"lukas-reineke/indent-blankline.nvim",
-			event = "InsertEnter",
+			event = "BufReadPre",
 			config = function()
 				require("rj.plugins.indentline")
 				vim.cmd("colorscheme catppuccin")
@@ -44,10 +44,19 @@ require("lazy").setup({
 		},
 	},
 	{
-		"rcarriga/nvim-notify",
+		"folke/noice.nvim",
 		config = function()
-			require("rj.plugins.notify")
+			require("rj.plugins.noice")
 		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			{
+				"rcarriga/nvim-notify",
+				config = function()
+					require("rj.plugins.notify")
+				end,
+			},
+		},
 	},
 	{ "folke/tokyonight.nvim", event = "VeryLazy" },
 	"nvim-lua/popup.nvim",
@@ -220,7 +229,6 @@ require("lazy").setup({
 			require("rj.plugins.indent")
 		end,
 	},
-	{ "MunifTanjim/nui.nvim", lazy = false },
 	{
 		"akinsho/toggleterm.nvim",
 		config = function()
