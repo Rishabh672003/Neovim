@@ -135,7 +135,7 @@ require("lazy").setup({
 		"utilyre/barbecue.nvim",
 		--branch = "hotfix/colorscheme-switch",
 		config = function()
-			require("rj.plugins.barbecue")
+			require("rj.plugins.barbecue.barbecue")
 		end,
 		dependencies = {
 			{
