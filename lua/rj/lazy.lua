@@ -22,6 +22,7 @@ require("lazy").setup({
 	},
 	{
 		"folke/which-key.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("rj.plugins.whichkey")
 		end,
@@ -110,12 +111,14 @@ require("lazy").setup({
 	{ "b0o/schemastore.nvim", lazy = false },
 	{
 		"j-hui/fidget.nvim",
+		event = "Bufenter",
 		config = function()
 			require("fidget").setup({})
 		end,
 	},
 	{
 		"nvim-telescope/telescope.nvim",
+		cmd = "Telescope",
 		dependencies = {
 			{ "nvim-telescope/telescope-file-browser.nvim", lazy = false },
 			{
@@ -126,10 +129,10 @@ require("lazy").setup({
 			require("rj.plugins.telescope")
 		end,
 	},
-	{ "nvim-telescope/telescope-media-files.nvim" },
 	{ "folke/tokyonight.nvim", event = "VeryLazy" },
 	{
 		"RRethy/vim-illuminate",
+		event = "BufReadPost",
 		lazy = false,
 		config = function()
 			require("rj.plugins.illuminate")
@@ -137,6 +140,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		event = "BufReadPost",
 		dependencies = {
 			"nvim-treesitter/playground",
 			"JoosepAlviste/nvim-ts-context-commentstring",
@@ -171,6 +175,7 @@ require("lazy").setup({
 	},
 	{
 		"goolord/alpha-nvim",
+		event = "VimEnter",
 		config = function()
 			require("rj.plugins.alpha-themes.startup-screen3")
 		end,
@@ -189,13 +194,14 @@ require("lazy").setup({
 	},
 	{
 		"lewis6991/gitsigns.nvim",
+		event = "BufReadPre",
 		config = function()
 			require("rj.plugins.gitsigns")
 		end,
 	},
 	{
 		"ghillb/cybu.nvim",
-		event = "Bufenter",
+		event = "BufReadPre",
 		config = function()
 			require("rj.plugins.cybu")
 		end,
