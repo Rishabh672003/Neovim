@@ -43,6 +43,12 @@ require("lazy").setup({
 			end,
 		},
 	},
+	{
+		"rcarriga/nvim-notify",
+		config = function()
+			require("rj.plugins.notify")
+		end,
+	},
 	{ "folke/tokyonight.nvim", event = "VeryLazy" },
 	"nvim-lua/popup.nvim",
 	"nvim-lua/plenary.nvim",
