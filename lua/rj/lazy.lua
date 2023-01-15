@@ -110,13 +110,6 @@ require("lazy").setup({
 	},
 	{ "b0o/schemastore.nvim", lazy = false },
 	{
-		"j-hui/fidget.nvim",
-		event = "Bufenter",
-		config = function()
-			require("fidget").setup({})
-		end,
-	},
-	{
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
 		dependencies = {
