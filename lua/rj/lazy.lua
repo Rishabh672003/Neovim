@@ -46,6 +46,7 @@ require("lazy").setup({
 	},
 	{
 		"folke/noice.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("rj.plugins.noice")
 		end,
@@ -53,6 +54,7 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 			{
 				"rcarriga/nvim-notify",
+				event = "VeryLazy",
 				config = function()
 					require("rj.plugins.notify")
 				end,
@@ -85,10 +87,9 @@ require("lazy").setup({
 	"neovim/nvim-lspconfig",
 	{
 		"williamboman/mason.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("rj.plugins.lsp.mason")
-			require("rj.plugins.lsp.diagnostic")
-			require("rj.plugins.lsp.attach")
 		end,
 	},
 	{
@@ -96,6 +97,7 @@ require("lazy").setup({
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
+		event = "BufReadPre",
 		config = function()
 			require("rj.plugins.lsp.null-ls")
 		end,
@@ -109,6 +111,13 @@ require("lazy").setup({
 		end,
 	},
 	{ "b0o/schemastore.nvim", lazy = false },
+	{
+		"j-hui/fidget.nvim",
+		event = "Bufenter",
+		config = function()
+			require("fidget").setup({})
+		end,
+	},
 	{
 		"nvim-telescope/telescope.nvim",
 		cmd = "Telescope",
@@ -175,6 +184,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("rj.plugins.lualine-themes.lualine1")
 		end,
@@ -216,7 +226,6 @@ require("lazy").setup({
 	{ "antoinemadec/FixCursorHold.nvim", lazy = false },
 	{
 		"is0n/jaq-nvim",
-		lazy = false,
 		cmd = "Jaq",
 		config = function()
 			require("rj.plugins.jaq")
@@ -230,18 +239,21 @@ require("lazy").setup({
 	},
 	{
 		"akinsho/toggleterm.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("rj.plugins.toggleterm")
 		end,
 	},
 	{
 		"andweeb/presence.nvim",
+		event = "BufReadPre",
 		config = function()
 			require("rj.plugins.presence")
 		end,
 	},
 	{
 		"phaazon/hop.nvim",
+		event = "BufReadPre",
 		branch = "v2", -- optional but strongly recommended
 		config = function()
 			require("rj.plugins.hop")
@@ -256,16 +268,16 @@ require("lazy").setup({
 	},
 	{
 		"folke/zen-mode.nvim",
+		cmd = "ZenMode",
 		config = function()
 			require("rj.plugins.zen-mode")
 		end,
-		cmd = "ZenMode",
 	},
 	{ "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
 	{
 		"mfussenegger/nvim-dap-python",
 		commit = "27a0eff2bd3114269bb010d895b179e667e712bd",
-		lazy = false,
+		event = "VeryLazy",
 		config = function()
 			require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
 		end,
@@ -273,7 +285,7 @@ require("lazy").setup({
 	{
 		"mfussenegger/nvim-dap",
 		commit = "6b12294a57001d994022df8acbe2ef7327d30587",
-		lazy = false,
+		event = "VeryLazy",
 		config = function()
 			require("rj.plugins.dap")
 		end,
@@ -281,7 +293,7 @@ require("lazy").setup({
 	{
 		"rcarriga/nvim-dap-ui",
 		commit = "1cd4764221c91686dcf4d6b62d7a7b2d112e0b13",
-		lazy = false,
+		event = "VeryLazy",
 		config = function()
 			require("rj.plugins.dapui")
 		end,
@@ -297,6 +309,7 @@ require("lazy").setup({
 	},
 	{
 		"jackMort/ChatGPT.nvim",
+		cmd = "ChatGPT",
 		config = function()
 			require("chatgpt").setup({})
 		end,
