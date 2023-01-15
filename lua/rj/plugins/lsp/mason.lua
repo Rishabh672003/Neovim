@@ -1,12 +1,6 @@
-local _, mason = pcall(require, "mason")
-if not _ then
-	return
-end
+local mason = require("mason")
 
-local _, mason_lspconfig = pcall(require, "mason-lspconfig")
-if not _ then
-	return
-end
+local mason_lspconfig = require("mason-lspconfig")
 
 local servers = {
 	"sumneko_lua",

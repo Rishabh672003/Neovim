@@ -63,7 +63,7 @@ require("lazy").setup({
 	},
 	{ "folke/tokyonight.nvim", event = "VeryLazy" },
 	"nvim-lua/popup.nvim",
-	"nvim-lua/plenary.nvim",
+	{ "nvim-lua/plenary.nvim", lazy = true },
 
 	--cmp stuff
 	{
@@ -81,13 +81,12 @@ require("lazy").setup({
 			require("rj.plugins.cmp")
 		end,
 	},
-	{ "L3MON4D3/LuaSnip", dependencies = {
+	{ "L3MON4D3/LuaSnip", event = "BufReadPost", dependencies = {
 		"rafamadriz/friendly-snippets",
 	} },
-	"neovim/nvim-lspconfig",
+	{ "neovim/nvim-lspconfig", lazy = true, event = "BufEnter" },
 	{
 		"williamboman/mason.nvim",
-		event = "VeryLazy",
 		config = function()
 			require("rj.plugins.lsp.mason")
 		end,
@@ -104,8 +103,7 @@ require("lazy").setup({
 	},
 	{
 		"p00f/clangd_extensions.nvim",
-		lazy = false,
-		event = "Bufenter",
+		event = "BufReadPost",
 		config = function()
 			require("rj.plugins.lsp.clangd")
 		end,
@@ -120,11 +118,15 @@ require("lazy").setup({
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		cmd = "Telescope",
+		event = "Bufenter",
+		-- cmd = { "Telescope", "Telescope projects" },
 		dependencies = {
-			{ "nvim-telescope/telescope-file-browser.nvim", lazy = false },
+			{ "nvim-telescope/telescope-file-browser.nvim", lazy = true },
 			{
 				"ahmedkhalf/project.nvim",
+				config = function()
+					require("rj.plugins.project")
+				end,
 			},
 		},
 		config = function()
@@ -146,7 +148,23 @@ require("lazy").setup({
 		dependencies = {
 			"nvim-treesitter/playground",
 			"JoosepAlviste/nvim-ts-context-commentstring",
-			"kyazdani42/nvim-web-devicons",
+			{
+				"kyazdani42/nvim-web-devicons",
+				config = function()
+					require("nvim-web-devicons").setup({
+						override = {
+							zsh = {
+								icon = "",
+								color = "#428850",
+								cterm_color = "65",
+								name = "Zsh",
+							},
+						},
+						color_icons = true,
+						default = true,
+					})
+				end,
+			},
 		},
 		config = function()
 			require("rj.plugins.treesitter")
@@ -184,7 +202,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
+		-- event = "VeryLazy",
 		config = function()
 			require("rj.plugins.lualine-themes.lualine1")
 		end,
