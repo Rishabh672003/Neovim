@@ -35,14 +35,15 @@ require("lazy").setup({
 		config = function()
 			require("rj.plugins.catppuccin")
 		end,
-		dependencies = {
-			"lukas-reineke/indent-blankline.nvim",
-			event = "BufReadPre",
-			config = function()
-				require("rj.plugins.indentline")
-				vim.cmd("colorscheme catppuccin")
-			end,
-		},
+		dependencies = {},
+	},
+	{
+		"lukas-reineke/indent-blankline.nvim",
+		event = "BufReadPre",
+		config = function()
+			require("rj.plugins.indentline")
+			-- vim.cmd("colorscheme catppuccin")
+		end,
 	},
 	{
 		"folke/noice.nvim",
