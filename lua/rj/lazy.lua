@@ -325,11 +325,4 @@ require("lazy").setup({
 			require("dap_install").config("python", {})
 		end,
 	},
-	{
-		"jackMort/ChatGPT.nvim",
-		cmd = "ChatGPT",
-		config = function()
-			require("chatgpt").setup({})
-		end,
-	},
 })
