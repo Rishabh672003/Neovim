@@ -1,7 +1,4 @@
-local status_ok, alpha = pcall(require, "alpha")
-if not status_ok then
-	return
-end
+local alpha = require{"alpha"}
 
 local if_nil = vim.F.if_nil
 local fnamemodify = vim.fn.fnamemodify

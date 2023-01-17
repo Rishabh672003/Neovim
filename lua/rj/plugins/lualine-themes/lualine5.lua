@@ -1,7 +1,4 @@
-local present, lualine = pcall(require, "lualine")
-if not present then
-  return
-end
+local lualine = require("lualine")
 
 -- astrovim theme cursorline bg = '#252931'
 -- astrovim2 theme cursorline bg = '#2c323c'

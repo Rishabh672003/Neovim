@@ -2,10 +2,7 @@ local M = {}
 
 local function attach_navic(client, bufnr)
 	vim.g.navic_silence = true
-	local status_ok, navic = pcall(require, "nvim-navic")
-	if not status_ok then
-		return
-	end
+	local navic = require("nvim-navic")
 	navic.attach(client, bufnr)
 end
 
@@ -30,11 +27,7 @@ M.on_attach = function(client, bufnr)
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-	return
-end
+local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
