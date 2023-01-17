@@ -42,7 +42,6 @@ require("lazy").setup({
 		event = "BufReadPre",
 		config = function()
 			require("rj.plugins.indentline")
-			-- vim.cmd("colorscheme catppuccin")
 		end,
 	},
 	{
@@ -72,7 +71,7 @@ require("lazy").setup({
 		event = "InsertEnter",
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
+			{ "hrsh7th/cmp-buffer", event = "InsertEnter" },
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip",
@@ -104,7 +103,7 @@ require("lazy").setup({
 	},
 	{
 		"p00f/clangd_extensions.nvim",
-		event = "BufReadPost",
+		-- event = "BufReadPost",
 		config = function()
 			require("rj.plugins.lsp.clangd")
 		end,
