@@ -19,9 +19,6 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-	if client.name == "clangd" then
-		client.server_capabilities.documentFormattingProvider = false
-	end
 	lsp_keymaps(bufnr)
 	attach_navic(client, bufnr)
 end
@@ -61,6 +58,11 @@ function M.remove_augroup(name)
 	end
 end
 
-vim.cmd([[ command! LspToggleAutoFormat execute 'lua require("rj.plugins.lsp.attach").toggle_format_on_save()' ]])
-
+vim.api.nvim_create_user_command(
+  'LspToggleAutoFormat',
+  function()
+    require("rj.plugins.lsp.attach").toggle_format_on_save()
+  end,
+  {}
+)
 return M

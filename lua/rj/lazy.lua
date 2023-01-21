@@ -199,7 +199,6 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		-- event = "VeryLazy",
 		config = function()
 			require("rj.plugins.lualine-themes.lualine1")
 		end,
@@ -239,7 +238,7 @@ require("lazy").setup({
 			require("rj.plugins.autopairs")
 		end,
 	},
-	{ "antoinemadec/FixCursorHold.nvim", lazy = false },
+	{ "antoinemadec/FixCursorHold.nvim", lazy = false, event = "BufReadPre" },
 	{
 		"is0n/jaq-nvim",
 		cmd = "Jaq",
