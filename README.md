@@ -71,6 +71,10 @@ You can change the startup-screen if you dont like this one go to lua/user/start
 ![image](https://user-images.githubusercontent.com/53911515/193248655-8157d687-0dfb-4986-b826-a2531586e97a.png)
 ![image](https://user-images.githubusercontent.com/53911515/193248778-47524603-5db5-4922-964f-829bf09c2c2e.png)
 
+## Startup time
+![image](https://user-images.githubusercontent.com/53911515/213846907-fc337772-e72e-47d0-86ae-9b1434b7c85f.png)
+this is all thanks to lazyloading a lot of pligins by using lazy.nvim
+
 ## Uninstallation and Cleanup
 
 ```bash
