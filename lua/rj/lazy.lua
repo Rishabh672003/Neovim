@@ -87,6 +87,7 @@ require("lazy").setup({
 	{ "neovim/nvim-lspconfig", lazy = true },
 	{
 		"williamboman/mason.nvim",
+		event = "BufReadPre",
 		config = function()
 			require("rj.plugins.lsp.mason")
 		end,
@@ -104,19 +105,12 @@ require("lazy").setup({
 	},
 	{
 		"p00f/clangd_extensions.nvim",
-		-- event = "BufReadPost",
+		event = "BufReadPre",
 		config = function()
 			require("rj.plugins.lsp.clangd")
 		end,
 	},
 	{ "b0o/schemastore.nvim", lazy = false },
-	{
-		"j-hui/fidget.nvim",
-		event = "Bufenter",
-		config = function()
-			require("fidget").setup({})
-		end,
-	},
 	{
 		"nvim-telescope/telescope.nvim",
 		event = "Bufenter",
@@ -174,6 +168,7 @@ require("lazy").setup({
 	},
 	{
 		"utilyre/barbecue.nvim",
+		event = "BufReadPre",
 		--branch = "hotfix/colorscheme-switch",
 		config = function()
 			require("rj.plugins.barbecue.barbecue")
