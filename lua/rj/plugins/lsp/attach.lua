@@ -61,13 +61,6 @@ function M.remove_augroup(name)
 	end
 end
 
-vim.lsp.handlers['workspace/diagnostic/refresh'] = function(_, _, ctx)
-  local ns = vim.lsp.diagnostic.get_namespace(ctx.client_id)
-  local bufnr = vim.api.nvim_get_current_buf()
-  vim.diagnostic.reset(ns, bufnr)
-  return true
-end
-
-vim.cmd([[ command! LspToggleAutoFormat execute 'lua require("user.lsp.attach").toggle_format_on_save()' ]])
+vim.cmd([[ command! LspToggleAutoFormat execute 'lua require("rj.plugins.lsp.attach").toggle_format_on_save()' ]])
 
 return M

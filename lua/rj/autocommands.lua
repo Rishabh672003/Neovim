@@ -80,13 +80,6 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 -- 	end,
 -- })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "c",
-	callback = function()
-		require("user.lsp.clangd")
-	end,
-})
-
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 	pattern = "*.conf",
 	callback = function()
