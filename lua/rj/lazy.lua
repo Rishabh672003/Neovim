@@ -68,7 +68,7 @@ require("lazy").setup({
 	--cmp stuff
 	{
 		"hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		event = { "InsertEnter", "CmdlineEnter" },
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			{ "hrsh7th/cmp-buffer", event = "InsertEnter" },
@@ -81,10 +81,10 @@ require("lazy").setup({
 			require("rj.plugins.cmp")
 		end,
 	},
-	{ "L3MON4D3/LuaSnip", event = "BufReadPost", dependencies = {
+	{ "L3MON4D3/LuaSnip", event = "InsertEnter", dependencies = {
 		"rafamadriz/friendly-snippets",
 	} },
-	{ "neovim/nvim-lspconfig", lazy = true, event = "BufEnter" },
+	{ "neovim/nvim-lspconfig", lazy = true },
 	{
 		"williamboman/mason.nvim",
 		config = function()
@@ -93,6 +93,7 @@ require("lazy").setup({
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
+		lazy = true,
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
@@ -136,7 +137,8 @@ require("lazy").setup({
 	{ "folke/tokyonight.nvim", event = "VeryLazy" },
 	{
 		"RRethy/vim-illuminate",
-		event = "BufReadPost",
+		event = "VeryLazy",
+		-- event = "BufReadPost",
 		lazy = false,
 		config = function()
 			require("rj.plugins.illuminate")
@@ -147,7 +149,7 @@ require("lazy").setup({
 		event = "BufReadPost",
 		dependencies = {
 			"nvim-treesitter/playground",
-			"JoosepAlviste/nvim-ts-context-commentstring",
+			{ "JoosepAlviste/nvim-ts-context-commentstring", event = "VeryLazy" },
 			{
 				"kyazdani42/nvim-web-devicons",
 				config = function()
@@ -209,6 +211,7 @@ require("lazy").setup({
 	},
 	{
 		"numToStr/Comment.nvim",
+		event = "BufRead",
 		config = function()
 			require("rj.plugins.comment")
 		end,
