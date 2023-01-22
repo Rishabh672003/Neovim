@@ -55,9 +55,9 @@ local progress = function()
 	return chars[index]
 end
 
-local spaces = function()
-	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-end
+-- local spaces = function()
+-- 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+-- end
 
 lualine.setup({
 	options = {
@@ -79,7 +79,7 @@ lualine.setup({
 			-- { "filename", file_status = true, path = 3 },
 		},
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_x = { diff, filetype, spaces },
+		lualine_x = { diff, filetype },
 		lualine_y = { location },
 		lualine_z = { progress },
 	},

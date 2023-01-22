@@ -93,3 +93,19 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 		vim.cmd("set ft=rasi")
 	end,
 })
+
+local save_fold = vim.api.nvim_create_augroup("Persistent Folds", { clear = true })
+vim.api.nvim_create_autocmd("BufWinLeave", {
+	pattern = "*.*",
+	callback = function()
+		vim.cmd("mkview")
+	end,
+	group = save_fold,
+})
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	pattern = "*.*",
+	callback = function()
+		vim.cmd("loadview")
+	end,
+	group = save_fold,
+})
