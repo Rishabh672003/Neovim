@@ -67,7 +67,7 @@ sh <(curl -s https://raw.githubusercontent.com/Rishabh672003/Neovim/main/install
 
 You can change the startup-screen if you dont like this one go to lua/user/startup-screens and read the readme there
 ![image](https://user-images.githubusercontent.com/53911515/192135130-15abc06a-f993-48a0-982c-1a445d6f8aa1.png)
-![image](https://user-images.githubusercontent.com/53911515/193248471-187214fc-7b34-404b-a8cf-651dece35eef.png)
+![image](https://user-images.githubusercontent.com/53911515/213927853-5e6460ed-a54d-414a-9151-f283d0ca9299.png)
 ![image](https://user-images.githubusercontent.com/53911515/193248655-8157d687-0dfb-4986-b826-a2531586e97a.png)
 ![image](https://user-images.githubusercontent.com/53911515/193248778-47524603-5db5-4922-964f-829bf09c2c2e.png)
 
