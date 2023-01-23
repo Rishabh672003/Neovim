@@ -1,5 +1,6 @@
 require("rj.options")
 require("rj.lazy")
 require("rj.keymaps")
+require("rj.autocommands")
 require("rj.plugins.lsp")
 vim.cmd("colorscheme catppuccin")

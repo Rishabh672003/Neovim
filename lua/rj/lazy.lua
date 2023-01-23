@@ -340,15 +340,10 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"gaoDean/autolist.nvim",
-		ft = {
-			"markdown",
-			"text",
-			"tex",
-			"plaintex",
-		},
-		config = function()
-			require("rj.plugins.autolist")
+		"iamcco/markdown-preview.nvim",
+		build = function()
+			vim.fn["mkdp#util#install"]()
 		end,
 	},
+	"Pocco81/auto-save.nvim",
 })

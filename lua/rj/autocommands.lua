@@ -9,9 +9,17 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "gitcommit", "markdown" },
+	pattern = { "gitcommit" },
 	callback = function()
 		vim.opt_local.wrap = true
+		vim.opt_local.spell = true
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "markdown" },
+	callback = function()
+		vim.opt_local.wrap = false
 		vim.opt_local.spell = true
 	end,
 })
@@ -94,18 +102,18 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 	end,
 })
 
-local save_fold = vim.api.nvim_create_augroup("Persistent Folds", { clear = true })
-vim.api.nvim_create_autocmd("BufWinLeave", {
-	pattern = "*.*",
-	callback = function()
-		vim.cmd("mkview")
-	end,
-	group = save_fold,
-})
-vim.api.nvim_create_autocmd("BufWinEnter", {
-	pattern = "*.*",
-	callback = function()
-		vim.cmd("loadview")
-	end,
-	group = save_fold,
-})
+-- local save_fold = vim.api.nvim_create_augroup("Persistent Folds", { clear = true })
+-- vim.api.nvim_create_autocmd("BufWinLeave", {
+-- 	pattern = "*.*",
+-- 	callback = function()
+-- 		vim.cmd("mkview")
+-- 	end,
+-- 	group = save_fold,
+-- })
+-- vim.api.nvim_create_autocmd("BufWinEnter", {
+-- 	pattern = "*.*",
+-- 	callback = function()
+-- 		vim.cmd("loadview")
+-- 	end,
+-- 	group = save_fold,
+-- })
