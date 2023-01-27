@@ -21,13 +21,6 @@ require("lazy").setup({
 		timeout = 600,
 	},
 	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("rj.plugins.whichkey")
-		end,
-	},
-	{
 		"catppuccin/nvim",
 		name = "catppuccin",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
@@ -36,6 +29,13 @@ require("lazy").setup({
 			require("rj.plugins.catppuccin")
 		end,
 		dependencies = {},
+	},
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("rj.plugins.whichkey")
+		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -345,5 +345,18 @@ require("lazy").setup({
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
-	"Pocco81/auto-save.nvim",
+	-- {
+	-- 	"lewis6991/satellite.nvim",
+	-- 	config = function()
+	-- 		require("satellite").setup()
+	-- 	end,
+	-- },
+	-- {
+	-- 	"Pocco81/auto-save.nvim",
+	-- 	config = function()
+	-- 		require("auto-save").setup({
+	-- 			enabled = false,
+	-- 		})
+	-- 	end,
+	-- },
 })

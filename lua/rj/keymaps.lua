@@ -22,11 +22,6 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
-keymap("n", "<leader>w", ":w<CR>", opts)
-keymap("n", "<leader>q", ":q<CR>", opts)
-keymap("n", "<leader>e", ":Vexplore<CR>", opts)
-
---keymap("n", "<leader>q", ":wq<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
@@ -41,6 +36,9 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
+
+keymap("i", "<C-a>", "<ESC>:0,$y<CR>a", opts)
+keymap("n", "<C-a>", "<ESC>:0,$y<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
@@ -92,7 +90,6 @@ keymap("n", "<M-h>", ":tabprevious<CR>", opts)
 -- keymap("n", "<A-i>", ":tabnew<CR>", opts)
 
 keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-keymap("n", "<leader><leader>i", "<cmd>PickIcons<cr>", opts)
 
 -- keymap("i", "<C-i>", "<cmd>PickIconsInsert<cr>", opts)
 -- keymap("i", "<A-i>", "<cmd>PickAltFontAndSymbolsInsert<cr>", opts)

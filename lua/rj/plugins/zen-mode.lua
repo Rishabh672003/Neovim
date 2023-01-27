@@ -18,6 +18,10 @@ require("zen-mode").setup({
 		gitsigns = { enabled = false },
 		tmux = { enabled = false },
 		twilight = { enabled = false },
+		alacritty = {
+			enabled = false,
+			font = "15", -- font size
+		},
 	},
 	on_open = function()
 		-- require("lsp-inlayhints").toggle()
