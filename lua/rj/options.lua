@@ -31,6 +31,7 @@ local options = {
 	wrap = false, -- display lines as one long line
 	scrolloff = 8, -- is one of my fav
 	sidescrolloff = 8,
+	laststatus = 0,
 	virtualedit = "onemore",
 	linebreak = true,
 	guifont = "JetBrainsMono Nerd Font Regular:h13", -- the font used in graphical neovim applications
