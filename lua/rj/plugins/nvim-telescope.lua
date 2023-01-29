@@ -233,9 +233,6 @@ telescope.setup({
 		-- builtin picker
 	},
 	extensions = {
-		project = {
-			theme = "cursor",
-		},
 		file_browser = {
 			theme = "ivy",
 			-- disables netrw and use telescope-file-browser in its place

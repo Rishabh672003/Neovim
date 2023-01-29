@@ -95,7 +95,10 @@ local mappings = {
 	},
 
 	["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-	["p"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+	["p"] = {
+		"<cmd>lua require('telescope').extensions.projects.projects(require('telescope.themes').get_dropdown{previewer = false, initial_mode = normal})<cr>",
+		"Projects",
+	},
 
 	L = {
 		name = "Lazy",
