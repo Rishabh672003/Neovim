@@ -119,9 +119,6 @@ require("lazy").setup({
 			{ "nvim-telescope/telescope-file-browser.nvim", lazy = true },
 			{
 				"ahmedkhalf/project.nvim",
-				config = function()
-					require("rj.plugins.project")
-				end,
 			},
 		},
 		config = function()

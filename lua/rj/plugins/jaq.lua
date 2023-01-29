@@ -16,7 +16,7 @@ require("jaq-nvim").setup({
 			cpp = "g++ % -o $fileBase && ./$fileBase",
 			c = "gcc % -o $fileBase.out && ./$fileBase.out",
 			go = "go run %",
-			sh = "sh %",
+			sh = "chmod +x % && sh %",
 			zsh = "zsh %",
 		},
 
