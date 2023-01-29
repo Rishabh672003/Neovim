@@ -78,7 +78,7 @@ require("lazy").setup({
 			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
-			require("rj.plugins.cmp")
+			require("rj.plugins.nvim-cmp")
 		end,
 	},
 	{ "L3MON4D3/LuaSnip", event = "InsertEnter", dependencies = {
@@ -125,7 +125,7 @@ require("lazy").setup({
 			},
 		},
 		config = function()
-			require("rj.plugins.telescope")
+			require("rj.plugins.nvim-telescope")
 		end,
 	},
 	{ "folke/tokyonight.nvim", event = "VeryLazy" },
