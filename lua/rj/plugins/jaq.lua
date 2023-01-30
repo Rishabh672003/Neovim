@@ -13,7 +13,7 @@ require("jaq-nvim").setup({
 			markdown = "glow %",
 			python = "python %",
 			rust = "cargo run",
-			cpp = "g++ % -o $fileBase && ./$fileBase",
+			cpp = "g++ % -o $fileBase.out && ./$fileBase.out",
 			c = "gcc % -o $fileBase.out && ./$fileBase.out",
 			go = "go run %",
 			sh = "chmod +x % && sh %",
