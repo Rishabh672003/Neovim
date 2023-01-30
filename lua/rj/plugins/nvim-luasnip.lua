@@ -35,6 +35,9 @@ ls.add_snippets("c", {
 		fmt(
 			[[
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
 
 void solve(){{
 	{}
@@ -45,12 +48,14 @@ int main(){{
     scanf("%i", &t);
     while(t--){{
         solve();
+		{}
     }}
     return 0;
 }}
 ]],
 			{
 				i(1, "// solution"),
+				i(2, "// if you want to add something else"),
 			}
 		)
 	),
