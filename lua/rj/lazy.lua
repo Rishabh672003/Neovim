@@ -81,9 +81,16 @@ require("lazy").setup({
 			require("rj.plugins.nvim-cmp")
 		end,
 	},
-	{ "L3MON4D3/LuaSnip", event = "InsertEnter", dependencies = {
-		"rafamadriz/friendly-snippets",
-	} },
+	{
+		"L3MON4D3/LuaSnip",
+		event = "InsertEnter",
+		config = function()
+			require("rj.plugins.nvim-luasnip")
+		end,
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+		},
+	},
 	{ "neovim/nvim-lspconfig", lazy = true },
 	{
 		"williamboman/mason.nvim",
