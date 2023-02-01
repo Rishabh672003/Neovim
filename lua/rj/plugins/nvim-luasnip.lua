@@ -14,19 +14,21 @@ ls.add_snippets("c", {
 		"cc",
 		fmt(
 			[[
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <math.h>
 
-void solve(){{
+void solve() {{
+    int x, y;
+    scanf("%i%i", &x, &y);
 	{}
 }};
 
-int main(){{
+int main() {{
     int t;
     scanf("%i", &t);
-    while(t--){{
+    while (t--) {{
         solve();
     }}
     return 0;
@@ -62,6 +64,28 @@ int main() {{
     cin >> t;
     while (t--)
         solve();
+    return 0;
+}}
+]],
+			{
+				i(1, "// solution"),
+			}
+		)
+	),
+})
+
+ls.add_snippets("c", {
+	s(
+		"c",
+		fmt(
+			[[
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {{
+	{}
     return 0;
 }}
 ]],

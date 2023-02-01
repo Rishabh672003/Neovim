@@ -38,7 +38,9 @@ keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 keymap("i", "<C-a>", "<ESC>:0,$y<CR>a", opts)
-keymap("n", "<C-a>", "<ESC>:0,$y<CR>", opts)
+keymap("n", "<C-a>", ":0,$y<CR>", opts)
+
+keymap("n", "d3", "ddO", opts)
 
 -- Insert --
 -- Press jk fast to enter

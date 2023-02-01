@@ -302,15 +302,6 @@ require("lazy").setup({
 	},
 	{ "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
 	{
-		"jackMort/pommodoro-clock.nvim",
-		-- event = "VeryLazy",
-		config = function()
-			require("pommodoro-clock").setup({
-				-- optional configuration
-			})
-		end,
-	},
-	{
 		"mfussenegger/nvim-dap-python",
 		commit = "27a0eff2bd3114269bb010d895b179e667e712bd",
 		event = "VeryLazy",
