@@ -120,8 +120,9 @@ require("lazy").setup({
 	{ "b0o/schemastore.nvim", lazy = false },
 	{
 		"nvim-telescope/telescope.nvim",
+		-- lazy = true,
 		event = "Bufenter",
-		-- cmd = { "Telescope", "Telescope projects" },
+		cmd = { "Telescope" },
 		dependencies = {
 			{ "nvim-telescope/telescope-file-browser.nvim", lazy = true },
 			{
@@ -339,6 +340,27 @@ require("lazy").setup({
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
+	},
+	{
+		"nvim-neorg/neorg",
+		lazy = true,
+		ft = "norg",
+		cmd = "Neorg",
+		build = ":Neorg sync-parsers",
+		opts = {
+			load = {
+				["core.defaults"] = {}, -- Loads default behaviour
+				["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+				["core.norg.dirman"] = { -- Manages Neorg workspaces
+					config = {
+						workspaces = {
+							notes = "~/notes",
+						},
+					},
+				},
+			},
+		},
+		dependencies = { { "nvim-lua/plenary.nvim" } },
 	},
 	-- {
 	-- 	"lewis6991/satellite.nvim",
