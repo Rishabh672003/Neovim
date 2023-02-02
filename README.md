@@ -74,7 +74,7 @@ You can change the startup-screen if you dont like this one go to lua/user/start
 ## Startup time
 
 ![image](https://user-images.githubusercontent.com/53911515/216336850-a569b207-5e4e-4f75-ad1f-81dbe5a63c93.png)
-this is all thanks to lazy-loading a lot of plugins by using lazy.nvim that even with after having 57 plugins the startup time is around 100ms
+this is all thanks to lazy-loading a lot of plugins by using lazy.nvim that even with after having 60 plugins the startup time is around 40 - 80 ms
 
 ## Uninstallation and Cleanup
 
