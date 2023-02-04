@@ -98,10 +98,13 @@ require("lazy").setup({
 		config = function()
 			require("rj.plugins.lsp.mason")
 		end,
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		lazy = true,
+		dependencies = {
+			{ "b0o/schemastore.nvim", lazy = true },
+			{
+				"williamboman/mason-lspconfig.nvim",
+				lazy = true,
+			},
+		},
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
@@ -112,15 +115,14 @@ require("lazy").setup({
 	},
 	{
 		"p00f/clangd_extensions.nvim",
-		event = "BufReadPre",
+		lazy = true,
+		ft = "c",
 		config = function()
 			require("rj.plugins.lsp.clangd")
 		end,
 	},
-	{ "b0o/schemastore.nvim", lazy = false },
 	{
 		"nvim-telescope/telescope.nvim",
-		-- lazy = true,
 		event = "Bufenter",
 		cmd = { "Telescope" },
 		dependencies = {
@@ -137,7 +139,6 @@ require("lazy").setup({
 	{
 		"RRethy/vim-illuminate",
 		event = "VeryLazy",
-		-- event = "BufReadPost",
 		lazy = false,
 		config = function()
 			require("rj.plugins.illuminate")
@@ -172,9 +173,14 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"NvChad/nvim-colorizer.lua",
+		config = function()
+			require("rj.plugins.colorizer")
+		end,
+	},
+	{
 		"utilyre/barbecue.nvim",
 		event = "BufReadPre",
-		--branch = "hotfix/colorscheme-switch",
 		config = function()
 			require("rj.plugins.barbecue.barbecue")
 		end,
@@ -189,7 +195,8 @@ require("lazy").setup({
 	},
 	{
 		"kyazdani42/nvim-tree.lua",
-		cmd = "NvimTreeToggle",
+		event = "VimEnter",
+		-- cmd = "NvimTreeToggle",
 		tag = "nightly", -- optional, updated every week. (see issue #1193)
 		config = function()
 			require("rj.plugins.nvim-tree")
@@ -293,7 +300,6 @@ require("lazy").setup({
 			require("fidget").setup({})
 		end,
 	},
-	{ "ellisonleao/glow.nvim" },
 	{
 		"folke/zen-mode.nvim",
 		cmd = "ZenMode",

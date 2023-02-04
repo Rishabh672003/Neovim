@@ -150,7 +150,7 @@ local mappings = {
 		x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
 	},
 
-	["G"] = { "<cmd>Glow<CR>", "Glow" },
+	["M"] = { "<cmd>MarkdownPreview<cr>", "Markdown preview" },
 
 	l = {
 		name = "LSP",

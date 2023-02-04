@@ -34,10 +34,8 @@ require("null-ls").setup({
 		formatting.astyle.with({
 			extra_args = { "--indent=spaces=4", "style=google" },
 		}),
-		-- formatting.clang_format,
 		diagnostics.shellcheck,
 		diagnostics.zsh,
 		diagnostics.fish,
-		-- diagnostics.flake8
 	},
 })
