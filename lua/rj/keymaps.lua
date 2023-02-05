@@ -73,6 +73,7 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 -- keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
 --keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
 
 --keymaps for toggleterm
 keymap("n", "<M-1>", "<cmd>ToggleTerm direction=horizontal size=12<cr>", opts)

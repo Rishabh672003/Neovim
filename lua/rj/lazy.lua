@@ -64,11 +64,13 @@ require("lazy").setup({
 	{ "folke/tokyonight.nvim", event = "VeryLazy" },
 	"nvim-lua/popup.nvim",
 	{ "nvim-lua/plenary.nvim", lazy = true },
-
 	--cmp stuff
 	{
 		"hrsh7th/nvim-cmp",
-		event = { "InsertEnter", "CmdlineEnter" },
+		event = {
+			"InsertEnter",
+			-- "CmdlineEnter",
+		},
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			{ "hrsh7th/cmp-buffer", event = "InsertEnter" },
@@ -94,6 +96,7 @@ require("lazy").setup({
 	{ "neovim/nvim-lspconfig", lazy = true },
 	{
 		"williamboman/mason.nvim",
+		cmd = "Mason",
 		event = "BufReadPre",
 		config = function()
 			require("rj.plugins.lsp.mason")
@@ -116,7 +119,7 @@ require("lazy").setup({
 	{
 		"p00f/clangd_extensions.nvim",
 		lazy = true,
-		ft = "c",
+		ft = { "c", "cpp" },
 		config = function()
 			require("rj.plugins.lsp.clangd")
 		end,
@@ -139,7 +142,7 @@ require("lazy").setup({
 	{
 		"RRethy/vim-illuminate",
 		event = "VeryLazy",
-		lazy = false,
+		-- lazy = true,
 		config = function()
 			require("rj.plugins.illuminate")
 		end,
@@ -195,9 +198,9 @@ require("lazy").setup({
 	},
 	{
 		"kyazdani42/nvim-tree.lua",
-		event = "VimEnter",
-		-- cmd = "NvimTreeToggle",
-		tag = "nightly", -- optional, updated every week. (see issue #1193)
+		event = "VeryLazy",
+		cmd = "NvimTreeToggle",
+		tag = "nightly",
 		config = function()
 			require("rj.plugins.nvim-tree")
 		end,
@@ -260,6 +263,7 @@ require("lazy").setup({
 	},
 	{
 		"Darazaki/indent-o-matic",
+		event = "VeryLazy",
 		config = function()
 			require("rj.plugins.indent")
 		end,
