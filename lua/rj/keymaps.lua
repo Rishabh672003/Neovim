@@ -91,7 +91,8 @@ keymap("t", "<M-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
 keymap("n", "<M-l>", ":tabNext<CR>", opts)
 keymap("n", "<M-h>", ":tabprevious<CR>", opts)
 -- keymap("n", "<A-i>", ":tabnew<CR>", opts)
-
+-- keymap("n", "<leader>j", ":Jaq<CR>", opts)
+-- keymap("n", "<leader>q", ":q!<CR>", opts)
 keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
 -- keymap("i", "<C-i>", "<cmd>PickIconsInsert<cr>", opts)
@@ -99,4 +100,3 @@ keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
 -- keymap('n', '<C-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', {noremap=true})
 -- keymap('n', '<C-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true})
-

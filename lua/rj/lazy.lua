@@ -206,6 +206,13 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"is0n/jaq-nvim",
+		cmd = "Jaq",
+		config = function()
+			require("rj.plugins.jaq")
+		end,
+	},
+	{
 		"goolord/alpha-nvim",
 		event = "VimEnter",
 		config = function()
@@ -254,13 +261,6 @@ require("lazy").setup({
 		end,
 	},
 	{ "antoinemadec/FixCursorHold.nvim", lazy = false, event = "BufReadPre" },
-	{
-		"is0n/jaq-nvim",
-		cmd = "Jaq",
-		config = function()
-			require("rj.plugins.jaq")
-		end,
-	},
 	{
 		"Darazaki/indent-o-matic",
 		event = "VeryLazy",
@@ -348,7 +348,7 @@ require("lazy").setup({
 	{
 		"iamcco/markdown-preview.nvim",
 		ft = "markdown",
-		event = "VeryLazy",
+		-- event = "VeryLazy",
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,

@@ -34,11 +34,3 @@ require("notify").setup({
 })
 
 vim.notify = require("notify")
-local notify = vim.notify
-vim.notify = function(msg, ...)
-	if msg:match("AutoSave:") then
-		return
-	end
-
-	notify(msg, ...)
-end
