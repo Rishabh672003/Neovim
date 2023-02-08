@@ -60,12 +60,12 @@ sudo pacman -S --needed --noconfirm ripgrep npm unzip
 ## Automatting the whole process of building neovim from source and applying the config
 
 ```bash
-sh <(curl -s https://raw.githubusercontent.com/Rishabh672003/Neovim/main/install.sh)
+sh <(curl -s https://raw.githubusercontent.com/Rishabh672003/Neovim/main/install2.sh)
 ```
 
 ## Preview
 
-You can change the startup-screen if you dont like this one go to lua/rj/plugins/alpha-themes and read the readme there
+You can change the startup-screen if you don't like this one go to lua/rj/plugins/alpha-themes and read the readme there
 ![image](https://user-images.githubusercontent.com/53911515/216835823-ff85c1d6-ab03-408c-9d7b-83c0f56a5445.png)
 ![image](https://user-images.githubusercontent.com/53911515/213927853-5e6460ed-a54d-414a-9151-f283d0ca9299.png)
 ![image](https://user-images.githubusercontent.com/53911515/213927964-90035c3a-cd4b-4983-9e30-604bd15f0fc4.png)
@@ -79,7 +79,7 @@ rm -rf $HOME/.config/nvim $HOME/.local/share/nvim $HOME/.cache/nvim
 
 ### Credit
 
-the credit goes to [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch) and its author [Christian](https://github.com/ChristianChiarulli) who made this awesome repo and video playlist, this is from where i learned how to make and structure the configs and actually made it work, i used his configs as a base for most of the plugins and modified them for my needs.
+The credit goes to [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch) and its author [Christian](https://github.com/ChristianChiarulli) who made this awesome repo and video playlist, this is from where i learned how to make and structure the configs and actually made it work, i used his configs as a base for most of the plugins and modified them for my needs.
 also i took configs and ideas from [Lunarvim](https://github.com/LunarVim/LunarVim), [Astronvim](https://github.com/AstroNvim/AstroNvim) and [LazyVim](https://github.com/LazyVim/LazyVim) 
 
 <div align="center" id="madewithlua">
