@@ -11,4 +11,5 @@ rm -rf ~/nvim-linux64 > /dev/null 2>&1 ; \
     tar -xvf ~/Applications/nvim-linux64.tar.gz;
 git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim;
 echo "alias nnv='~/nvim-linux64/bin/nvim'" >> ~/.bashrc ;
+source $HOME/.bashrc;
 ~/Applications/nvim-linux64/bin/nvim
