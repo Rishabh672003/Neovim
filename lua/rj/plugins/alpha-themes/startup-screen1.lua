@@ -1,4 +1,4 @@
-local alpha = require{"alpha"}
+local alpha = require({ "alpha" })
 
 local if_nil = vim.F.if_nil
 local fnamemodify = vim.fn.fnamemodify
@@ -239,11 +239,11 @@ local config = {
 	opts = {
 		margin = 3,
 		redraw_on_resize = false,
-		setup = function()
-			vim.cmd([[
-      autocmd alpha_temp DirChanged * lua require('alpha').redraw()
-      ]])
-		end,
+		-- setup = function()
+		-- 	vim.cmd([[
+		--     autocmd alpha_temp DirChanged * lua require('alpha').redraw()
+		--     ]])
+		-- end,
 	},
 }
 

@@ -214,9 +214,9 @@ local config = {
 	},
 	opts = {
 		margin = 5,
-		setup = function()
-			vim.cmd("autocmd alpha_temp DirChanged * lua require('alpha').redraw()")
-		end,
+		-- setup = function()
+		-- 	vim.cmd("autocmd alpha_temp DirChanged * lua require('alpha').redraw()")
+		-- end,
 	},
 }
 

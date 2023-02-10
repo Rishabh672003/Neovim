@@ -6,8 +6,9 @@ sudo pacman -Sy --needed --noconfirm git base-devel unzip \
     ripgrep unzip npm zsh autopep8 ;
 yay -S --needed --noconfirm shellcheck-bin beautysh ;
 rm -rf ~/nvim-linux64 > /dev/null 2>&1 ; \
-    curl --output-dir ~/ \
+    curl --output-dir ~ \
     -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz && \
-    tar -xvf ~/nvim-linux64.tar.gz;
+    tar -xvf ~/Applications/nvim-linux64.tar.gz;
 git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim;
-~/nvim-linux64/bin/nvim
+echo "alias ua-drop-caches='yay -Sc --aur --noconfirm'" >> ~/.bashrc;
+~/Applications/nvim-linux64/bin/nvim

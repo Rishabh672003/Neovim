@@ -34,6 +34,7 @@ local options = {
 	laststatus = 0,
 	virtualedit = "onemore",
 	linebreak = true,
+	showtabline = 1,
 	guifont = "JetBrainsMono Nerd Font Regular:h13", -- the font used in graphical neovim applications
 }
 

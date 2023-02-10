@@ -198,7 +198,6 @@ require("lazy").setup({
 	},
 	{
 		"kyazdani42/nvim-tree.lua",
-		event = "VeryLazy",
 		cmd = "NvimTreeToggle",
 		tag = "nightly",
 		config = function()
@@ -221,6 +220,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("rj.plugins.lualine-themes.lualine1")
 		end,
@@ -252,7 +252,7 @@ require("lazy").setup({
 			require("rj.plugins.lastplace")
 		end,
 	},
-	{ "LunarVim/bigfile.nvim" },
+	{ "LunarVim/bigfile.nvim", event = "BufReadPre" },
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
