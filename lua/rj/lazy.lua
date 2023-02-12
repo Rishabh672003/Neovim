@@ -30,6 +30,7 @@ require("lazy").setup({
 		end,
 		dependencies = {},
 	},
+	-- { "folke/tokyonight.nvim", event = "VeryLazy" },
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
@@ -54,14 +55,13 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 			{
 				"rcarriga/nvim-notify",
-				event = "VeryLazy",
+				-- event = "VeryLazy",
 				config = function()
 					require("rj.plugins.notify")
 				end,
 			},
 		},
 	},
-	{ "folke/tokyonight.nvim", event = "VeryLazy" },
 	"nvim-lua/popup.nvim",
 	{ "nvim-lua/plenary.nvim", lazy = true },
 	--cmp stuff
@@ -78,6 +78,17 @@ require("lazy").setup({
 			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lua",
+			{
+				"jcdickinson/codeium.nvim",
+				dependencies = {
+					"nvim-lua/plenary.nvim",
+					"MunifTanjim/nui.nvim",
+					"hrsh7th/nvim-cmp",
+				},
+				config = function()
+					require("codeium").setup({})
+				end,
+			},
 		},
 		config = function()
 			require("rj.plugins.nvim-cmp")
@@ -96,8 +107,6 @@ require("lazy").setup({
 	{ "neovim/nvim-lspconfig", lazy = true },
 	{
 		"williamboman/mason.nvim",
-		cmd = "Mason",
-		event = "BufReadPre",
 		config = function()
 			require("rj.plugins.lsp.mason")
 		end,
@@ -126,7 +135,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		event = "Bufenter",
+		event = "BufEnter",
 		cmd = { "Telescope" },
 		dependencies = {
 			{ "nvim-telescope/telescope-file-browser.nvim", lazy = true },
@@ -141,8 +150,7 @@ require("lazy").setup({
 	{ "folke/tokyonight.nvim", event = "VeryLazy" },
 	{
 		"RRethy/vim-illuminate",
-		event = "VeryLazy",
-		-- lazy = true,
+		event = "BufReadPost",
 		config = function()
 			require("rj.plugins.illuminate")
 		end,
@@ -152,7 +160,9 @@ require("lazy").setup({
 		event = "BufReadPost",
 		dependencies = {
 			"nvim-treesitter/playground",
-			{ "JoosepAlviste/nvim-ts-context-commentstring", event = "VeryLazy" },
+			{
+				"JoosepAlviste/nvim-ts-context-commentstring", --[[ event = "VeryLazy" ]]
+			},
 			{
 				"kyazdani42/nvim-web-devicons",
 				config = function()
@@ -183,7 +193,7 @@ require("lazy").setup({
 	},
 	{
 		"utilyre/barbecue.nvim",
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufAdd", "BufNew" },
 		config = function()
 			require("rj.plugins.barbecue.barbecue")
 		end,
@@ -220,7 +230,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
+		-- event = "BufReadPre",
 		config = function()
 			require("rj.plugins.lualine-themes.lualine1")
 		end,
@@ -263,7 +273,7 @@ require("lazy").setup({
 	{ "antoinemadec/FixCursorHold.nvim", lazy = false, event = "BufReadPre" },
 	{
 		"Darazaki/indent-o-matic",
-		event = "VeryLazy",
+		event = "BufReadPre",
 		config = function()
 			require("rj.plugins.indent")
 		end,
@@ -292,7 +302,7 @@ require("lazy").setup({
 	},
 	{
 		"max397574/better-escape.nvim",
-		lazy = false,
+		event = "BufRead",
 		config = function()
 			require("rj.plugins.better-escape")
 		end,
@@ -315,7 +325,7 @@ require("lazy").setup({
 	{
 		"mfussenegger/nvim-dap-python",
 		commit = "27a0eff2bd3114269bb010d895b179e667e712bd",
-		event = "VeryLazy",
+		event = "BufReadPost",
 		config = function()
 			require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
 		end,
@@ -323,7 +333,7 @@ require("lazy").setup({
 	{
 		"mfussenegger/nvim-dap",
 		commit = "6b12294a57001d994022df8acbe2ef7327d30587",
-		event = "VeryLazy",
+		event = "BufReadPost",
 		config = function()
 			require("rj.plugins.dap")
 		end,
@@ -331,7 +341,7 @@ require("lazy").setup({
 	{
 		"rcarriga/nvim-dap-ui",
 		commit = "1cd4764221c91686dcf4d6b62d7a7b2d112e0b13",
-		event = "VeryLazy",
+		event = "BufReadPost",
 		config = function()
 			require("rj.plugins.dapui")
 		end,

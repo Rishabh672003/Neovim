@@ -1,6 +1,6 @@
 # Neovim
 
-This repo contains all my [neovim](https://github.com/neovim/neovim) configs files which i use. Now made with [lazy.nvim](https://github.com/folke/lazy.nvim)
+This repo contains all my [neovim](https://github.com/neovim/neovim) configs files, which I use. Now made with [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ### 🛠️ If you also want to use it
 
@@ -51,7 +51,7 @@ For null-ls to work for formatting and stuff
 sudo pacman -S --needed --noconfirm stylua prettier astyle zsh autopep8 ; yay -S beautysh shellcheck-bin
 ```
 
-For finding text in projects and also bashls lsp requires npm as a dependency
+Other dependencies
 
 ```bash
 sudo pacman -S --needed --noconfirm ripgrep npm unzip
@@ -79,7 +79,7 @@ rm -rf $HOME/.config/nvim $HOME/.local/share/nvim $HOME/.cache/nvim
 
 ### Credit
 
-The credit goes to [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch) and its author [Christian](https://github.com/ChristianChiarulli) who made this awesome repo and video playlist, this is from where i learned how to make and structure the configs and actually made it work, i used his configs as a base for most of the plugins and modified them for my needs.
+The credit goes to [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch) and its author [Christian](https://github.com/ChristianChiarulli) who made this awesome repo and video playlist, this is from where I learned how to make and structure the configs and actually made it work, I used his configs as a base for most of the plugins and modified them for my needs.
 also i took configs and ideas from [Lunarvim](https://github.com/LunarVim/LunarVim), [Astronvim](https://github.com/AstroNvim/AstroNvim) and [LazyVim](https://github.com/LazyVim/LazyVim) 
 
 <div align="center" id="madewithlua">
