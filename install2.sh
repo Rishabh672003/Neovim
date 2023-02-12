@@ -15,4 +15,4 @@ echo "alias nvim='~/nvim-linux64/bin/nvim'" >> ~/.zshrc ;
 echo "alias nvim='~/nvim-linux64/bin/nvim'" >> ~/.config/fish/config.fish ;
 source "$HOME/.bashrc";
 source "$HOME/.zshrc";
-~/nvim-linux64/bin/nvim
+nnv
