@@ -3,7 +3,7 @@ local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
 
 local servers = {
-	"sumneko_lua",
+	"lua_ls",
 	"pyright",
 	"bashls",
 	"jsonls",
