@@ -158,6 +158,7 @@ require("lazy").setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = "BufReadPost",
+		commit = "148cf37572ff2a02037065293ad156d69855b045",
 		dependencies = {
 			"nvim-treesitter/playground",
 			{

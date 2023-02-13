@@ -68,7 +68,7 @@ int main() {{
 }}
 ]],
 			{
-				i(1, "// solution"),
+				i(1),
 			}
 		)
 	),
@@ -91,6 +91,27 @@ int main() {{
 ]],
 			{
 				i(1, "// solution"),
+			}
+		)
+	),
+})
+
+ls.add_snippets("java", {
+	s(
+		"cc",
+		fmt(
+			[[
+import java.util.*;
+
+class Test {{
+    public static void main(String args[]){{
+        Scanner sc = new Scanner(System.in);
+		{}
+    }}
+}}
+]],
+			{
+				i(1),
 			}
 		)
 	),
