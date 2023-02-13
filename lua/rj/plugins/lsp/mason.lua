@@ -11,6 +11,7 @@ local servers = {
 	"tsserver",
 	"lemminx",
 	"prosemd_lsp",
+	"jdtls",
 }
 
 local settings = {
