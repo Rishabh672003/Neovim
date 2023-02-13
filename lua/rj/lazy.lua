@@ -274,7 +274,7 @@ require("lazy").setup({
 	{ "antoinemadec/FixCursorHold.nvim", lazy = false, event = "BufReadPre" },
 	{
 		"Darazaki/indent-o-matic",
-		event = "BufReadPre",
+		-- event = "BufReadPre",
 		config = function()
 			require("rj.plugins.indent")
 		end,
