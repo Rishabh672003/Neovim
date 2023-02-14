@@ -104,9 +104,16 @@ require("lazy").setup({
 			"rafamadriz/friendly-snippets",
 		},
 	},
-	{ "neovim/nvim-lspconfig", lazy = true },
+	{
+		"neovim/nvim-lspconfig",
+		lazy = true,
+		config = function()
+			require("rj.plugins.lsp.lsp-conf")
+		end,
+	},
 	{
 		"williamboman/mason.nvim",
+		event = "VeryLazy",
 		config = function()
 			require("rj.plugins.lsp.mason")
 		end,
