@@ -1,6 +1,7 @@
 # Neovim
 
 This repo contains all my [neovim](https://github.com/neovim/neovim) configs files, which I use. Now made with [lazy.nvim](https://github.com/folke/lazy.nvim)
+Now this doesn't uses Mason, so you would have to install all lsp yourself.
 
 ### 🛠️ If you also want to use it
 
