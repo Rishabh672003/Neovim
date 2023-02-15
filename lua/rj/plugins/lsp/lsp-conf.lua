@@ -26,6 +26,8 @@ lspconfig.prosemd_lsp.setup({})
 lspconfig.jdtls.setup({})
 
 lspconfig.lua_ls.setup({
+	on_attach = require("rj.plugins.lsp.attach").on_attach,
+	capabilities = require("rj.plugins.lsp.attach").capabilities,
 	settings = {
 		Lua = {
 			format = {
