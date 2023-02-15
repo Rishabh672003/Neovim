@@ -30,6 +30,14 @@ require("lazy").setup({
 		end,
 		dependencies = {},
 	},
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("rj.plugins.lsp.lsp-conf")
+			require("rj.plugins.lsp.attach")
+			require("rj.plugins.lsp.diagnostic")
+		end,
+	},
 	-- { "folke/tokyonight.nvim", event = "VeryLazy" },
 	{
 		"folke/which-key.nvim",
@@ -55,7 +63,7 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 			{
 				"rcarriga/nvim-notify",
-				-- event = "VeryLazy",
+				event = "VeryLazy",
 				config = function()
 					require("rj.plugins.notify")
 				end,
@@ -102,23 +110,6 @@ require("lazy").setup({
 		end,
 		dependencies = {
 			"rafamadriz/friendly-snippets",
-		},
-	},
-	{
-		"neovim/nvim-lspconfig",
-		lazy = true,
-	},
-	{
-		"williamboman/mason.nvim",
-		config = function()
-			require("rj.plugins.lsp.mason")
-		end,
-		dependencies = {
-			{ "b0o/schemastore.nvim", lazy = true },
-			{
-				"williamboman/mason-lspconfig.nvim",
-				lazy = true,
-			},
 		},
 	},
 	{
