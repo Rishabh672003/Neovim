@@ -45,23 +45,23 @@ require("lazy").setup({
 			require("rj.plugins.indentline")
 		end,
 	},
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("rj.plugins.noice")
-		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			{
-				"rcarriga/nvim-notify",
-				-- event = "VeryLazy",
-				config = function()
-					require("rj.plugins.notify")
-				end,
-			},
-		},
-	},
+	-- {
+	-- 	"folke/noice.nvim",
+	-- 	event = "VeryLazy",
+	-- 	config = function()
+	-- 		require("rj.plugins.noice")
+	-- 	end,
+	-- 	dependencies = {
+	-- 		"MunifTanjim/nui.nvim",
+	-- 		{
+	-- 			"rcarriga/nvim-notify",
+	-- 			-- event = "VeryLazy",
+	-- 			config = function()
+	-- 				require("rj.plugins.notify")
+	-- 			end,
+	-- 		},
+	-- 	},
+	-- },
 	"nvim-lua/popup.nvim",
 	{ "nvim-lua/plenary.nvim", lazy = true },
 	--cmp stuff
@@ -106,20 +106,10 @@ require("lazy").setup({
 	},
 	{
 		"neovim/nvim-lspconfig",
-		lazy = true,
-	},
-	{
-		"williamboman/mason.nvim",
+		-- lazy = true,
 		config = function()
-			require("rj.plugins.lsp.mason")
+			require("rj.plugins.lsp.lsp-conf")
 		end,
-		dependencies = {
-			{ "b0o/schemastore.nvim", lazy = true },
-			{
-				"williamboman/mason-lspconfig.nvim",
-				lazy = true,
-			},
-		},
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
