@@ -107,13 +107,9 @@ require("lazy").setup({
 	{
 		"neovim/nvim-lspconfig",
 		lazy = true,
-		config = function()
-			require("rj.plugins.lsp.lsp-conf")
-		end,
 	},
 	{
 		"williamboman/mason.nvim",
-		event = "VeryLazy",
 		config = function()
 			require("rj.plugins.lsp.mason")
 		end,
@@ -238,7 +234,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		-- event = "BufReadPre",
+		event = "VeryLazy",
 		config = function()
 			require("rj.plugins.lualine-themes.lualine1")
 		end,
@@ -270,7 +266,7 @@ require("lazy").setup({
 			require("rj.plugins.lastplace")
 		end,
 	},
-	{ "LunarVim/bigfile.nvim", event = "BufReadPre" },
+	-- { "LunarVim/bigfile.nvim", event = "BufReadPre" },
 	{
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
@@ -281,7 +277,7 @@ require("lazy").setup({
 	{ "antoinemadec/FixCursorHold.nvim", lazy = false, event = "BufReadPre" },
 	{
 		"Darazaki/indent-o-matic",
-		-- event = "BufReadPre",
+		event = "BufReadPre",
 		config = function()
 			require("rj.plugins.indent")
 		end,
@@ -331,42 +327,8 @@ require("lazy").setup({
 	},
 	{ "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
 	{
-		"mfussenegger/nvim-dap-python",
-		commit = "27a0eff2bd3114269bb010d895b179e667e712bd",
-		event = "BufReadPost",
-		config = function()
-			require("dap-python").setup("~/.virtualenvs/debugpy/bin/python")
-		end,
-	},
-	{
-		"mfussenegger/nvim-dap",
-		commit = "6b12294a57001d994022df8acbe2ef7327d30587",
-		event = "BufReadPost",
-		config = function()
-			require("rj.plugins.dap")
-		end,
-	},
-	{
-		"rcarriga/nvim-dap-ui",
-		commit = "1cd4764221c91686dcf4d6b62d7a7b2d112e0b13",
-		event = "BufReadPost",
-		config = function()
-			require("rj.plugins.dapui")
-		end,
-	},
-	{
-		"ravenxrz/DAPInstall.nvim",
-		commit = "8798b4c36d33723e7bba6ed6e2c202f84bb300de",
-		lazy = true,
-		config = function()
-			require("dap_install").setup({})
-			require("dap_install").config("python", {})
-		end,
-	},
-	{
 		"iamcco/markdown-preview.nvim",
 		ft = "markdown",
-		-- event = "VeryLazy",
 		build = function()
 			vim.fn["mkdp#util#install"]()
 		end,
@@ -380,6 +342,7 @@ require("lazy").setup({
 		opts = {
 			load = {
 				["core.defaults"] = {}, -- Loads default behaviour
+				["core.export"] = {},
 				["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
 				["core.norg.dirman"] = { -- Manages Neorg workspaces
 					config = {
