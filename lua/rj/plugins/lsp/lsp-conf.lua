@@ -1,30 +1,5 @@
 local lspconfig = require("lspconfig")
 
-lspconfig.bashls.setup({})
-
-require("lspconfig").pyright.setup({
-	settings = {
-		python = {
-			analysis = {
-				typeCheckingMode = "basic",
-				-- diagnosticMode = "workspace",
-				inlayHints = {
-					variableTypes = true,
-					functionReturnTypes = true,
-				},
-			},
-		},
-	},
-})
-
-lspconfig.jsonls.setup({})
-
-lspconfig.taplo.setup({})
-lspconfig.tsserver.setup({})
-lspconfig.lemminx.setup({})
-lspconfig.prosemd_lsp.setup({})
-lspconfig.jdtls.setup({})
-
 lspconfig.lua_ls.setup({
 	on_attach = require("rj.plugins.lsp.attach").on_attach,
 	capabilities = require("rj.plugins.lsp.attach").capabilities,
@@ -65,3 +40,28 @@ lspconfig.lua_ls.setup({
 		},
 	},
 })
+
+require("lspconfig").pyright.setup({
+	on_attach = require("rj.plugins.lsp.attach").on_attach,
+	capabilities = require("rj.plugins.lsp.attach").capabilities,
+	settings = {
+		python = {
+			analysis = {
+				typeCheckingMode = "basic",
+				-- diagnosticMode = "workspace",
+				inlayHints = {
+					variableTypes = true,
+					functionReturnTypes = true,
+				},
+			},
+		},
+	},
+})
+
+lspconfig.jsonls.setup({})
+lspconfig.taplo.setup({})
+lspconfig.tsserver.setup({})
+lspconfig.lemminx.setup({})
+lspconfig.prosemd_lsp.setup({})
+lspconfig.jdtls.setup({})
+lspconfig.bashls.setup({})

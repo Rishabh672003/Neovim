@@ -225,7 +225,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		event = "VeryLazy",
+		event = { "BufReadPre", "BufAdd", "BufNew" },
 		config = function()
 			require("rj.plugins.lualine-themes.lualine1")
 		end,
