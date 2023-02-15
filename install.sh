@@ -4,7 +4,7 @@ sudo pacman -Sy --needed --noconfirm git base-devel unzip \
     curl lua cargo npm &&\
     sudo pacman -Sy --needed --noconfirm npm python-pip stylua prettier astyle \
     ripgrep unzip npm zsh autopep8 lua-language-server \
-    typescript-language-server bash-language-server pyright lemminx jdtls;
+    bash-language-server pyright lemminx jdtls;
 yay -S --needed --noconfirm shellcheck-bin beautysh ;
 cargo install --features lsp --locked taplo-cli;
 cargo install prosemd-lsp;
@@ -19,5 +19,4 @@ echo "alias nvim='~/nvim-linux64/bin/nvim'" >> ~/.zshrc ;
 echo "alias nvim='~/nvim-linux64/bin/nvim'" >> ~/.config/fish/config.fish ;
 source "$HOME/.bashrc";
 source "$HOME/.zshrc";
-nnv
-
+~/nvim-linux64/bin/nvim
