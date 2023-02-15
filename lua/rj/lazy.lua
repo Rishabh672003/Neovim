@@ -45,23 +45,23 @@ require("lazy").setup({
 			require("rj.plugins.indentline")
 		end,
 	},
-	-- {
-	-- 	"folke/noice.nvim",
-	-- 	event = "VeryLazy",
-	-- 	config = function()
-	-- 		require("rj.plugins.noice")
-	-- 	end,
-	-- 	dependencies = {
-	-- 		"MunifTanjim/nui.nvim",
-	-- 		{
-	-- 			"rcarriga/nvim-notify",
-	-- 			-- event = "VeryLazy",
-	-- 			config = function()
-	-- 				require("rj.plugins.notify")
-	-- 			end,
-	-- 		},
-	-- 	},
-	-- },
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("rj.plugins.noice")
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			{
+				"rcarriga/nvim-notify",
+				event = "VeryLazy",
+				config = function()
+					require("rj.plugins.notify")
+				end,
+			},
+		},
+	},
 	"nvim-lua/popup.nvim",
 	{ "nvim-lua/plenary.nvim", lazy = true },
 	--cmp stuff
@@ -106,9 +106,9 @@ require("lazy").setup({
 	},
 	{
 		"neovim/nvim-lspconfig",
-		-- lazy = true,
 		config = function()
 			require("rj.plugins.lsp.lsp-conf")
+			require("rj.plugins.lsp")
 		end,
 	},
 	{
