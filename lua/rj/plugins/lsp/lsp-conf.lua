@@ -60,7 +60,6 @@ require("lspconfig").pyright.setup({
 
 lspconfig.jsonls.setup({})
 lspconfig.taplo.setup({})
-lspconfig.tsserver.setup({})
 lspconfig.lemminx.setup({})
 lspconfig.prosemd_lsp.setup({})
 lspconfig.jdtls.setup({})

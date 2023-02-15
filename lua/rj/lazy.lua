@@ -32,6 +32,7 @@ require("lazy").setup({
 	},
 	{
 		"neovim/nvim-lspconfig",
+		ft = { "markdown", "lua", "c", "cpp", "java", "python", "json", "xml", "bash", "sh", "toml" },
 		config = function()
 			require("rj.plugins.lsp.lsp-conf")
 			require("rj.plugins.lsp.attach")
@@ -61,13 +62,13 @@ require("lazy").setup({
 		end,
 		dependencies = {
 			"MunifTanjim/nui.nvim",
-			{
-				"rcarriga/nvim-notify",
-				event = "VeryLazy",
-				config = function()
-					require("rj.plugins.notify")
-				end,
-			},
+			-- {
+			-- 	"rcarriga/nvim-notify",
+			-- 	event = "VeryLazy",
+			-- 	config = function()
+			-- 		require("rj.plugins.notify")
+			-- 	end,
+			-- },
 		},
 	},
 	"nvim-lua/popup.nvim",
