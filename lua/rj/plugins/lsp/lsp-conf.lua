@@ -1,5 +1,30 @@
 local lspconfig = require("lspconfig")
 
+lspconfig.bashls.setup({})
+
+require("lspconfig").pyright.setup({
+	settings = {
+		python = {
+			analysis = {
+				typeCheckingMode = "basic",
+				-- diagnosticMode = "workspace",
+				inlayHints = {
+					variableTypes = true,
+					functionReturnTypes = true,
+				},
+			},
+		},
+	},
+})
+
+lspconfig.jsonls.setup({})
+
+lspconfig.taplo.setup({})
+lspconfig.tsserver.setup({})
+lspconfig.lemminx.setup({})
+lspconfig.prosemd_lsp.setup({})
+lspconfig.jdtls.setup({})
+
 lspconfig.lua_ls.setup({
 	settings = {
 		Lua = {
@@ -38,28 +63,3 @@ lspconfig.lua_ls.setup({
 		},
 	},
 })
-
-lspconfig.bashls.setup({})
-
-require("lspconfig").pyright.setup({
-	settings = {
-		python = {
-			analysis = {
-				typeCheckingMode = "basic",
-				-- diagnosticMode = "workspace",
-				inlayHints = {
-					variableTypes = true,
-					functionReturnTypes = true,
-				},
-			},
-		},
-	},
-})
-
-lspconfig.jsonls.setup({})
-
-lspconfig.taplo.setup({})
-lspconfig.tsserver.setup({})
-require("lspconfig").lemminx.setup({})
-require("lspconfig").prosemd_lsp.setup({})
-require("lspconfig").jdtls.setup({})

@@ -30,6 +30,14 @@ require("lazy").setup({
 		end,
 		dependencies = {},
 	},
+	{
+		"neovim/nvim-lspconfig",
+		config = function()
+			require("rj.plugins.lsp.lsp-conf")
+			require("rj.plugins.lsp.attach")
+			require("rj.plugins.lsp.diagnostic")
+		end,
+	},
 	-- { "folke/tokyonight.nvim", event = "VeryLazy" },
 	{
 		"folke/which-key.nvim",
@@ -103,13 +111,6 @@ require("lazy").setup({
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 		},
-	},
-	{
-		"neovim/nvim-lspconfig",
-		config = function()
-			require("rj.plugins.lsp.lsp-conf")
-			require("rj.plugins.lsp")
-		end,
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
