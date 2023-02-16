@@ -49,7 +49,7 @@ require("lazy").setup({
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufAdd", "BufNew" },
 		config = function()
 			require("rj.plugins.indentline")
 		end,
@@ -115,7 +115,7 @@ require("lazy").setup({
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		event = "BufReadPre",
+		event = { "BufReadPre", "BufRead" },
 		config = function()
 			require("rj.plugins.lsp.null-ls")
 		end,
@@ -259,17 +259,24 @@ require("lazy").setup({
 		end,
 	},
 	-- { "LunarVim/bigfile.nvim", event = "BufReadPre" },
+	-- {
+	-- 	"windwp/nvim-autopairs",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		require("rj.plugins.autopairs")
+	-- 	end,
+	-- },
 	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
+		"altermo/ultimate-autopair.nvim",
+		event = { "InsertEnter", "CmdlineEnter" },
 		config = function()
-			require("rj.plugins.autopairs")
+			require("ultimate-autopair").setup({})
 		end,
 	},
-	{ "antoinemadec/FixCursorHold.nvim", lazy = false, event = "BufReadPre" },
+	{ "antoinemadec/FixCursorHold.nvim", lazy = false, event = "BufReadPost" },
 	{
 		"Darazaki/indent-o-matic",
-		event = "BufReadPre",
+		event = "BufReadPost",
 		config = function()
 			require("rj.plugins.indent")
 		end,

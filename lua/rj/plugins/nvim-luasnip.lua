@@ -41,6 +41,29 @@ int main() {{
 	),
 })
 
+ls.add_snippets("c", {
+	s(
+		"c",
+		fmt(
+			[[
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int main() {{
+	{}
+    return 0;
+}}
+]],
+			{
+				i(1),
+			}
+		)
+	),
+})
+
+
 ls.add_snippets("cpp", {
 	s(
 		"cc",
@@ -54,6 +77,8 @@ using namespace std;
 #define str string
 
 void solve() {{
+    int a, b;
+    cin >> a >> b;
 	{}
 }}
 
@@ -74,19 +99,26 @@ int main() {{
 	),
 })
 
-ls.add_snippets("c", {
+ls.add_snippets("cpp", {
 	s(
 		"c",
 		fmt(
 			[[
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+#define ld long double
+#define str string
+
+void solve() {{
+ 	{}
+}}
 
 int main() {{
-	{}
-    return 0;
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    solve();
 }}
 ]],
 			{
