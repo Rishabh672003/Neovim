@@ -6,61 +6,65 @@ local default = {
 }
 
 if vim.fn.executable("lua-language-server") == 1 then
-	local settings = {
-		Lua = {
-			format = {
-				enable = false,
-			},
-			hint = {
-				enable = true,
-				arrayIndex = "Disable", -- "Enable", "Auto", "Disable"
-				await = true,
-				paramName = "Disable", -- "All", "Literal", "Disable"
-				paramType = false,
-				semicolon = "Disable", -- "All", "SameLine", "Disable"
-				setType = true,
-			},
-			-- spell = {"the"}
-			runtime = {
-				version = "LuaJIT",
-				special = {
-					reload = "require",
+	lspconfig.lua_ls.setup({
+		on_attach = require("rj.plugins.lsp.attach").on_attach,
+		capabilities = require("rj.plugins.lsp.attach").capabilities,
+		settings = {
+			Lua = {
+				format = {
+					enable = false,
 				},
-			},
-			diagnostics = {
-				globals = { "vim" },
-			},
-			workspace = {
-				library = {
-					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-					[vim.fn.stdpath("config") .. "/lua"] = true,
-					checkThirdParty = false,
+				hint = {
+					enable = true,
+					arrayIndex = "Disable", -- "Enable", "Auto", "Disable"
+					await = true,
+					paramName = "Disable", -- "All", "Literal", "Disable"
+					paramType = false,
+					semicolon = "Disable", -- "All", "SameLine", "Disable"
+					setType = true,
 				},
-			},
-			telemetry = {
-				enable = false,
+				-- spell = {"the"}
+				runtime = {
+					version = "LuaJIT",
+					special = {
+						reload = "require",
+					},
+				},
+				diagnostics = {
+					globals = { "vim" },
+				},
+				workspace = {
+					library = {
+						[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+						[vim.fn.stdpath("config") .. "/lua"] = true,
+						checkThirdParty = false,
+					},
+				},
+				telemetry = {
+					enable = false,
+				},
 			},
 		},
-	}
-	lspconfig.lua_ls.setup(vim.tbl_deep_extend("force", default, settings))
+	})
 else
 	print("lua-language-server not found")
 end
 
 if vim.fn.executable("pyright") == 1 then
-	local settings = {
-		python = {
-			analysis = {
-				typeCheckingMode = "basic",
-				-- diagnosticMode = "workspace",
-				inlayHints = {
-					variableTypes = true,
-					functionReturnTypes = true,
+	require("lspconfig").pyright.setup({
+		settings = {
+			python = {
+				analysis = {
+					typeCheckingMode = "basic",
+					-- diagnosticMode = "workspace",
+					inlayHints = {
+						variableTypes = true,
+						functionReturnTypes = true,
+					},
 				},
 			},
 		},
-	}
-	lspconfig.pyright.setup(vim.tbl_deep_extend("force", default, settings))
+	})
 else
 	print("pyright not found")
 end
