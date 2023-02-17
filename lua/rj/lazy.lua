@@ -43,6 +43,7 @@ require("lazy").setup({
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
+		-- cmd = "WhichKey",
 		config = function()
 			require("rj.plugins.whichkey")
 		end,
@@ -129,18 +130,22 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"nvim-telescope/telescope.nvim",
-		event = "BufEnter",
-		cmd = { "Telescope" },
+		"ahmedkhalf/project.nvim",
+		event = "VeryLazy",
+		-- keys = { "<leader>p" },
 		dependencies = {
-			{ "nvim-telescope/telescope-file-browser.nvim", lazy = true },
 			{
-				"ahmedkhalf/project.nvim",
+				"nvim-telescope/telescope.nvim",
+				-- event = "BufEnter",
+				cmd = { "Telescope" },
+				dependencies = {
+					{ "nvim-telescope/telescope-file-browser.nvim", lazy = true },
+				},
+				config = function()
+					require("rj.plugins.nvim-telescope")
+				end,
 			},
 		},
-		config = function()
-			require("rj.plugins.nvim-telescope")
-		end,
 	},
 	{ "folke/tokyonight.nvim", event = "VeryLazy" },
 	{
@@ -153,7 +158,7 @@ require("lazy").setup({
 	{
 		"nvim-treesitter/nvim-treesitter",
 		event = "BufReadPost",
-		commit = "148cf37572ff2a02037065293ad156d69855b045",
+		-- commit = "148cf37572ff2a02037065293ad156d69855b045",
 		dependencies = {
 			"nvim-treesitter/playground",
 			{
@@ -183,6 +188,7 @@ require("lazy").setup({
 	},
 	{
 		"NvChad/nvim-colorizer.lua",
+		event = "BufReadPre",
 		config = function()
 			require("rj.plugins.colorizer")
 		end,
