@@ -189,7 +189,7 @@ require("lazy").setup({
 	},
 	{
 		"utilyre/barbecue.nvim",
-		event = { "BufReadPre", "BufAdd", "BufNew" },
+		event = { "InsertEnter", "BufReadPre", "BufAdd", "BufNew" },
 		config = function()
 			require("rj.plugins.barbecue.barbecue")
 		end,
@@ -259,20 +259,20 @@ require("lazy").setup({
 		end,
 	},
 	-- { "LunarVim/bigfile.nvim", event = "BufReadPre" },
-	-- {
-	-- 	"windwp/nvim-autopairs",
-	-- 	event = "InsertEnter",
-	-- 	config = function()
-	-- 		require("rj.plugins.autopairs")
-	-- 	end,
-	-- },
 	{
-		"altermo/ultimate-autopair.nvim",
-		event = { "InsertEnter", "CmdlineEnter" },
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
 		config = function()
-			require("ultimate-autopair").setup({})
+			require("rj.plugins.autopairs")
 		end,
 	},
+	-- {
+	-- 	"altermo/ultimate-autopair.nvim",
+	-- 	event = { "InsertEnter", "CmdlineEnter" },
+	-- 	config = function()
+	-- 		require("ultimate-autopair").setup({})
+	-- 	end,
+	-- },
 	{ "antoinemadec/FixCursorHold.nvim", lazy = false, event = "BufReadPost" },
 	{
 		"Darazaki/indent-o-matic",

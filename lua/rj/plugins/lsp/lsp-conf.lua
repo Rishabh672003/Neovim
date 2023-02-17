@@ -52,6 +52,8 @@ end
 
 if vim.fn.executable("pyright") == 1 then
 	require("lspconfig").pyright.setup({
+		on_attach = require("rj.plugins.lsp.attach").on_attach,
+		capabilities = require("rj.plugins.lsp.attach").capabilities,
 		settings = {
 			python = {
 				analysis = {

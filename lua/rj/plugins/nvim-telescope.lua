@@ -1,9 +1,6 @@
 local telescope = require("telescope")
-
 local actions = require("telescope.actions")
-
 local icons = require("rj.icons")
-
 telescope.load_extension("file_browser")
 
 require("project_nvim").setup({
