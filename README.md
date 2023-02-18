@@ -46,6 +46,16 @@ After launching neovim for the first time, packer will automatically install all
 
 These are all the optional dependencies if you dont want anything just remove them neovim should work fine either way
 
+#### LSP dependencies as now these configs dont use mason, so you will have to install them yourself
+
+```bash
+sudo pacman -Sy --needed --noconfirm lua-language-server;
+yay -S jdtls lemminx;
+cargo install --features lsp --locked taplo-cli;
+cargo install prosemd-lsp;
+npm i -g vscode-langservers-extracted;
+```
+
 For null-ls to work for formatting and stuff
 
 ```bash
@@ -81,7 +91,7 @@ rm -rf $HOME/.config/nvim $HOME/.local/share/nvim $HOME/.cache/nvim
 ### Credit
 
 The credit goes to [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch) and its author [Christian](https://github.com/ChristianChiarulli) who made this awesome repo and video playlist, this is from where I learned how to make and structure the configs and actually made it work, I used his configs as a base for most of the plugins and modified them for my needs.
-also I took configs and ideas from [Lunarvim](https://github.com/LunarVim/LunarVim), [Astronvim](https://github.com/AstroNvim/AstroNvim) and [LazyVim](https://github.com/LazyVim/LazyVim) 
+also I took configs and ideas from [Lunarvim](https://github.com/LunarVim/LunarVim), [Astronvim](https://github.com/AstroNvim/AstroNvim) and [LazyVim](https://github.com/LazyVim/LazyVim)
 
 <div align="center" id="madewithlua">
 

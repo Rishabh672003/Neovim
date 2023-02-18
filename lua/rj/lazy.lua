@@ -123,7 +123,7 @@ require("lazy").setup({
 	},
 	{
 		"p00f/clangd_extensions.nvim",
-		lazy = true,
+		-- lazy = true,
 		ft = { "c", "cpp" },
 		config = function()
 			require("rj.plugins.lsp.clangd")
@@ -276,7 +276,7 @@ require("lazy").setup({
 	-- 	"altermo/ultimate-autopair.nvim",
 	-- 	event = { "InsertEnter", "CmdlineEnter" },
 	-- 	config = function()
-	-- 		require("ultimate-autopair").setup({})
+	-- 		require("rj.plugins.ultimate-autopairs")
 	-- 	end,
 	-- },
 	{ "antoinemadec/FixCursorHold.nvim", lazy = false, event = "BufReadPost" },

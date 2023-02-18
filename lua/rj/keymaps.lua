@@ -45,6 +45,7 @@ keymap("n", "d3", "ddO", opts)
 -- Insert --
 -- Press jk fast to enter
 -- keymap("i", "jk", "<ESC>", opts)
+-- vim.keymap.set("i", "jk", "<ESC>", { noremap = true, silent = true })
 
 -- Visual --
 -- Stay in indent mode

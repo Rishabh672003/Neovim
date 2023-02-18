@@ -77,8 +77,8 @@ using namespace std;
 #define str string
 
 void solve() {{
-    int a, b;
-    cin >> a >> b;
+    int x, y;
+    cin >> x >> y;
 	{}
 }}
 
