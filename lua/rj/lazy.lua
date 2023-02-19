@@ -11,7 +11,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- example using a list of specs with the default options
 vim.g.mapleader = " "
 
 require("lazy").setup({
@@ -59,7 +58,7 @@ require("lazy").setup({
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = { "BufReadPost", "BufRead", "BufWinEnter", "BufNewFile" },
+		event = { "BufReadPre", "BufAdd", "BufNew" },
 		config = function()
 			require("rj.plugins.indentline")
 		end,
@@ -76,7 +75,7 @@ require("lazy").setup({
 	},
 	{
 		"m4xshen/smartcolumn.nvim",
-		event = { "BufReadPost", "BufRead", "BufWinEnter", "BufNewFile" },
+		event = { "BufReadPre", "BufAdd", "BufNew" },
 		config = function()
 			require("smartcolumn").setup({
 				colorcolumn = 80,
@@ -130,13 +129,14 @@ require("lazy").setup({
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		event = { "BufReadPost", "BufRead", "BufWinEnter", "BufNewFile" },
+		event = { "BufReadPre", "BufRead" },
 		config = function()
 			require("rj.plugins.lsp.null-ls")
 		end,
 	},
 	{
 		"p00f/clangd_extensions.nvim",
+		-- lazy = true,
 		ft = { "c", "cpp" },
 		config = function()
 			require("rj.plugins.lsp.clangd")
@@ -205,7 +205,7 @@ require("lazy").setup({
 	},
 	{
 		"utilyre/barbecue.nvim",
-		event = { "BufReadPost", "BufRead", "BufWinEnter", "BufNewFile" },
+		event = { "InsertEnter", "BufReadPre", "BufAdd", "BufNew" },
 		config = function()
 			require("rj.plugins.barbecue.barbecue")
 		end,
@@ -242,7 +242,8 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		event = { "BufReadPost", "BufRead", "BufWinEnter", "BufNewFile" },
+		event = { "BufReadPre", "BufAdd", "BufNew" },
+		priority = 100,
 		config = function()
 			require("rj.plugins.lualine-themes.lualine1")
 		end,
@@ -285,7 +286,7 @@ require("lazy").setup({
 	{ "antoinemadec/FixCursorHold.nvim", lazy = false, event = "BufReadPost" },
 	{
 		"Darazaki/indent-o-matic",
-		event = { "BufReadPost", "BufRead", "BufWinEnter", "BufNewFile" },
+		event = { "BufReadPost" },
 		config = function()
 			require("rj.plugins.indent")
 		end,
@@ -314,7 +315,7 @@ require("lazy").setup({
 	},
 	{
 		"max397574/better-escape.nvim",
-		event = { "BufReadPost", "BufRead", "BufWinEnter", "BufNewFile" },
+		event = "BufRead",
 		config = function()
 			require("rj.plugins.better-escape")
 		end,
