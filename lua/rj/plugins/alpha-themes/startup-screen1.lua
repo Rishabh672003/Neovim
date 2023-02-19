@@ -1,4 +1,4 @@
-local alpha = require({ "alpha" })
+local alpha = require("alpha")
 
 local if_nil = vim.F.if_nil
 local fnamemodify = vim.fn.fnamemodify
