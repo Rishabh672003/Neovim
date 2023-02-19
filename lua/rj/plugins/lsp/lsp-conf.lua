@@ -71,12 +71,6 @@ else
 	print("pyright not found")
 end
 
-if vim.fn.executable("vscode-json-language-server") == 1 then
-	lspconfig.jsonls.setup({ default })
-else
-	print("vscode-json-language-server not found")
-end
-
 if vim.fn.executable("taplo") == 1 then
 	lspconfig.taplo.setup({ default })
 else
@@ -105,4 +99,16 @@ if vim.fn.executable("bash-language-server") == 1 then
 	lspconfig.bashls.setup({ default })
 else
 	print("bash-language-server not found")
+end
+
+if vim.fn.executable("vscode-html-language-server") == 1 then
+	require("lspconfig").html.setup({ default })
+else
+	print("vscode-html-language-server not found")
+end
+
+if vim.fn.executable("vscode-json-language-server") == 1 then
+	lspconfig.jsonls.setup({ default })
+else
+	print("vscode-json-language-server not found")
 end
