@@ -1,9 +1,24 @@
 local lspconfig = require("lspconfig")
 
-local default = {
-	on_attach = require("rj.plugins.lsp.attach").on_attach,
-	capabilities = require("rj.plugins.lsp.attach").capabilities,
+local servers = {
+	taplo = "taplo",
+	lemminx = "lemminx",
+	prosemd_lsp = "prosemd-lsp",
+	jdtls = "jdtls",
+	bashls = "bash-language-server",
+	html = "vscode-html-language-server",
+	jsonls = "vscode-json-language-server",
 }
+for k,v in pairs(servers) do
+	if vim.fn.executable(v) == 1 then
+		lspconfig[k].setup({
+			on_attach = require("rj.plugins.lsp.attach").on_attach,
+			capabilities = require("rj.plugins.lsp.attach").capabilities,
+		})
+	else
+		print("lspconfig: " .. v .. " not found")
+	end
+end
 
 if vim.fn.executable("lua-language-server") == 1 then
 	lspconfig.lua_ls.setup({
@@ -69,46 +84,4 @@ if vim.fn.executable("pyright") == 1 then
 	})
 else
 	print("pyright not found")
-end
-
-if vim.fn.executable("taplo") == 1 then
-	lspconfig.taplo.setup({ default })
-else
-	print("taplo not found")
-end
-
-if vim.fn.executable("lemminx") == 1 then
-	lspconfig.lemminx.setup({ default })
-else
-	print("lemminx not found")
-end
-
-if vim.fn.executable("prosemd-lsp") == 1 then
-	lspconfig.prosemd_lsp.setup({ default })
-else
-	print("prosemd_lsp not found")
-end
-
-if vim.fn.executable("jdtls") == 1 then
-	lspconfig.jdtls.setup({ default })
-else
-	print("jdtls not found")
-end
-
-if vim.fn.executable("bash-language-server") == 1 then
-	lspconfig.bashls.setup({ default })
-else
-	print("bash-language-server not found")
-end
-
-if vim.fn.executable("vscode-html-language-server") == 1 then
-	require("lspconfig").html.setup({ default })
-else
-	print("vscode-html-language-server not found")
-end
-
-if vim.fn.executable("vscode-json-language-server") == 1 then
-	lspconfig.jsonls.setup({ default })
-else
-	print("vscode-json-language-server not found")
 end
