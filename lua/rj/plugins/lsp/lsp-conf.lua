@@ -1,6 +1,7 @@
 local lspconfig = require("lspconfig")
 
 local servers = {
+	-- name of server = "name of servers executable"
 	taplo = "taplo",
 	lemminx = "lemminx",
 	prosemd_lsp = "prosemd-lsp",
@@ -9,7 +10,7 @@ local servers = {
 	html = "vscode-html-language-server",
 	jsonls = "vscode-json-language-server",
 }
-for k,v in pairs(servers) do
+for k, v in pairs(servers) do
 	if vim.fn.executable(v) == 1 then
 		lspconfig[k].setup({
 			on_attach = require("rj.plugins.lsp.attach").on_attach,
