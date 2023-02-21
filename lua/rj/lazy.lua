@@ -52,6 +52,7 @@ require("lazy").setup({
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
+		priority = 20,
 		config = function()
 			require("rj.plugins.whichkey")
 		end,
