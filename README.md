@@ -82,13 +82,6 @@ You can change the startup-screen if you don't like this one go to lua/rj/plugin
 ![image](https://user-images.githubusercontent.com/53911515/213927964-90035c3a-cd4b-4983-9e30-604bd15f0fc4.png)
 ![image](https://user-images.githubusercontent.com/53911515/213927987-5e764e77-e82d-41fd-a97a-1be6952137e3.png)
 
-## Startup time
-
-With the help of lazy.nvim I have actually worked on the startup time, and now it's blazingly fast 
-
-![image](https://user-images.githubusercontent.com/53911515/220401569-4ed7aa82-9c9f-49b7-9551-3e3614773ad3.png)
-
-
 ## Uninstallation and Cleanup
 
 ```bash

@@ -146,6 +146,7 @@ require("lazy").setup({
 	{
 		"ahmedkhalf/project.nvim",
 		event = "VeryLazy",
+		priority = 30,
 		dependencies = {
 			{
 				"nvim-telescope/telescope.nvim",
