@@ -86,7 +86,7 @@ You can change the startup-screen if you don't like this one go to lua/rj/plugin
 
 With the help of lazy.nvim I have actually worked on the startup time, and now it's blazingly fast 
 
-![image](https://user-images.githubusercontent.com/53911515/220400845-87125625-5261-46d2-a698-51e360934739.png)
+![image](https://user-images.githubusercontent.com/53911515/220401569-4ed7aa82-9c9f-49b7-9551-3e3614773ad3.png)
 
 
 ## Uninstallation and Cleanup
