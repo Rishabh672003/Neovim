@@ -104,21 +104,16 @@ ls.add_snippets("cpp", {
 		"c",
 		fmt(
 			[[
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string.h>
+#include <vector>
+#include <math.h>
+
 using namespace std;
 
-#define ll long long
-#define ld long double
-#define str string
-
-void solve() {{
- 	{}
-}}
-
 int main() {{
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    solve();
+	{}
+    return 0;
 }}
 ]],
 			{

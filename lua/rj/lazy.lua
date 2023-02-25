@@ -153,25 +153,6 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"zbirenbaum/copilot-cmp",
-		after = { "copilot.lua" },
-		config = function()
-			require("copilot_cmp").setup({
-				formatters = {
-					insert_text = require("copilot_cmp.format").remove_existing,
-				},
-			})
-		end,
-	},
-	{
-		"zbirenbaum/copilot.lua",
-		cmd = "Copilot",
-		event = "InsertEnter",
-		config = function()
-			require("copilot").setup({})
-		end,
-	},
-	{
 		"L3MON4D3/LuaSnip",
 		event = "InsertEnter",
 		config = function()
@@ -421,6 +402,25 @@ require("lazy").setup({
 		},
 		dependencies = { { "nvim-lua/plenary.nvim" } },
 	},
+	-- {
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	after = { "copilot.lua" },
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup({
+	-- 			formatters = {
+	-- 				insert_text = require("copilot_cmp.format").remove_existing,
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	cmd = "Copilot",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		require("copilot").setup({})
+	-- 	end,
+	-- },
 	-- {
 	-- 	"lewis6991/satellite.nvim",
 	-- 	config = function()
