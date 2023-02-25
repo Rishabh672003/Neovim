@@ -46,6 +46,8 @@ cmp.setup({
 	},
 	sorting = {
 		comparators = {
+			require("copilot_cmp.comparators").prioritize,
+			require("copilot_cmp.comparators").score,
 			cmp.config.compare.offset,
 			cmp.config.compare.exact,
 			cmp.config.compare.recently_used,
@@ -117,7 +119,8 @@ cmp.setup({
 				luasnip = "[Snippet]",
 				buffer = "[Buffer]",
 				path = "[Path]",
-				codeium = "[Codeium]",
+				copilot = "[Copilot]",
+				-- codeium = "[Codeium]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -125,10 +128,11 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lua" },
+		{ name = "copilot" },
 		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },
-		{ name = "codeium" },
+		-- { name = "codeium" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,

@@ -110,7 +110,8 @@ require("lazy").setup({
 	},
 	{
 		"folke/noice.nvim",
-		event = "VeryLazy",
+		event = "VimEnter",
+		priority = 20,
 		config = function()
 			require("rj.plugins.noice")
 		end,
@@ -122,21 +123,7 @@ require("lazy").setup({
 		"m4xshen/smartcolumn.nvim",
 		event = { "BufReadPre", "BufAdd", "BufNew" },
 		config = function()
-			require("smartcolumn").setup({
-				colorcolumn = 80,
-				disabled_filetypes = {
-					"help",
-					"text",
-					"markdown",
-					"alpha",
-					"lazy",
-					"lspinfo",
-					"netrw",
-					"man",
-					"help",
-					"lspinfo",
-				},
-			})
+			require("rj.plugins.smartcolumn")
 		end,
 	},
 	"nvim-lua/popup.nvim",
@@ -154,15 +141,34 @@ require("lazy").setup({
 			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lua",
-			{
-				"jcdickinson/codeium.nvim",
-				config = function()
-					require("codeium").setup({})
-				end,
-			},
+			-- {
+			-- 	"jcdickinson/codeium.nvim",
+			-- 	config = function()
+			-- 		require("codeium").setup({})
+			-- 	end,
+			-- },
 		},
 		config = function()
 			require("rj.plugins.nvim-cmp")
+		end,
+	},
+	{
+		"zbirenbaum/copilot-cmp",
+		after = { "copilot.lua" },
+		config = function()
+			require("copilot_cmp").setup({
+				formatters = {
+					insert_text = require("copilot_cmp.format").remove_existing,
+				},
+			})
+		end,
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({})
 		end,
 	},
 	{
@@ -184,7 +190,7 @@ require("lazy").setup({
 	},
 	{
 		"p00f/clangd_extensions.nvim",
-		-- lazy = true,
+		lazy = true,
 		ft = { "c", "cpp" },
 		config = function()
 			require("rj.plugins.lsp.clangd")
@@ -207,7 +213,7 @@ require("lazy").setup({
 			},
 		},
 	},
-	{ "folke/tokyonight.nvim", event = "VeryLazy" },
+	{ "folke/tokyonight.nvim" },
 	{
 		"RRethy/vim-illuminate",
 		event = "BufReadPost",
@@ -343,7 +349,8 @@ require("lazy").setup({
 	{
 		"akinsho/toggleterm.nvim",
 		priority = 10,
-		event = "VeryLazy",
+		-- event = "VeryLazy",
+		-- lazy = true,
 		config = function()
 			require("rj.plugins.toggleterm")
 		end,
