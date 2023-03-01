@@ -36,6 +36,7 @@ local options = {
 	linebreak = true,
 	showtabline = 1,
 	guifont = "JetBrainsMono Nerd Font Regular:h13", -- the font used in graphical neovim applications
+	spelllang = "en_us",
 }
 
 for k, v in pairs(options) do

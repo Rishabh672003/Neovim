@@ -86,6 +86,7 @@ require("lazy").setup({
 			"bash",
 			"sh",
 			"toml",
+			"zsh",
 		},
 		config = function()
 			require("rj.plugins.lsp.lsp-conf")
@@ -119,13 +120,13 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 		},
 	},
-	{
-		"m4xshen/smartcolumn.nvim",
-		event = { "BufReadPre", "BufAdd", "BufNew" },
-		config = function()
-			require("rj.plugins.smartcolumn")
-		end,
-	},
+	-- {
+	-- 	"m4xshen/smartcolumn.nvim",
+	-- 	event = { "BufReadPre", "BufAdd", "BufNew" },
+	-- 	config = function()
+	-- 		require("rj.plugins.smartcolumn")
+	-- 	end,
+	-- },
 	"nvim-lua/popup.nvim",
 	{ "nvim-lua/plenary.nvim", lazy = true },
 	{
@@ -141,12 +142,12 @@ require("lazy").setup({
 			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lua",
-			-- {
-			-- 	"jcdickinson/codeium.nvim",
-			-- 	config = function()
-			-- 		require("codeium").setup({})
-			-- 	end,
-			-- },
+			{
+				"jcdickinson/codeium.nvim",
+				config = function()
+					require("codeium").setup({})
+				end,
+			},
 		},
 		config = function()
 			require("rj.plugins.nvim-cmp")
@@ -186,7 +187,7 @@ require("lazy").setup({
 				"nvim-telescope/telescope.nvim",
 				cmd = { "Telescope" },
 				dependencies = {
-					{ "nvim-telescope/telescope-file-browser.nvim", lazy = true },
+					{ "nvim-telescope/telescope-file-browser.nvim", lazy = true, cmd = "Telescope file_browser" },
 				},
 				config = function()
 					require("rj.plugins.nvim-telescope")

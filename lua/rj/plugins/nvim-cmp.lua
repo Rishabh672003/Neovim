@@ -120,7 +120,7 @@ cmp.setup({
 				buffer = "[Buffer]",
 				path = "[Path]",
 				-- copilot = "[Copilot]",
-				-- codeium = "[Codeium]",
+				codeium = "[Codeium]",
 			})[entry.source.name]
 			return vim_item
 		end,
@@ -132,7 +132,7 @@ cmp.setup({
 		{ name = "buffer" },
 		{ name = "path" },
 		-- { name = "copilot" },
-		-- { name = "codeium" },
+		{ name = "codeium" },
 	},
 	confirm_opts = {
 		behavior = cmp.ConfirmBehavior.Replace,
