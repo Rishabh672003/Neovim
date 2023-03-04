@@ -84,6 +84,9 @@ keymap("t", "<M-2>", "<cmd>ToggleTerm direction=vertical size=50<cr>", opts)
 keymap("n", "<M-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
 keymap("t", "<M-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
 
+keymap("t", "NOP", "<Esc>", opts)
+-- keymap("t", "", "", {})
+
 --keymap-bufferline
 -- keymap("n", "<TAB>", ":bnext<CR>", opts )
 -- keymap("n", "<C-TAB>", ":BufferLineCyclePrev <CR>", opts )

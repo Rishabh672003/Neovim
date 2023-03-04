@@ -43,10 +43,13 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-vim.opt.shortmess:append("c")
 vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.opt.iskeyword:append("-")
 vim.opt.whichwrap:append("<,>,[,],h,l")
-vim.opt.diffopt:append("linematch:60")
+if vim.fn.has("nvim-0.9.0") == 1 then
+	vim.opt.splitkeep = "screen"
+	vim.opt.diffopt:append("linematch:60")
+	vim.opt.shortmess:append({ C = true })
+end
 vim.opt.cinkeys:remove(":")
 vim.opt.indentkeys:remove(":")

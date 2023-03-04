@@ -108,6 +108,7 @@ ls.add_snippets("cpp", {
 #include <string.h>
 #include <vector>
 #include <math.h>
+#include <algorithm>
 
 using namespace std;
 

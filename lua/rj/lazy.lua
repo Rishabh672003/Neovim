@@ -104,7 +104,7 @@ require("lazy").setup({
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		event = { "BufReadPre", "BufAdd", "BufNew" },
+    event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("rj.plugins.indentline")
 		end,
