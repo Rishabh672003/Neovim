@@ -69,6 +69,7 @@ require("lazy").setup({
 		priority = 1000,
 		config = function()
 			require("rj.plugins.catppuccin")
+			vim.cmd("colorscheme catppuccin")
 		end,
 		dependencies = {},
 	},
@@ -104,7 +105,7 @@ require("lazy").setup({
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
-    event = { "BufReadPost", "BufNewFile" },
+		event = { "BufReadPost", "BufNewFile" },
 		config = function()
 			require("rj.plugins.indentline")
 		end,
@@ -165,7 +166,7 @@ require("lazy").setup({
 	},
 	{
 		"jose-elias-alvarez/null-ls.nvim",
-		event = { "BufReadPre", "BufRead" },
+		event = { "BufReadPre", "BufRead", "BufNew" },
 		config = function()
 			require("rj.plugins.lsp.null-ls")
 		end,

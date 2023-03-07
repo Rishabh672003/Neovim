@@ -23,7 +23,7 @@ require("toggleterm").setup({
 
 function _G.set_terminal_keymaps()
 	local opts = { noremap = true }
-	vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
+	-- vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
 	vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
 	vim.api.nvim_buf_set_keymap(0, "t", "<C-h>", [[<C-\><C-n><C-W>h]], opts)
 	vim.api.nvim_buf_set_keymap(0, "t", "<C-j>", [[<C-\><C-n><C-W>j]], opts)
@@ -38,11 +38,6 @@ local lazygit = Terminal:new({
 	cmd = "lazygit",
 	hidden = true,
 	direction = "float",
-	float_opts = {
-		border = "none",
-		width = 100000,
-		height = 100000,
-	},
 	on_open = function(_)
 		vim.cmd("startinsert!")
 	end,

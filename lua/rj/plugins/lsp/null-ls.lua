@@ -39,5 +39,6 @@ require("null-ls").setup({
 		diagnostics.shellcheck,
 		diagnostics.zsh,
 		diagnostics.fish,
+		diagnostics.proselint,
 	},
 })

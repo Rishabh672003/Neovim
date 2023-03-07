@@ -42,6 +42,7 @@ keymap("n", "<C-a>", ":0,$y<CR>", opts)
 
 keymap("n", "d3", "ddO", opts)
 
+-- vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
 -- Insert --
 -- Press jk fast to enter
 -- keymap("i", "jk", "<ESC>", opts)

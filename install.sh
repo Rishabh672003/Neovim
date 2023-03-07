@@ -9,6 +9,7 @@ yay -S --needed --noconfirm shellcheck-bin beautysh jdtls lemminx;
 cargo install --features lsp --locked taplo-cli;
 cargo install prosemd-lsp;
 npm i -g vscode-langservers-extracted;
+pip install proselint;
 rm -rf ~/nvim-linux64 > /dev/null 2>&1 ; \
     curl --output-dir ~ \
     -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz && \
