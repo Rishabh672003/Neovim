@@ -99,6 +99,7 @@ local mappings = {
 		"<cmd>lua require('telescope').extensions.projects.projects(require('telescope.themes').get_dropdown{previewer = false, initial_mode = normal})<cr>",
 		"Projects",
 	},
+	["S"] = { "<cmd>source %<cr>", "Source file" },
 
 	L = {
 		name = "Lazy",

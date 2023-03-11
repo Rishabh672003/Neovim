@@ -35,9 +35,9 @@ local kind_icons = {
 	Event = "",
 	Operator = "",
 	TypeParameter = "",
+	Codeium = "󰚩",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
-
 cmp.setup({
 	snippet = {
 		expand = function(args)
