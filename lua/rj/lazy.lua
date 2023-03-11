@@ -99,7 +99,6 @@ require("lazy").setup({
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		keys = "<Space>",
-		-- priority = 5,
 		config = function()
 			require("rj.plugins.whichkey")
 		end,
@@ -122,13 +121,6 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 		},
 	},
-	-- {
-	-- 	"m4xshen/smartcolumn.nvim",
-	-- 	event = { "BufReadPre", "BufAdd", "BufNew" },
-	-- 	config = function()
-	-- 		require("rj.plugins.smartcolumn")
-	-- 	end,
-	-- },
 	"nvim-lua/popup.nvim",
 	{ "nvim-lua/plenary.nvim", lazy = true },
 	{
@@ -166,6 +158,13 @@ require("lazy").setup({
 		},
 	},
 	{
+		"alvarosevilla95/luatab.nvim",
+		event = { "TabNew", "TabEnter", "TabNewEntered" },
+		config = function()
+			require("luatab").setup({})
+		end,
+	},
+	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = { "BufReadPre", "BufRead", "BufNew" },
 		config = function()
@@ -183,7 +182,6 @@ require("lazy").setup({
 	{
 		"ahmedkhalf/project.nvim",
 		event = "VeryLazy",
-		-- keys = { "<leader>p" },
 		dependencies = {
 			{
 				"nvim-telescope/telescope.nvim",
@@ -281,7 +279,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		event = { "BufReadPre", "BufAdd", "BufNew" },
+		event = { "BufReadPre", "BufAdd", "BufNew", "TabNew", "TabEnter" },
 		priority = 100,
 		config = function()
 			require("rj.plugins.lualine-themes.lualine1")
@@ -409,8 +407,7 @@ require("lazy").setup({
 	{
 		"willothy/flatten.nvim",
 		config = true,
-		-- or pass configuration with
-		-- opts = {  }
+		events = { "TermEnter", "TermOpen" },
 	},
 	-- {
 	-- 	"zbirenbaum/copilot-cmp",
