@@ -63,7 +63,7 @@ if vim.fn.executable("lua-language-server") == 1 then
 		},
 	})
 else
-	print("lua-language-server not found")
+	print("lspconfig: lua-language-server not found")
 end
 
 if vim.fn.executable("pyright") == 1 then
@@ -84,5 +84,5 @@ if vim.fn.executable("pyright") == 1 then
 		},
 	})
 else
-	print("pyright not found")
+	print("lspconfig: pyright not found")
 end
