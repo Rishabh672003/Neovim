@@ -1,9 +1,9 @@
 require("zen-mode").setup({
 	window = {
 		backdrop = 1,
-		height = 0.87,
+		height = 0.88,
 		-- width = 0.5,
-		width = 80,
+		width = 85,
 		options = {
 			signcolumn = "no",
 			number = false,
@@ -24,16 +24,10 @@ require("zen-mode").setup({
 		},
 	},
 	on_open = function()
-		-- require("lsp-inlayhints").toggle()
 		vim.g.cmp_active = false
-		vim.cmd([[LspStop]])
-		require("lualine").hide()
-		vim.o.statusline = " "
 	end,
 	on_close = function()
 		-- require("lsp-inlayhints").toggle()
 		vim.g.cmp_active = true
-		vim.cmd([[LspStart]])
-		require("lualine").hide({ unhide = true })
 	end,
 })

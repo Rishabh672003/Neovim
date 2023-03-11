@@ -98,7 +98,8 @@ require("lazy").setup({
 	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		priority = 5,
+		keys = "<Space>",
+		-- priority = 5,
 		config = function()
 			require("rj.plugins.whichkey")
 		end,
@@ -182,7 +183,7 @@ require("lazy").setup({
 	{
 		"ahmedkhalf/project.nvim",
 		event = "VeryLazy",
-		priority = 30,
+		-- keys = { "<leader>p" },
 		dependencies = {
 			{
 				"nvim-telescope/telescope.nvim",
@@ -335,7 +336,7 @@ require("lazy").setup({
 		-- event = "VeryLazy",
 		-- lazy = true,
 		config = function()
-			require("rj.plugins.toggleterm")
+			require("rj.plugins.nvim-toggleterm")
 		end,
 	},
 	{
@@ -403,6 +404,13 @@ require("lazy").setup({
 			},
 		},
 		dependencies = { { "nvim-lua/plenary.nvim" } },
+	},
+
+	{
+		"willothy/flatten.nvim",
+		config = true,
+		-- or pass configuration with
+		-- opts = {  }
 	},
 	-- {
 	-- 	"zbirenbaum/copilot-cmp",

@@ -93,8 +93,8 @@ keymap("t", "NOP", "<Esc>", opts)
 -- keymap("n", "<C-TAB>", ":BufferLineCyclePrev <CR>", opts )
 
 --keymaps for tabs
-keymap("n", "<M-l>", ":tabNext<CR>", opts)
-keymap("n", "<M-h>", ":tabprevious<CR>", opts)
+keymap("n", "<M-h>", ":tabNext<CR>", opts)
+keymap("n", "<M-l>", ":tabprevious<CR>", opts)
 -- keymap("n", "<A-i>", ":tabnew<CR>", opts)
 -- keymap("n", "<leader>j", ":Jaq<CR>", opts)
 -- keymap("n", "<leader>q", ":q!<CR>", opts)
