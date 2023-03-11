@@ -173,7 +173,6 @@ require("lazy").setup({
 	},
 	{
 		"p00f/clangd_extensions.nvim",
-		lazy = true,
 		ft = { "c", "cpp" },
 		config = function()
 			require("rj.plugins.lsp.clangd")
@@ -331,8 +330,6 @@ require("lazy").setup({
 	{
 		"akinsho/toggleterm.nvim",
 		priority = 10,
-		-- event = "VeryLazy",
-		-- lazy = true,
 		config = function()
 			require("rj.plugins.nvim-toggleterm")
 		end,
@@ -383,7 +380,6 @@ require("lazy").setup({
 	},
 	{
 		"nvim-neorg/neorg",
-		lazy = true,
 		ft = "norg",
 		cmd = "Neorg",
 		build = ":Neorg sync-parsers",
