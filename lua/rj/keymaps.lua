@@ -72,8 +72,6 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 
--- keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
---keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
 
@@ -86,22 +84,12 @@ keymap("n", "<M-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
 keymap("t", "<M-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
 
 keymap("t", "NOP", "<Esc>", opts)
--- keymap("t", "", "", {})
-
---keymap-bufferline
--- keymap("n", "<TAB>", ":bnext<CR>", opts )
--- keymap("n", "<C-TAB>", ":BufferLineCyclePrev <CR>", opts )
 
 --keymaps for tabs
-keymap("n", "<M-h>", ":tabNext<CR>", opts)
-keymap("n", "<M-l>", ":tabprevious<CR>", opts)
--- keymap("n", "<A-i>", ":tabnew<CR>", opts)
--- keymap("n", "<leader>j", ":Jaq<CR>", opts)
+keymap("n", "<M-l>", ":tabnext<CR>", opts)
+keymap("n", "<M-h>", ":tabprevious<CR>", opts)
+keymap("n", "<A-i>", ":tabnew<CR>", opts)
+keymap("n", "<A-q>", ":tabclose<CR>", opts)
 -- keymap("n", "<leader>q", ":q!<CR>", opts)
 keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
--- keymap("i", "<C-i>", "<cmd>PickIconsInsert<cr>", opts)
--- keymap("i", "<A-i>", "<cmd>PickAltFontAndSymbolsInsert<cr>", opts)
-
--- keymap('n', '<C-n>', '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>', {noremap=true})
--- keymap('n', '<C-p>', '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>', {noremap=true})
