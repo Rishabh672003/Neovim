@@ -21,6 +21,7 @@ require("lazy").setup({
 	defaults = {
 		lazy = true,
 	},
+	install = { colorscheme = { "catppuccin" } },
 	performance = {
 		rtp = {
 			paths = {
@@ -66,6 +67,7 @@ require("lazy").setup({
 		"catppuccin/nvim",
 		name = "catppuccin",
 		lazy = false,
+		build = ":CatppuccinCompile",
 		priority = 1000,
 		config = function()
 			require("rj.plugins.catppuccin")
@@ -157,28 +159,11 @@ require("lazy").setup({
 			"rafamadriz/friendly-snippets",
 		},
 	},
-	-- {
-	-- 	"alvarosevilla95/luatab.nvim",
-	-- 	event = { "TabNew", "TabEnter", "TabNewEntered" },
-	-- 	config = function()
-	-- 		require("luatab").setup({})
-	-- 	end,
-	-- },
 	{
-		"seblj/nvim-tabline",
+		"alvarosevilla95/luatab.nvim",
 		event = { "TabNew", "TabEnter", "TabNewEntered" },
 		config = function()
-			require("tabline").setup({
-				no_name = "[No Name]", -- Name for buffers with no name
-				modified_icon = "", -- Icon for showing modified buffer
-				close_icon = "", -- Icon for closing tab with mouse
-				separator = " ", -- Separator icon on the left side
-				padding = 3, -- Prefix and suffix space
-				color_all_icons = true, -- Color devicons in active and inactive tabs
-				right_separator = false, -- Show right separator on the last tab
-				show_index = false, -- Shows the index of tab before filename
-				show_icon = true, -- Shows the devicon
-			})
+			require("luatab").setup({})
 		end,
 	},
 	{
@@ -295,7 +280,7 @@ require("lazy").setup({
 	},
 	{
 		"nvim-lualine/lualine.nvim",
-		event = { "BufReadPre", "BufAdd", "BufNew", "TabNew", "TabEnter" },
+		event = { "InsertEnter", "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
 		priority = 100,
 		config = function()
 			require("rj.plugins.lualine-themes.lualine1")
