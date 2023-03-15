@@ -53,3 +53,5 @@ if vim.fn.has("nvim-0.9.0") == 1 then
 end
 vim.opt.cinkeys:remove(":")
 vim.opt.indentkeys:remove(":")
+
+vim.g.cmp_toggle = true
