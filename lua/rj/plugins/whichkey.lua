@@ -113,7 +113,6 @@ local mappings = {
 
 	["r"] = { "<cmd>:Telescope oldfiles<cr>", "Recent Files" },
 	["C"] = { "<cmd>:Telescope colorscheme<cr>", "Colorschemes" },
-	["n"] = { "<cmd>lua _NAP_TOGGLE()<CR>", "nap" },
 
 	g = {
 		name = "Git",
@@ -212,6 +211,12 @@ local mappings = {
 		v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
 		t = { "<cmd>ToggleTerm<cr>", "toggle" },
 		T = { "<cmd>terminal<cr>", "Neoterminal" },
+	},
+
+	n = {
+		name = "Cmp",
+		e = { "<cmd>let g:cmp_toggle = v:true<cr>", "Enable" },
+		d = { "<cmd>let g:cmp_toggle = v:false<cr>", "Disable" },
 	},
 
 	["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
