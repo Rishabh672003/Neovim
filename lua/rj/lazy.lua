@@ -404,9 +404,15 @@ require("lazy").setup({
 
 	{
 		"willothy/flatten.nvim",
-		config = true,
-		events = { "TermEnter", "TermOpen" },
+		lazy = false,
+		priority = 1001,
+		opts = {
+			window = {
+				open = "tab",
+			},
+		},
 	},
+	"rawnly/gist.nvim",
 	-- {
 	-- 	"zbirenbaum/copilot-cmp",
 	-- 	after = { "copilot.lua" },
