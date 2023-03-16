@@ -40,7 +40,7 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("i", "<C-a>", "<ESC>:0,$y<CR>a", opts)
 keymap("n", "<C-a>", ":0,$y<CR>", opts)
 
-keymap("n", "d3", "ddO", opts)
+keymap("n", ";", ":", opts)
 
 -- vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
 -- Insert --
