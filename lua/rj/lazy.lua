@@ -413,7 +413,10 @@ require("lazy").setup({
 			},
 		},
 	},
-	"rawnly/gist.nvim",
+	{
+		"rawnly/gist.nvim",
+		event = "BufRead",
+	},
 	-- {
 	-- 	"zbirenbaum/copilot-cmp",
 	-- 	after = { "copilot.lua" },
