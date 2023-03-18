@@ -16,6 +16,12 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
+vim.cmd([[
+autocmd FileType TelescopePrompt lua require'cmp'.setup.buffer {
+\   completion = { autocomplete = false }
+\ }
+]])
+
 -- nvim-tree is also there in modified buffers so this function filter it out
 local modifiedBufs = function(bufs)
 	local t = 0

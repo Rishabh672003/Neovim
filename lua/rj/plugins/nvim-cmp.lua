@@ -38,10 +38,10 @@ local kind_icons = {
 	Codeium = "󰚩",
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
-cmp.setup{
+cmp.setup({
 	enabled = function()
-    return vim.g.cmp_toggle
-  end,
+		return vim.g.cmp_toggle
+	end,
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -115,7 +115,7 @@ cmp.setup{
 		format = function(entry, vim_item)
 			-- Kind icons
 			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-			-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+			-- vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
 			vim_item.menu = ({
 				nvim_lsp = "[LSP]",
 				nvim_lua = "[NVLUA]",
@@ -149,4 +149,4 @@ cmp.setup{
 	experimental = {
 		ghost_text = true,
 	},
-}
+})

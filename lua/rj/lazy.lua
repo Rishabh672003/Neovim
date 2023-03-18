@@ -90,6 +90,7 @@ require("lazy").setup({
 			"sh",
 			"toml",
 			"zsh",
+			"rust",
 		},
 		config = function()
 			require("rj.plugins.lsp.lsp-conf")

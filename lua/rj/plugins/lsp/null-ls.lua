@@ -40,5 +40,6 @@ require("null-ls").setup({
 		diagnostics.zsh,
 		diagnostics.fish,
 		diagnostics.proselint,
+		formatting.rustfmt,
 	},
 })

@@ -33,20 +33,14 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
+keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
-keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 keymap("i", "<C-a>", "<ESC>:0,$y<CR>a", opts)
 keymap("n", "<C-a>", ":0,$y<CR>", opts)
 
 keymap("n", ";", ":", opts)
-
--- vim.api.nvim_buf_set_keymap(0, "t", "<esc>", [[<C-\><C-n>]], opts)
--- Insert --
--- Press jk fast to enter
--- keymap("i", "jk", "<ESC>", opts)
--- vim.keymap.set("i", "jk", "<ESC>", { noremap = true, silent = true })
 
 -- Visual --
 -- Stay in indent mode
@@ -83,13 +77,12 @@ keymap("t", "<M-2>", "<cmd>ToggleTerm direction=vertical size=50<cr>", opts)
 keymap("n", "<M-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
 keymap("t", "<M-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
 
-keymap("t", "NOP", "<Esc>", opts)
-
 --keymaps for tabs
 keymap("n", "<M-l>", ":tabnext<CR>", opts)
 keymap("n", "<M-h>", ":tabprevious<CR>", opts)
-keymap("n", "<A-i>", ":tabnew<CR>", opts)
 keymap("n", "<A-q>", ":tabclose<CR>", opts)
--- keymap("n", "<leader>q", ":q!<CR>", opts)
+keymap("n", "<A-i>", ":tabnew<CR>", opts)
+
+-- lsp keymap
 keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 

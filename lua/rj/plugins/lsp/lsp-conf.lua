@@ -21,6 +21,20 @@ for k, v in pairs(servers) do
 	end
 end
 
+if vim.fn.executable("rust-analyzer") == 1 then
+	lspconfig.rust_analyzer.setup({
+		settings = {
+			["rust-analyzer"] = {
+				diagnostics = {
+					enable = false,
+				},
+			},
+		},
+	})
+else
+	print("lspconfig: rust-analyzer not found")
+end
+
 if vim.fn.executable("lua-language-server") == 1 then
 	lspconfig.lua_ls.setup({
 		on_attach = require("rj.plugins.lsp.attach").on_attach,
