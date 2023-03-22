@@ -438,7 +438,7 @@ require("lazy").setup({
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
-		-- event = "InsertEnter",
+		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({})
 		end,
@@ -447,9 +447,7 @@ require("lazy").setup({
 		"jim-fx/sudoku.nvim",
 		cmd = "Sudoku",
 		config = function()
-			require("sudoku").setup({
-				-- configuration ...
-			})
+			require("sudoku").setup({})
 		end,
 	},
 	{

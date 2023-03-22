@@ -112,7 +112,6 @@ local mappings = {
 	},
 
 	["r"] = { "<cmd>:Telescope oldfiles<cr>", "Recent Files" },
-	["C"] = { "<cmd>:Telescope colorscheme<cr>", "Colorschemes" },
 
 	g = {
 		name = "Git",
@@ -213,8 +212,9 @@ local mappings = {
 		T = { "<cmd>terminal<cr>", "Neoterminal" },
 	},
 
-	n = {
+	C = {
 		name = "Cmp",
+		c = { "<cmd>Copilot<cr>", "Copilot" },
 		e = { "<cmd>let g:cmp_toggle = v:true<cr>", "Enable" },
 		d = { "<cmd>let g:cmp_toggle = v:false<cr>", "Disable" },
 	},

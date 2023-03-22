@@ -49,7 +49,7 @@ These are all the optional dependencies if you dont want anything just remove th
 #### LSP dependencies as now these configs dont use mason, so you will have to install them yourself
 
 ```bash
-sudo pacman -Sy --needed --noconfirm lua-language-server;
+sudo pacman -Sy --needed --noconfirm lua-language-server rust-analyzer;
 yay -S jdtls lemminx;
 cargo install --features lsp --locked taplo-cli;
 cargo install prosemd-lsp;
