@@ -99,6 +99,13 @@ require("lazy").setup({
 		end,
 	},
 	{
+		"simrat39/rust-tools.nvim",
+		ft = { "rust" },
+		config = function()
+			require("rj.plugins.lsp.rust-tools")
+		end,
+	},
+	{
 		"folke/which-key.nvim",
 		event = "VeryLazy",
 		keys = "<Space>",
@@ -464,4 +471,3 @@ require("lazy").setup({
 	-- 	end,
 	-- },
 })
-
