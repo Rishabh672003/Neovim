@@ -16,13 +16,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
--- vim.api.nvim_create_autocmd({ "FileType" }, {
--- 	pattern = { "rust" },
--- 	callback = function()
--- 		local _, _ = pcall(vim.lsp.codelens.refresh)
--- 	end,
--- })
-
 vim.cmd([[
 autocmd FileType TelescopePrompt lua require'cmp'.setup.buffer {
 \   completion = { autocomplete = false }
