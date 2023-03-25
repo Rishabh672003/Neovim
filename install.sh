@@ -40,17 +40,16 @@ rm -rf ~/nvim-linux64 > /dev/null 2>&1 ; \
     -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz && \
     tar -xvf ~/nvim-linux64.tar.gz;
 
-# check if ~/.config/nvim exists
 if [ ! -d ~/.config/nvim ]; then
     mkdir -p ~/.config/nvim;
-else
-    git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim;
 fi
-
+git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim;
 
 echo "alias nvim='~/nvim-linux64/bin/nvim'" >> ~/.bashrc ;
 echo "alias nvim='~/nvim-linux64/bin/nvim'" >> ~/.zshrc ;
 echo "alias nvim='~/nvim-linux64/bin/nvim'" >> ~/.config/fish/config.fish ;
+
 source "$HOME/.bashrc";
 source "$HOME/.zshrc";
+
 ~/nvim-linux64/bin/nvim
