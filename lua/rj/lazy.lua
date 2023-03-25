@@ -101,6 +101,7 @@ require("lazy").setup({
 	{
 		"simrat39/rust-tools.nvim",
 		ft = { "rust" },
+		event = { "InsertEnter", "BufReadPre", "BufAdd", "BufNew" },
 		config = function()
 			require("rj.plugins.lsp.rust-tools")
 		end,
@@ -438,7 +439,6 @@ require("lazy").setup({
 	{
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
-		event = "InsertEnter",
 		config = function()
 			require("copilot").setup({})
 		end,

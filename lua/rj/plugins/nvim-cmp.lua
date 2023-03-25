@@ -55,9 +55,9 @@ cmp.setup({
 	},
 	sorting = {
 		comparators = {
-			cmp.config.compare.exact,
 			copilot_cmp.prioritize,
 			copilot_cmp.score,
+			cmp.config.compare.exact,
 			cmp.config.compare.recently_used,
 			cmp.config.compare.order,
 			cmp.config.compare.offset,
