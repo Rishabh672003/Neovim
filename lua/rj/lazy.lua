@@ -418,12 +418,12 @@ require("lazy").setup({
 		"nullchilly/fsread.nvim",
 		cmd = "FSToggle",
 	},
-	-- {
-	-- 	"lewis6991/satellite.nvim",
-	-- 	config = function()
-	-- 		require("satellite").setup()
-	-- 	end,
-	-- },
+	{
+		"lewis6991/satellite.nvim",
+		config = function()
+			require("satellite").setup()
+		end,
+	},
 	-- {
 	-- 	"Pocco81/auto-save.nvim",
 	-- 	config = function()
