@@ -9,6 +9,7 @@ local servers = {
 	bashls = "bash-language-server",
 	html = "vscode-html-language-server",
 	jsonls = "vscode-json-language-server",
+	tsserver = "typescript-language-server",
 }
 for k, v in pairs(servers) do
 	if vim.fn.executable(v) == 1 then

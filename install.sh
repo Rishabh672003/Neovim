@@ -4,7 +4,7 @@ if command -v pacman &> /dev/null ; then
     sudo pacman -Sy --needed --noconfirm git base-devel unzip curl lua cargo
     sudo pacman -Sy --needed --noconfirm npm python-pip stylua prettier astyle \
         ripgrep unzip npm zsh autopep8 lua-language-server \
-        bash-language-server pyright lemminx ;
+        bash-language-server pyright lemminx typescript-language-server ;
 else
     echo "This script is only supported for Arch Linux"
     exit 1;
