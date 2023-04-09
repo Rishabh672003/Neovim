@@ -258,7 +258,6 @@ require("lazy").setup({
 	{
 		"nvim-lualine/lualine.nvim",
 		event = { "InsertEnter", "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
-		priority = 100,
 		config = function()
 			require("rj.plugins.lualine-themes.lualine1")
 		end,
@@ -441,20 +440,24 @@ require("lazy").setup({
 		end,
 	},
 	{
-		"jackMort/ChatGPT.nvim",
-		config = function()
-			require("chatgpt").setup({})
-		end,
-	},
-	{
 		"chrisgrieser/nvim-early-retirement",
-		event = "VeryLazy",
+		event = { "InsertEnter", "BufReadPre", "BufAdd", "BufNew" },
 		opts = {
 			retirementAgeMins = 60,
 			ignoreAltFile = true,
 			notificationOnAutoClose = true,
 		},
 	},
+	{
+		"wintermute-cell/gitignore.nvim",
+		cmd = "Gitignore",
+	},
+	-- {
+	-- 	"Fildo7525/pretty_hover",
+	-- 	config = function()
+	-- 		require("pretty_hover").setup()
+	-- 	end,
+	-- },
 	-- {
 	-- 	"Pocco81/auto-save.nvim",
 	-- 	config = function()
