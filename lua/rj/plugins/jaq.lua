@@ -19,12 +19,13 @@ require("jaq-nvim").setup({
 			go = "go run %",
 			sh = "chmod +x % && sh %",
 			zsh = "zsh %",
+			lua = "lua %",
 		},
 
 		-- Uses internal commands such as 'source' and 'luafile'
 		internal = {
-			lua = "luafile %",
-			-- vim = "source %",
+			-- lua = "luafile %",
+			vim = "source %",
 		},
 	},
 

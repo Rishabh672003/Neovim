@@ -452,6 +452,13 @@ require("lazy").setup({
 		"wintermute-cell/gitignore.nvim",
 		cmd = "Gitignore",
 	},
+	{
+		"pwntester/octo.nvim",
+		event = "BufReadPre",
+		config = function()
+			require("octo").setup()
+		end,
+	},
 	-- {
 	-- 	"Fildo7525/pretty_hover",
 	-- 	config = function()
