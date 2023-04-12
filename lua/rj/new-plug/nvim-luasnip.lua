@@ -1,19 +1,28 @@
-local ls = require("luasnip")
-local s = ls.snippet
-local i = ls.insert_node
-local fmt = require("luasnip.extras.fmt").fmt
+local M = {
+	"L3MON4D3/LuaSnip",
+	event = "InsertEnter",
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+	},
+}
 
-ls.config.set_config({
-	history = true, --keep around last snippet local to jump back
-	updateevents = "TextChanged,TextChangedI", --update changes as you type
-	enable_autosnippets = true,
-})
+function M.config()
+	local ls = require("luasnip")
+	local s = ls.snippet
+	local i = ls.insert_node
+	local fmt = require("luasnip.extras.fmt").fmt
 
-ls.add_snippets("c", {
-	s(
-		"cc",
-		fmt(
-			[[
+	ls.config.set_config({
+		history = true, --keep around last snippet local to jump back
+		updateevents = "TextChanged,TextChangedI", --update changes as you type
+		enable_autosnippets = true,
+	})
+
+	ls.add_snippets("c", {
+		s(
+			"cc",
+			fmt(
+				[[
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -34,18 +43,18 @@ int main() {{
     return 0;
 }}
 ]],
-			{
-				i(1),
-			}
-		)
-	),
-})
+				{
+					i(1),
+				}
+			)
+		),
+	})
 
-ls.add_snippets("c", {
-	s(
-		"c",
-		fmt(
-			[[
+	ls.add_snippets("c", {
+		s(
+			"c",
+			fmt(
+				[[
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -56,18 +65,18 @@ int main() {{
     return 0;
 }}
 ]],
-			{
-				i(1),
-			}
-		)
-	),
-})
+				{
+					i(1),
+				}
+			)
+		),
+	})
 
-ls.add_snippets("cpp", {
-	s(
-		"cc",
-		fmt(
-			[[
+	ls.add_snippets("cpp", {
+		s(
+			"cc",
+			fmt(
+				[[
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -91,18 +100,18 @@ int main() {{
     return 0;
 }}
 ]],
-			{
-				i(1),
-			}
-		)
-	),
-})
+				{
+					i(1),
+				}
+			)
+		),
+	})
 
-ls.add_snippets("cpp", {
-	s(
-		"c",
-		fmt(
-			[[
+	ls.add_snippets("cpp", {
+		s(
+			"c",
+			fmt(
+				[[
 #include <iostream>
 #include <string.h>
 #include <vector>
@@ -115,18 +124,18 @@ int main() {{
 	{}
 }}
 ]],
-			{
-				i(1),
-			}
-		)
-	),
-})
+				{
+					i(1),
+				}
+			)
+		),
+	})
 
-ls.add_snippets("java", {
-	s(
-		"cc",
-		fmt(
-			[[
+	ls.add_snippets("java", {
+		s(
+			"cc",
+			fmt(
+				[[
 import java.io.*;
 import java.util.*;
 
@@ -173,9 +182,12 @@ class Test {{
   }}
 }}
 ]],
-			{
-				i(1),
-			}
-		)
-	),
-})
+				{
+					i(1),
+				}
+			)
+		),
+	})
+end
+
+return M

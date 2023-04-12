@@ -29,10 +29,10 @@ function M.config()
   local cmp = require("cmp")
   local luasnip = require("luasnip")
 
-  local status_ok, copilot_cmp = pcall(require, "copilot_cmp.comparators")
-  if not status_ok then
-    return
-  end
+  -- local status_ok, copilot_cmp = pcall(require, "copilot_cmp.comparators")
+  -- if not status_ok then
+  --   return
+  -- end
 
   require("luasnip/loaders/from_vscode").lazy_load()
 
@@ -84,15 +84,15 @@ function M.config()
     sorting = {
       comparators = {
         cmp.config.compare.exact,
-        copilot_cmp.prioritize,
-        copilot_cmp.score,
+        -- copilot_cmp.prioritize,
+        -- copilot_cmp.score,
         cmp.config.compare.recently_used,
         cmp.config.compare.order,
         cmp.config.compare.offset,
         cmp.config.compare.kind,
         cmp.config.compare.sort_text,
         cmp.config.compare.length,
-        require("clangd_extensions.cmp_scores"),
+        -- require("clangd_extensions.cmp_scores"),
       },
     },
     mapping = {
