@@ -61,7 +61,7 @@ end
 vim.api.nvim_create_user_command(
   'LspToggleAutoFormat',
   function()
-    require("rj.plugins.lsp.attach").toggle_format_on_save()
+    require("rj.lsp.attach").toggle_format_on_save()
   end,
   {}
 )
