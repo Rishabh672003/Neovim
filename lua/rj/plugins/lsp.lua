@@ -43,4 +43,11 @@ return {
 			require("rj.lsp.null-ls")
 		end,
 	},
+	{
+		"j-hui/fidget.nvim",
+		event = "BufReadPre",
+		config = function()
+			require("fidget").setup({})
+		end,
+	},
 }

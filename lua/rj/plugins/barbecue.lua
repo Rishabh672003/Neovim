@@ -1,93 +1,93 @@
 local M = {
-  "utilyre/barbecue.nvim",
-  event = { "InsertEnter", "BufReadPre", "BufAdd", "BufNew" },
-  dependencies = {
-    {
-      "SmiteshP/nvim-navic",
-    },
-  },
+	"utilyre/barbecue.nvim",
+	event = { "InsertEnter", "BufReadPre", "BufAdd", "BufNew" },
+	dependencies = {
+		{
+			"SmiteshP/nvim-navic",
+		},
+	},
 }
 
 function M.config()
-  local barbecue = require("barbecue")
+	local barbecue = require("barbecue")
 
-  vim.api.nvim_set_hl(0, "NavicSeparator", { link = "Normal" })
+	vim.api.nvim_set_hl(0, "NavicSeparator", { link = "Normal" })
 
-  barbecue.setup({
-    ---whether to create winbar updater autocmd
-    ---@type boolean
-    create_autocmd = true,
-    theme = "catppuccin",
-    ---buftypes to enable winbar in
-    ---@type table
-    include_buftypes = { "" },
-    ---returns a string to be shown at the end of winbar
-    -- param bufnr number
-    ---@return string
-    -- custom_section = function(bufnr)
-    --   return ""
-    -- end,
+	barbecue.setup({
+		---whether to create winbar updater autocmd
+		---@type boolean
+		create_autocmd = true,
+		theme = "catppuccin",
+		---buftypes to enable winbar in
+		---@type table
+		include_buftypes = { "" },
+		---returns a string to be shown at the end of winbar
+		-- param bufnr number
+		---@return string
+		-- custom_section = function(bufnr)
+		--   return ""
+		-- end,
 
-    ---:help filename-modifiers
-    modifiers = {
-      ---@type string
-      -- dirname = ":s?.*??",
-      dirname = ":~:.",
-      ---@type string
-      basename = "",
-    },
-    symbols = {
-      ---string to be shown at the start of winbar
-      ---@type string
-      prefix = " ",
-      ---entry separator
-      ---@type string
-      separator = require("rj.icons").ui.ChevronRight,
-      ---string to be shown when buffer is modified
-      ---@type string
-      modified = require("rj.icons").ui.BigCircle,
-      ---string to be shown when context is available but empty
-      ---@type string
-      default_context = "",
-    },
-    ---icons for different context entry kinds
-    kinds = {
-      Array = "",
-      Boolean = "蘒",
-      Class = "",
-      Color = "",
-      Constant = "",
-      Constructor = "",
-      Enum = "",
-      EnumMember = "",
-      Event = "",
-      Field = "",
-      File = "",
-      Folder = "",
-      Function = "",
-      Interface = "",
-      Key = "",
-      Keyword = "",
-      Method = "",
-      Module = "",
-      Namespace = "",
-      Null = "ﳠ",
-      Number = "",
-      Object = "",
-      Operator = "",
-      Package = "",
-      Property = "",
-      Reference = "",
-      Snippet = "",
-      String = "",
-      Struct = "",
-      Text = "",
-      TypeParameter = "",
-      Unit = "",
-      Value = "",
-      Variable = "",
-    },
-  })
+		---:help filename-modifiers
+		modifiers = {
+			---@type string
+			-- dirname = ":s?.*??",
+			dirname = ":~:.",
+			---@type string
+			basename = "",
+		},
+		symbols = {
+			---string to be shown at the start of winbar
+			---@type string
+			prefix = " ",
+			---entry separator
+			---@type string
+			separator = require("rj.icons").ui.ChevronRight,
+			---string to be shown when buffer is modified
+			---@type string
+			modified = require("rj.icons").ui.BigCircle,
+			---string to be shown when context is available but empty
+			---@type string
+			default_context = "",
+		},
+		---icons for different context entry kinds
+		kinds = {
+			Array = "",
+			Boolean = "蘒",
+			Class = "",
+			Color = "",
+			Constant = "",
+			Constructor = "",
+			Enum = "",
+			EnumMember = "",
+			Event = "",
+			Field = "",
+			File = "",
+			Folder = "",
+			Function = "",
+			Interface = "",
+			Key = "",
+			Keyword = "",
+			Method = "",
+			Module = "",
+			Namespace = "",
+			Null = "ﳠ",
+			Number = "",
+			Object = "",
+			Operator = "",
+			Package = "",
+			Property = "",
+			Reference = "",
+			Snippet = "",
+			String = "",
+			Struct = "",
+			Text = "",
+			TypeParameter = "",
+			Unit = "",
+			Value = "",
+			Variable = "",
+		},
+	})
 end
 
 return M

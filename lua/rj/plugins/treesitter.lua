@@ -2,6 +2,7 @@ local M = {
 	"nvim-treesitter/nvim-treesitter",
 	event = "BufReadPost",
 	dependencies = {
+		"nvim-treesitter/playground",
 		{
 			"JoosepAlviste/nvim-ts-context-commentstring",
 			event = "VeryLazy",
@@ -9,6 +10,20 @@ local M = {
 		{
 			"kyazdani42/nvim-web-devicons",
 			event = "VeryLazy",
+			config = function()
+				require("nvim-web-devicons").setup({
+					override = {
+						zsh = {
+							icon = "",
+							color = "#428850",
+							cterm_color = "65",
+							name = "Zsh",
+						},
+					},
+					color_icons = true,
+					default = true,
+				})
+			end,
 		},
 	},
 }
