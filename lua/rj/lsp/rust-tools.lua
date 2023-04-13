@@ -1,4 +1,4 @@
-it vim.fn.executable("rust-analyzer") == 1 then
+if vim.fn.executable("rust-analyzer") == 1 then
 	require("rust-tools").setup({
 		server = {
 			on_attach = require("rj.lsp.attach").on_attach,
