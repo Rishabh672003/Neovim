@@ -209,7 +209,7 @@ function M.config()
 			c = { "<cmd>Copilot<cr>", "Copilot" },
 			e = { "<cmd>let g:cmp_toggle = v:true<cr>", "Enable" },
 			d = { "<cmd>let g:cmp_toggle = v:false<cr>", "Disable" },
-			g = { '<cmd>lua require("neochat").toggle()<cr>', "ChatGpt" },
+			g = { '<cmd>NeoAI<cr>', "ChatGpt" },
 		},
 		["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
 	}
