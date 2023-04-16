@@ -17,8 +17,6 @@ return {
 		"NeoAIInjectContextCode",
 	},
 	config = function()
-		require("neoai").setup({
-			-- Options go here
-		})
+		require("neoai").setup({})
 	end,
 }
