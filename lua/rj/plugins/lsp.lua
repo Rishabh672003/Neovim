@@ -15,6 +15,9 @@ return {
 			"toml",
 			"zsh",
 			"rust",
+			"html",
+			"javascript",
+			"typescript",
 		},
 		config = function()
 			require("rj.lsp.lsp-conf")
