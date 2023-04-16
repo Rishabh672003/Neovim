@@ -1,4 +1,9 @@
-require("gitsigns").setup({
+local M = {
+	"lewis6991/gitsigns.nvim",
+	event = "BufReadPost",
+}
+
+M.opts = {
 	signs = {
 		add = {
 			hl = "GitSignsAdd",
@@ -71,4 +76,6 @@ require("gitsigns").setup({
 	yadm = {
 		enable = true,
 	},
-})
+}
+
+return M

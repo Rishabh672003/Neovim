@@ -1,8 +1,8 @@
 if vim.fn.executable("rust-analyzer") == 1 then
 	require("rust-tools").setup({
 		server = {
-			on_attach = require("rj.plugins.lsp.attach").on_attach,
-			capabilities = require("rj.plugins.lsp.attach").capabilities,
+			on_attach = require("rj.lsp.attach").on_attach,
+			capabilities = require("rj.lsp.attach").capabilities,
 		},
 		tools = {
 			executor = require("rust-tools/executors").termopen, -- can be quickfix or termopen
