@@ -60,6 +60,10 @@ require("lazy").setup("rj.plugins", {
 				"netrwPlugin",
 				"tohtml",
 				"man",
+				"matchit",
+				"editorconfig",
+				"matchparen",
+				"nvim"
 			},
 		},
 	},
