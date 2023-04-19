@@ -5,11 +5,9 @@ local M = {
 		"nvim-treesitter/playground",
 		{
 			"JoosepAlviste/nvim-ts-context-commentstring",
-			event = "VeryLazy",
 		},
 		{
 			"kyazdani42/nvim-web-devicons",
-			event = "VeryLazy",
 			config = function()
 				require("nvim-web-devicons").setup({
 					override = {

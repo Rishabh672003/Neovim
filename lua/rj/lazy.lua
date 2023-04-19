@@ -63,7 +63,6 @@ require("lazy").setup("rj.plugins", {
 				"matchit",
 				"editorconfig",
 				"matchparen",
-				"nvim"
 			},
 		},
 	},

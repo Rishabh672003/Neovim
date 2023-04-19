@@ -46,12 +46,9 @@ end
 vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.opt.iskeyword:append("-")
 vim.opt.whichwrap:append("<,>,[,],h,l")
-if vim.fn.has("nvim-0.9.0") == 1 then
-	vim.opt.splitkeep = "screen"
-	vim.opt.diffopt:append("linematch:60")
-	vim.opt.shortmess:append({ C = true })
-end
+vim.opt.splitkeep = "screen"
+vim.opt.diffopt:append("linematch:60")
+vim.opt.shortmess:append({ C = true })
 vim.opt.cinkeys:remove(":")
 vim.opt.indentkeys:remove(":")
-
 vim.g.cmp_toggle = true
