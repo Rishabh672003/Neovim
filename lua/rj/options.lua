@@ -51,4 +51,5 @@ vim.opt.diffopt:append("linematch:60")
 vim.opt.shortmess:append({ C = true })
 vim.opt.cinkeys:remove(":")
 vim.opt.indentkeys:remove(":")
+vim.opt.fillchars = { eob = " " }
 vim.g.cmp_toggle = true

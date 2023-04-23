@@ -27,6 +27,7 @@ require("null-ls").setup({
 				"markdown.mdx",
 				"graphql",
 				"handlebars",
+				"toml",
 			},
 		}),
 		-- formatting.black.with({ extra_args = { "--fast" } }),
