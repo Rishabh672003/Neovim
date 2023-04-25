@@ -1,7 +1,6 @@
 local M = {
 	"antoinemadec/FixCursorHold.nvim",
-	lazy = false,
-	event = "BufReadPost",
+	lazy = true,
 }
 
 return M
