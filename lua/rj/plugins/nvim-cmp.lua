@@ -83,9 +83,9 @@ function M.config()
 		sorting = {
 			comparators = {
 				cmp.config.compare.exact,
+				cmp.config.compare.recently_used,
 				-- copilot_cmp.prioritize,
 				-- copilot_cmp.score,
-				cmp.config.compare.recently_used,
 				cmp.config.compare.order,
 				cmp.config.compare.offset,
 				cmp.config.compare.kind,

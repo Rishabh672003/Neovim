@@ -35,7 +35,7 @@ local options = {
 	virtualedit = "onemore",
 	linebreak = true,
 	showtabline = 1,
-	guifont = "JetBrainsMono Nerd Font Regular:h13", -- the font used in graphical neovim applications
+	guifont = "JetBrainsMono Nerd Font Regular:h14", -- the font used in graphical neovim applications
 	spelllang = "en_us",
 }
 

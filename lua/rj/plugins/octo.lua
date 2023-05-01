@@ -1,6 +1,7 @@
 local M = {
 	"pwntester/octo.nvim",
-	event = "BufReadPre",
+	enabled = true,
+	-- event = "BufReadPost",
 }
 
 function M.config()

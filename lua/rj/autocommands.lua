@@ -93,3 +93,11 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 		end
 	end,
 })
+
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "neo-tree" },
+	callback = function()
+		vim.opt_local.number = false
+	end,
+})
