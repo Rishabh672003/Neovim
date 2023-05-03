@@ -18,6 +18,7 @@ return {
 			"html",
 			"javascript",
 			"typescript",
+			"python",
 		},
 		config = function()
 			require("rj.lsp.lsp-conf")

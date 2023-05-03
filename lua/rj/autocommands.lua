@@ -94,10 +94,18 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 	end,
 })
 
-
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "neo-tree" },
 	callback = function()
 		vim.opt_local.number = false
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+	pattern = "*.pdf",
+	callback = function(ev)
+		local filename = ev.file
+		vim.fn.jobstart({ "xdg-open", filename }, { detach = true })
+		vim.api.nvim_buf_delete(0, {})
 	end,
 })

@@ -190,7 +190,7 @@ class Test {{
 	})
 	ls.add_snippets("rust", {
 		s(
-			"ccc",
+			"cc",
 			fmt(
 				[[
 use std::io;
