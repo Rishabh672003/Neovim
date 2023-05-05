@@ -17,6 +17,7 @@ return {
 			"rust",
 			"html",
 			"javascript",
+			"javascriptreact",
 			"typescript",
 			"python",
 		},
