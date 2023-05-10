@@ -22,8 +22,8 @@ return {
 			"python",
 		},
 		config = function()
-			require("rj.lsp.lsp-conf")
 			require("rj.lsp.attach")
+			require("rj.lsp.lsp-conf")
 			require("rj.lsp.diagnostic")
 		end,
 	},
@@ -46,13 +46,6 @@ return {
 		event = { "BufReadPre", "BufRead", "BufNew" },
 		config = function()
 			require("rj.lsp.null-ls")
-		end,
-	},
-	{
-		"j-hui/fidget.nvim",
-		event = "BufReadPre",
-		config = function()
-			require("fidget").setup()
 		end,
 	},
 }

@@ -15,12 +15,12 @@ local M = {
 			"L3MON4D3/LuaSnip",
 			"rafamadriz/friendly-snippets",
 		},
-		-- {
-		-- 	"jcdickinson/codeium.nvim",
-		-- 	config = function()
-		-- 		require("codeium").setup({})
-		-- 	end,
-		-- },
+		{
+			"jcdickinson/codeium.nvim",
+			config = function()
+				require("codeium").setup({})
+			end,
+		},
 	},
 }
 
@@ -83,15 +83,9 @@ function M.config()
 		sorting = {
 			comparators = {
 				cmp.config.compare.exact,
-				cmp.config.compare.recently_used,
 				-- copilot_cmp.prioritize,
 				-- copilot_cmp.score,
-				cmp.config.compare.order,
-				cmp.config.compare.offset,
-				cmp.config.compare.kind,
-				cmp.config.compare.sort_text,
-				cmp.config.compare.length,
-				-- require("clangd_extensions.cmp_scores"),
+				require("clangd_extensions.cmp_scores"),
 			},
 		},
 		mapping = {
