@@ -21,6 +21,7 @@ return {
 			"typescript",
 			"python",
 		},
+		lazy = false,
 		config = function()
 			require("rj.lsp.attach")
 			require("rj.lsp.lsp-conf")
@@ -30,6 +31,7 @@ return {
 	{
 		"p00f/clangd_extensions.nvim",
 		ft = { "c", "cpp" },
+		lazy = false,
 		config = function()
 			require("rj.lsp.clangd")
 		end,
@@ -37,6 +39,7 @@ return {
 	{
 		"simrat39/rust-tools.nvim",
 		ft = { "rust" },
+		lazy = false,
 		config = function()
 			require("rj.lsp.rust-tools")
 		end,
@@ -44,6 +47,7 @@ return {
 	{
 		"jose-elias-alvarez/null-ls.nvim",
 		event = { "BufReadPre", "BufRead", "BufNew" },
+		lazy = false,
 		config = function()
 			require("rj.lsp.null-ls")
 		end,
