@@ -2,7 +2,7 @@ local M = {
 	"folke/noice.nvim",
 	event = "VimEnter",
 	enabled = true,
-	priority = 20,
+	-- priority = 20,
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 	},

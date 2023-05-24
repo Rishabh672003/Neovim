@@ -175,8 +175,8 @@ function M.config()
 			{ type = "text", val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
 			{ type = "padding", val = 1 },
 			dashboard.button("e", "  New file", "<cmd>ene<CR>"),
-			dashboard.button("f", "  Find file", "<cmd>Telescope find_files<CR>"),
-			-- dashboard.button("SPC F", "  Live grep"),
+			dashboard.button("f", "󰈞  Find file", "<cmd>Telescope find_files<CR>"),
+			-- dashboard.button("SPC F", "󰊄  Live grep"),
 			dashboard.button(
 				"p",
 				"  Projects",
@@ -184,7 +184,7 @@ function M.config()
 			),
 			dashboard.button("c", "  Configuration", "<cmd>e ~/.config/nvim/init.lua <CR>"),
 			dashboard.button("u", "  Update plugins", "<cmd>Lazy update<CR>"),
-			dashboard.button("q", "  Quit", "<cmd>qa<CR>"),
+			dashboard.button("q", "󰅚  Quit", "<cmd>qa<CR>"),
 		},
 		position = "center",
 	}
