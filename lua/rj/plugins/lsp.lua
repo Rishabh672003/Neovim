@@ -21,6 +21,11 @@ return {
 			"typescript",
 			"python",
 		},
+    dependencies = {
+"nvim-lua/plenary.nvim",
+"hrsh7th/cmp-nvim-lsp",
+"hrsh7th/nvim-cmp",
+    },
 		lazy = true,
 		config = function()
 			require("rj.lsp.attach")
