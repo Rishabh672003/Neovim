@@ -37,7 +37,8 @@ return {
 		end,
 	},
 	{
-		"simrat39/rust-tools.nvim",
+		"Ciel-MC/rust-tools.nvim",
+		-- branch = "inline-inlay-hints",
 		ft = { "rust" },
 		lazy = true,
 		config = function()

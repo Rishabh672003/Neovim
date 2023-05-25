@@ -38,10 +38,6 @@ For main branch
 git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
 ```
 
-## After Installation
-
-After launching neovim for the first time, packer will automatically install all the extension and will give you some errors, just ignore them and reopen neovim the errors should be resolved.
-
 ## optional dependencies
 
 These are all the optional dependencies if you dont want anything just remove them neovim should work fine either way
@@ -91,7 +87,7 @@ rm -rf $HOME/.config/nvim $HOME/.local/share/nvim $HOME/.cache/nvim
 ### Credit
 
 The credit goes to [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch) and its author [Christian](https://github.com/ChristianChiarulli) who made this awesome repo and video playlist, this is from where I learned how to make and structure the configs and actually made it work, I used his configs as a base for most of the plugins and modified them for my needs.
-also I took configs and ideas from [Lunarvim](https://github.com/LunarVim/LunarVim), [Astronvim](https://github.com/AstroNvim/AstroNvim) and [LazyVim](https://github.com/LazyVim/LazyVim)
+also I took configs and ideas from [Lunarvim](https://github.com/LunarVim/LunarVim), [Astronvim](https://github.com/AstroNvim/AstroNvim), [LazyVim](https://github.com/LazyVim/LazyVim) and [nvim-basic-ide](https://github.com/lunarvim/nvim-basic-ide)
 
 <div align="center" id="madewithlua">
 
