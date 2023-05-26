@@ -4,7 +4,7 @@ local M = {
 	priority = 1001,
 	opts = {
 		window = {
-			open = "split",
+			open = "tab",
 		},
 	},
 }
