@@ -17,6 +17,9 @@ local M = {
 		},
 		{
 			"jcdickinson/codeium.nvim",
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+			},
 			config = function()
 				require("codeium").setup({})
 			end,
@@ -27,6 +30,11 @@ local M = {
 function M.config()
 	local cmp = require("cmp")
 	local luasnip = require("luasnip")
+
+	local _, cmp_clangd = pcall(require, "clangd_extensions.cmp_scores")
+	if not _ then
+		return
+	end
 
 	-- local status_ok, copilot_cmp = pcall(require, "copilot_cmp.comparators")
 	-- if not status_ok then
@@ -85,7 +93,7 @@ function M.config()
 				cmp.config.compare.exact,
 				-- copilot_cmp.prioritize,
 				-- copilot_cmp.score,
-				require("clangd_extensions.cmp_scores"),
+				cmp_clangd,
 			},
 		},
 		mapping = {
