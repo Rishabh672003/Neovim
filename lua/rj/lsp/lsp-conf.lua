@@ -4,7 +4,6 @@ local servers = {
 	-- name of server = "name of servers executable"
 	taplo = "taplo",
 	lemminx = "lemminx",
-	-- prosemd_lsp = "prosemd-lsp",
 	marksman = "marksman",
 	jdtls = "jdtls",
 	bashls = "bash-language-server",
