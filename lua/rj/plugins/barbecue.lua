@@ -1,6 +1,7 @@
 local M = {
 	"utilyre/barbecue.nvim",
 	event = { "InsertEnter", "BufReadPre", "BufAdd", "BufNew" },
+	enabled = true,
 	dependencies = {
 		{
 			"SmiteshP/nvim-navic",
