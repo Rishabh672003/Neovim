@@ -2,6 +2,7 @@ return {
 	{
 		"zbirenbaum/copilot-cmp",
 		-- after = { "copilot.lua" },
+		enabled = false,
 		config = function()
 			require("copilot_cmp").setup({
 				formatters = {
@@ -12,6 +13,7 @@ return {
 	},
 	{
 		"zbirenbaum/copilot.lua",
+		enabled = false,
 		cmd = "Copilot",
 		config = function()
 			require("copilot").setup({})

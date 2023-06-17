@@ -121,7 +121,7 @@ ins_left {
 ins_left {
   'diagnostics',
   sources = { 'nvim_diagnostic' },
-  symbols = { error = ' ', warn = ' ', hint = ' ', info = ' ' },
+  symbols = { error = '󰅚 ', warn = ' ', hint = '󰌶 ', info = ' ' },
   diagnostics_color = {
     color_error = { fg = colors.red },
     color_warn = { fg = colors.yellow },

@@ -1,6 +1,6 @@
 local M = {
 	"barrett-ruth/live-server.nvim",
-	ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+	ft = { "javascript", "javascriptreact", "typescript", "typescriptreact", "html" },
 	build = "yarn global add live-server",
 	config = true,
 }

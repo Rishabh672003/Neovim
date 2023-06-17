@@ -17,6 +17,7 @@ local M = {
 		},
 		{
 			"jcdickinson/codeium.nvim",
+			enabled = false,
 			dependencies = {
 				"nvim-lua/plenary.nvim",
 			},

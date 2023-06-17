@@ -69,7 +69,7 @@ else
 end
 
 if vim.fn.executable("pyright") == 1 then
-	require("lspconfig").pyright.setup({
+	lspconfig.pyright.setup({
 		on_attach = require("rj.lsp.attach").on_attach,
 		capabilities = require("rj.lsp.attach").capabilities,
 		settings = {
