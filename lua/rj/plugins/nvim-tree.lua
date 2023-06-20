@@ -1,5 +1,6 @@
 local M = {
 	"nvim-tree/nvim-tree.lua",
+	enabled = false,
 	cmd = "NvimTreeToggle",
 }
 

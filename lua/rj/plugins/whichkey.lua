@@ -88,7 +88,7 @@ function M.config()
 			"Buffers",
 		},
 		["d"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
-		["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+		["e"] = { "<cmd>Neotree focus toggle<cr>", "Explorer" },
 		["E"] = { "<cmd>Oil --float .<cr>", "Explorer" },
 		["w"] = { "<cmd>w!<CR>", "Save" },
 		["q"] = { "<cmd>q!<CR>", "Quit" },

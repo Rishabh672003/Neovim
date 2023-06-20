@@ -83,4 +83,5 @@ keymap("n", "<M-h>", ":tabprevious<CR>", opts)
 keymap("n", "<A-q>", ":tabclose<CR>", opts)
 keymap("n", "<A-i>", ":tabnew<CR>", opts)
 
+keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 -- keymap("n", "-", require("oil").open, { desc = "Open parent directory" })
