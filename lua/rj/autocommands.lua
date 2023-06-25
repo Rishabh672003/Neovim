@@ -16,26 +16,12 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
-vim.cmd([[
-autocmd FileType TelescopePrompt lua require'cmp'.setup.buffer {
-\   completion = { autocomplete = false }
-\ }
-]])
-
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-	callback = function(data)
-		-- buffer is a directory
-		local directory = vim.fn.isdirectory(data.file) == 1
-
-		if not directory then
-			return
-		end
-
-		-- change to the directory
-		vim.cmd.cd(data.file)
-
-		-- open the tree
-		require("nvim-tree.api").tree.open()
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "TelescopePrompt", "neo-tree-popup" },
+	callback = function()
+		require("cmp").setup.buffer({
+			completion = { autocomplete = false },
+		})
 	end,
 })
 
