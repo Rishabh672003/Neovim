@@ -26,6 +26,9 @@ function M.config()
 			"vimdoc",
 			"html",
 			"python",
+			"html",
+			"css",
+			"javascript",
 		}, -- put the language you want in this array
 		-- ensure_installed = "all",
 		sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
