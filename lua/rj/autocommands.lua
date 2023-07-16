@@ -50,19 +50,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-	pattern = "*.conf",
-	callback = function()
-		vim.cmd("set ft=conf")
-	end,
-})
 
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-	pattern = "*.rasi",
-	callback = function()
-		vim.cmd("set ft=rasi")
-	end,
-})
 
 vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 	callback = function()
@@ -87,4 +75,11 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 		vim.fn.jobstart({ "xdg-open", filename }, { detach = true })
 		vim.api.nvim_buf_delete(0, {})
 	end,
+})
+
+vim.filetype.add({
+	extension = {
+		rasi = "rasi",
+		conf = "conf",
+	},
 })

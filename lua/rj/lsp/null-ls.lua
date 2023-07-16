@@ -31,7 +31,7 @@ require("null-ls").setup({
 			},
 		}),
 		-- formatting.black.with({ extra_args = { "--fast" } }),
-		formatting.autopep8,
+		formatting.black,
 		formatting.stylua,
 		formatting.beautysh,
 		formatting.astyle.with({

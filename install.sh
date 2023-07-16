@@ -6,7 +6,7 @@ if command -v pacman &> /dev/null ; then
     # lsp
     sudo pacman -Sy --needed --noconfirm npm python-pip stylua prettier astyle \
         ripgrep unzip npm zsh autopep8 lua-language-server \
-        bash-language-server pyright lemminx typescript-language-server ;
+        bash-language-server pyright typescript-language-server ;
 else
     echo "This script is only supported for Arch Linux"
     exit 1;
