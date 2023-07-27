@@ -25,6 +25,15 @@ local M = {
 				require("codeium").setup({})
 			end,
 		},
+		{
+			"roobert/tailwindcss-colorizer-cmp.nvim",
+			-- optionally, override the default options:
+			config = function()
+				require("tailwindcss-colorizer-cmp").setup({
+					color_square_width = 2,
+				})
+			end,
+		},
 	},
 }
 
@@ -160,7 +169,12 @@ function M.config()
 					copilot = "[CPLT]",
 					codeium = "[CDEM]",
 				})[entry.source.name]
-				return vim_item
+
+				if vim.filetype == "html" then
+					return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
+				else
+					return vim_item
+				end
 			end,
 		},
 		sources = {

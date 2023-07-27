@@ -11,6 +11,7 @@ local servers = {
 	jsonls = "vscode-json-language-server",
 	tsserver = "typescript-language-server",
 	pyright = "pyright",
+	tailwindcss = "tailwindcss-language-server"
 }
 for k, v in pairs(servers) do
 	if vim.fn.executable(v) == 1 then
