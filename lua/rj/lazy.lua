@@ -55,7 +55,7 @@ require("lazy").setup("rj.plugins", {
 				"compiler",
 				"bugreport",
 				-- "ftplugin",
-				"load_ftplugin",
+				-- "load_ftplugin",
 				"indent_on",
 				"netrwPlugin",
 				"tohtml",

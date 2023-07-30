@@ -1,32 +1,10 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		ft = {
-			"markdown",
-			"lua",
-			"c",
-			"cpp",
-			"java",
-			"python",
-			"json",
-			"xml",
-			"bash",
-			"sh",
-			"toml",
-			"zsh",
-			"rust",
-			"html",
-			"javascript",
-			"javascriptreact",
-			"typescript",
-			"python",
-		},
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/nvim-cmp",
 		},
-		lazy = true,
+		lazy = false,
 		config = function()
 			require("rj.lsp.attach")
 			require("rj.lsp.lsp-conf")
