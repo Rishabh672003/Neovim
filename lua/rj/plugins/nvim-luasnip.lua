@@ -113,10 +113,6 @@ int main() {{
 			fmt(
 				[[
 #include <iostream>
-#include <string.h>
-#include <vector>
-#include <math.h>
-#include <algorithm>
 
 using namespace std;
 
