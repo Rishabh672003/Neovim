@@ -29,6 +29,7 @@ function M.config()
 			"html",
 			"css",
 			"javascript",
+			"java",
 		}, -- put the language you want in this array
 		-- ensure_installed = "all",
 		sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
@@ -41,7 +42,7 @@ function M.config()
 			disable = {}, -- list of language that will be disabled
 			-- additional_vim_regex_highlighting = true,
 		},
-		indent = { enable = true, disable = { "python", "html" } },
+		indent = { enable = true, disable = { "python", "html", "cpp" } },
 		context_commentstring = {
 			enable = true,
 			enable_autocmd = false,

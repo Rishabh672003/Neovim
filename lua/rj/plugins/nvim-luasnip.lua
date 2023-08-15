@@ -113,11 +113,14 @@ int main() {{
 			fmt(
 				[[
 #include <iostream>
+#include <string>
 
-using namespace std;
+using std::cout;
 
 int main() {{
 	{}
+
+	return 0;
 }}
 ]],
 				{
