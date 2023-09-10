@@ -1,5 +1,4 @@
 #!/bin/env bash
-# maintainer: Rishabh672003
 
 if command -v pacman &> /dev/null ; then
     sudo pacman -Sy --needed --noconfirm git base-devel unzip curl lua cargo;
