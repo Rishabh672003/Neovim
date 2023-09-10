@@ -115,7 +115,7 @@ int main() {{
 #include <iostream>
 #include <string>
 
-using std::cout;
+using std::cout, std::cin, std::endl;
 
 int main() {{
 	{}

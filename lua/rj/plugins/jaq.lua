@@ -19,7 +19,7 @@ function M.config()
 				python = "python %",
 				rust = "rustc % -o $fileBase.out && ./$fileBase.out",
 				-- rust = "cargo run",
-				cpp = "g++ % -o $fileBase.out && ./$fileBase.out",
+				cpp = "g++ % -o $fileBase.out && ./$fileBase.out && rm $fileBase.out",
 				c = "gcc % -o $fileBase.out && ./$fileBase.out",
 				go = "go run %",
 				sh = "chmod +x % && sh %",
