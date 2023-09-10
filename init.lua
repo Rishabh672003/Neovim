@@ -1,3 +1,4 @@
+-- only works in nightly
 vim.loader.enable()
 
 require("rj.options")
