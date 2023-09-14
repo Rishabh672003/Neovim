@@ -7,12 +7,12 @@ local servers = {
 	marksman = "marksman",
 	jdtls = "jdtls",
 	bashls = "bash-language-server",
-	html = "vscode-html-language-server",
+	-- html = "vscode-html-language-server",
 	jsonls = "vscode-json-language-server",
 	tsserver = "typescript-language-server",
 	pyright = "pyright",
 	tailwindcss = "tailwindcss-language-server",
-	dockerls = "docker-langserver"
+	dockerls = "docker-langserver",
 }
 for k, v in pairs(servers) do
 	if vim.fn.executable(v) == 1 then
@@ -23,6 +23,20 @@ for k, v in pairs(servers) do
 	else
 		print("lspconfig: " .. v .. " not found")
 	end
+end
+
+if vim.fn.executable("vscode-html-language-server") == 1 then
+	lspconfig.html.setup({
+		on_attach = require("rj.lsp.attach").on_attach,
+		capabilities = require("rj.lsp.attach").capabilities,
+		settings = {
+			html = {
+				format = {
+					enable = false,
+				},
+			},
+		},
+	})
 end
 
 if vim.fn.executable("lua-language-server") == 1 then
