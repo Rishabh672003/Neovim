@@ -4,7 +4,29 @@ return {
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-		lazy = false,
+		ft = {
+			"markdown",
+			"lua",
+			"c",
+			"cpp",
+			"java",
+			"python",
+			"json",
+			"xml",
+			"bash",
+			"sh",
+			"toml",
+			"zsh",
+			"rust",
+			"html",
+			"css",
+			"javascript",
+			"javascriptreact",
+			"typescript",
+			"python",
+		},
+		lazy = true,
+		event = "BufReadPost",
 		config = function()
 			require("rj.lsp.attach")
 			require("rj.lsp.lsp-conf")
@@ -14,8 +36,9 @@ return {
 	{
 		"p00f/clangd_extensions.nvim",
 		ft = { "c", "cpp" },
+		event = "BufReadPost",
 		commit = "52b7e6f1d27de19e30e0c9e492b650f934be3f5e",
-		lazy = false,
+		lazy = true,
 		config = function()
 			require("rj.lsp.clangd")
 		end,

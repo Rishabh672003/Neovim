@@ -42,7 +42,7 @@ function M.config()
 			disable = {}, -- list of language that will be disabled
 			-- additional_vim_regex_highlighting = true,
 		},
-		indent = { enable = true, disable = { "python", "html", "cpp" } },
+		indent = { enable = true, disable = { "python", "html", "cpp", "css" } },
 		context_commentstring = {
 			enable = true,
 			enable_autocmd = false,

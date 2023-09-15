@@ -1,6 +1,7 @@
 local M = {
 	"pwntester/octo.nvim",
-	enabled = false,
+	enabled = true,
+	cmd = "Octo",
 	-- event = "BufReadPost",
 }
 
