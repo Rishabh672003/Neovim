@@ -1,5 +1,5 @@
 return {
-	"folke/tokyonight.nvim",
-	-- event = "VeryLazy",
-	enabled = true,
+  "folke/tokyonight.nvim",
+  -- event = "VeryLazy",
+  enabled = true,
 }

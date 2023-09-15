@@ -32,9 +32,9 @@ function M.open_project(project_path)
   if not success then
     return
   end
-  require("telescope.builtin").find_files {
+  require("telescope.builtin").find_files({
     cwd = project_path,
-  }
+  })
 end
 
 function M.recent_projects(start, target_width)
@@ -113,9 +113,9 @@ M.section_projects = {
 
 function M.info_text()
   ---@diagnostic disable-next-line:undefined-field
-	local stats = require("lazy").stats()
+  local stats = require("lazy").stats()
   local total_plugins = stats.count
-  local datetime = os.date " %Y-%m-%d  󰨳 %A"
+  local datetime = os.date(" %Y-%m-%d  󰨳 %A")
   local version = vim.version()
   local nvim_version_info = "   v" .. version.major .. "." .. version.minor .. "." .. version.patch
 

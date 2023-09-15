@@ -1,10 +1,10 @@
 local M = {
-	"jim-fx/sudoku.nvim",
-	cmd = "Sudoku",
+  "jim-fx/sudoku.nvim",
+  cmd = "Sudoku",
 }
 
 function M.config()
-	require("sudoku").setup({})
+  require("sudoku").setup({})
 end
 
 return M

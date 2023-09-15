@@ -1,4 +1,4 @@
-return{
+return {
   "Bekaboo/dropbar.nvim",
   enabled = false,
 }

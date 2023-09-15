@@ -1,5 +1,5 @@
 local M = {
-	"wintermute-cell/gitignore.nvim",
-	cmd = "Gitignore",
+  "wintermute-cell/gitignore.nvim",
+  cmd = "Gitignore",
 }
 return M

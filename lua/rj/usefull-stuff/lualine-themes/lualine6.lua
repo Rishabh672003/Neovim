@@ -8,31 +8,31 @@ end
 -- theme.inactive.b.fg = '#23d18b' -- green
 -- theme.inactive.c.fg = '#23d18b' -- green
 
-require('lualine').setup {
+require("lualine").setup({
   options = {
     theme = "auto",
-    section_separators = '',
-    component_separators = '',
+    section_separators = "",
+    component_separators = "",
     icons_enabled = true,
     always_divide_middle = true,
     globalstatus = true,
   },
   sections = {
-    lualine_a = { 'mode' },
+    lualine_a = { "mode" },
     lualine_b = {
-      'hostname',
-      'branch',
-      { 'diagnostics', update_in_insert = true, always_visible = true, cond = vim.lsp.buf.server_ready },
+      "hostname",
+      "branch",
+      { "diagnostics", update_in_insert = true, always_visible = true, cond = vim.lsp.buf.server_ready },
     },
     lualine_c = {
-      'diff',
-      { 'filename', file_status = true, path = 1 },
-      { "require'nvim-navic'.get_location()", cond = require('nvim-navic').is_available },
+      "diff",
+      { "filename", file_status = true, path = 1 },
+      { "require'nvim-navic'.get_location()", cond = require("nvim-navic").is_available },
       -- { "require'goldsmith'.status()" },
     },
-    lualine_x = { 'lsp_progress', 'encoding', 'fileformat', 'filetype' },
-    lualine_y = { 'progress' },
+    lualine_x = { "lsp_progress", "encoding", "fileformat", "filetype" },
+    lualine_y = { "progress" },
     lualine_z = { location },
   },
   -- extensions = { 'fugitive' },
-}
+})
