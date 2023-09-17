@@ -87,7 +87,7 @@ function M.config()
       "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
       "Buffers",
     },
-    ["d"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
+    ["D"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
     ["e"] = { "<cmd>Neotree focus toggle<cr>", "Explorer" },
     ["E"] = { "<cmd>Oil --float .<cr>", "Explorer" },
     ["w"] = { "<cmd>w!<CR>", "Save" },
@@ -137,7 +137,7 @@ function M.config()
         "Diff",
       },
     },
-    D = {
+    d = {
       name = "Debug",
       b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
       c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
