@@ -1,5 +1,6 @@
 local M = {
   "SmiteshP/nvim-navic",
+  event = { "InsertEnter", "BufReadPre", "BufAdd", "BufNew" },
 }
 
 function M.config()

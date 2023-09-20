@@ -59,7 +59,7 @@ require("lazy").setup("rj.plugins", {
         "indent_on",
         "netrwPlugin",
         "tohtml",
-        "man",
+        -- "man",
         "matchit",
         "editorconfig",
         "matchparen",

@@ -1,6 +1,6 @@
 return {
   "stevearc/oil.nvim",
   opts = {},
-  event = "BufEnter",
+  event = "VeryLazy",
   -- Optional dependencies
 }
