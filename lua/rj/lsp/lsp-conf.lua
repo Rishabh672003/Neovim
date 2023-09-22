@@ -32,7 +32,7 @@ if vim.fn.executable("vscode-html-language-server") == 1 then
     settings = {
       html = {
         format = {
-          enable = false,
+          enabled = false,
         },
       },
     },

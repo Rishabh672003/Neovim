@@ -73,7 +73,7 @@ function M.config()
       section_separators = { left = "", right = "" },
       disabled_filetypes = {
         -- "alpha", "dashboard"
-        statusline = { "alpha", "dashboard" }, -- "toggleterm"},
+        statusline = { "alpha", "dashboard", "man" }, -- "toggleterm"},
         -- winbar = {"alpha", "dashboard"}
       },
       always_divide_middle = true,

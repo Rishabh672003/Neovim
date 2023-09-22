@@ -4,7 +4,7 @@ local M = {
 }
 
 function M.config()
-  local dap = require "dap"
+  local dap = require("dap")
 
   local dap_ui_status_ok, dapui = pcall(require, "dapui")
   if not dap_ui_status_ok then
@@ -44,7 +44,7 @@ function M.config()
         vim.ui.input({ prompt = "Path to executable: ", default = vim.loop.cwd() .. "/bin/" }, function(input)
           path = input
         end)
-        vim.cmd [[redraw]]
+        vim.cmd([[redraw]])
         return path
       end,
       cwd = "${workspaceFolder}",
