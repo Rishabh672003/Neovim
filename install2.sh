@@ -12,6 +12,28 @@ function install_neovim() {
     fi
 }
 
+function check_and_install_yay() {
+    # Check if yay is installed
+    if ! which yay >/dev/null; then
+        # If yay is not installed, ask the user if they want to install it
+        read -rp "yay is not installed. Would you like to install it? (y/n): " prompt
+        if [[ $prompt == [yY] || $prompt == [yY][eE][sS] ]]; then
+            # If the user agrees to install yay, download the necessary dependencies
+            sudo pacman -S --needed base-devel git &&
+            git clone https://aur.archlinux.org/yay-bin.git ~/yay-bin &&
+            (cd ~/yay-bin || exit) &&
+            makepkg -si &&
+            cd .. &&
+            rm -rf yay-bin &&
+            echo "yay has been installed."
+        else
+            echo "Not installing yay."
+        fi
+    else
+        echo "yay is already installed."
+    fi
+}
+
 # Install the LSP packages.
 function install_lsp_packages() {
 
@@ -25,7 +47,9 @@ function install_lsp_packages() {
     if command -v yay &> /dev/null ; then
         yay -S --needed --noconfirm lemminx marksman-bin jdtls \
             shellcheck-bin beautysh vscode-langservers-extracted \
-            proselint;
+            proselint
+    else
+        echo "Yay is not Installed, so some dependecies will not be installed"
     fi
 
     if command -v cargo &> /dev/null ; then
@@ -47,6 +71,9 @@ function install_neovim_configuration() {
     # Clone the Neovim configuration repository.
     git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim;
 }
+
+# yay
+check_and_install_yay
 
 # install packages
 install_lsp_packages
