@@ -5,7 +5,22 @@ Now this doesn't uses Mason, so you would have to install all lsp yourself.
 
 ### 🛠️ If you also want to use it
 
-#### It only works with nvim-nightly
+#### I use it with nvim-nightly but it also works with latest stable nvim
+
+Either do:
+
+```sh
+yay -Sy neovim-nightly
+```
+
+or
+
+```sh
+sudo pacman -Sy --needed --noconfirm neovim
+```
+
+<details>
+  <summary>Neovim-nightly Installation</summary>
 
 #### Neovim-nightly as an appimage
 
@@ -38,7 +53,10 @@ For main branch
 git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
 ```
 
-## optional dependencies
+  <!-- <p>Content 1 Content 1 Content 1 Content 1 Content 1</p> -->
+</details>
+
+## Optional dependencies
 
 These are all the optional dependencies if you dont want anything just remove them neovim should work fine either way
 

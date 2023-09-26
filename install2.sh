@@ -6,9 +6,9 @@
 # Install Neovim.
 function install_neovim() {
     if command -v yay &> /dev/null ; then
-        yay -S --needed --noconfirm meovim-git
+        yay -Sy --needed --noconfirm meovim-git
     else
-        sudo pacman -Sy neovim
+        sudo pacman -Sy --needed --noconfirm neovim
     fi
 }
 
@@ -33,7 +33,7 @@ function install_lsp_packages() {
     fi
 
     if command -v npm &> /dev/null ; then
-        npm install -g dockerfile-language-server-nodejs;
+        sudo npm install -g dockerfile-language-server-nodejs;
     fi
 }
 
