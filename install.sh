@@ -1,58 +1,90 @@
 #!/bin/env bash
-# maintainer: Rishabh672003
+# Maintainer: Rishabh672003
 
-if command -v pacman &> /dev/null ; then
-    sudo pacman -Sy --needed --noconfirm git base-devel unzip curl lua cargo;
+# This script installs Neovim with LSP support on Arch Linux.
 
-    # lsp
-    sudo pacman -Sy --needed --noconfirm npm python-pip stylua prettier astyle \
-        ripgrep unzip npm zsh autopep8 lua-language-server \
-        bash-language-server pyright typescript-language-server ;
-else
-    echo "This script is only supported for Arch Linux"
-    exit 1;
-fi
+# Install Neovim.
+function install_neovim() {
+    if command -v yay &> /dev/null ; then
+        yay -Sy --needed --noconfirm neovim-git
+    else
+        sudo pacman -Sy --needed --noconfirm neovim
+    fi
+}
 
-if command -v yay &> /dev/null ; then
+function check_and_install_yay() {
+    sudo pacman -Sy which --noconfirm --needed;
+    # Check if yay is installed
+    if ! which yay >/dev/null; then
+        # If yay is not installed, ask the user if they want to install it
+        read -rp "yay is not installed. Would you like to install it? (y/n): " prompt
+        if [[ $prompt == [yY] || $prompt == [yY][eE][sS] ]]; then
+            # If the user agrees to install yay, download the necessary dependencies
+            sudo pacman -S --needed --noconfirm base-devel git &&
+            git clone https://aur.archlinux.org/yay-bin.git "$HOME"/yay-bin &&
+            cd "$HOME"/yay-bin &&
+            makepkg -si &&
+            rm -rf "$HOME"/yay-bin &&
+            echo "yay has been installed."
+        else
+            echo "Not installing yay."
+        fi
+    else
+        echo "yay is already installed."
+    fi
+}
 
-    # lsp
-    yay -S --needed --noconfirm shellcheck-bin beautysh jdtls lemminx marksman-bin;
-else
-    echo "yay not installed";
-fi
+# Install the LSP packages.
+function install_lsp_packages() {
 
-if command -v cargo &> /dev/null ; then
+    sudo pacman -S --needed --noconfirm npm python-pip stylua prettier astyle ripgrep unzip \
+        npm zsh lldb wl-clipboard yarn;
+    sudo pacman -S --needed --noconfirm taplo-cli autopep8 lua-language-server bash-language-server \
+        pyright typescript-language-server rust-analyzer \
+        tailwindcss-language-server;
 
-    #lsp
-    cargo install --features lsp --locked taplo-cli;
-else
-    echo "cargo not installed";
-fi
+    # Install the additional LSP packages.
+    if command -v yay &> /dev/null ; then
+        yay -S --needed --noconfirm lemminx marksman-bin jdtls \
+            shellcheck-bin beautysh vscode-langservers-extracted \
+            proselint
+    else
+        echo "Yay is not Installed, so some dependecies will not be installed"
+    fi
 
-if command -v npm &> /dev/null ; then
+    if command -v cargo &> /dev/null ; then
+        cargo install --features lsp --locked taplo-cli;
+    fi
 
-    # lsp
-    npm i -g vscode-langservers-extracted;
-else
-    echo "npm not installed";
-fi
+    if command -v npm &> /dev/null ; then
+        sudo npm install -g dockerfile-language-server-nodejs;
+    fi
+}
 
-rm -rf ~/nvim-linux64 > /dev/null 2>&1 ; \
-    curl --output-dir "$HOME" \
-    -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz && \
-    tar -xvf ~/nvim-linux64.tar.gz;
+# Install the Neovim configuration files.
+function install_neovim_configuration() {
+    # Create the Neovim configuration directory.
+    if [ ! -d ~/.config/nvim ]; then
+        mkdir -p ~/.config/nvim;
+    fi
 
-if [ ! -d ~/.config/nvim ]; then
-    mkdir -p ~/.config/nvim;
-fi
+    # Clone the Neovim configuration repository.
+    git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim;
+}
 
-git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim;
+sudo pacman -Sy
 
-echo "alias nvim='~/nvim-linux64/bin/nvim'" >> ~/.bashrc ;
-echo "alias nvim='~/nvim-linux64/bin/nvim'" >> ~/.zshrc ;
-echo "alias nvim='~/nvim-linux64/bin/nvim'" >> ~/.config/fish/config.fish ;
+# yay
+check_and_install_yay
 
-touch "$HOME"/.bashrc && source "$HOME"/.bashrc;
-touch "$HOME"/.zshrc && source "$HOME"/.zshrc;
+# install packages
+install_lsp_packages
 
-~/nvim-linux64/bin/nvim
+# Install Neovim.
+install_neovim
+
+# Install the Neovim configuration files.
+install_neovim_configuration
+
+# Launch Neovim.
+nvim
