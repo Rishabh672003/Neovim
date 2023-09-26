@@ -52,15 +52,19 @@ function install_lsp_packages() {
 
 # Install Neovim.
 function install_neovim() {
+    if [[ ! -d ~/Applications ]]; then
+        mkdir ~/Applications;
+    fi
+
+    cd ~/Applications || exit;
+
     # Download the Neovim tarball.
     if command -v aria2c &> /dev/null; then
-        cd ~/Applications/ &&
         rm -rf ~/Applications/nvim-linux64 ~/Applications/nvim-linux64.tar.gz > /dev/null 2>&1 ;
         aria2c "https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz"
         tar -xvf ~/Applications/nvim-linux64.tar.gz > /dev/null 2>&1
     else
-        cd ~/Applications/ && \
-            rm -rf ~/Applications/nvim-linux64 ~/Applications/nvim-linux64.tar.gz > /dev/null 2>&1 ; \
+        rm -rf ~/Applications/nvim-linux64 ~/Applications/nvim-linux64.tar.gz > /dev/null 2>&1 ; \
             curl --output-dir ~/Applications/ \
             -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz && \
             tar -xvf ~/Applications/nvim-linux64.tar.gz > /dev/null 2>&1
@@ -96,6 +100,9 @@ function update_configuration_files() {
     touch "$HOME"/.bashrc && source "$HOME"/.bashrc
     touch "$HOME"/.zshrc && source "$HOME"/.zshrc
 }
+
+# install packages
+install_lsp_packages
 
 # Install Neovim.
 install_neovim
