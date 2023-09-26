@@ -38,7 +38,7 @@ function check_and_install_yay() {
 function install_lsp_packages() {
 
     sudo pacman -S --needed --noconfirm npm python-pip stylua prettier astyle ripgrep unzip \
-        npm zsh lldb;
+        npm zsh lldb wl-clipboard;
     sudo pacman -S --needed --noconfirm taplo-cli autopep8 lua-language-server bash-language-server \
         pyright typescript-language-server rust-analyzer \
         tailwindcss-language-server;
