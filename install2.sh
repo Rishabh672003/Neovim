@@ -94,7 +94,7 @@ function update_configuration_files() {
 }
 
 # install packages
-install
+install_lsp_packages
 
 # Install Neovim.
 install_neovim
