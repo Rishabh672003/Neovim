@@ -2,36 +2,15 @@
 
 # Maintainer: Rishabh672003
 
+
 # This script installs Neovim with LSP support on Arch Linux.
-
-# Install the required packages.
-function install_packages() {
-    local packages=("$@")
-
-    for package in "${packages[@]}"; do
-        sudo pacman -S --needed --noconfirm "$package"
-    done
-}
-
-# Check for errors.
-function check_error() {
-    local error_code=$1
-    local error_message=$2
-
-    if [[ $error_code -ne 0 ]]; then
-        echo "Error: $error_message"
-        exit 1
-    fi
-}
-
 # Install the LSP packages.
 function install_lsp_packages() {
 
-    sudo pacman -Sy &&
     # Install the required packages.
-    install_packages npm python-pip stylua prettier astyle ripgrep unzip \
+    sudo pacman -S --needed --noconfirm npm python-pip stylua prettier astyle ripgrep unzip \
         npm zsh lldb;
-    install_packages taplo-cli autopep8 lua-language-server bash-language-server \
+    sudo pacman -S --needed --noconfirm taplo-cli autopep8 lua-language-server bash-language-server \
         pyright typescript-language-server rust-analyzer \
         tailwindcss-language-server;
 
@@ -48,6 +27,18 @@ function install_lsp_packages() {
 
     if command -v npm &> /dev/null ; then
         npm install -g dockerfile-language-server-nodejs;
+    fi
+}
+
+
+# Check for errors.
+function check_error() {
+    local error_code=$1
+    local error_message=$2
+
+    if [[ $error_code -ne 0 ]]; then
+        echo "Error: $error_message"
+        exit 1
     fi
 }
 
@@ -103,7 +94,7 @@ function update_configuration_files() {
 }
 
 # install packages
-install_lsp_packages
+install
 
 # Install Neovim.
 install_neovim
