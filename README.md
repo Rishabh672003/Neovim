@@ -7,20 +7,20 @@ Now this doesn't uses Mason, so you would have to install all lsp yourself.
 
 #### I use it with nvim-nightly but it also works with latest stable nvim
 
-Either do:
+I recommend:
 
 ```sh
 yay -Sy neovim-nightly
 ```
 
-or
+but this will also work:
 
 ```sh
 sudo pacman -Sy --needed --noconfirm neovim
 ```
 
 <details>
-  <summary>Neovim-nightly Installation</summary>
+  <summary><strong>Neovim-nightly Installation</strong></summary>
 
 #### Neovim-nightly as an appimage
 
@@ -61,24 +61,26 @@ These are all the optional dependencies if you dont want anything just remove th
 
 #### LSP dependencies as now these configs dont use mason, so you will have to install them yourself
 
+**These may not be up to date so please look at `lua/rj/lsp/lsp-conf.lua` for the list of all servers**
+
 ```bash
-sudo pacman -Sy --needed --noconfirm lua-language-server rust-analyzer;
+sudo pacman -Sy --needed --noconfirm lua-language-server rust-analyzer \
+bash-language-server typescript-language pyright taplo-cli \
+tailwindcss-language-server vscode-html-languageserver yaml-language-server;
 yay -S jdtls lemminx;
-cargo install --features lsp --locked taplo-cli;
-cargo install prosemd-lsp;
-npm i -g vscode-langservers-extracted;
+sudo npm i -g vscode-langservers-extracted docker-langserver;
 ```
 
 For null-ls to work for formatting and stuff
 
 ```bash
-sudo pacman -S --needed --noconfirm stylua prettier astyle zsh autopep8 ; yay -S beautysh shellcheck-bin
+sudo pacman -S --needed --noconfirm stylua prettier astyle zsh autopep8 python-black; yay -S beautysh shellcheck-bin proselint
 ```
 
 Other dependencies
 
 ```bash
-sudo pacman -S --needed --noconfirm ripgrep npm unzip
+sudo pacman -S --needed --noconfirm ripgrep npm unzip yarn
 ```
 
 ## Automatting the whole process of building neovim from source and applying the config
