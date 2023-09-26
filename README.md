@@ -45,6 +45,8 @@ git clone https://github.com/neovim/neovim && cd neovim && make CMAKE_BUILD_TYPE
 mv ~/.config/nvim ~/.config/nvimbackup
 ```
 
+</details>
+
 #### Clone the repository and open nvim
 
 For main branch
@@ -52,9 +54,6 @@ For main branch
 ```bash
 git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
 ```
-
-  <!-- <p>Content 1 Content 1 Content 1 Content 1 Content 1</p> -->
-</details>
 
 ## Optional dependencies
 
