@@ -37,6 +37,7 @@ return {
     "p00f/clangd_extensions.nvim",
     ft = { "c", "cpp" },
     event = "BufReadPost",
+    commit = "52b7e6f1d27de19e30e0c9e492b650f934be3f5e",
     lazy = true,
     config = function()
       require("rj.lsp.clangd")
@@ -44,7 +45,7 @@ return {
   },
   {
     "Ciel-MC/rust-tools.nvim",
-    -- branch = "inline-inlay-hints",
+    branch = "inline-inlay-hints",
     ft = { "rust" },
     lazy = true,
     event = "BufReadPost",

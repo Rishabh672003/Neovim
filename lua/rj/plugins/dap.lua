@@ -51,6 +51,24 @@ function M.config()
       stopOnEntry = false,
     },
   }
+
+  dap.configurations.rust = {
+    {
+      name = "Launch file",
+      type = "codelldb",
+      request = "launch",
+      program = function()
+        local path
+        vim.ui.input({ prompt = "Path to executable: ", default = vim.loop.cwd() .. "/target/debug/" }, function(input)
+          path = input
+        end)
+        vim.cmd([[redraw]])
+        return path
+      end,
+      cwd = "${workspaceFolder}",
+      stopOnEntry = false,
+    },
+  }
 end
 
 return M
