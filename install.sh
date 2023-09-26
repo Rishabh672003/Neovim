@@ -32,7 +32,7 @@ fi
 if command -v npm &> /dev/null ; then
 
     # lsp
-    npm i -g vscode-langservers-extracted;
+    sudo npm i -g vscode-langservers-extracted;
 else
     echo "npm not installed";
 fi
@@ -40,7 +40,7 @@ fi
 rm -rf ~/nvim-linux64 > /dev/null 2>&1 ; \
     curl --output-dir "$HOME" \
     -LO https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.tar.gz && \
-    tar -xvf ~/nvim-linux64.tar.gz;
+    cd ~/ && tar -xvf nvim-linux64.tar.gz ;
 
 if [ ! -d ~/.config/nvim ]; then
     mkdir -p ~/.config/nvim;
