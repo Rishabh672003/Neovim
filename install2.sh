@@ -9,7 +9,7 @@ function install_packages() {
     local packages=("$@")
 
     for package in "${packages[@]}"; do
-        sudo pacman -Sy --needed --noconfirm "$package"
+        sudo pacman -S --needed --noconfirm "$package"
     done
 }
 
@@ -27,6 +27,7 @@ function check_error() {
 # Install the LSP packages.
 function install_lsp_packages() {
 
+    sudo pacman -Sy &&
     # Install the required packages.
     install_packages npm python-pip stylua prettier astyle ripgrep unzip \
         npm zsh lldb;
@@ -53,7 +54,7 @@ function install_lsp_packages() {
 # Install Neovim.
 function install_neovim() {
     if [[ ! -d ~/Applications ]]; then
-        mkdir ~/Applications;
+        mkdir -p ~/Applications;
     fi
 
     cd ~/Applications || exit;
