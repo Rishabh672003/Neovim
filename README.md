@@ -49,7 +49,7 @@ sudo pacman -Sy --needed --noconfirm lua-language-server rust-analyzer;
 yay -S jdtls lemminx;
 cargo install --features lsp --locked taplo-cli;
 cargo install prosemd-lsp;
-npm i -g vscode-langservers-extracted;
+sudo npm i -g vscode-langservers-extracted;
 ```
 
 For null-ls to work for formatting and stuff
