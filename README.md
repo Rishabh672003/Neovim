@@ -83,7 +83,7 @@ Other dependencies
 sudo pacman -S --needed --noconfirm ripgrep npm unzip yarn
 ```
 
-## Automatting the whole process of building neovim from source and applying the config
+## Automatting the whole process of installing neovim, also its dependecies and then applying the config
 
 **Note: this will install a lot of dependencies so use it only after reading the script and if you know what you are doing, I will not be responsible if you break anything on your system**
 
