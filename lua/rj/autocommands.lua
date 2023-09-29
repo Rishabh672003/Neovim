@@ -66,6 +66,24 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
+-- For mini.indentscope
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+--   pattern = {
+--     "alpha",
+--     "neo-tree",
+--     "help",
+--     "startify",
+--     "dashboard",
+--     "packer",
+--     "neogitstatus",
+--     "NvimTree",
+--     "Trouble",
+--   },
+--   callback = function()
+--     vim.b.miniindentscope_disable = true
+--   end,
+-- })
+
 vim.api.nvim_create_autocmd({ "BufReadPost" }, {
   pattern = "*.pdf",
   callback = function(ev)
