@@ -1,6 +1,7 @@
 local M = {
   "catppuccin/nvim",
   name = "catppuccin",
+  commit = "3d9a5ed556e289bce6c1fb0af89ec838360641b2",
   lazy = false,
   build = ":CatppuccinCompile",
   priority = 1000,
@@ -35,6 +36,7 @@ function M.config()
       telescope = true,
       notify = true,
       mini = false,
+      noice = true,
       -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
     },
     custom_highlights = {
