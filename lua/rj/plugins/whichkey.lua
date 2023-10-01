@@ -153,7 +153,16 @@ function M.config()
     l = {
       name = "LSP",
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-      f = { "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", "Format" },
+      f = {
+        function()
+          require("conform").format({
+            lsp_fallback = false,
+            async = false,
+            timeout_ms = 500,
+          })
+        end,
+        "Format",
+      },
       F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
       i = { "<cmd>LspInfo<cr>", "Info" },
       I = { "<cmd>Mason<cr>", "Installer Info" },

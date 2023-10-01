@@ -53,11 +53,19 @@ return {
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    event = { "BufReadPre", "BufRead", "BufNew" },
+    "stevearc/conform.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     lazy = true,
     config = function()
-      require("rj.lsp.null-ls")
+      require("rj.lsp.conform")
+    end,
+  },
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
+    lazy = true,
+    config = function()
+      require("rj.lsp.nvim-lint")
     end,
   },
 }
