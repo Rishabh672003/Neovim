@@ -1,6 +1,7 @@
 local M = {
   "is0n/jaq-nvim",
   cmd = "Jaq",
+  enabled = true,
 }
 
 function M.config()
