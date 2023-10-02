@@ -25,20 +25,6 @@ for k, v in pairs(servers) do
   end
 end
 
-if vim.fn.executable("vscode-html-language-server") == 1 then
-  lspconfig.html.setup({
-    on_attach = require("rj.lsp.attach").on_attach,
-    capabilities = require("rj.lsp.attach").capabilities,
-    settings = {
-      html = {
-        format = {
-          enabled = false,
-        },
-      },
-    },
-  })
-end
-
 if vim.fn.executable("lua-language-server") == 1 then
   lspconfig.lua_ls.setup({
     on_attach = require("rj.lsp.attach").on_attach,

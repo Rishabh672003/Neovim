@@ -8,8 +8,19 @@ lint.linters_by_ft = {
   svelte = { "eslint_d" },
   -- zsh = { "shellcheck" },
   sh = { "shellcheck" },
-  markdown = {"proselint"},
+  markdown = { "proselint" },
+  lua = { "luacheck" },
+}
 
+local luachecks = require("lint").linters.luacheck
+luachecks.args = {
+  "--formatter",
+  "plain",
+  "--codes",
+  "--ranges",
+  "--globals",
+  "vim",
+  "-",
 }
 
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

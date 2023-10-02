@@ -156,9 +156,9 @@ function M.config()
       f = {
         function()
           require("conform").format({
-            lsp_fallback = false,
+            lsp_fallback = true,
             async = false,
-            timeout_ms = 500,
+            timeout_ms = 700,
           })
         end,
         "Format",
