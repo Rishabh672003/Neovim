@@ -52,18 +52,29 @@ return {
       require("rj.lsp.rust-tools")
     end,
   },
+  -- {
+  --   -- "jose-elias-alvarez/null-ls.nvim",
+  --   "nvimtools/none-ls.nvim",
+  --   event = { "BufReadPre", "BufRead", "BufNew" },
+  --   lazy = true,
+  --   config = function()
+  --     require("rj.lsp.null-ls")
+  --   end,
+  -- },
   {
     "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
+    enabled = true,
     lazy = true,
     config = function()
-      require("rj.lsp.conform")
+      require("rj.lsp.nvim-conform")
     end,
   },
   {
     "mfussenegger/nvim-lint",
     event = { "BufReadPre", "BufNewFile" },
     lazy = true,
+    enabled = true,
     config = function()
       require("rj.lsp.nvim-lint")
     end,
