@@ -53,7 +53,7 @@ function install_lsp_packages() {
 	# Install the additional LSP packages.
 	if command -v yay &>/dev/null; then
 		yay -S --needed --noconfirm lemminx marksman-bin jdtls \
-			shellcheck-bin beautysh vscode-langservers-extracted \
+			shellcheck-bin shfmt vscode-langservers-extracted \
 			proselint
 	else
 		echo "Yay is not Installed, so some dependencies will not be installed"
