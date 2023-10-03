@@ -2,6 +2,11 @@ local conform = require("conform")
 
 conform.setup({
   formatters_by_ft = {
+    -- general
+    ["*"] = { "codespell" },
+    ["_"] = { "trim_whitespace" },
+
+    -- prettier filetypes
     javascript = { "prettier" },
     typescript = { "prettier" },
     javascriptreact = { "prettier" },
@@ -13,16 +18,14 @@ conform.setup({
     yaml = { "prettier" },
     markdown = { "prettier" },
     graphql = { "prettier" },
-    toml = { "prettier" },
     vue = { "prettier" },
+
     lua = { "stylua" },
     python = { "black" },
     java = { "astyle" },
     rust = { "rustfmt" },
     sh = { "shfmt" },
     bash = { "shfmt" },
-    ["*"] = { "codespell" },
-    ["_"] = { "trim_whitespace" },
   },
   format_on_save = {
     lsp_fallback = true,
@@ -30,6 +33,8 @@ conform.setup({
     timeout_ms = 700,
   },
 })
+
+vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 vim.keymap.set({ "n", "v" }, "<leader>lf", function()
   conform.format({

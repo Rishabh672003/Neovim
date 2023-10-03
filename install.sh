@@ -56,7 +56,7 @@ function install_lsp_packages() {
 			shellcheck-bin beautysh vscode-langservers-extracted \
 			proselint
 	else
-		echo "Yay is not Installed, so some dependecies will not be installed"
+		echo "Yay is not Installed, so some dependencies will not be installed"
 	fi
 
 	if command -v cargo &>/dev/null; then
