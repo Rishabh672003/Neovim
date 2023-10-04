@@ -1,36 +1,29 @@
 local M = {
   "lukas-reineke/indent-blankline.nvim",
+  -- commit = "8299fe7703dfff4b1752aeed271c3b95281a952d",
   event = "BufReadPre",
-  main = "ibl",
 }
 
-function M.config()
-  require("ibl").setup({
-    indent = {
-      -- char = "│"
-      char = "▏",
-    },
-    whitespace = {
-      remove_blankline_trail = true,
-    },
+M.opts = {
+  indent = { char = "│" },
+  whitespace = {
+    remove_blankline_trail = true,
+  },
 
-    exclude = {
-      filetypes = {
-        "help",
-        "startify",
-        "dashboard",
-        "lazy",
-        "neogitstatus",
-        "NvimTree",
-        "Trouble",
-        "text",
-      },
-      buftypes = { "terminal", "nofile" },
+  exclude = {
+    filetypes = {
+      "help",
+      "startify",
+      "dashboard",
+      "lazy",
+      "neogitstatus",
+      "NvimTree",
+      "Trouble",
+      "text",
     },
-    scope = {
-      show_start = false,
-      show_end = false,
-    },
-  })
-end
+    buftypes = { "terminal", "nofile" },
+  },
+  scope = { enabled = false },
+}
+
 return M
