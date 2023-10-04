@@ -49,7 +49,6 @@ Or after installation of bob:
 
 ```sh
 bob use stable
-
 ```
 
 <details>
@@ -104,16 +103,17 @@ These are all the optional dependencies if you dont want anything just remove th
 
 ```bash
 sudo pacman -Sy --needed --noconfirm lua-language-server rust-analyzer \
-bash-language-server typescript-language pyright taplo-cli \
-tailwindcss-language-server vscode-html-languageserver yaml-language-server;
-yay -S jdtls lemminx;
-sudo npm i -g vscode-langservers-extracted docker-langserver;
+	bash-language-server typescript-language pyright taplo-cli \
+	tailwindcss-language-server vscode-html-languageserver yaml-language-server
+yay -S jdtls lemminx
+sudo npm i -g vscode-langservers-extracted docker-langserver
 ```
 
 For null-ls to work for formatting and stuff
 
 ```bash
-sudo pacman -S --needed --noconfirm stylua prettier astyle zsh autopep8 python-black; yay -S beautysh shellcheck-bin proselint
+sudo pacman -S --needed --noconfirm stylua prettier astyle zsh autopep8 python-black
+yay -S beautysh shellcheck-bin proselint
 ```
 
 Other dependencies
@@ -122,7 +122,7 @@ Other dependencies
 sudo pacman -S --needed --noconfirm ripgrep npm unzip yarn
 ```
 
-## Automatting the whole process of installing neovim, also its dependecies and then applying the config
+## Automatting the whole process of installing neovim, also its dependencies and then applying the config
 
 **Note: this will install a lot of dependencies so use it only after reading the script and if you know what you are doing, I will not be responsible if you break anything on your system**
 

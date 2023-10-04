@@ -53,11 +53,24 @@ return {
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    event = { "BufReadPre", "BufRead", "BufNew" },
+    "stevearc/conform.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    enabled = true,
     lazy = true,
+    init = function()
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
     config = function()
-      require("rj.lsp.null-ls")
+      require("rj.lsp.nvim-conform")
+    end,
+  },
+  {
+    "mfussenegger/nvim-lint",
+    event = { "BufReadPre", "BufNewFile" },
+    lazy = true,
+    enabled = true,
+    config = function()
+      require("rj.lsp.nvim-lint")
     end,
   },
 }
