@@ -3,7 +3,7 @@ local conform = require("conform")
 conform.setup({
   formatters_by_ft = {
     -- general
-    ["*"] = { "codespell" },
+    ["*"] = { "codespell", "injected" },
     ["_"] = { "trim_whitespace" },
 
     -- prettier filetypes
@@ -26,20 +26,31 @@ conform.setup({
     rust = { "rustfmt" },
     sh = { "shfmt" },
     bash = { "shfmt" },
+    cpp = { "clang_format" },
   },
-  format_on_save = {
-    lsp_fallback = true,
-    async = false,
-    timeout_ms = 700,
-  },
+  format_on_save = function(bufnr)
+    -- Disable with a global or buffer-local variable
+    if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+      return
+    end
+    -- Disable autoformat for files in a certain path
+    local bufname = vim.api.nvim_buf_get_name(bufnr)
+    if bufname:match("/node_modules/") then
+      return
+    end
+    -- ...additional logic...
+    return { timeout_ms = 700, lsp_fallback = true }
+  end,
 })
 
-vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-
-vim.keymap.set({ "n", "v" }, "<leader>lf", function()
-  conform.format({
-    lsp_fallback = true,
-    async = false,
-    timeout_ms = 700,
-  })
-end, { desc = "Format file or range (in visual mode)" })
+vim.api.nvim_create_user_command("FormatToggle", function()
+  if vim.b.disable_autoformat or vim.g.disable_autoformat then
+    vim.b.disable_autoformat = false
+    vim.g.disable_autoformat = false
+  else
+    vim.b.disable_autoformat = true
+    vim.g.disable_autoformat = true
+  end
+end, {
+  desc = "Toggle autoformat-on-save",
+})

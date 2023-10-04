@@ -163,7 +163,7 @@ function M.config()
         end,
         "Format",
       },
-      F = { "<cmd>LspToggleAutoFormat<cr>", "Toggle Autoformat" },
+      F = { "<cmd>FormatToggle<cr>", "Toggle Autoformat" },
       i = { "<cmd>LspInfo<cr>", "Info" },
       I = { "<cmd>Mason<cr>", "Installer Info" },
       j = {

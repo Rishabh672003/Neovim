@@ -57,6 +57,9 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     enabled = true,
     lazy = true,
+    init = function()
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
     config = function()
       require("rj.lsp.nvim-conform")
     end,
