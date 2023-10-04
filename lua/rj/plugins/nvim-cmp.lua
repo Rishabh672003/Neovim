@@ -47,11 +47,6 @@ function M.config()
     return
   end
 
-  -- local status_ok, copilot_cmp = pcall(require, "copilot_cmp.comparators")
-  -- if not status_ok then
-  --   return
-  -- end
-
   require("luasnip/loaders/from_vscode").lazy_load()
 
   local check_backspace = function()
@@ -160,7 +155,7 @@ function M.config()
       format = function(entry, vim_item)
         -- Kind icons
         vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-        -- vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+        -- vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatenates the icons with the name of the item kind
         vim_item.menu = ({
           nvim_lsp = "[LSP]",
           nvim_lua = "[NVLUA]",
