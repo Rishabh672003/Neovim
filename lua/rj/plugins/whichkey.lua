@@ -84,7 +84,9 @@ function M.config()
   local mappings = {
     ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
     ["b"] = {
-      "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+      function()
+        require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))
+      end,
       "Buffers",
     },
     ["D"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
@@ -96,12 +98,18 @@ function M.config()
     ["m"] = { "<cmd>lua _MOCP_TOGGLE()<CR>", "MOCP" },
     ["j"] = { "<cmd>Jaq<CR>", "Jaq" },
     ["f"] = {
-      "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes'))<cr>",
+      function()
+        require("telescope.builtin").find_files(require("telescope.themes"))
+      end,
       "Find files",
     },
     ["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
     ["p"] = {
-      "<cmd>lua require('telescope').extensions.projects.projects(require('telescope.themes').get_dropdown{previewer = false, initial_mode = normal})<cr>",
+      function()
+        require("telescope").extensions.projects.projects(
+          require("telescope.themes").get_dropdown({ previewer = false })
+        )
+      end,
       "Projects",
     },
     ["S"] = { "<cmd>source %<cr>", "Source file" },
@@ -117,37 +125,35 @@ function M.config()
     ["r"] = { "<cmd>:Telescope oldfiles<cr>", "Recent Files" },
     g = {
       name = "Git",
-      g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-      j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-      k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-      l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-      p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-      r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-      R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-      s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-      u = {
-        "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-        "Undo Stage Hunk",
-      },
+      --stylua: ignore start
+      g = { function() _LAZYGIT_TOGGLE()end, "Lazygit" },
+      j = { function() require 'gitsigns'.next_hunk() end, "Next Hunk" },
+      k = { function() require 'gitsigns'.prev_hunk() end, "Prev Hunk" },
+      l = { function() require 'gitsigns'.blame_line() end, "Blame" },
+      p = { function() require 'gitsigns'.preview_hunk() end, "Preview Hunk" },
+      r = { function() require 'gitsigns'.reset_hunk() end, "Reset Hunk" },
+      R = { function() require 'gitsigns'.reset_buffer() end, "Reset Buffer" },
+      s = { function() require 'gitsigns'.stage_hunk() end, "Stage Hunk" },
+      u = { function() require 'gitsigns'.undo_stage_hunk() end, "Undo Stage Hunk", },
+      --stylua: ignore end
       o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
       b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
       c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-      d = {
-        "<cmd>Gitsigns diffthis HEAD<cr>",
-        "Diff",
-      },
+      d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
     },
     d = {
       name = "Debug",
-      b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Breakpoint" },
-      c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-      i = { "<cmd>lua require'dap'.step_into()<cr>", "Into" },
-      o = { "<cmd>lua require'dap'.step_over()<cr>", "Over" },
-      O = { "<cmd>lua require'dap'.step_out()<cr>", "Out" },
-      r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Repl" },
-      l = { "<cmd>lua require'dap'.run_last()<cr>", "Last" },
-      u = { "<cmd>lua require'dapui'.toggle()<cr>", "UI" },
-      x = { "<cmd>lua require'dap'.terminate()<cr>", "Exit" },
+      --stylua: ignore start
+      b = { function() require'dap'.toggle_breakpoint() end, "Breakpoint" },
+      c = { function() require'dap'.continue() end, "Continue" },
+      i = { function() require'dap'.step_into() end, "Into" },
+      o = { function() require'dap'.step_over() end, "Over" },
+      O = { function() require'dap'.step_out() end, "Out" },
+      r = { function() require'dap'.repl.toggle() end, "Repl" },
+      l = { function() require'dap'.run_last() end, "Last" },
+      u = { function() require'dapui'.toggle() end, "UI" },
+      x = { function() require'dap'.terminate() end, "Exit" },
+      --stylua: ignore end
     },
     ["M"] = { "<cmd>MarkdownPreview<cr>", "Markdown preview" },
     l = {
@@ -206,10 +212,12 @@ function M.config()
     },
     t = {
       name = "Terminal",
-      n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
-      u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
-      H = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
-      p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
+      --stylua: ignore start
+      n = { function() _NODE_TOGGLE() end, "Node" },
+      u = { function() _NCDU_TOGGLE() end, "NCDU" },
+      H = { function() _HTOP_TOGGLE() end, "Htop" },
+      p = { function() _PYTHON_TOGGLE() end, "Python" },
+      --stylua: ignore end
       f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
       h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
       v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
