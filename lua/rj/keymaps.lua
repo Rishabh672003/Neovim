@@ -87,3 +87,16 @@ keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 keymap("n", "<C-h>", "<cmd>lua vim.lsp.inlay_hint(0,nil)<CR>", opts)
 keymap("n", "<leader>o", "<cmd>URLOpenUnderCursor<CR>", opts)
 -- keymap("n", "-", require("oil").open, { desc = "Open parent directory" })
+
+vim.cmd([[
+" Using arrow keys is far too ingrained in my muscle memory.
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+imap <up> <nop>
+imap <down> <nop>
+imap <left> <nop>
+imap <right> <nop>
+]])
