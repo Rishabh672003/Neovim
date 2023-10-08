@@ -43,6 +43,8 @@ conform.setup({
   end,
 })
 
+vim.g.disable_autoformat = true
+
 vim.api.nvim_create_user_command("FormatToggle", function()
   if vim.b.disable_autoformat or vim.g.disable_autoformat then
     vim.b.disable_autoformat = false
