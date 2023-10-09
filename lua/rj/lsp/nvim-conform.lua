@@ -27,6 +27,7 @@ conform.setup({
     sh = { "shfmt" },
     bash = { "shfmt" },
     cpp = { "clang_format" },
+    go = { "gofmt" },
   },
   format_on_save = function(bufnr)
     -- Disable with a global or buffer-local variable

@@ -13,6 +13,7 @@ local servers = {
   pyright = "pyright",
   tailwindcss = "tailwindcss-language-server",
   dockerls = "docker-langserver",
+  gopls = "gopls",
 }
 for k, v in pairs(servers) do
   if vim.fn.executable(v) == 1 then
