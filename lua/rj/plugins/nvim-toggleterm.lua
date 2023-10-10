@@ -84,12 +84,6 @@ function M.config()
   function _PYTHON_TOGGLE()
     python:toggle()
   end
-
-  local mocp = Terminal:new({ cmd = "mocp", hidden = true })
-
-  function _MOCP_TOGGLE()
-    mocp:toggle()
-  end
 end
 
 return M

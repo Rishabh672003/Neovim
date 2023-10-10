@@ -95,7 +95,6 @@ function M.config()
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
     ["c"] = { "<cmd>bdelete!<CR>", "Close Buffer" },
-    ["m"] = { "<cmd>lua _MOCP_TOGGLE()<CR>", "MOCP" },
     ["j"] = { "<cmd>Jaq<CR>", "Jaq" },
     ["f"] = {
       function()
