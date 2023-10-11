@@ -93,6 +93,14 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
   end,
 })
 
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "c", "go", "java" },
+  callback = function()
+    vim.opt.shiftwidth = 4
+    vim.opt.tabstop = 4
+  end,
+})
+
 vim.filetype.add({
   extension = {
     rasi = "rasi",
