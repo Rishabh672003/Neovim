@@ -95,9 +95,9 @@ git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
 
 ## Optional dependencies
 
-These are all the optional dependencies if you dont want anything just remove them neovim should work fine either way
+These are all the optional dependencies if you don't want anything just remove them neovim should work fine either way
 
-#### LSP dependencies as now these configs dont use mason, so you will have to install them yourself
+#### LSP dependencies as now these configs don't use mason, so you will have to install them yourself
 
 **These may not be up to date so please look at `lua/rj/lsp/lsp-conf.lua` for the list of all servers**
 
@@ -122,7 +122,7 @@ Other dependencies
 sudo pacman -S --needed --noconfirm ripgrep npm unzip yarn
 ```
 
-## Automatting the whole process of installing neovim, also its dependencies and then applying the config
+## Automating the whole process of installing neovim, also its dependencies and then applying the config
 
 **Note: this will install a lot of dependencies so use it only after reading the script and if you know what you are doing, I will not be responsible if you break anything on your system**
 
