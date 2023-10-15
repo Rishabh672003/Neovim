@@ -133,10 +133,10 @@ bash <(curl -s https://raw.githubusercontent.com/Rishabh672003/Neovim/main/insta
 ## Preview
 
 You can change the startup-screen if you don't like this one go to lua/rj/plugins/alpha-themes and read the readme there
-![image](https://user-images.githubusercontent.com/53911515/216835823-ff85c1d6-ab03-408c-9d7b-83c0f56a5445.png)
-![image](https://user-images.githubusercontent.com/53911515/227719958-c34ba80a-3ae8-4e32-a7ae-7b6ca0503a13.png)
-![image](https://user-images.githubusercontent.com/53911515/213927964-90035c3a-cd4b-4983-9e30-604bd15f0fc4.png)
-![image](https://user-images.githubusercontent.com/53911515/213927987-5e764e77-e82d-41fd-a97a-1be6952137e3.png)
+![image](https://github.com/Rishabh672003/Neovim/assets/53911515/20c2dde6-c369-4bea-be24-eaf9ff359581)
+![image](https://github.com/Rishabh672003/Neovim/assets/53911515/be32d082-6ade-4166-a63b-032749cef49d)
+![image](https://github.com/Rishabh672003/Neovim/assets/53911515/2003cd47-61b3-4244-a2c0-5866c5159673)
+![image](https://github.com/Rishabh672003/Neovim/assets/53911515/80b9cde3-af3e-477d-bb30-53358c7e5959)
 
 ## Uninstallation and Cleanup
 
