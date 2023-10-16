@@ -94,7 +94,7 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "c", "go", "java" },
+  pattern = { "c", "go", "java", "cpp" },
   callback = function()
     vim.opt.shiftwidth = 4
     vim.opt.tabstop = 4
