@@ -10,6 +10,17 @@ lint.linters_by_ft = {
   sh = { "shellcheck" },
   markdown = { "proselint" },
   lua = { "luacheck" },
+  cpp = { "cppcheck" },
+}
+
+local cppcheck = require("lint").linters.cppcheck
+cppcheck.args = {
+  "--enable=warning,style,performance,information",
+  "--language=c++",
+  "--inline-suppr",
+  "--suppress=missingIncludeSystem",
+  "--cppcheck-build-dir=/home/rishabh/projects/.builds/",
+  "--template={file}:{line}:{column}: [{id}] {severity}: {message}",
 }
 
 local luachecks = require("lint").linters.luacheck
@@ -32,6 +43,6 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
   end,
 })
 
-vim.keymap.set("n", "<leader>l", function()
+vim.keymap.set("n", "<leader>lt", function()
   lint.try_lint()
 end, { desc = "Trigger linting for current file" })
