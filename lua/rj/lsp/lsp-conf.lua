@@ -2,18 +2,18 @@ local lspconfig = require("lspconfig")
 
 local servers = {
   -- name of server = "name of servers executable"
-  taplo = "taplo",
-  lemminx = "lemminx",
-  marksman = "marksman",
-  jdtls = "jdtls",
   bashls = "bash-language-server",
   cssls = "vscode-css-language-server",
-  jsonls = "vscode-json-language-server",
-  tsserver = "typescript-language-server",
-  pyright = "pyright",
-  tailwindcss = "tailwindcss-language-server",
   dockerls = "docker-langserver",
   gopls = "gopls",
+  jdtls = "jdtls",
+  jsonls = "vscode-json-language-server",
+  lemminx = "lemminx",
+  marksman = "marksman",
+  pyright = "pyright",
+  tailwindcss = "tailwindcss-language-server",
+  taplo = "taplo",
+  tsserver = "typescript-language-server",
 }
 for k, v in pairs(servers) do
   if vim.fn.executable(v) == 1 then
