@@ -30,11 +30,11 @@ function M.config()
       },
     },
     on_open = function()
-      vim.g.cmp_active = false
+      vim.g.cmp_toggle = false
     end,
     on_close = function()
       -- require("lsp-inlayhints").toggle()
-      vim.g.cmp_active = true
+      vim.g.cmp_toggle = true
     end,
   })
 end
