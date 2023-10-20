@@ -226,8 +226,10 @@ function M.config()
     C = {
       name = "Cmp",
       c = { "<cmd>Copilot<cr>", "Copilot" },
-      e = { "<cmd>let g:cmp_toggle = v:true<cr>", "Enable" },
-      d = { "<cmd>let g:cmp_toggle = v:false<cr>", "Disable" },
+      --stylua: ignore start
+      e = { function() vim.g.cmp_toggle = true end, "Enable" },
+      d = { function() vim.g.cmp_toggle = false end, "Enable" },
+      --stylua: ignore end
       g = { "<cmd>NeoAI<cr>", "ChatGpt" },
     },
     ["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
