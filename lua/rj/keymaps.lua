@@ -40,8 +40,6 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("i", "<C-a>", "<ESC>:0,$y<CR>a", opts)
 keymap("n", "<C-a>", ":0,$y<CR>", opts)
 
-keymap("n", ";", ":", opts)
-
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
@@ -66,7 +64,6 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 
-keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
 
 --keymaps for toggleterm
@@ -83,10 +80,7 @@ keymap("n", "<M-h>", ":tabprevious<CR>", opts)
 keymap("n", "<A-q>", ":tabclose<CR>", opts)
 keymap("n", "<A-i>", ":tabnew<CR>", opts)
 
-keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-keymap("n", "<C-h>", "<cmd>lua vim.lsp.inlay_hint(0,nil)<CR>", opts)
-keymap("n", "<leader>o", "<cmd>URLOpenUnderCursor<CR>", opts)
--- keymap("n", "-", require("oil").open, { desc = "Open parent directory" })
+keymap("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
 
 vim.cmd([[
 " Using arrow keys is far too ingrained in my muscle memory.
