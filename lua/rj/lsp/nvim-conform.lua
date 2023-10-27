@@ -40,19 +40,21 @@ conform.setup({
       return
     end
     -- ...additional logic...
-    return { timeout_ms = 700, lsp_fallback = true }
+    return { timeout_ms = 1000, lsp_fallback = true }
   end,
 })
 
-vim.g.disable_autoformat = true
+vim.g.disable_autoformat = false
 
 vim.api.nvim_create_user_command("FormatToggle", function()
   if vim.b.disable_autoformat or vim.g.disable_autoformat then
     vim.b.disable_autoformat = false
     vim.g.disable_autoformat = false
+    vim.notify("AutoFormat Enabled")
   else
     vim.b.disable_autoformat = true
     vim.g.disable_autoformat = true
+    vim.notify("AutoFormat Disabled")
   end
 end, {
   desc = "Toggle autoformat-on-save",
