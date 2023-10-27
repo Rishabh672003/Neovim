@@ -96,6 +96,7 @@ function M.config()
     ["q"] = { "<cmd>q!<CR>", "Quit" },
     ["c"] = { "<cmd>bdelete!<CR>", "Close Buffer" },
     ["j"] = { "<cmd>Jaq<CR>", "Jaq" },
+    ["o"] = { "<cmd>URLOpenUnderCursor<CR>", "Open URL" },
     ["f"] = {
       function()
         require("telescope.builtin").find_files(require("telescope.themes"))
@@ -163,7 +164,7 @@ function M.config()
           require("conform").format({
             lsp_fallback = true,
             async = false,
-            timeout_ms = 700,
+            timeout_ms = 1000,
           })
         end,
         "Format",
