@@ -1,7 +1,6 @@
 local M = {
   "catppuccin/nvim",
   name = "catppuccin",
-  commit = "3d9a5ed556e289bce6c1fb0af89ec838360641b2",
   lazy = false,
   build = ":CatppuccinCompile",
   priority = 1000,
@@ -42,6 +41,7 @@ function M.config()
     custom_highlights = {
       WhichKeyGroup = { fg = "#FAB387" },
       WhichKeySeparator = { fg = "#cdd6f4" },
+      IndentBlankLineContextChar = { fg = "#cdd6f4" },
     },
   })
 
