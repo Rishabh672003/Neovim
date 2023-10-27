@@ -46,9 +46,9 @@ function install_lsp_packages() {
 
 	sudo pacman -S --needed --noconfirm npm python-pip stylua prettier astyle ripgrep unzip \
 		npm zsh lldb wl-clipboard yarn
-	sudo pacman -S --needed --noconfirm taplo-cli autopep8 lua-language-server bash-language-server \
-		pyright typescript-language-server rust-analyzer \
-		tailwindcss-language-server
+	sudo pacman -S --needed --noconfirm taplo-cli autopep8 lua-language-server \
+		bash-language-server typescript-language-server \
+		rust-analyzer tailwindcss-language-server python-lsp-server
 
 	# Install the additional LSP packages.
 	if command -v yay &>/dev/null; then
