@@ -92,7 +92,7 @@ function M.isempty(s)
 end
 
 function M.get_buf_option(opt)
-  local status_ok, buf_option = pcall(vim.api.nvim_buf_get_option, 0, opt)
+  local status_ok, buf_option = pcall(vim.api.nvim_get_option_value, 0, opt)
   if not status_ok then
     return nil
   else
@@ -101,8 +101,7 @@ function M.get_buf_option(opt)
 end
 
 function M.smart_quit()
-  local bufnr = vim.api.nvim_get_current_buf()
-  local modified = vim.api.nvim_buf_get_option(bufnr, "modified")
+  local modified = vim.api.nvim_get_option_value("modified", { "buf" })
   if modified then
     vim.ui.input({
       prompt = "You have unsaved changes. Quit anyway? (y/n) ",
