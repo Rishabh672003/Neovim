@@ -54,7 +54,7 @@ function install_lsp_packages() {
 	if command -v yay &>/dev/null; then
 		yay -S --needed --noconfirm lemminx marksman-bin jdtls \
 			shellcheck-bin shfmt vscode-langservers-extracted \
-			proselint
+			proselint nodejs-live-server
 	else
 		echo "Yay is not Installed, so some dependencies will not be installed"
 	fi
