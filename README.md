@@ -1,6 +1,6 @@
-<center>
-
 <h1>Neovim</h1>
+
+<center>
 
 <a href="https://dotfyle.com/Rishabh672003/neovim"><img src="https://dotfyle.com/Rishabh672003/neovim/badges/plugins?style=for-the-badge" /></a>
 <a href="https://dotfyle.com/Rishabh672003/neovim"><img src="https://dotfyle.com/Rishabh672003/neovim/badges/leaderkey?style=for-the-badge" /></a>

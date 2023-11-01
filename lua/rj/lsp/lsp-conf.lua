@@ -71,27 +71,6 @@ else
   print("lspconfig: lua-language-server not found")
 end
 
-if vim.fn.executable("pyright") == 1 then
-  lspconfig.pyright.setup({
-    on_attach = require("rj.lsp.attach").on_attach,
-    capabilities = require("rj.lsp.attach").capabilities,
-    settings = {
-      python = {
-        analysis = {
-          typeCheckingMode = "basic",
-          -- diagnosticMode = "workspace",
-          inlayHints = {
-            variableTypes = true,
-            functionReturnTypes = true,
-          },
-        },
-      },
-    },
-  })
-else
-  print("lspconfig: pyright not found")
-end
-
 require("lspconfig").yamlls.setup({
   -- other configuration for setup {}
   settings = {
