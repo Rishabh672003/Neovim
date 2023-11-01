@@ -161,11 +161,18 @@ function M.config()
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
       f = {
         function()
+          local function myCallback(err)
+            if err then
+              vim.notify("Error during formatting: ", err)
+            else
+              vim.notify("Formatting completed successfully.")
+            end
+          end
           require("conform").format({
             lsp_fallback = true,
             async = false,
             timeout_ms = 1000,
-          })
+          }, myCallback())
         end,
         "Format",
       },

@@ -29,7 +29,15 @@ conform.setup({
     cpp = { "clang_format" },
     go = { "gofmt" },
   },
+
   format_on_save = function(bufnr)
+    local function myCallback(err)
+      if err then
+        vim.notify("Error during formatting: ", err)
+      else
+        vim.notify("Formatting completed successfully.")
+      end
+    end
     -- Disable with a global or buffer-local variable
     if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
       return
@@ -40,7 +48,7 @@ conform.setup({
       return
     end
     -- ...additional logic...
-    return { timeout_ms = 1000, lsp_fallback = true }
+    return { timeout_ms = 1000, lsp_fallback = true }, myCallback()
   end,
 })
 
