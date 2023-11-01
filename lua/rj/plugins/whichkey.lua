@@ -233,6 +233,16 @@ function M.config()
       --stylua: ignore end
       g = { "<cmd>NeoAI<cr>", "ChatGpt" },
     },
+    x = {
+      name = "Trouble",
+      --stylua: ignore start
+      x = { function() require("trouble").toggle() end, "Toggle" },
+      w = { function() require("trouble").toggle("workspace_diagnostics") end, "Workspace Diagnostics"},
+      d = { function() require("trouble").toggle("document_diagnostics") end, "Document Diagnostics"},
+      q = { function() require("trouble").toggle("quickfix") end, "Quickfix"},
+      l = { function() require("trouble").toggle("loclist") end, "Loclist"},
+      --stylua: ignore end
+    },
     ["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
   }
 
