@@ -48,7 +48,7 @@ function install_lsp_packages() {
 		npm zsh lldb wl-clipboard yarn
 	sudo pacman -S --needed --noconfirm taplo-cli autopep8 lua-language-server \
 		bash-language-server typescript-language-server \
-		rust-analyzer tailwindcss-language-server python-lsp-server
+		rust-analyzer tailwindcss-language-server pyright
 
 	# Install the additional LSP packages.
 	if command -v yay &>/dev/null; then

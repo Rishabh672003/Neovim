@@ -10,7 +10,6 @@ local servers = {
   jsonls = "vscode-json-language-server",
   lemminx = "lemminx",
   marksman = "marksman",
-  pylsp = "pylsp",
   tailwindcss = "tailwindcss-language-server",
   taplo = "taplo",
   tsserver = "typescript-language-server",
@@ -69,6 +68,27 @@ if vim.fn.executable("lua-language-server") == 1 then
   })
 else
   print("lspconfig: lua-language-server not found")
+end
+
+if vim.fn.executable("pyright") == 1 then
+  lspconfig.pyright.setup({
+    on_attach = require("rj.lsp.attach").on_attach,
+    capabilities = require("rj.lsp.attach").capabilities,
+    settings = {
+      python = {
+        analysis = {
+          typeCheckingMode = "basic",
+          -- diagnosticMode = "workspace",
+          inlayHints = {
+            variableTypes = true,
+            functionReturnTypes = true,
+          },
+        },
+      },
+    },
+  })
+else
+  print("lspconfig: pyright not found")
 end
 
 require("lspconfig").yamlls.setup({
