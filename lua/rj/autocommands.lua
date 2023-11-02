@@ -1,10 +1,8 @@
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "qf", "help", "lspinfo", "spectre_panel" },
+  pattern = { "qf", "help", "lspinfo", "spectre_panel", "oil" },
   callback = function()
-    vim.cmd([[
-      nnoremap <silent> <buffer> q :close<CR> 
-      set nobuflisted 
-    ]])
+    vim.keymap.set("n", "q", "<cmd>close<CR>", { silent = true })
+    vim.api.nvim_buf_set_option(0, "buflisted", false)
   end,
 })
 
@@ -64,7 +62,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   callback = function()
     vim.opt_local.number = false
     vim.opt_local.relativenumber = false
-    vim.keymap.set("n", "q", "<cmd>q<CR>", { silent = true })
   end,
 })
 
@@ -80,8 +77,8 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "c", "go", "java", "cpp", "h", "hpp" },
   callback = function()
-    vim.opt.shiftwidth = 4
-    vim.opt.tabstop = 4
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
   end,
 })
 
