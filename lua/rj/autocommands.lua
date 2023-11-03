@@ -1,4 +1,12 @@
 vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = { "c", "go", "java", "cpp" },
+  callback = function()
+    vim.opt_local.shiftwidth = 4
+    vim.opt_local.tabstop = 4
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "qf", "help", "lspinfo", "spectre_panel", "oil" },
   callback = function()
     vim.keymap.set("n", "q", "<cmd>close<CR>", { silent = true })
@@ -71,14 +79,6 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
     local filename = ev.file
     vim.fn.jobstart({ "xdg-open", filename }, { detach = true })
     vim.api.nvim_buf_delete(0, {})
-  end,
-})
-
-vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "c", "go", "java", "cpp", "h", "hpp" },
-  callback = function()
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.tabstop = 4
   end,
 })
 
