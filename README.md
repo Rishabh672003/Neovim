@@ -1,12 +1,8 @@
-<h1>Neovim</h1>
-
-<center>
+# Neovim
 
 <a href="https://dotfyle.com/Rishabh672003/neovim"><img src="https://dotfyle.com/Rishabh672003/neovim/badges/plugins?style=for-the-badge" /></a>
 <a href="https://dotfyle.com/Rishabh672003/neovim"><img src="https://dotfyle.com/Rishabh672003/neovim/badges/leaderkey?style=for-the-badge" /></a>
 <a href="https://dotfyle.com/Rishabh672003/neovim"><img src="https://dotfyle.com/Rishabh672003/neovim/badges/plugin-manager?style=for-the-badge" /></a>
-
-</center>
 
 This repo contains all my [neovim](https://github.com/neovim/neovim) configs files, which I use. Now made with [lazy.nvim](https://github.com/folke/lazy.nvim)
 Now this doesn't uses Mason, so you would have to install all of the lsp yourself.
