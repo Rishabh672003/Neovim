@@ -1,6 +1,6 @@
 local M = {
   "Darazaki/indent-o-matic",
-  event = { "BufReadPost" },
+  event = { "BufReadPre" },
 }
 
 function M.config()
@@ -16,6 +16,9 @@ function M.config()
 
     -- Only detect 4 spaces and tabs for Rust files
     filetype_c = {
+      standard_widths = { 4 },
+    },
+    filetype_cpp = {
       standard_widths = { 4 },
     },
 
