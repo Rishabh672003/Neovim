@@ -10,7 +10,6 @@ local servers = {
   jsonls = "vscode-json-language-server",
   lemminx = "lemminx",
   marksman = "marksman",
-  tailwindcss = "tailwindcss-language-server",
   taplo = "taplo",
   tsserver = "typescript-language-server",
 }
@@ -104,3 +103,17 @@ require("lspconfig").yamlls.setup({
     },
   },
 })
+
+if vim.fn.executable("tailwindcss-language-server") == 1 then
+  lspconfig.tailwindcss.setup({
+    on_attach = require("rj.lsp.attach").on_attach,
+    capabilities = require("rj.lsp.attach").capabilities,
+    filetypes = {
+      "html",
+      "css",
+      "scss",
+      "javascript",
+      "typescript",
+    },
+  })
+end
