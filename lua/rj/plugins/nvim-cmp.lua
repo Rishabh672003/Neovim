@@ -12,6 +12,7 @@ local M = {
     "hrsh7th/cmp-cmdline",
     "saadparwaiz1/cmp_luasnip",
     "hrsh7th/cmp-nvim-lua",
+    "hrsh7th/cmp-calc",
     {
       "L3MON4D3/LuaSnip",
       "rafamadriz/friendly-snippets",
@@ -164,6 +165,7 @@ function M.config()
           path = "[PATH]",
           copilot = "[CPLT]",
           codeium = "[CDEM]",
+          calc = "[CALC]",
         })[entry.source.name]
 
         return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
@@ -178,6 +180,7 @@ function M.config()
       { name = "path" },
       { name = "copilot" },
       { name = "codeium" },
+      { name = "calc" },
     },
     confirm_opts = {
       behavior = cmp.ConfirmBehavior.Replace,
