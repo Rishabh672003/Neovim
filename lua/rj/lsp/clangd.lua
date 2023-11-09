@@ -5,7 +5,6 @@ if vim.fn.executable("clangd") == 1 then
     local inlay_hints = require("clangd_extensions.inlay_hints")
     inlay_hints.setup_autocmd()
     inlay_hints.set_inlay_hints()
-    inlay_hints.toggle_inlay_hints()
   end
   require("lspconfig").clangd.setup({
     on_attach = extended_on_attach,
