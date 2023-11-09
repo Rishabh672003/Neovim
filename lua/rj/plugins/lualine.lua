@@ -62,7 +62,7 @@ function M.config()
   end
 
   local spaces = function()
-    return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
+    return "spaces: " .. vim.api.nvim_get_option_value("shiftwidth", { buf = 0 })
   end
 
   lualine.setup({
