@@ -26,7 +26,7 @@ return {
       "python",
     },
     lazy = true,
-    event = "BufReadPost",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require("rj.lsp.attach")
       require("rj.lsp.lsp-conf")
@@ -36,7 +36,7 @@ return {
   {
     "hinell/lsp-timeout.nvim",
     dependencies = { "neovim/nvim-lspconfig" },
-    event = "BufReadPost",
+    event = { "BufReadPre", "BufNewFile" },
   },
   {
     "folke/trouble.nvim",
@@ -47,7 +47,7 @@ return {
   {
     "p00f/clangd_extensions.nvim",
     ft = { "c", "cpp" },
-    event = "BufReadPost",
+    event = { "BufReadPre", "BufNewFile" },
     lazy = true,
     config = function()
       require("rj.lsp.clangd")
@@ -58,7 +58,7 @@ return {
     branch = "inline-inlay-hints",
     ft = { "rust" },
     lazy = true,
-    event = "BufReadPost",
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require("rj.lsp.rust-tools")
     end,
