@@ -27,7 +27,7 @@ if vim.fn.executable("rust-analyzer") == 1 then
       },
       on_initialized = function()
         vim.api.nvim_create_autocmd({
-          "BufAdd",
+          "BufReadPost",
         }, {
           pattern = { "*.rs" },
           callback = function()
