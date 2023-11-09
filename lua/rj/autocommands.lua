@@ -1,5 +1,5 @@
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "c", "go", "java", "cpp" },
+  pattern = { "c", "go", "java", "cpp", "py" },
   callback = function()
     vim.opt_local.shiftwidth = 4
     vim.opt_local.tabstop = 4
@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "qf", "help", "lspinfo", "spectre_panel", "oil" },
   callback = function()
     vim.keymap.set("n", "q", "<cmd>close<CR>", { silent = true })
-    vim.api.nvim_buf_set_option(0, "buflisted", false)
+    vim.api.nvim_set_option_value("buflisted", false, { buf = 0 })
   end,
 })
 
