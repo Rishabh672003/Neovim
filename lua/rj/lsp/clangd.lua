@@ -1,7 +1,14 @@
 -- Clangd
 if vim.fn.executable("clangd") == 1 then
+  local function extended_on_attach(client, bufnr)
+    require("rj.lsp.attach").on_attach(client, bufnr)
+    local inlay_hints = require("clangd_extensions.inlay_hints")
+    inlay_hints.setup_autocmd()
+    inlay_hints.set_inlay_hints()
+    inlay_hints.toggle_inlay_hints()
+  end
   require("lspconfig").clangd.setup({
-    on_attach = require("rj.lsp.attach").on_attach,
+    on_attach = extended_on_attach,
     capabilities = require("rj.lsp.attach").capabilities,
     cmd = {
       "clangd",
@@ -88,11 +95,6 @@ if vim.fn.executable("clangd") == 1 then
       border = "none",
     },
   })
-  local inlay_hints = require("clangd_extensions.inlay_hints")
-
-  inlay_hints.setup_autocmd()
-  inlay_hints.set_inlay_hints()
-  inlay_hints.toggle_inlay_hints()
 else
   print("lspconfig: clangd not found")
 end
