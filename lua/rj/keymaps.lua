@@ -24,14 +24,14 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-Up>", "<cmd>resize -2<CR>", opts)
+keymap("n", "<C-Down>", "<cmd>resize +2<CR>", opts)
+keymap("n", "<C-Left>", "<cmd>vertical resize -2<CR>", opts)
+keymap("n", "<C-Right>", "<cmd>vertical resize +2<CR>", opts)
 
 -- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-l>", "<cmd>bnext<CR>", opts)
+keymap("n", "<S-h>", "<cmd>bprevious<CR>", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
@@ -48,7 +48,9 @@ keymap("v", ">", ">gv", opts)
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+
 keymap("v", "p", "P", opts)
+keymap("n", "dc", "cc<esc>", opts)
 
 -- Visual Block --
 -- Move text up and down
@@ -64,8 +66,6 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 
-keymap("n", "<leader>e", "<cmd>NvimTreeToggle<cr>", opts)
-
 --keymaps for toggleterm
 keymap("n", "<M-1>", "<cmd>ToggleTerm direction=horizontal size=12<cr>", opts)
 keymap("t", "<M-1>", "<cmd>ToggleTerm direction=horizontal size=12<cr>", opts)
@@ -75,12 +75,13 @@ keymap("n", "<M-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
 keymap("t", "<M-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
 
 --keymaps for tabs
-keymap("n", "<M-l>", ":tabnext<CR>", opts)
-keymap("n", "<M-h>", ":tabprevious<CR>", opts)
-keymap("n", "<A-q>", ":tabclose<CR>", opts)
-keymap("n", "<A-i>", ":tabnew<CR>", opts)
+keymap("n", "<M-l>", "<cmd>tabnext<CR>", opts)
+keymap("n", "<M-h>", "<cmd>tabprevious<CR>", opts)
+keymap("n", "<A-q>", "<cmd>tabclose<CR>", opts)
+keymap("n", "<A-i>", "<cmd>tabnew<CR>", opts)
 
-keymap("n", "-", "<CMD>Oil --float<CR>", { desc = "Open parent directory" })
+keymap("n", "-", "<cmd>Oil --float<CR>", { desc = "Open parent directory" })
+keymap("n", "<leader>E", "<cmd>Oil --float .<cr>", { desc = "Explorer" })
 
 vim.cmd([[
 " Using arrow keys is far too ingrained in my muscle memory.
@@ -94,3 +95,11 @@ imap <down> <nop>
 imap <left> <nop>
 imap <right> <nop>
 ]])
+
+vim.keymap.set("n", "i", function()
+  if #vim.fn.getline(".") == 0 then
+    return [["_cc]]
+  else
+    return "i"
+  end
+end, { expr = true, desc = "properly indent on empty line when insert" })
