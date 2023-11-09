@@ -13,6 +13,16 @@ vim.cmd([[
   endfunction
 ]])
 
+local status_ok, noice = pcall(require, "noice")
+if not status_ok then
+  return "Noice wasn't found"
+end
+local noice_message = {
+  noice.api.statusline.mode.get,
+  cond = noice.api.statusline.mode.has,
+  color = { fg = "#fab387" },
+}
+
 function M.sniprun_enable()
   vim.cmd([[
     %SnipRun
