@@ -14,23 +14,23 @@ local function attach_navic(client, bufnr)
   navic.attach(client, bufnr)
 end
 
-local function lsp_keymaps(bufnr)
-  local keymap = vim.api.nvim_buf_set_keymap
-  local opts = { noremap = true, silent = true }
-  keymap(bufnr, "n", "gD", "<cmd>Telescope lsp_declarations<CR>", opts)
-  keymap(bufnr, "n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-  keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  keymap(bufnr, "n", "gI", "<cmd>Telescope lsp_implementations<CR>", opts)
-  keymap(bufnr, "n", "<C-l>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  keymap(bufnr, "n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
-  keymap(bufnr, "n", "gR", '<cmd>lua require("trouble").toggle("lsp_references")<CR>', opts)
-  keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-  keymap(bufnr, "n", "<leader>Q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+local function lsp_keymaps()
+  local keymap = vim.keymap.set
+  local opts = { noremap = true, silent = true, buffer = true }
+  keymap("n", "gD", "<cmd>Telescope lsp_declarations<CR>", opts)
+  keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+  keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+  keymap("n", "gI", "<cmd>Telescope lsp_implementations<CR>", opts)
+  keymap("n", "<C-l>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+  keymap("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+  keymap("n", "gR", '<cmd>lua require("trouble").toggle("lsp_references")<CR>', opts)
+  keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+  keymap("n", "<leader>Q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
 
 M.on_attach = function(client, bufnr)
-  lsp_keymaps(bufnr)
   attach_navic(client, bufnr)
+  lsp_keymaps()
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
