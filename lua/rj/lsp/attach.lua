@@ -17,7 +17,7 @@ end
 local function lsp_keymaps()
   local keymap = vim.keymap.set
   local opts = { noremap = true, silent = true, buffer = true }
-  keymap("n", "gD", "<cmd>Telescope lsp_declarations<CR>", opts)
+  keymap("n", "gD", "<cmd>Telescope lsp_document_symbols<CR>", opts)
   keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
   keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
   keymap("n", "gI", "<cmd>Telescope lsp_implementations<CR>", opts)
