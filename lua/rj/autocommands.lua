@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "qf", "help", "lspinfo", "spectre_panel", "oil" },
   callback = function()
-    vim.keymap.set("n", "q", "<cmd>close<CR>", { silent = true })
+    vim.keymap.set("n", "q", "<cmd>close<CR>", { silent = true, buffer = true })
     vim.api.nvim_set_option_value("buflisted", false, { buf = 0 })
   end,
 })
@@ -66,7 +66,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "neo-tree", "oil" },
+  pattern = { "neo-tree" },
   callback = function()
     vim.opt_local.number = false
     vim.opt_local.relativenumber = false
