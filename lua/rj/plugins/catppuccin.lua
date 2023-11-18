@@ -48,7 +48,7 @@ function M.config()
   M.name = "catppuccin"
   local status_ok, _ = pcall(vim.cmd.colorscheme, M.name)
   if not status_ok then
-    return
+    return vim.notify("Catppuccin theme not found")
   end
 end
 
