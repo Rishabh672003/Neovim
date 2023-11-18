@@ -23,6 +23,9 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- autosave
+keymap("n", "<C-s>", "<cmd>ASToggle<CR>", opts)
+
 -- Resize with arrows
 keymap("n", "<C-Up>", "<cmd>resize -2<CR>", opts)
 keymap("n", "<C-Down>", "<cmd>resize +2<CR>", opts)
@@ -48,6 +51,12 @@ keymap("v", ">", ">gv", opts)
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+
+-- pressing C-h,j,k,l will move the cursor in insert mode
+keymap("i", "<C-j>", "<Down>", opts)
+keymap("i", "<C-k>", "<Up>", opts)
+keymap("i", "<C-h>", "<Left>", opts)
+keymap("i", "<C-l>", "<Right>", opts)
 
 keymap("v", "p", "P", opts)
 keymap("n", "dc", "cc<esc>", opts)
