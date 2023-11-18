@@ -6,7 +6,6 @@ lint.linters_by_ft = {
   javascriptreact = { "eslint_d" },
   typescriptreact = { "eslint_d" },
   svelte = { "eslint_d" },
-  -- zsh = { "shellcheck" },
   sh = { "shellcheck" },
   markdown = { "proselint" },
   lua = { "luacheck" },
@@ -19,6 +18,7 @@ cppcheck.args = {
   "--language=c++",
   "--inline-suppr",
   "--suppress=missingIncludeSystem",
+  "--suppress=missingInclude",
   "--cppcheck-build-dir=/home/rishabh/projects/.builds/",
   "--template={file}:{line}:{column}: [{id}] {severity}: {message}",
 }
