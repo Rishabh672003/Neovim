@@ -3,6 +3,8 @@ return {
   dependencies = {
     "MunifTanjim/nui.nvim",
   },
+
+  enabled = false,
   cmd = {
     "NeoAI",
     "NeoAIOpen",
