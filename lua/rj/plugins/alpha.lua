@@ -181,7 +181,7 @@ function M.config()
       {
         type = "group",
         val = function()
-          return { mru(0, cdir) }
+          return { mru(0, cdir, 9) }
         end,
         opts = { shrink_margin = false },
       },
