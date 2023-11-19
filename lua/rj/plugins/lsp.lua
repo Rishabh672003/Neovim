@@ -34,6 +34,28 @@ return {
     end,
   },
   {
+    "p00f/clangd_extensions.nvim",
+    ft = { "c", "cpp" },
+    config = function()
+      require("rj.lsp.clangd")
+    end,
+  },
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^3", -- Recommended
+    ft = { "rust" },
+    init = function()
+      vim.g.rustaceanvim = {
+        server = {
+          on_attach = function(client, bufnr)
+            require("rj.lsp.attach").on_attach(client, bufnr)
+          end,
+          capabilities = require("rj.lsp.attach").capabilities,
+        },
+      }
+    end,
+  },
+  {
     "hinell/lsp-timeout.nvim",
     dependencies = { "neovim/nvim-lspconfig" },
     event = { "BufReadPre", "BufNewFile" },
@@ -43,21 +65,6 @@ return {
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "VeryLazy",
     opts = {},
-  },
-  {
-    "p00f/clangd_extensions.nvim",
-    ft = { "c", "cpp" },
-    config = function()
-      require("rj.lsp.clangd")
-    end,
-  },
-  {
-    "Ciel-MC/rust-tools.nvim",
-    branch = "inline-inlay-hints",
-    ft = { "rust" },
-    config = function()
-      require("rj.lsp.rust-tools")
-    end,
   },
   {
     "stevearc/conform.nvim",
