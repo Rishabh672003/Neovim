@@ -42,6 +42,7 @@ function M.config()
       WhichKeyGroup = { fg = "#FAB387" },
       WhichKeySeparator = { fg = "#cdd6f4" },
       IndentBlankLineContextChar = { fg = "#cdd6f4" },
+      LspInlayHint = { bg = "none" },
     },
   })
 
