@@ -11,74 +11,11 @@
 This repo contains all my [neovim](https://github.com/neovim/neovim) configs files, which I use. Now made with [lazy.nvim](https://github.com/folke/lazy.nvim)
 Now this doesn't uses Mason, so you would have to install all of the lsp yourself.
 
-For most of time of this configs existence I did everything on the main branch, but that is changed now i experiment and use the `dev` branch and will only merge stuff once in a while to the main, so now this will be way more stable.
-
 ### 🛠️ If you also want to use it
 
-#### I use it with nvim-nightly but it also works with latest stable nvim
+Supported Neovim versions: Nightly and Latest Stable
 
-I recommend use **bob**:
-
-[Bob](https://github.com/MordechaiHadad/bob) is a neovim version manager, which you can use to download any version of neovim supported by Bob
-
-To use it just install it with AUR:
-
-```bash
-yay -Sy --needed --noconfirm bob-bin
-```
-
-And then you can just do:
-
-```bash
-bob use nightly
-```
-
-Also note you will need to add bob's nvim install folder to your path for that add this to your bashrc/zshrc
-
-```bash
-export XDG_DATA_HOME=$HOME/.local/share
-export PATH=$XDG_DATA_HOME/bob/nvim-bin:$PATH
-```
-
-This will also work:
-
-```bash
-sudo pacman -Sy --needed --noconfirm neovim
-```
-
-Or after installation of bob:
-
-```bash
-bob use stable
-```
-
-<details>
-  <summary><strong>Neovim-nightly Installation</strong></summary>
-
-#### 1. Neovim-nightly as an appimage
-
-```bash
-curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage && sudo chmod +x nvim.appimage
-```
-
-#### 2. Build neovim from Source
-
-```bash
-#build dependencies
-sudo pacman -Sy --needed --noconfirm git base-devel cmake unzip ninja tree-sitter curl
-```
-
-```bash
-git clone https://github.com/neovim/neovim && cd neovim && make CMAKE_BUILD_TYPE=RelWithDebInfo && sudo make install
-```
-
-#### 3. Install neovim-git from AUR
-
-```bash
-yay -Sy neovim-nightly
-```
-
-</details>
+You can see the installation instruction for both here - [Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 
 #### Make a backup of your current nvim folder
 
