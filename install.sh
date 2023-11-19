@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # Maintainer: Rishabh672003
 # This script installs Neovim with LSP support on Arch Linux.
 
@@ -12,10 +12,14 @@ fi
 
 # Install Neovim.
 function install_neovim() {
-	if command -v yay &>/dev/null; then
-		yay -Sy --needed --noconfirm neovim-git
+	if command -v nvim &>/dev/null; then
+		echo "neovim is installed"
 	else
-		sudo pacman -Sy --needed --noconfirm neovim
+		if command -v yay &>/dev/null; then
+			yay -Sy --needed --noconfirm neovim-git
+		else
+			sudo pacman -Sy --needed --noconfirm neovim
+		fi
 	fi
 }
 
