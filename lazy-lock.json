@@ -60,7 +60,7 @@
   "presence.nvim": { "branch": "main", "commit": "87c857a56b7703f976d3a5ef15967d80508df6e6" },
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "promise-async": { "branch": "main", "commit": "e94f35161b8c5d4a4ca3b6ff93dd073eb9214c0e" },
-  "rust-tools.nvim": { "branch": "inline-inlay-hints", "commit": "ebe17abed9a6117b941075b0b84c047968cbb5d6" },
+  "rustaceanvim": { "branch": "master", "commit": "540ff82e5f47f3e39bd583acfbd813f4ac90d4a6" },
   "sudoku.nvim": { "branch": "main", "commit": "cb01171ed746003dd9f508e7a08a5bae2c396ef0" },
   "tailwindcss-colorizer-cmp.nvim": { "branch": "main", "commit": "bc25c56083939f274edcfe395c6ff7de23b67c50" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "f41675fddb1ea9003187d07ecc627a8bf8292633" },
