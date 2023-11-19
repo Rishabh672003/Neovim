@@ -7,8 +7,6 @@ return {
     ft = {
       "markdown",
       "lua",
-      "c",
-      "cpp",
       "java",
       "python",
       "json",
@@ -17,7 +15,6 @@ return {
       "sh",
       "toml",
       "zsh",
-      "rust",
       "html",
       "css",
       "javascript",
