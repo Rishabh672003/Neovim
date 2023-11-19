@@ -23,39 +23,32 @@ I recommend use **bob**:
 
 To use it just install it with AUR:
 
-```sh
+```bash
 yay -Sy --needed --noconfirm bob-bin
-```
-
-Or with Cargo:
-
-```sh
-# NOTE: this will build from source
-cargo install --git https://github.com/MordechaiHadad/bob.git
 ```
 
 And then you can just do:
 
-```sh
+```bash
 bob use nightly
 ```
 
 Also note you will need to add bob's nvim install folder to your path for that add this to your bashrc/zshrc
 
-```sh
+```bash
 export XDG_DATA_HOME=$HOME/.local/share
 export PATH=$XDG_DATA_HOME/bob/nvim-bin:$PATH
 ```
 
-But this will also work:
+This will also work:
 
-```sh
+```bash
 sudo pacman -Sy --needed --noconfirm neovim
 ```
 
 Or after installation of bob:
 
-```sh
+```bash
 bob use stable
 ```
 
@@ -81,7 +74,7 @@ git clone https://github.com/neovim/neovim && cd neovim && make CMAKE_BUILD_TYPE
 
 #### 3. Install neovim-git from AUR
 
-```sh
+```bash
 yay -Sy neovim-nightly
 ```
 
