@@ -5,8 +5,14 @@ local M = {
     "nvim-treesitter/playground",
     {
       "JoosepAlviste/nvim-ts-context-commentstring",
-      "nvim-tree/nvim-web-devicons",
+      config = function()
+        require("ts_context_commentstring").setup({
+          enable_autocmd = false,
+        })
+        vim.g.skip_ts_context_commentstring_module = true
+      end,
     },
+    "nvim-tree/nvim-web-devicons",
   },
 }
 
@@ -43,10 +49,6 @@ function M.config()
       -- additional_vim_regex_highlighting = true,
     },
     indent = { enable = true, disable = { "python", "html", "cpp", "css" } },
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
   })
 end
 
