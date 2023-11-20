@@ -53,9 +53,13 @@ return {
     end,
   },
   {
-    "hinell/lsp-timeout.nvim",
-    dependencies = { "neovim/nvim-lspconfig" },
-    event = { "BufReadPre", "BufNewFile" },
+    "zeioth/garbage-day.nvim",
+    dependencies = "neovim/nvim-lspconfig",
+    event = "VeryLazy",
+    opts = {
+      grace_period = 60*8,
+      wakeup_delay = 10,
+    },
   },
   {
     "folke/trouble.nvim",
