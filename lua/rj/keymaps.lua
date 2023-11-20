@@ -105,7 +105,7 @@ imap <left> <nop>
 imap <right> <nop>
 ]])
 
-vim.keymap.set("n", "i", function()
+keymap("n", "i", function()
   if #vim.fn.getline(".") == 0 then
     return [["_cc]]
   else
