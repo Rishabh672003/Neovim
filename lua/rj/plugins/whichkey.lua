@@ -176,6 +176,16 @@ function M.config()
         "Format",
       },
       F = { "<cmd>FormatToggle<cr>", "Toggle Autoformat" },
+      h = {
+        function()
+          if vim.lsp.inlay_hint.is_enabled(0) == true then
+            vim.lsp.inlay_hint.enable(0, false)
+          else
+            vim.lsp.inlay_hint.enable(0, true)
+          end
+        end,
+        "Inlay Hnts"
+      },
       i = { "<cmd>LspInfo<cr>", "Info" },
       I = { "<cmd>Mason<cr>", "Installer Info" },
       j = {
