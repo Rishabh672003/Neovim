@@ -90,7 +90,6 @@ keymap("n", "<A-q>", "<cmd>tabclose<CR>", opts)
 keymap("n", "<A-i>", "<cmd>tabnew<CR>", opts)
 
 keymap("n", "-", "<cmd>Oil --float<CR>", { desc = "Open parent directory" })
-keymap("n", "<leader>E", "<cmd>Oil --float .<cr>", { desc = "Explorer" })
 
 vim.cmd([[
 " Using arrow keys is far too ingrained in my muscle memory.
