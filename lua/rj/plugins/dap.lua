@@ -1,15 +1,15 @@
 local M = {
   "mfussenegger/nvim-dap",
   event = "VeryLazy",
+  dependencies = {
+    "rcarriga/nvim-dap-ui",
+  },
 }
 
 function M.config()
   local dap = require("dap")
 
-  local dap_ui_status_ok, dapui = pcall(require, "dapui")
-  if not dap_ui_status_ok then
-    return
-  end
+  local dapui = require("dapui")
 
   dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open()
