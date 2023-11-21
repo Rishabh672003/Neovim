@@ -219,7 +219,7 @@ function M.config()
 
   local fortune = {
     type = "text",
-    val = require("rj.usefull-stuff.alpha-themes.fortune")(),
+    val = require("rj.fortune")(),
     opts = {
       position = "center",
       hl = "group",
