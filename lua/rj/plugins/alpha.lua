@@ -20,6 +20,9 @@ local M = {
         })
       end,
     },
+    {
+      "nvim-lua/plenary.nvim"
+    }
   },
 }
 
