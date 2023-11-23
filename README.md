@@ -11,19 +11,19 @@
 This repo contains all my [neovim](https://github.com/neovim/neovim) configs files, which I use. Now made with [lazy.nvim](https://github.com/folke/lazy.nvim)
 Now this doesn't uses Mason, so you would have to install all of the lsp yourself.
 
-### 🛠️ If you also want to use it
+## 🛠️ If you also want to use it
 
 Supported Neovim versions: Nightly and Latest Stable
 
 You can see the installation instruction for both here - [Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 
-#### Make a backup of your current nvim folder
+### Make a backup of your current nvim folder
 
 ```bash
 mv ~/.config/nvim ~/.config/nvim.backup
 ```
 
-#### Clone the repository and open nvim
+### Clone the repository and open nvim
 
 For main branch
 
@@ -31,7 +31,7 @@ For main branch
 git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
 ```
 
-## Optional dependencies
+### Optional dependencies
 
 These are all the optional dependencies if you don't want anything just remove them neovim should work fine either way
 
@@ -60,7 +60,7 @@ Other dependencies
 sudo pacman -S --needed --noconfirm ripgrep npm unzip yarn
 ```
 
-## Automating the whole process of installing neovim, also its dependencies and then applying the config
+### Automating the whole process of installing neovim, also its dependencies and then applying the config
 
 **Note: this will install a lot of dependencies so use it only after reading the script and if you know what you are doing, I will not be responsible if you break anything on your system**
 
@@ -68,7 +68,7 @@ sudo pacman -S --needed --noconfirm ripgrep npm unzip yarn
 bash <(curl -s https://raw.githubusercontent.com/Rishabh672003/Neovim/main/install.sh)
 ```
 
-## Preview
+### Preview
 
 You can change the startup-screen if you don't like this one go to lua/rj/plugins/alpha-themes and read the readme there
 ![image](https://github.com/Rishabh672003/Neovim/assets/53911515/20c2dde6-c369-4bea-be24-eaf9ff359581)
