@@ -41,6 +41,10 @@ return {
     "mrcjkb/rustaceanvim",
     version = "^3", -- Recommended
     ft = { "rust" },
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp"
+    },
+
     init = function()
       vim.g.rustaceanvim = {
         server = {
@@ -72,9 +76,6 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     enabled = true,
     lazy = true,
-    init = function()
-      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-    end,
     config = function()
       require("rj.lsp.nvim-conform")
     end,
