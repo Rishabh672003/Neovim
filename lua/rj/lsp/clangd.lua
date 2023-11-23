@@ -19,6 +19,17 @@ if vim.fn.executable("clangd") == 1 then
       "--header-insertion=never",
       "--query-driver=<list-of-white-listed-complers>",
     },
+    settings = {
+      clangd = {
+        InlayHints = {
+          Designators = true,
+          Enabled = true,
+          ParameterNames = true,
+          DeducedTypes = true,
+        },
+        fallbackFlags = { "-std=c++20" },
+      },
+    },
   })
   require("clangd_extensions").setup({
     ast = {
