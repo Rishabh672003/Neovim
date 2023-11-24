@@ -44,16 +44,8 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp"
     },
-
-    init = function()
-      vim.g.rustaceanvim = {
-        server = {
-          on_attach = function(client, bufnr)
-            require("rj.lsp.attach").on_attach(client, bufnr)
-          end,
-          capabilities = require("rj.lsp.attach").capabilities,
-        },
-      }
+    config = function()
+      require("rj.lsp.rustaceanvim")
     end,
   },
   {
