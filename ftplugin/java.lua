@@ -187,7 +187,7 @@ vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()")
 -- Shorten function name
 local keymap = vim.keymap.set
 -- Silent keymap option
-local opts = { silent = true }
+local opts = { silent = true, buffer = true }
 
 keymap("n", "<leader>jo", "<Cmd>lua require'jdtls'.organize_imports()<CR>", opts)
 keymap("n", "<leader>jv", "<Cmd>lua require('jdtls').extract_variable()<CR>", opts)
