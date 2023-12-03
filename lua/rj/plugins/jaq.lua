@@ -83,10 +83,7 @@ function M.config()
     },
   })
 
-  local opts = { noremap = true, silent = true }
-  local keymap = vim.api.nvim_set_keymap
-
-  keymap("n", "<m-r>", ":silent only | Jaq<cr>", opts)
+  vim.keymap.set("n", "<m-r>", ":silent only | Jaq<cr>", { noremap = true, silent = true })
 end
 
 return M
