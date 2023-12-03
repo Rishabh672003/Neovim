@@ -6,15 +6,18 @@ conform.setup({
     ["*"] = { "codespell", "injected" },
     ["_"] = { "trim_whitespace" },
 
+    -- biome filetypes
+    javascript = { "biome" },
+    typescript = { "biome" },
+    javascriptreact = { "biome" },
+    json = { "biome" },
+    jsonc = { "biome" },
+
     -- prettier filetypes
-    javascript = { "prettier" },
-    typescript = { "prettier" },
-    javascriptreact = { "prettier" },
     typescriptreact = { "prettier" },
     svelte = { "prettier" },
     css = { "prettier" },
     html = { "prettier" },
-    json = { "prettier" },
     yaml = { "prettier" },
     markdown = { "prettier" },
     graphql = { "prettier" },
