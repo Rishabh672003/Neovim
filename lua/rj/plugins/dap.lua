@@ -69,6 +69,7 @@ function M.config()
       stopOnEntry = false,
     },
   }
+  dap.configurations.c = dap.configurations.cpp
 end
 
 return M
