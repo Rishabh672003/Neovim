@@ -37,6 +37,12 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
+-- pressing C-h,j,k,l will move the cursor in insert mode
+keymap("i", "<C-j>", "<Down>", opts)
+keymap("i", "<C-k>", "<Up>", opts)
+keymap("i", "<C-h>", "<Left>", opts)
+keymap("i", "<C-l>", "<Right>", opts)
+
 keymap("i", "<C-a>", "<ESC>:0,$y<CR>a", opts)
 keymap("n", "<C-a>", ":0,$y<CR>", opts)
 
@@ -49,6 +55,7 @@ keymap("v", ">", ">gv", opts)
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "p", "P", opts)
+keymap("n", "dc", "cc<esc>", opts)
 
 -- Visual Block --
 -- Move text up and down
