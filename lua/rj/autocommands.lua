@@ -7,7 +7,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "qf", "help", "lspinfo", "spectre_panel", "oil" },
+  pattern = { "qf", "help", "lspinfo", "spectre_panel", "oil", "Jaq" },
   callback = function()
     vim.keymap.set("n", "q", "<cmd>close<CR>", { silent = true, buffer = true })
     vim.api.nvim_set_option_value("buflisted", false, { buf = 0 })
