@@ -51,7 +51,7 @@ return {
   {
     "zeioth/garbage-day.nvim",
     dependencies = "neovim/nvim-lspconfig",
-    event = "VeryLazy",
+    event = "LspAttach",
     opts = {
       grace_period = 60*8,
       wakeup_delay = 10,
