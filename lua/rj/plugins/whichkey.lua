@@ -140,6 +140,18 @@ function M.config()
       c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
       d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
     },
+    h = {
+      name = "Harpoon",
+      --stylua: ignore start
+      a = { function() require("harpoon.mark").add_file() end, "Add file" },
+      t = { function() require("harpoon.ui").toggle_quick_menu() end, "Toggle menu" },
+      n = { function() require("harpoon.ui").nav_next() end, "Goto next" },
+      p = { function() require("harpoon.ui").nav_prev() end, "Goto prev" },
+      h = { function() require("harpoon.ui").nav_file(1) end, "Goto 1" },
+      j = { function() require("harpoon.ui").nav_file(2) end, "Goto 2" },
+      k = { function() require("harpoon.ui").nav_file(3) end, "Goto 3" },
+      --stylua: ignore end
+    },
     d = {
       name = "Debug",
       --stylua: ignore start
