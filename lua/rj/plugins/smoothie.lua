@@ -1,7 +1,7 @@
 local M = {
   "opalmay/vim-smoothie",
   event = "VeryLazy",
-  enabled = true,
+  enabled = false,
 }
 
 vim.g.smoothie_hide_cursor = 1
