@@ -111,16 +111,6 @@ function M.config()
       end,
       "Projects",
     },
-    ["S"] = { "<cmd>source %<cr>", "Source file" },
-    L = {
-      name = "Lazy",
-      s = { "<cmd>Lazy update<cr>", "Update" },
-      l = { "<cmd>Lazy log<cr>", "Log" },
-      p = { "<cmd>Lazy profile<cr>", "Profile" },
-      d = { "<cmd>Lazy debug<cr>", "Debug" },
-      c = { "<cmd>Lazy clean<cr>", "Clean" },
-      S = { "<cmd>Lazy<cr>", "Lazy" },
-    },
     ["r"] = { "<cmd>:Telescope oldfiles<cr>", "Recent Files" },
     g = {
       name = "Git",
@@ -196,7 +186,7 @@ function M.config()
             vim.lsp.inlay_hint.enable(0, true)
           end
         end,
-        "Inlay Hnts"
+        "Inlay Hints",
       },
       i = { "<cmd>LspInfo<cr>", "Info" },
       I = { "<cmd>Mason<cr>", "Installer Info" },
@@ -230,14 +220,6 @@ function M.config()
       C = { "<cmd>Telescope commands<cr>", "Commands" },
       f = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Find in current buffer" },
     },
-    T = {
-      name = "Treesitter",
-      i = { "<cmd>TSInstallInfo<cr>", "Install info" },
-      u = { "<cmd>TSUpdate<cr>", "Update" },
-      s = { "<cmd>TSUpdateSync<cr>", "Update and sync" },
-      e = { "<cmd>TSEnable<cr>", "Enable" },
-      d = { "<cmd>TSDisable<cr>", "Disable" },
-    },
     t = {
       name = "Terminal",
       --stylua: ignore start
@@ -260,6 +242,12 @@ function M.config()
       d = { function() vim.g.cmp_toggle = false end, "Enable" },
       --stylua: ignore end
       g = { "<cmd>NeoAI<cr>", "ChatGpt" },
+    },
+    v = {
+      name = "Visual",
+      a = { "<cmd>norm ggVG<cr>", "Copy all" },
+      s = { "<cmd>norm mmggVGy`a<cr>", "Copy all" },
+      x = { "<cmd>norm ggVGx<cr>", "Delete all" },
     },
     x = {
       name = "Trouble",
