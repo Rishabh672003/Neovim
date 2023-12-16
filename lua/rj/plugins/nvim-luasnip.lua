@@ -117,7 +117,7 @@ int main() {{
 #include <iostream>
 #include <string>
 
-using std::cout, std::cin, std::endl, std::string;
+using std::cout, std::cin, std::string;
 
 int main() {{
     std::ifstream myfile("input.txt");
@@ -185,7 +185,7 @@ int main() {{
 #include <iostream>
 #include <string>
 
-using std::cout, std::cin, std::endl, std::string;
+using std::cout, std::cin, std::string;
 
 int main() {{
 	{}
