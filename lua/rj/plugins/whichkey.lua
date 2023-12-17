@@ -83,11 +83,17 @@ function M.config()
 
   local mappings = {
     ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-    ["b"] = {
-      function()
-        require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))
-      end,
-      "Buffers",
+    b = {
+      name = "Buffer",
+      b = {
+        function()
+          require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))
+        end,
+        "Telescope Buffers",
+      },
+      n = { "<Plug>(CybuNext)", "Next Buffer" },
+      p = { "<Plug>(CybuPrev)", "Previous Buffer" },
+      x = { "<cmd>bd<CR>", "Close Buffer" },
     },
     ["D"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
     ["e"] = { "<cmd>Neotree focus toggle<cr>", "Explorer" },
@@ -140,6 +146,7 @@ function M.config()
       h = { function() require("harpoon.ui").nav_file(1) end, "Goto 1" },
       j = { function() require("harpoon.ui").nav_file(2) end, "Goto 2" },
       k = { function() require("harpoon.ui").nav_file(3) end, "Goto 3" },
+      l = { function() require("harpoon.ui").nav_file(4) end, "Goto 4" },
       --stylua: ignore end
     },
     d = {
@@ -245,7 +252,7 @@ function M.config()
     },
     v = {
       name = "Visual",
-      a = { "<cmd>norm ggVG<cr>", "Copy all" },
+      a = { "<cmd>norm ggVG<cr>", "Select all" },
       s = { "<cmd>norm mmggVGy`a<cr>", "Copy all" },
       x = { "<cmd>norm ggVGx<cr>", "Delete all" },
     },

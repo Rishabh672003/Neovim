@@ -31,7 +31,7 @@ function M.config()
     },
   })
 
-  vim.keymap.set("n", "<TAB>", "<Plug>(CybuNext)")
-  vim.keymap.set("n", "<S-TAB>", "<Plug>(CybuPrev)")
+  vim.keymap.set("n", "<leader>bn", "<Plug>(CybuNext)")
+  vim.keymap.set("n", "<leaderbp>", "<Plug>(CybuPrev)")
 end
 return M
