@@ -23,9 +23,6 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
--- autosave
-keymap("n", "<C-s>", "<cmd>ASToggle<CR>", opts)
-
 -- Resize with arrows
 keymap("n", "<C-Up>", "<cmd>resize -2<CR>", opts)
 keymap("n", "<C-Down>", "<cmd>resize +2<CR>", opts)
@@ -39,9 +36,6 @@ keymap("n", "<S-h>", "<cmd>bprevious<CR>", opts)
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
-
-keymap("i", "<C-a>", "<ESC>:0,$y<CR>a", opts)
-keymap("n", "<C-a>", ":0,$y<CR>", opts)
 
 -- Visual --
 -- Stay in indent mode
