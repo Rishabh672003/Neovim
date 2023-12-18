@@ -253,7 +253,7 @@ function M.config()
     v = {
       name = "Visual",
       a = { "<cmd>norm ggVG<cr>", "Select all" },
-      s = { "<cmd>norm mmggVGy`a<cr>", "Copy all" },
+      s = { "<cmd>norm mmggVGy`m<cr>", "Copy all" },
       x = { "<cmd>norm ggVGx<cr>", "Delete all" },
     },
     x = {
