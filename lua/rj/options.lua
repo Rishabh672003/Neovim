@@ -56,3 +56,4 @@ vim.opt.cinkeys:remove(":")
 vim.opt.indentkeys:remove(":")
 vim.opt.fillchars = { eob = " " }
 vim.g.cmp_toggle = true
+vim.g.c_syntax_for_h = true
