@@ -1,5 +1,5 @@
 return {
   "HakonHarnes/img-clip.nvim",
-  event = "BufEnter",
+  event = "VeryLazy",
   opts = {},
 }
