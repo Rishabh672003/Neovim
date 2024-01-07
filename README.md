@@ -31,14 +31,16 @@ For main branch
 git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
 ```
 
-To install the LSP servers after installation of configs do **`:MasonToolsInstall`**
+Note: Installation of the LSP servers need the [Optional dependencies](#Optional-dependencies)
+
+Now Install the LSP servers with **`:MasonToolsInstall`**
 
 ### Optional dependencies
 
 These are all the optional dependencies if you don't want anything just remove them neovim should work fine either way
 
 ```bash
-sudo pacman -S --needed --noconfirm git curl unzip tar gzip luarocks npm python-pip jdk-openjdk
+sudo pacman -S --needed --noconfirm git curl unzip tar gzip luarocks npm python-pip
 ```
 
 ### Automating the whole process of installing neovim, also its dependencies and then applying the config
