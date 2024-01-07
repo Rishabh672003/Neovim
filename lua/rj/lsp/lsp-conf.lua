@@ -4,6 +4,7 @@ local servers = {
   -- name of server = "name of servers executable"
   bashls = "bash-language-server",
   cssls = "vscode-css-language-server",
+  cmake = "cmake-language-server",
   dockerls = "docker-langserver",
   gopls = "gopls",
   jdtls = "jdtls",

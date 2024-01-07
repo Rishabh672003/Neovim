@@ -26,6 +26,7 @@ local M = {
             "taplo",
             "tsserver",
             "yamlls",
+            "cmake",
 
             -- debug adapters
             "codelldb",
@@ -37,6 +38,7 @@ local M = {
             "black",
             "shfmt",
             "stylua",
+            "cmakelang",
 
             -- linters
             -- cppcheck missing

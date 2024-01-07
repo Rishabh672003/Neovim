@@ -31,6 +31,7 @@ conform.setup({
     bash = { "shfmt" },
     cpp = { "clang_format" },
     go = { "gofmt" },
+    cmake = { "cmake_format" },
   },
 
   format_on_save = function(bufnr)
