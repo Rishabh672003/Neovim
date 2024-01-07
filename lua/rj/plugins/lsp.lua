@@ -3,6 +3,7 @@ return {
     "neovim/nvim-lspconfig",
     dependencies = {
       "nvim-lua/plenary.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     ft = {
       "markdown",
@@ -42,7 +43,7 @@ return {
     version = "^3", -- Recommended
     ft = { "rust" },
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp"
+      "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
       require("rj.lsp.rustaceanvim")
@@ -53,7 +54,7 @@ return {
     dependencies = "neovim/nvim-lspconfig",
     event = "LspAttach",
     opts = {
-      grace_period = 60*8,
+      grace_period = 60 * 8,
       wakeup_delay = 10,
     },
   },
@@ -70,6 +71,10 @@ return {
     lazy = true,
     config = function()
       require("rj.lsp.nvim-conform")
+    end,
+    init = function()
+      -- If you want the formatexpr, here is the place to set it
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
     end,
   },
   {
