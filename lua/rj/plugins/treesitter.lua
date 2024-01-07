@@ -20,22 +20,24 @@ function M.config()
   local configs = require("nvim-treesitter.configs")
   configs.setup({
     ensure_installed = {
+      "bash",
+      "c",
+      "cpp",
+      "css",
+      "go",
+      "html",
+      "html",
+      "java",
+      "javascript",
       "lua",
       "markdown",
       "markdown_inline",
-      "bash",
       "python",
-      "c",
-      "cpp",
+      "python",
+      "rust",
       "toml",
       "vim",
       "vimdoc",
-      "html",
-      "python",
-      "html",
-      "css",
-      "javascript",
-      "java",
     }, -- put the language you want in this array
     -- ensure_installed = "all",
     sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
