@@ -31,6 +31,8 @@ For main branch
 git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
 ```
 
+Note: If the LSP servers aren't installed by default try doing `:MasonToolsInstall`
+
 ### Optional dependencies
 
 These are all the optional dependencies if you don't want anything just remove them neovim should work fine either way
