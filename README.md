@@ -31,7 +31,7 @@ For main branch
 git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
 ```
 
-Note: If the LSP servers aren't installed by default try doing `:MasonToolsInstall`
+To install the LSP servers after installation of configs do **`:MasonToolsInstall`**
 
 ### Optional dependencies
 
