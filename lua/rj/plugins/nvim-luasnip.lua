@@ -77,12 +77,13 @@ int main() {{
       "cc",
       fmt(
         [[
-#include <bits/stdc++.h>
-using namespace std;
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <numeric>
 
-#define ll long long
-#define ld long double
-#define str string
+using std::ios, std::cout, std::cin, std::endl, std::string, std::vector;
 
 void solve() {{
     int x, y;
@@ -152,12 +153,13 @@ int main() {{
       "ccc",
       fmt(
         [[
-#include <bits/stdc++.h>
-using namespace std;
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <numeric>
 
-#define ll long long
-#define ld long double
-#define str string
+using std::ios, std::cout, std::cin, std::endl, std::string, std::vector;
 
 class Solution {{
     {}
