@@ -23,53 +23,9 @@ function install_neovim() {
 	fi
 }
 
-function check_and_install_yay() {
-	sudo pacman -S which --noconfirm --needed
-	# Check if yay is installed
-	if ! which yay >/dev/null; then
-		# If yay is not installed, ask the user if they want to install it
-		read -rp "yay is not installed. Would you like to install it? (y/n): " prompt
-		if [[ $prompt == [yY] || $prompt == [yY][eE][sS] ]]; then
-			# If the user agrees to install yay, download the necessary dependencies
-			sudo pacman -S --needed --noconfirm base-devel git &&
-				git clone https://aur.archlinux.org/yay-bin.git "$HOME"/yay-bin &&
-				cd "$HOME"/yay-bin &&
-				makepkg -si &&
-				rm -rf "$HOME"/yay-bin &&
-				echo "yay has been installed."
-		else
-			echo "Not installing yay."
-		fi
-	else
-		echo "yay is already installed."
-	fi
-}
-
-# Install the LSP packages.
-function install_lsp_packages() {
-
-	sudo pacman -S --needed --noconfirm npm python-pip stylua prettier astyle ripgrep unzip \
-		npm zsh lldb wl-clipboard yarn
-	sudo pacman -S --needed --noconfirm taplo-cli autopep8 lua-language-server \
-		bash-language-server typescript-language-server \
-		rust-analyzer tailwindcss-language-server pyright
-
-	# Install the additional LSP packages.
-	if command -v yay &>/dev/null; then
-		yay -S --needed --noconfirm lemminx marksman-bin jdtls \
-			shellcheck-bin shfmt vscode-langservers-extracted \
-			proselint nodejs-live-server
-	else
-		echo "Yay is not Installed, so some dependencies will not be installed"
-	fi
-
-	if command -v cargo &>/dev/null; then
-		cargo install --features lsp --locked taplo-cli
-	fi
-
-	if command -v npm &>/dev/null; then
-		sudo npm install -g dockerfile-language-server-nodejs
-	fi
+# Install the mason packages.
+function install_mason_dependency() {
+	sudo pacman -S --needed --noconfirm git curl unzip tar gzip luarocks npm python-pip jdk-openjdk
 }
 
 # Install the Neovim configuration files.
@@ -83,11 +39,8 @@ function install_neovim_configuration() {
 	git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim
 }
 
-# yay
-check_and_install_yay
-
 # install packages
-install_lsp_packages
+install_mason_dependency
 
 # Install Neovim.
 install_neovim
