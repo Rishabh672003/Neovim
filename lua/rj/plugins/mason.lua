@@ -8,7 +8,6 @@ local M = {
     },
     {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-      build = ":MasonToolsInstall",
       config = function()
         require("mason-tool-installer").setup({
           ensure_installed = {
