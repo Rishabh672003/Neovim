@@ -38,7 +38,7 @@ function install_neovim() {
 		echo "neovim is installed"
 	else
 		if command -v yay &>/dev/null; then
-			yay -Sy --needed --noconfirm neovim-git
+			yay -Sy --needed --noconfirm neovim-nightly-bin
 		else
 			sudo pacman -Sy --needed --noconfirm neovim
 		fi
