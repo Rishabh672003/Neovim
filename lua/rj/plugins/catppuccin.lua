@@ -33,10 +33,9 @@ function M.config()
       gitsigns = true,
       nvimtree = true,
       telescope = true,
-      notify = true,
       mini = false,
       noice = true,
-      -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+      markdown = true,
     },
     custom_highlights = {
       WhichKeyGroup = { fg = "#FAB387" },
