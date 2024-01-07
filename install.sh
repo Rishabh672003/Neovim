@@ -25,7 +25,7 @@ function install_neovim() {
 
 # Install the mason packages.
 function install_mason_dependency() {
-	sudo pacman -S --needed --noconfirm git curl unzip tar gzip luarocks npm python-pip jdk-openjdk
+	sudo pacman -S --needed --noconfirm git curl unzip tar gzip luarocks npm python-pip
 }
 
 # Install the Neovim configuration files.
