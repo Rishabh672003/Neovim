@@ -243,17 +243,15 @@ function M.config()
     },
     C = {
       name = "Cmp",
-      c = { "<cmd>Copilot<cr>", "Copilot" },
       --stylua: ignore start
       e = { function() vim.g.cmp_toggle = true end, "Enable" },
       d = { function() vim.g.cmp_toggle = false end, "Enable" },
       --stylua: ignore end
-      g = { "<cmd>NeoAI<cr>", "ChatGpt" },
     },
     v = {
       name = "Visual",
-      a = { "<cmd>norm ggVG<cr>", "Select all" },
-      s = { "<cmd>norm mmggVGy`m<cr>", "Copy all" },
+      a = { "<cmd>norm mmggVG<cr>", "Select all" },
+      s = { "<cmd>%y<cr>", "Copy all" },
       x = { "<cmd>norm ggVGx<cr>", "Delete all" },
     },
     x = {
