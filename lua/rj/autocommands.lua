@@ -1,4 +1,6 @@
-vim.api.nvim_create_autocmd({ "FileType" }, {
+local autocommand = vim.api.nvim_create_autocmd
+
+autocommand({ "FileType" }, {
   pattern = { "c", "go", "java", "cpp", "py", "sh" },
   callback = function()
     vim.opt_local.shiftwidth = 4
@@ -6,7 +8,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
+autocommand({ "FileType" }, {
   pattern = { "qf", "help", "lspinfo", "spectre_panel", "oil", "Jaq" },
   callback = function()
     vim.keymap.set("n", "q", "<cmd>close<CR>", { silent = true, buffer = true })
@@ -14,7 +16,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
+autocommand({ "FileType" }, {
   pattern = { "gitcommit", "markdown" },
   callback = function()
     vim.opt_local.wrap = true
@@ -22,7 +24,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
+autocommand({ "FileType" }, {
   pattern = { "TelescopePrompt", "neo-tree-popup", "oil" },
   callback = function()
     require("cmp").setup.buffer({
@@ -31,32 +33,32 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "VimResized" }, {
+autocommand({ "VimResized" }, {
   callback = function()
     vim.cmd("tabdo wincmd =")
   end,
 })
 
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+autocommand({ "TextYankPost" }, {
   callback = function()
     vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+autocommand({ "BufWritePost" }, {
   pattern = { "*.java" },
   callback = function()
     vim.lsp.codelens.refresh()
   end,
 })
 
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
+autocommand({ "VimEnter" }, {
   callback = function()
     vim.cmd("hi link illuminatedWord LspReferenceText")
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+autocommand({ "BufWinEnter" }, {
   callback = function()
     local line_count = vim.api.nvim_buf_line_count(0)
     if line_count >= 10000 then
@@ -65,7 +67,7 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
+autocommand({ "FileType" }, {
   pattern = { "neo-tree" },
   callback = function()
     vim.opt_local.number = false
@@ -73,7 +75,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+autocommand({ "BufReadPost" }, {
   pattern = "*.pdf",
   callback = function(ev)
     local filename = ev.file
@@ -89,7 +91,7 @@ vim.filetype.add({
   },
 })
 
-vim.api.nvim_create_autocmd("ModeChanged", {
+autocommand("ModeChanged", {
   pattern = "*",
   callback = function()
     if
