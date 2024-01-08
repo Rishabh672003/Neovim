@@ -55,11 +55,11 @@ bash <(curl -s https://raw.githubusercontent.com/Rishabh672003/Neovim/main/insta
 
 ### Preview
 
-You can change the startup-screen if you don't like this one go to lua/rj/plugins/alpha-themes and read the readme there
-![image](https://github.com/Rishabh672003/Neovim/assets/53911515/20c2dde6-c369-4bea-be24-eaf9ff359581)
-![image](https://github.com/Rishabh672003/Neovim/assets/53911515/be32d082-6ade-4166-a63b-032749cef49d)
-![image](https://github.com/Rishabh672003/Neovim/assets/53911515/2003cd47-61b3-4244-a2c0-5866c5159673)
-![image](https://github.com/Rishabh672003/Neovim/assets/53911515/80b9cde3-af3e-477d-bb30-53358c7e5959)
+<!-- prettier-ignore-start -->
+| ![image](https://github.com/Rishabh672003/Neovim/assets/53911515/20c2dde6-c369-4bea-be24-eaf9ff359581)   | ![image](https://github.com/Rishabh672003/Neovim/assets/53911515/be32d082-6ade-4166-a63b-032749cef49d)    |
+|--------------- | --------------- |
+| ![image](https://github.com/Rishabh672003/Neovim/assets/53911515/2003cd47-61b3-4244-a2c0-5866c5159673)   | ![image](https://github.com/Rishabh672003/Neovim/assets/53911515/80b9cde3-af3e-477d-bb30-53358c7e5959)   |
+<!-- prettier-ignore-end -->
 
 ## Uninstallation and Cleanup
 
