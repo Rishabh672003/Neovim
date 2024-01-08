@@ -187,8 +187,12 @@ function M.config()
       select = false,
     },
     window = {
+      completion = {
+        scrollbar = true,
+      },
       documentation = {
         border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+        scrollbar = false,
       },
     },
     experimental = {
