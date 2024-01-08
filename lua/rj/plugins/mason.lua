@@ -1,5 +1,6 @@
 local M = {
   "WhoIsSethDaniel/mason-tool-installer.nvim",
+  build = ":MasonToolsInstall",
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     {
