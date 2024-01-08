@@ -3,6 +3,7 @@ return {
   ft = "java",
   config = function()
     require("java").setup()
+    require("lspconfig").jdtls.setup({})
   end,
   dependencies = {
     "nvim-java/lua-async-await",
@@ -12,11 +13,6 @@ return {
     "MunifTanjim/nui.nvim",
     {
       "neovim/nvim-lspconfig",
-      config = function()
-        require("rj.lsp.attach")
-        require("rj.lsp.diagnostic")
-        require("lspconfig").jdtls.setup({})
-      end,
     },
     "mfussenegger/nvim-dap",
     {

@@ -7,7 +7,6 @@ local servers = {
   cmake = "cmake-language-server",
   dockerls = "docker-langserver",
   gopls = "gopls",
-  jdtls = "jdtls",
   jsonls = "vscode-json-language-server",
   lemminx = "lemminx",
   marksman = "marksman",
