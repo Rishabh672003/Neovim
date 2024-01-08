@@ -21,7 +21,8 @@ for k, v in pairs(servers) do
       capabilities = require("rj.lsp.attach").capabilities,
     })
   else
-    print("lspconfig: " .. v .. " not found")
+    print("LSP servers are not Installed.")
+    print("Run - :MasonToolsInstaller to install all the LSP")
   end
 end
 
@@ -66,8 +67,6 @@ if vim.fn.executable("lua-language-server") == 1 then
       },
     },
   })
-else
-  print("lspconfig: lua-language-server not found")
 end
 
 if vim.fn.executable("pyright") == 1 then
@@ -87,23 +86,23 @@ if vim.fn.executable("pyright") == 1 then
       },
     },
   })
-else
-  print("lspconfig: pyright not found")
 end
 
-require("lspconfig").yamlls.setup({
-  -- other configuration for setup {}
-  settings = {
-    yaml = {
-      -- other settings. note this overrides the lspconfig defaults.
-      schemas = {
-        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-        -- ["../path/relative/to/file.yml"] = "/.github/workflows/*",
-        -- ["/path/from/root/of/project"] = "/.github/workflows/*",
+if vim.fn.executable("yamlls") == 1 then
+  require("lspconfig").yamlls.setup({
+    -- other configuration for setup {}
+    settings = {
+      yaml = {
+        -- other settings. note this overrides the lspconfig defaults.
+        schemas = {
+          ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
+          -- ["../path/relative/to/file.yml"] = "/.github/workflows/*",
+          -- ["/path/from/root/of/project"] = "/.github/workflows/*",
+        },
       },
     },
-  },
-})
+  })
+end
 
 if vim.fn.executable("tailwindcss-language-server") == 1 then
   lspconfig.tailwindcss.setup({
