@@ -38,6 +38,7 @@ local options = {
   guifont = "JetBrainsMono NF:h14", -- the font used in graphical neovim applications
   spelllang = "en_us",
   textwidth = 80,
+  indentexpr = "nvim_treesitter#indent()",
 }
 
 for k, v in pairs(options) do
