@@ -40,8 +40,10 @@ Now Install the LSP servers with **`:MasonToolsInstall`**
 These are all the optional dependencies if you don't want anything just remove them neovim should work fine either way
 
 ```bash
-sudo pacman -S --needed --noconfirm yarn git curl unzip tar gzip luarocks npm python-pip
+sudo pacman -S --needed --noconfirm yarn git curl unzip tar gzip luarocks npm python-pip go
 ```
+
+For Rust support install `rust-analyzer` yourself.
 
 ### Automating the whole process of installing neovim, also its dependencies and then applying the config
 
