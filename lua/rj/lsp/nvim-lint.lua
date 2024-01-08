@@ -9,7 +9,7 @@ lint.linters_by_ft = {
   sh = { "shellcheck" },
   markdown = { "proselint" },
   lua = { "luacheck" },
-  cpp = { "cppcheck" },
+  -- cpp = { "cppcheck" },
 }
 
 local cppcheck = require("lint").linters.cppcheck
