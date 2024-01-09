@@ -1,4 +1,4 @@
 return {
   "alvan/vim-closetag",
-  event = "BufReadPost",
+  ft = "html",
 }
