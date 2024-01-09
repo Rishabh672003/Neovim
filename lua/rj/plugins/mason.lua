@@ -5,15 +5,17 @@ local M = {
     "williamboman/mason-lspconfig.nvim",
     {
       "williamboman/mason.nvim",
-      require("mason").setup({
-        ui = {
-          border = "rounded",
-        },
-        registries = {
-          "github:nvim-java/mason-registry",
-          "github:mason-org/mason-registry",
-        },
-      }),
+      config = function()
+        require("mason").setup({
+          ui = {
+            border = "rounded",
+          },
+          registries = {
+            "github:nvim-java/mason-registry",
+            "github:mason-org/mason-registry",
+          },
+        })
+      end,
     },
   },
   lazy = true,
