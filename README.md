@@ -1,7 +1,6 @@
 <h1>Neovim</h1>
 
-<center>
-
+<center></center>
 <a href="https://dotfyle.com/Rishabh672003/neovim"><img src="https://dotfyle.com/Rishabh672003/neovim/badges/plugins?style=for-the-badge" /></a>
 <a href="https://dotfyle.com/Rishabh672003/neovim"><img src="https://dotfyle.com/Rishabh672003/neovim/badges/leaderkey?style=for-the-badge" /></a>
 <a href="https://dotfyle.com/Rishabh672003/neovim"><img src="https://dotfyle.com/Rishabh672003/neovim/badges/plugin-manager?style=for-the-badge" /></a>
@@ -31,9 +30,9 @@ For main branch
 git clone https://github.com/Rishabh672003/Neovim ~/.config/nvim && nvim
 ```
 
-Note: Installation of the LSP servers need the [Optional dependencies](#Optional-dependencies)
+Note: Installation of the LSP servers need the [Optional dependencies](#Optional-dependencies), Install them before cloning the config
 
-Now Install the LSP servers with **`:MasonToolsInstall`**
+If LSP servers aren't getting installed by default install them using **`:MasonToolsInstall`**
 
 ### Optional dependencies
 
@@ -71,8 +70,7 @@ rm -rf $HOME/.config/nvim $HOME/.local/share/nvim $HOME/.cache/nvim
 The credit goes to [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from-scratch) and its author [Christian](https://github.com/ChristianChiarulli) who made this awesome repo and video playlist, this is from where I learned how to make and structure the configs and actually made it work, I used his configs as a base for most of the plugins and modified them for my needs.
 also I took configs and ideas from [Lunarvim](https://github.com/LunarVim/LunarVim), [Astronvim](https://github.com/AstroNvim/AstroNvim), [LazyVim](https://github.com/LazyVim/LazyVim) and [nvim-basic-ide](https://github.com/lunarvim/nvim-basic-ide)
 
-<div align="center" id="madewithlua">
-
+<div align="center" id="madewithlua"></div>
 [![Lua](https://img.shields.io/badge/Made%20with%20Lua-blue.svg?style=for-the-badge&logo=lua)](#madewithlua)
 
 </div>
