@@ -31,7 +31,6 @@ function M.config()
       "cssls",
       "dockerls",
       "gopls",
-      "jdtls",
       "jsonls",
       "lemminx",
       "lua_ls",
