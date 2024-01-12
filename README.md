@@ -46,7 +46,7 @@ For Rust support install `rust-analyzer` yourself.
 
 ### Automating the whole process of installing neovim, also its dependencies and then applying the config
 
-**Note: this will install a lot of dependencies so use it only after reading the script and if you know what you are doing, I will not be responsible if you break anything on your system**
+**Note: this will install the optional dependencies so use it only after reading the script and if you know what you are doing, I will not be responsible if you break anything on your system**
 
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/Rishabh672003/Neovim/main/install.sh)
