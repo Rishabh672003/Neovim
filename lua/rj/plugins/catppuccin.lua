@@ -33,7 +33,7 @@ function M.config()
       gitsigns = true,
       nvimtree = true,
       telescope = true,
-      mini = false,
+      mini = true,
       noice = true,
       markdown = true,
     },
