@@ -68,7 +68,7 @@ autocommand({ "BufWinEnter" }, {
 })
 
 autocommand({ "FileType" }, {
-  pattern = { "neo-tree" },
+  pattern = { "neo-tree", "alpha", "dashboard", "man" },
   callback = function()
     vim.opt_local.number = false
     vim.opt_local.relativenumber = false
