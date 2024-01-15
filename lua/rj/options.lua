@@ -9,6 +9,7 @@ local options = {
   ignorecase = true, -- ignore case in search patterns
   mouse = "a", -- allow the mouse to be used in neovim
   pumheight = 10, -- pop up menu height
+  pumwidth = 200,
   showmode = false, -- we don't need to see things like -- INSERT -- anymore
   smartcase = true, -- smart case
   smartindent = true, -- make indenting smarter again
@@ -57,4 +58,3 @@ vim.opt.cinkeys:remove(":")
 vim.opt.indentkeys:remove(":")
 vim.opt.fillchars = { eob = " " }
 vim.g.cmp_toggle = true
-vim.g.c_syntax_for_h = true
