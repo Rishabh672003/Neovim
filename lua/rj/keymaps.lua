@@ -53,7 +53,7 @@ keymap("i", "<C-h>", "<Left>", opts)
 keymap("i", "<C-l>", "<Right>", opts)
 
 keymap("v", "p", "P", opts)
-keymap("n", "dc", "cc<esc>", opts)
+keymap("n", "dc", "^dg_", opts)
 
 -- Visual Block --
 -- Move text up and down
