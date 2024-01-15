@@ -4,7 +4,7 @@ local M = {
   branch = "v2.x",
   event = "BufRead",
   enabled = true,
-  dependencies = { "MunifTanjim/nui.nvim" },
+  dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
   keys = {
     { "<leader>e", "<cmd>Neotree focus toggle<cr>", desc = "NeoTree" },
   },
@@ -22,7 +22,7 @@ function M.config()
       },
     },
     filesystem = {
-      follow_current_file = true,
+      follow_current_file = { enabled = true },
       hijack_netrw_behavior = "open_current",
     },
     source_selector = {
