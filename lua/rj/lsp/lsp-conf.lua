@@ -3,13 +3,15 @@ local lspconfig = require("lspconfig")
 local servers = {
   -- name of server = "name of servers executable"
   bashls = "bash-language-server",
-  cssls = "vscode-css-language-server",
   cmake = "cmake-language-server",
+  cssls = "vscode-css-language-server",
   dockerls = "docker-langserver",
   gopls = "gopls",
+  html = "vscode-html-language-server",
   jsonls = "vscode-json-language-server",
   lemminx = "lemminx",
   marksman = "marksman",
+  sqlls = "sql-language-server",
   taplo = "taplo",
   tsserver = "typescript-language-server",
 }
@@ -20,8 +22,8 @@ for k, v in pairs(servers) do
       capabilities = require("rj.lsp.attach").capabilities,
     })
   else
-    print("LSP servers are not Installed.")
-    print("Run - :MasonToolsInstaller to install all the LSP")
+    vim.notify("LSP servers are not Installed.")
+    vim.notify("Run - :MasonToolsInstall to install all the LSP")
   end
 end
 
@@ -105,8 +107,6 @@ end
 
 if vim.fn.executable("tailwindcss-language-server") == 1 then
   lspconfig.tailwindcss.setup({
-    on_attach = require("rj.lsp.attach").on_attach,
-    capabilities = require("rj.lsp.attach").capabilities,
     filetypes = {
       "html",
       "css",

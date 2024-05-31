@@ -16,8 +16,7 @@ if vim.fn.executable("clangd") == 1 then
       "--offset-encoding=utf-16",
       "--limit-references=1000",
       "--malloc-trim",
-      "--header-insertion=never",
-      "--query-driver=<list-of-white-listed-complers>",
+      "--header-insertion-decorators",
     },
     settings = {
       clangd = {
@@ -65,5 +64,5 @@ if vim.fn.executable("clangd") == 1 then
     },
   })
 else
-  print("lspconfig: clangd not found")
+  vim.notify("lspconfig: clangd not found")
 end

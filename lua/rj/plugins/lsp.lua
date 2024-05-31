@@ -40,7 +40,7 @@ return {
   },
   {
     "mrcjkb/rustaceanvim",
-    version = "^3", -- Recommended
+    version = "^4", -- Recommended
     ft = { "rust" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -54,6 +54,7 @@ return {
     dependencies = "neovim/nvim-lspconfig",
     event = "LspAttach",
     opts = {
+      excluded_lsp_clients = { "rust-analyzer" },
       grace_period = 60 * 8,
       wakeup_delay = 10,
     },

@@ -1,7 +1,8 @@
 local M = {
   "nvim-lualine/lualine.nvim",
-  enabled = false,
+  enabled = true,
   event = { "InsertEnter", "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
+  lazy = false,
 }
 
 function M.config()
@@ -98,23 +99,6 @@ function M.config()
       lualine_y = {},
       lualine_z = {},
     },
-    --[[ winbar = { ]]
-    --[[ 	lualine_a = {}, ]]
-    --[[ 	lualine_b = {}, ]]
-    --[[ 	lualine_c = { { navic.get_location, cond = navic.is_available } }, ]]
-    --[[ 	lualine_x = {}, ]]
-    --[[ 	lualine_y = {}, ]]
-    --[[ 	lualine_z = {}, ]]
-    --[[ }, ]]
-    --[[]]
-    --[[ inactive_winbar = { ]]
-    --[[ 	lualine_a = {}, ]]
-    --[[ 	lualine_b = {}, ]]
-    --[[ 	lualine_c = {}, ]]
-    --[[ 	lualine_x = {}, ]]
-    --[[ 	lualine_y = {}, ]]
-    --[[ 	lualine_z = {}, ]]
-    --[[ }, ]]
     tabline = {},
     extensions = {},
   })

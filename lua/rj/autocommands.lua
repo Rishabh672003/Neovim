@@ -1,6 +1,6 @@
-local autocommand = vim.api.nvim_create_autocmd
+local autocmd = vim.api.nvim_create_autocmd
 
-autocommand({ "FileType" }, {
+autocmd({ "FileType" }, {
   pattern = { "c", "go", "java", "cpp", "py", "sh" },
   callback = function()
     vim.opt_local.shiftwidth = 4
@@ -8,7 +8,7 @@ autocommand({ "FileType" }, {
   end,
 })
 
-autocommand({ "FileType" }, {
+autocmd({ "FileType" }, {
   pattern = { "qf", "help", "lspinfo", "spectre_panel", "oil", "Jaq" },
   callback = function()
     vim.keymap.set("n", "q", "<cmd>close<CR>", { silent = true, buffer = true })
@@ -16,7 +16,7 @@ autocommand({ "FileType" }, {
   end,
 })
 
-autocommand({ "FileType" }, {
+autocmd({ "FileType" }, {
   pattern = { "gitcommit", "markdown" },
   callback = function()
     vim.opt_local.wrap = true
@@ -24,7 +24,7 @@ autocommand({ "FileType" }, {
   end,
 })
 
-autocommand({ "FileType" }, {
+autocmd({ "FileType" }, {
   pattern = { "TelescopePrompt", "neo-tree-popup", "oil" },
   callback = function()
     require("cmp").setup.buffer({
@@ -32,33 +32,49 @@ autocommand({ "FileType" }, {
     })
   end,
 })
+-- 
+-- vim.cmd [[
+-- au BufEnter,BufWinEnter,WinEnter,CmdwinEnter *
+--                        \ call s:disable_statusline('NvimTree')
+-- fun! s:disable_statusline(bn)
+--    if a:bn == bufname('%')
+--        set laststatus=0
+--    else
+--        set laststatus=2
+--    endif
+-- endfunction ]]
 
-autocommand({ "VimResized" }, {
+
+--[[ autocmd({ "FileType" }, {
+  pattern = { "cpp" },
+  callback = function()
+    require("cmp").setup.buffer({
+      experimental = {
+        ghost_text = true,
+      },
+    })
+  end,
+}) ]]
+
+autocmd({ "VimResized" }, {
   callback = function()
     vim.cmd("tabdo wincmd =")
   end,
 })
 
-autocommand({ "TextYankPost" }, {
+autocmd({ "TextYankPost" }, {
   callback = function()
     vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
   end,
 })
 
-autocommand({ "BufWritePost" }, {
-  pattern = { "*.java" },
-  callback = function()
-    vim.lsp.codelens.refresh()
-  end,
-})
-
-autocommand({ "VimEnter" }, {
+autocmd({ "VimEnter" }, {
   callback = function()
     vim.cmd("hi link illuminatedWord LspReferenceText")
   end,
 })
 
-autocommand({ "BufWinEnter" }, {
+autocmd({ "BufWinEnter" }, {
   callback = function()
     local line_count = vim.api.nvim_buf_line_count(0)
     if line_count >= 10000 then
@@ -67,7 +83,7 @@ autocommand({ "BufWinEnter" }, {
   end,
 })
 
-autocommand({ "FileType" }, {
+autocmd({ "FileType" }, {
   pattern = { "neo-tree", "alpha", "dashboard", "man" },
   callback = function()
     vim.opt_local.number = false
@@ -75,7 +91,7 @@ autocommand({ "FileType" }, {
   end,
 })
 
-autocommand({ "BufReadPost" }, {
+autocmd({ "BufReadPost" }, {
   pattern = "*.pdf",
   callback = function(ev)
     local filename = ev.file
@@ -89,19 +105,6 @@ vim.filetype.add({
     rasi = "rasi",
     conf = "conf",
   },
-})
-
-autocommand("ModeChanged", {
-  pattern = "*",
-  callback = function()
-    if
-      ((vim.v.event.old_mode == "s" and vim.v.event.new_mode == "n") or vim.v.event.old_mode == "i")
-      and require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-      and not require("luasnip").session.jump_active
-    then
-      require("luasnip").unlink_current()
-    end
-  end,
 })
 
 -- make a command to clear registers

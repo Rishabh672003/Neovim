@@ -187,10 +187,10 @@ function M.config()
       F = { "<cmd>FormatToggle<cr>", "Toggle Autoformat" },
       h = {
         function()
-          if vim.lsp.inlay_hint.is_enabled(0) == true then
-            vim.lsp.inlay_hint.enable(0, false)
+          if vim.lsp.inlay_hint.is_enabled({}) then
+            vim.lsp.inlay_hint.enable(false)
           else
-            vim.lsp.inlay_hint.enable(0, true)
+            vim.lsp.inlay_hint.enable(true)
           end
         end,
         "Inlay Hints",

@@ -1,15 +1,23 @@
 local M = {
   "echasnovski/mini.statusline",
-  enabled = true,
+  enabled = false,
   version = false,
   lazy = false,
 }
 function M.config()
+  -- this is required so that neo-tree doesnt get deactivated while in Lazy
+  local set_active_stl = function()
+    vim.wo.statusline = "%!v:lua.MiniStatusline.active()"
+  end
+  vim.api.nvim_create_autocmd("Filetype", {
+    pattern = { "lazy", "neo-tree-popup", "noice" },
+    callback = set_active_stl,
+  })
+  --
   local MiniStatusline = require("mini.statusline")
   local blocked_filetypes = {
-    ["neo-tree"] = true,
     ["alpha"] = true,
-    ["lazy"] = true,
+    ["man"] = true,
   }
   require("mini.statusline").setup({
     content = {

@@ -20,7 +20,6 @@ function M.config()
   local telescope = require("telescope")
   local actions = require("telescope.actions")
   local icons = require("rj.icons")
-  telescope.load_extension("file_browser")
 
   require("project_nvim").setup({
     ---@usage set to false to disable project.nvim.
@@ -52,7 +51,8 @@ function M.config()
     datapath = vim.fn.stdpath("data"),
   })
 
-  require("telescope").load_extension("projects")
+  telescope.load_extension("projects")
+  telescope.load_extension("file_browser")
 
   telescope.setup({
     defaults = {

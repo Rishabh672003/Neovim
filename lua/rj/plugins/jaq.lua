@@ -18,7 +18,7 @@ function M.config()
         java = "java %",
         markdown = "glow %",
         python = "python %",
-        rust = "rustc % -o $fileBase.out && ./$fileBase.out",
+        rust = "rustc % -o $fileBase.out && ./$fileBase.out && rm $fileBase.out",
         -- rust = "cargo run",
         cpp = "g++ % -o $fileBase.out -std=c++23 && ./$fileBase.out && rm $fileBase.out",
         c = "gcc % -o $fileBase.out && ./$fileBase.out",

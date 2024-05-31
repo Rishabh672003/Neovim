@@ -11,6 +11,12 @@ local M = {
 }
 
 function M.config()
+  vim.api.nvim_create_autocmd({ "FileType" }, {
+    pattern = { "neo-tree" },
+    callback = function()
+      vim.keymap.set("n", "<leader>e", "<cmd>q!<cr>", { buffer = true, silent = true, noremap = true })
+    end,
+  })
   require("neo-tree").setup({
     popup_border_style = "rounded",
     window = {

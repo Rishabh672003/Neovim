@@ -32,8 +32,8 @@ end
 M.on_attach = function(client, bufnr)
   attach_navic(client, bufnr)
   lsp_keymaps()
-  if vim.fn.has("nvim-0.10") == 1 and vim.bo.filetype ~= "rust" then
-    vim.lsp.inlay_hint.enable(0, true)
+  if vim.bo.filetype ~= "rust" then
+    vim.lsp.inlay_hint.enable()
   end
 end
 
