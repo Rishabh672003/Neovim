@@ -256,13 +256,11 @@ function M.config()
     },
     x = {
       name = "Trouble",
-      --stylua: ignore start
-      x = { function() require("trouble").toggle() end, "Toggle" },
-      w = { function() require("trouble").toggle("workspace_diagnostics") end, "Workspace Diagnostics"},
-      d = { function() require("trouble").toggle("document_diagnostics") end, "Document Diagnostics"},
-      q = { function() require("trouble").toggle("quickfix") end, "Quickfix"},
-      l = { function() require("trouble").toggle("loclist") end, "Loclist"},
-      --stylua: ignore end
+      x = { "<cmd>Trouble diagnostics toggle focus filter.buf=0<cr>", "Toggle" },
+      w = { "<cmd>Trouble diagnostics toggle focus<cr>", "Workspace Diagnostics"},
+      d = { "<cmd>Trouble diagnostics toggle focus filter.buf=0<cr>", "Toggle" },
+      q = { "<cmd>Trouble qflist toggle<cr>", "Quickfix"},
+      l = { "<cmd>Trouble loclist toggle<cr>", "Loclist"},
     },
     ["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
   }

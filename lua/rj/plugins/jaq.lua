@@ -14,7 +14,7 @@ function M.config()
       -- Uses external commands such as 'g++' and 'cargo'
       external = {
         typescript = "deno run %",
-        javascript = "node %",
+        javascript = "bun run %",
         java = "java %",
         markdown = "glow %",
         python = "python %",

@@ -177,6 +177,10 @@ function M.config()
       },
     },
     pickers = {
+      current_buffer_fuzzy_find = {
+        theme = "dropdown",
+        previewer = true,
+      },
       live_grep = {
         theme = "dropdown",
       },

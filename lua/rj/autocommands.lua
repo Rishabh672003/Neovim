@@ -32,7 +32,7 @@ autocmd({ "FileType" }, {
     })
   end,
 })
--- 
+--
 -- vim.cmd [[
 -- au BufEnter,BufWinEnter,WinEnter,CmdwinEnter *
 --                        \ call s:disable_statusline('NvimTree')
@@ -43,7 +43,6 @@ autocmd({ "FileType" }, {
 --        set laststatus=2
 --    endif
 -- endfunction ]]
-
 
 --[[ autocmd({ "FileType" }, {
   pattern = { "cpp" },

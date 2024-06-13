@@ -51,7 +51,7 @@ function M.config()
         return vim.api.nvim_buf_line_count(bufnr) > 10000
       end,
     },
-    indent = { enable = true, disable = { "python", "html", "cpp", "css" } },
+    indent = { enable = true, disable = { --[[ "python", ]] "html", "cpp", "css" } },
   })
 end
 

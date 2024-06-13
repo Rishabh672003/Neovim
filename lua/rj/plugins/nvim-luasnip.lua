@@ -213,6 +213,29 @@ int main() {{
       )
     ),
   })
+  ls.add_snippets("python", {
+    s(
+      "cc",
+      fmt([[
+from collections import defaultdict
+from typing import List, Optional
+class Solution:
+    {}
+        
+
+{}
+sol = Solution()
+print(sol.{})
+        ]],
+
+        {
+          i(1),
+          i(2),
+          i(3)
+        }
+      )
+    ),
+  })
 
   ls.add_snippets("rust", {
     s(

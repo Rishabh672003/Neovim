@@ -3,7 +3,7 @@ local conform = require("conform")
 conform.setup({
   formatters_by_ft = {
     -- general
-    ["*"] = { "codespell", "injected" },
+    ["*"] = { --[[ "codespell", ]] "injected" },
     ["_"] = { "trim_whitespace" },
 
     -- biome filetypes

@@ -113,6 +113,8 @@ if vim.fn.executable("tailwindcss-language-server") == 1 then
       "scss",
       "javascript",
       "typescript",
+      "javascriptreact",
+      "typescriptreact",
     },
   })
 end
