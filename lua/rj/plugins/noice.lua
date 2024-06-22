@@ -10,15 +10,10 @@ local M = {
 function M.config()
   require("noice").setup({
     lsp = {
-      signature = {
-        enabled = false,
-      },
-      hover = {
-        enabled = false,
-      },
-      progress = {
-        enabled = true,
-      },
+      signature = { enabled = false },
+      hover = { enabled = false },
+      progress = { enabled = true },
+
       -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
       override = {
         ["vim.lsp.util.convert_input_to_markdown_lines"] = true,

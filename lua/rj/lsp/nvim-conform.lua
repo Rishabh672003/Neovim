@@ -3,7 +3,9 @@ local conform = require("conform")
 conform.setup({
   formatters_by_ft = {
     -- general
-    ["*"] = { --[[ "codespell", ]] "injected" },
+    ["*"] = { --[[ "codespell", ]]
+      "injected",
+    },
     ["_"] = { "trim_whitespace" },
 
     -- biome filetypes
@@ -24,7 +26,7 @@ conform.setup({
     vue = { "prettier" },
 
     lua = { "stylua" },
-    python = { "black" },
+    python = { "black", "isort" },
     java = { "astyle" },
     rust = { "rustfmt" },
     sh = { "shfmt" },
@@ -57,6 +59,23 @@ conform.setup({
 })
 
 vim.g.disable_autoformat = true
+
+vim.api.nvim_create_user_command("Format", function()
+  local function myCallback(err)
+    if err then
+      vim.notify("Error during formatting: ", err)
+    else
+      vim.notify("Formatting completed successfully.")
+    end
+  end
+  require("conform").format({
+    lsp_fallback = true,
+    async = false,
+    timeout_ms = 1000,
+  }, myCallback())
+end, {
+  desc = "format",
+})
 
 vim.api.nvim_create_user_command("FormatToggle", function()
   if vim.b.disable_autoformat or vim.g.disable_autoformat then

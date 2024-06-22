@@ -88,7 +88,20 @@ function M.config()
         -- { "filename", file_status = true, path = 3 },
       },
       -- lualine_x = { "encoding", "fileformat", "filetype" },
-      lualine_x = { spaces, diff, filetype },
+      lualine_x = {
+        {
+          "swenv",
+          cond = function()
+            return vim.bo.filetype == "python"
+          end,
+          icon = "",
+          color = { fg = "#b4befe" },
+        },
+
+        spaces,
+        diff,
+        filetype,
+      },
       lualine_y = { location },
       lualine_z = { progress },
     },

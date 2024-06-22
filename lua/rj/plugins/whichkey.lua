@@ -99,7 +99,9 @@ function M.config()
     ["e"] = { "<cmd>Neotree focus toggle<cr>", "Explorer" },
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
-    ["c"] = { "<cmd>bdelete!<CR>", "Close Buffer" },
+    --stylua: ignore start
+    ["c"] = { function() vim.cmd("bdelete!") end, "Close Buffer", },
+    --stylua: ignore end
     ["j"] = { "<cmd>Jaq<CR>", "Jaq" },
     ["o"] = { "<cmd>URLOpenUnderCursor<CR>", "Open URL" },
     ["f"] = {
@@ -167,23 +169,7 @@ function M.config()
     l = {
       name = "LSP",
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-      f = {
-        function()
-          local function myCallback(err)
-            if err then
-              vim.notify("Error during formatting: ", err)
-            else
-              vim.notify("Formatting completed successfully.")
-            end
-          end
-          require("conform").format({
-            lsp_fallback = true,
-            async = false,
-            timeout_ms = 1000,
-          }, myCallback())
-        end,
-        "Format",
-      },
+      f = { "<cmd>Format<cr>", "Format" },
       F = { "<cmd>FormatToggle<cr>", "Toggle Autoformat" },
       h = {
         function()
@@ -257,10 +243,10 @@ function M.config()
     x = {
       name = "Trouble",
       x = { "<cmd>Trouble diagnostics toggle focus filter.buf=0<cr>", "Toggle" },
-      w = { "<cmd>Trouble diagnostics toggle focus<cr>", "Workspace Diagnostics"},
+      w = { "<cmd>Trouble diagnostics toggle focus<cr>", "Workspace Diagnostics" },
       d = { "<cmd>Trouble diagnostics toggle focus filter.buf=0<cr>", "Toggle" },
-      q = { "<cmd>Trouble qflist toggle<cr>", "Quickfix"},
-      l = { "<cmd>Trouble loclist toggle<cr>", "Loclist"},
+      q = { "<cmd>Trouble qflist toggle<cr>", "Quickfix" },
+      l = { "<cmd>Trouble loclist toggle<cr>", "Loclist" },
     },
     ["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
   }

@@ -44,7 +44,7 @@ autocmd({ "FileType" }, {
 --    endif
 -- endfunction ]]
 
---[[ autocmd({ "FileType" }, {
+autocmd({ "FileType" }, {
   pattern = { "cpp" },
   callback = function()
     require("cmp").setup.buffer({
@@ -53,7 +53,7 @@ autocmd({ "FileType" }, {
       },
     })
   end,
-}) ]]
+})
 
 autocmd({ "VimResized" }, {
   callback = function()
@@ -110,3 +110,18 @@ vim.filetype.add({
 vim.cmd([[
 command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
 ]])
+
+-- Hyprlang LSP
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+  callback = function(event)
+    local filepath = vim.fn.expand("<afile>:p")
+    if filepath:match("/hypr/") then
+      -- vim.notify(string.format("starting hyprls for %s", vim.inspect(event)))
+      vim.lsp.start({
+        name = "hyprlang",
+        cmd = { "hyprls" },
+        root_dir = vim.fn.getcwd(),
+      })
+    end
+  end,
+})
