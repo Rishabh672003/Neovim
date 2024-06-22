@@ -18,8 +18,7 @@ local keymaps = {
         vim.notify("AutoImport completed")
       end
 
-      local function on_output(job_id, data, event)
-      end
+      local function on_output(job_id, data, event) end
 
       -- Start the job asynchronously
       vim.fn.jobstart("autoimport " .. vim.fn.expand("%"), {
@@ -35,6 +34,13 @@ local keymaps = {
       require("swenv.api").pick_venv()
     end,
     "Pick venv",
+  },
+
+  ["<leader>lpc"] = {
+    function()
+      vim.notify(require("swenv.api").get_current_venv().name)
+    end,
+    "get_current_venv",
   },
 }
 
