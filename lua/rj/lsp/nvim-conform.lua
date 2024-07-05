@@ -26,13 +26,18 @@ conform.setup({
     vue = { "prettier" },
 
     lua = { "stylua" },
-    python = { "black", "isort" },
+    python = {
+      "pyfix_imports",
+      "ruff_fix",
+      "ruff_organize_imports",
+      "ruff_format",
+    },
     java = { "astyle" },
     rust = { "rustfmt" },
     sh = { "shfmt" },
     bash = { "shfmt" },
     cpp = { "clang_format" },
-    go = { "gofmt" },
+    go = { "gofmt", "goimports" },
     cmake = { "cmake_format" },
   },
 
@@ -56,6 +61,13 @@ conform.setup({
     -- ...additional logic...
     return { timeout_ms = 1000, lsp_fallback = true }, myCallback()
   end,
+  formatters = {
+    pyfix_imports = {
+      command = "pyfix-imports",
+      args = { "$FILENAME" },
+      cwd = require("conform.util").root_file({ "requirements.txt", "pyproject.toml" }),
+    },
+  },
 })
 
 vim.g.disable_autoformat = true

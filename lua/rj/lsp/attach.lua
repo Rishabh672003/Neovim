@@ -32,7 +32,7 @@ end
 M.on_attach = function(client, bufnr)
   attach_navic(client, bufnr)
   lsp_keymaps()
-  if vim.bo.filetype ~= "rust" then
+  if vim.fn.getbufvar(bufnr, "&filetype") ~= "rust" then
     vim.lsp.inlay_hint.enable()
   end
 end
@@ -41,5 +41,9 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
 M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+M.capabilities.textDocument.foldingRange = {
+  dynamicRegistration = false,
+  lineFoldingOnly = true
+}
 
 return M

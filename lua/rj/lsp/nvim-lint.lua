@@ -18,17 +18,6 @@ cppcheck.args = {
   "--template={file}:{line}:{column}: [{id}] {severity}: {message}",
 }
 
-local luachecks = require("lint").linters.luacheck
-luachecks.args = {
-  "--formatter",
-  "plain",
-  "--codes",
-  "--ranges",
-  "--globals",
-  "vim",
-  "-",
-}
-
 local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {

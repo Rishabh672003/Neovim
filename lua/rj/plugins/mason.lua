@@ -32,12 +32,12 @@ function M.config()
       "dockerls",
       "gopls",
       "html-lsp",
+      "hyprls",
       "jsonls",
       "lemminx",
       "lua_ls",
       "marksman",
       "pyright",
-      "sqlls",
       "tailwindcss",
       "taplo",
       "tsserver",
@@ -49,11 +49,12 @@ function M.config()
       -- formatters
       -- astyle missing
       "biome",
-      "black",
       "clang-format",
       "cmakelang",
-      "codespell",
+      -- "codespell",
+      "goimports",
       "prettier",
+      "ruff",
       "shfmt",
       "stylua",
 

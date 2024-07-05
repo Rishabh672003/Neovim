@@ -6,14 +6,11 @@ local servers = {
   cmake = "cmake-language-server",
   cssls = "vscode-css-language-server",
   dockerls = "docker-langserver",
-  gopls = "gopls",
   html = "vscode-html-language-server",
   hyprls = "hyprls",
-  -- jedi_language_server = "jedi-language-server",
   jsonls = "vscode-json-language-server",
   lemminx = "lemminx",
   marksman = "marksman",
-  sqlls = "sql-language-server",
   taplo = "taplo",
   tsserver = "typescript-language-server",
 }
@@ -47,7 +44,7 @@ if vim.fn.executable("lua-language-server") == 1 then
           semicolon = "Disable", -- "All", "SameLine", "Disable"
           setType = true,
         },
-        -- spell = {"the"}
+        -- spell = { "the" },
         runtime = {
           version = "LuaJIT",
           special = {
@@ -79,6 +76,7 @@ if vim.fn.executable("pyright") == 1 then
     settings = {
       python = {
         analysis = {
+          -- showDiagnostics = true,
           typeCheckingMode = "basic",
           -- diagnosticMode = "workspace",
           inlayHints = {
@@ -91,7 +89,26 @@ if vim.fn.executable("pyright") == 1 then
   })
 end
 
-if vim.fn.executable("yamlls") == 1 then
+if vim.fn.executable("gopls") == 1 then
+  lspconfig.gopls.setup({
+    on_attach = require("rj.lsp.attach").on_attach,
+    capabilities = require("rj.lsp.attach").capabilities,
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_dir = lspconfig.util.root_pattern("go.work", "go.mod", ".git"),
+    settings = {
+      gopls = {
+        completeUnimported = true,
+        usePlaceholders = true,
+        analyses = {
+          unusedparams = true,
+        },
+      },
+    },
+  })
+end
+
+if vim.fn.executable("yaml-language-server") == 1 then
   require("lspconfig").yamlls.setup({
     settings = {
       yaml = {

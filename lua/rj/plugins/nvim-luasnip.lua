@@ -24,13 +24,41 @@ function M.config()
   local i = ls.insert_node
   local fmt = require("luasnip.extras.fmt").fmt
 
+  require("luasnip").filetype_extend("javascriptreact", { "html" })
+  require("luasnip").filetype_extend("typescriptreact", { "html" })
+
   ls.config.set_config({
     history = true, --keep around last snippet local to jump back
     updateevents = "TextChanged,TextChangedI", --update changes as you type
     enable_autosnippets = true,
   })
 
+  ls.add_snippets("python", {
+    s(
+      "cc",
+      fmt(
+        [[
+class Solution:
+    {}
+
+
+if __name__ == "__main__":
+    {}
+    sol = Solution()
+    print(sol.{})
+        ]],
+
+        {
+          i(1),
+          i(2),
+          i(3),
+        }
+      )
+    ),
+  })
+
   ls.add_snippets("c", {
+
     s(
       "cc",
       fmt(
@@ -209,29 +237,6 @@ int main() {{
 ]],
         {
           i(1),
-        }
-      )
-    ),
-  })
-  ls.add_snippets("python", {
-    s(
-      "cc",
-      fmt([[
-from collections import defaultdict
-from typing import List, Optional
-class Solution:
-    {}
-        
-
-{}
-sol = Solution()
-print(sol.{})
-        ]],
-
-        {
-          i(1),
-          i(2),
-          i(3)
         }
       )
     ),

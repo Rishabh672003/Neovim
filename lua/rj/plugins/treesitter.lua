@@ -3,6 +3,7 @@ local M = {
   event = "BufReadPost",
   dependencies = {
     "nvim-treesitter/playground",
+    "nvim-tree/nvim-web-devicons",
     {
       "JoosepAlviste/nvim-ts-context-commentstring",
       config = function()
@@ -12,7 +13,6 @@ local M = {
         vim.g.skip_ts_context_commentstring_module = true
       end,
     },
-    "nvim-tree/nvim-web-devicons",
   },
 }
 

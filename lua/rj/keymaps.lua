@@ -8,6 +8,10 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+keymap("n", "<leader>lpl", function()
+    vim.cmd("vsplit")
+    vim.lsp.buf.declaration()
+end, { silent = true })
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -22,6 +26,8 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
+
+keymap("n", "\\", "<cmd>noh<cr>", opts)
 
 -- Resize with arrows
 keymap("n", "<C-Up>", "<cmd>resize -2<CR>", opts)

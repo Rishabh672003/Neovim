@@ -21,7 +21,15 @@ local M = {
     -- return true: if buffer is ok to be saved
     -- return false: if it's not ok to be saved
     -- if set to `nil` then no specific condition is applied
-    condition = nil,
+    condition = function(buf)
+      local fn = vim.fn
+      local utils = require("auto-save.utils.data")
+
+      if fn.getbufvar(buf, "&modifiable") == 1 and utils.not_in(fn.getbufvar(buf, "&filetype"), { "oil" }) then
+        return true -- met condition(s), can save
+      end
+      return false -- can't save
+    end,
     write_all_buffers = false, -- write all buffers when the current one meets `condition`
     debounce_delay = 1000, -- delay after which a pending save is executed
     -- log debug messages to 'auto-save.log' file in neovim cache directory, set to `true` to enable

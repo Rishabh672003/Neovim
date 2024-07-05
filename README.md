@@ -1,10 +1,18 @@
-<h1>Neovim</h1>
+# Neovim
 
-<center></center>
-<a href="https://dotfyle.com/Rishabh672003/neovim"><img src="https://dotfyle.com/Rishabh672003/neovim/badges/plugins?style=for-the-badge" /></a>
-<a href="https://dotfyle.com/Rishabh672003/neovim"><img src="https://dotfyle.com/Rishabh672003/neovim/badges/leaderkey?style=for-the-badge" /></a>
-<a href="https://dotfyle.com/Rishabh672003/neovim"><img src="https://dotfyle.com/Rishabh672003/neovim/badges/plugin-manager?style=for-the-badge" /></a>
-
+<center>
+  <a href="https://dotfyle.com/Rishabh672003/neovim"
+    ><img
+      src="https://dotfyle.com/Rishabh672003/neovim/badges/plugins?style=for-the-badge"
+  /></a>
+  <a href="https://dotfyle.com/Rishabh672003/neovim"
+    ><img
+      src="https://dotfyle.com/Rishabh672003/neovim/badges/leaderkey?style=for-the-badge"
+  /></a>
+  <a href="https://dotfyle.com/Rishabh672003/neovim"
+    ><img
+      src="https://dotfyle.com/Rishabh672003/neovim/badges/plugin-manager?style=for-the-badge"
+  /></a>
 </center>
 
 This repo contains all my [neovim](https://github.com/neovim/neovim) configs files, which I use. Now made with [lazy.nvim](https://github.com/folke/lazy.nvim)
@@ -72,5 +80,4 @@ also I took configs and ideas from [Lunarvim](https://github.com/LunarVim/LunarV
 
 <div align="center" id="madewithlua"></div>
 [![Lua](https://img.shields.io/badge/Made%20with%20Lua-blue.svg?style=for-the-badge&logo=lua)](#madewithlua)
-
 </div>
