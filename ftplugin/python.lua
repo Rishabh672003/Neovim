@@ -11,24 +11,6 @@ if not status then
 end
 
 local keymaps = {
-  ["<leader>lpo"] = {
-    function()
-      local function on_exit(job_id, data, event)
-        vim.cmd("e")
-        vim.notify("AutoImport completed")
-      end
-
-      local function on_output(job_id, data, event) end
-
-      -- Start the job asynchronously
-      vim.fn.jobstart("autoimport " .. vim.fn.expand("%"), {
-        on_exit = on_exit,
-        on_stdout = on_output,
-        on_stderr = on_output,
-      })
-    end,
-    "Import Symbol",
-  },
   ["<leader>lps"] = {
     function()
       require("swenv.api").pick_venv()
@@ -41,6 +23,13 @@ local keymaps = {
       vim.notify(require("swenv.api").get_current_venv().name)
     end,
     "get_current_venv",
+  },
+
+  ["<leader>lpr"] = {
+    function()
+      vim.cmd("LspRestart")
+    end,
+    "Restart Lsp",
   },
 }
 
