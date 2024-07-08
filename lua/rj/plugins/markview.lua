@@ -1,7 +1,7 @@
 -- For plugins/markview.lua users
 return {
   "OXY2DEV/markview.nvim",
-  enabled = true,
+  enabled = false,
   branch = "dev",
   ft = "markdown",
   dependencies = {

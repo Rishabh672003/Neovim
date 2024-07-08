@@ -8,10 +8,6 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-keymap("n", "<leader>lpl", function()
-    vim.cmd("vsplit")
-    vim.lsp.buf.declaration()
-end, { silent = true })
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
