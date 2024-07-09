@@ -61,6 +61,7 @@ conform.setup({
     -- ...additional logic...
     return { timeout_ms = 1000, lsp_fallback = true }, myCallback()
   end,
+
   formatters = {
     pyfix_imports = {
       command = "pyfix-imports",
