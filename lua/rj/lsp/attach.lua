@@ -28,12 +28,19 @@ local function lsp_keymaps()
   keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 end
 
+local function inlay_hints(bufnr)
+  local filetype = vim.fn.getbufvar(bufnr, "&filetype")
+  if filetype == "rust" or filetype == "go" then
+    vim.lsp.inlay_hint.enable(false)
+  else
+    vim.lsp.inlay_hint.enable(true)
+  end
+end
+
 M.on_attach = function(client, bufnr)
   attach_navic(client, bufnr)
+  inlay_hints(bufnr)
   lsp_keymaps()
-  if vim.fn.getbufvar(bufnr, "&filetype") ~= "rust" then
-    vim.lsp.inlay_hint.enable()
-  end
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -42,7 +49,7 @@ local cmp_nvim_lsp = require("cmp_nvim_lsp")
 M.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 M.capabilities.textDocument.foldingRange = {
   dynamicRegistration = false,
-  lineFoldingOnly = true
+  lineFoldingOnly = true,
 }
 
 return M
