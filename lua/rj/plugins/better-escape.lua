@@ -28,12 +28,12 @@ function M.config()
       },
       v = {
         j = {
-          k = "<Esc>",
+          k = false,
         },
       },
       s = {
         j = {
-          k = "<Esc>",
+          k = false,
         },
       },
     },

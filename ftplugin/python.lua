@@ -11,26 +11,9 @@ if not status then
 end
 
 local keymaps = {
-  ["<leader>lps"] = {
-    function()
-      require("swenv.api").pick_venv()
-    end,
-    "Pick venv",
-  },
-
-  ["<leader>lpc"] = {
-    function()
-      vim.notify(require("swenv.api").get_current_venv().name)
-    end,
-    "get_current_venv",
-  },
-
-  ["<leader>lpr"] = {
-    function()
-      vim.cmd("LspRestart")
-    end,
-    "Restart Lsp",
-  },
+  { "<leader>lps", function() require("swenv.api").pick_venv() end, desc = "Pick venv", },
+  { "<leader>lpc", function() vim.notify(require("swenv.api").get_current_venv().name) end, desc = "Current venv", },
+  { "<leader>lpr", function() vim.cmd("LspRestart") end, desc = "Restart LSP", },
 }
 
-wk.register(keymaps)
+wk.add(keymaps)

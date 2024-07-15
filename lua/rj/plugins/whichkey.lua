@@ -7,68 +7,144 @@ local M = {
 function M.config()
   local which_key = require("which-key")
   local setup = {
+    ---@type false | "classic" | "modern" | "helix"
+    preset = "helix",
+    -- Delay before showing the popup. Can be a number or a function that returns a number.
+    ---@type number | fun(ctx: { keys: string, mode: string, plugin?: string }):number
+    delay = function(ctx)
+      return ctx.plugin and 0 or 200
+    end,
+    --- You can add any mappings here, or use `require('which-key').add()` later
+    ---@type wk.Spec
+    spec = {},
+    -- show a warning when issues were detected with your mappings
+    notify = true,
+    -- Enable/disable WhichKey for certain mapping modes
+    modes = {
+      n = true, -- Normal mode
+      i = true, -- Insert mode
+      x = false, -- Visual mode
+      s = true, -- Select mode
+      o = true, -- Operator pending mode
+      t = true, -- Terminal mode
+      c = true, -- Command mode
+    },
     plugins = {
-      marks = false, -- shows a list of your marks on ' and `
-      registers = false, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+      marks = true, -- shows a list of your marks on ' and `
+      registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
+      -- the presets plugin, adds help for a bunch of default keybindings in Neovim
+      -- No actual key bindings are created
       spelling = {
         enabled = true, -- enabling this will show WhichKey when pressing z= to select spelling suggestions
         suggestions = 20, -- how many suggestions should be shown in the list?
       },
-      -- the presets plugin, adds help for a bunch of default keybindings in Neovim
-      -- No actual key bindings are created
       presets = {
-        operators = true, -- adds help for operators like d, y, ... and registers them for motion / text object completion
+        operators = true, -- adds help for operators like d, y, ...
         motions = true, -- adds help for motions
         text_objects = true, -- help for text objects triggered after entering an operator
         windows = true, -- default bindings on <c-w>
         nav = true, -- misc bindings to work with windows
-        z = false, -- bindings for folds, spelling and others prefixed with z
+        z = true, -- bindings for folds, spelling and others prefixed with z
         g = true, -- bindings for prefixed with g
       },
     },
-    -- add operators that will trigger motion and text object completion
-    -- to enable all native operators, set the preset / operators plugin above
-    -- operators = { gc = "Comments" },
-    key_labels = {
-      -- override the label used to display some keys. It doesn't effect WK in any other way.
-      -- For example:
-      -- ["<space>"] = "SPC",
-      -- ["<cr>"] = "RET",
-      -- ["<tab>"] = "TAB",
+    ---@type wk.Win
+    win = {
+      no_overlap = false,
+      -- width = 1,
+      -- height = { min = 4, max = 25 },
+      -- col = 0,
+      row = -1,
+      -- border = "none",
+      padding = { 1, 1 }, -- extra window padding [top/bottom, right/left]
+      title = true,
+      title_pos = "center",
+      zindex = 1000,
+      -- Additional vim.wo and vim.bo options
+      bo = {},
+      wo = {
+        -- winblend = 10, -- value between 0-100 0 for fully opaque and 100 for fully transparent
+      },
+    },
+    layout = {
+      width = { min = 20 }, -- min and max width of the columns
+      spacing = 3, -- spacing between columns
+      align = "left", -- align columns left, center or right
+    },
+    keys = {
+      scroll_down = "<c-d>", -- binding to scroll down inside the popup
+      scroll_up = "<c-u>", -- binding to scroll up inside the popup
+    },
+    ---@type (string|wk.Sorter)[]
+    --- Add "manual" as the first element to use the order the mappings were registered
+    --- Other sorters: "desc"
+    sort = { "local", "order", "group", "alphanum", "mod", "lower", "icase" },
+    expand = 1, -- expand groups when <= n mappings
+    ---@type table<string, ({[1]:string, [2]:string}|fun(str:string):string)[]>
+    replace = {
+      key = {
+        function(key)
+          return require("which-key.view").format(key)
+        end,
+        -- { "<Space>", "SPC" },
+      },
+      desc = {
+        { "<Plug>%((.*)%)", "%1" },
+        { "^%+", "" },
+        { "<[cC]md>", "" },
+        { "<[cC][rR]>", "" },
+        { "<[sS]ilent>", "" },
+        { "^lua%s+", "" },
+        { "^call%s+", "" },
+        { "^:%s*", "" },
+      },
     },
     icons = {
       breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
       separator = "➜", -- symbol used between a key and it's label
       group = "+", -- symbol prepended to a group
+      ellipsis = "…",
+      --- See `lua/which-key/icons.lua` for more details
+      --- Set to `false` to disable keymap icons
+      ---@type wk.IconRule[]|false
+      rules = false,
+      -- use the highlights from mini.icons
+      -- When `false`, it will use `WhichKeyIcon` instead
+      colors = true,
+      -- used by key format
+      keys = {
+        Up = " ",
+        Down = " ",
+        Left = " ",
+        Right = " ",
+        C = "󰘴 ",
+        M = "󰘵 ",
+        S = "󰘶 ",
+        CR = "󰌑 ",
+        Esc = "󱊷 ",
+        ScrollWheelDown = "󱕐 ",
+        ScrollWheelUp = "󱕑 ",
+        NL = "󰌑 ",
+        BS = "⌫",
+        Space = "󱁐 ",
+        Tab = "󰌒 ",
+      },
     },
-    popup_mappings = {
-      scroll_down = "<c-d>", -- binding to scroll down inside the popup
-      scroll_up = "<c-u>", -- binding to scroll up inside the popup
-    },
-    window = {
-      border = "single", -- none, single, double, shadow
-      position = "bottom", -- bottom, top
-      margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-      padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-      winblend = 0,
-    },
-    layout = {
-      height = { min = 4, max = 25 }, -- min and max height of the columns
-      width = { min = 20, max = 50 }, -- min and max width of the columns
-      spacing = 3, -- spacing between columns
-      align = "left", -- align columns left, center or right
-    },
-    ignore_missing = true, -- enable this to hide mappings for which you didn't specify a label
-    hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-    show_help = true, -- show help message on the command line when the popup is visible
-    triggers = "auto", -- automatically setup triggers
-    -- triggers = {"<leader>"} -- or specify a list manually
-    triggers_blacklist = {
-      -- list of mode / prefixes that should never be hooked by WhichKey
-      -- this is mostly relevant for key maps that start with a native binding
-      -- most people should not need to change this
-      i = { "j", "k" },
-      v = { "j", "k" },
+    show_help = true, -- show a help message in the command line for using WhichKey
+    show_keys = true, -- show the currently pressed key and its label as a message in the command line
+    -- Which-key automatically sets up triggers for your mappings.
+    -- But you can disable this and setup the triggers yourself.
+    -- Be aware, that triggers are not needed for visual and operator pending mode.
+    triggers = true, -- automatically setup triggers
+    disable = {
+      -- disable WhichKey for certain buf types and file types.
+      ft = {},
+      bt = {},
+      -- disable a trigger for a certain context by returning true
+      ---@type fun(ctx: { keys: string, mode: string, plugin?: string }):boolean?
+      trigger = function(ctx)
+        return false
+      end,
     },
   }
 
@@ -82,177 +158,132 @@ function M.config()
   }
 
   local mappings = {
-    ["a"] = { "<cmd>Alpha<cr>", "Alpha" },
-    b = {
-      name = "Buffer",
-      b = {
-        function()
-          require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false }))
-        end,
-        "Telescope Buffers",
-      },
-      n = { "<Plug>(CybuNext)", "Next Buffer" },
-      p = { "<Plug>(CybuPrev)", "Previous Buffer" },
-      x = { "<cmd>bd<CR>", "Close Buffer" },
-    },
-    ["D"] = { "<cmd>Telescope file_browser<cr>", "File browser" },
-    ["e"] = { "<cmd>Neotree focus toggle<cr>", "Explorer" },
-    ["w"] = { "<cmd>w!<CR>", "Save" },
-    ["q"] = { "<cmd>q!<CR>", "Quit" },
     --stylua: ignore start
-    ["c"] = { function() vim.cmd("bdelete!") end, "Close Buffer", },
-    --stylua: ignore end
-    ["j"] = { "<cmd>Jaq<CR>", "Jaq" },
-    ["o"] = { "<cmd>URLOpenUnderCursor<CR>", "Open URL" },
-    ["f"] = {
+    { "<leader>D", "<cmd>Telescope file_browser<cr>", desc = "File browser", },
+    { "<leader>F", "<cmd>Telescope live_grep<cr>", desc = "Find Text", },
+    { "<leader>M", "<cmd>MarkdownPreview<cr>", desc = "Markdown preview", },
+    { "<leader>a", "<cmd>Alpha<cr>", desc = "Alpha", },
+
+    { "<leader>b", group = "Buffer", },
+    { "<leader>bb", function() require("telescope.builtin").buffers(require("telescope.themes").get_dropdown({ previewer = false })) end, desc = "Telescope Buffers", nowait = true, remap = false, },
+    { "<leader>bn", "<Plug>(CybuNext)", desc = "Next Buffer", },
+    { "<leader>bp", "<Plug>(CybuPrev)", desc = "Previous Buffer", },
+    { "<leader>bx", "<cmd>bd<CR>", desc = "Close Buffer", },
+
+    { "<leader>e", "<cmd>Neotree focus toggle<cr>", desc = "Explorer", },
+
+    { "<leader>w", "<cmd>w!<CR>", desc = "Save", },
+
+    { "<leader>q", "<cmd>q!<CR>", desc = "Quit", },
+    { "<leader>c", function() vim.cmd("bdelete!") end, desc = "Close Buffer", },
+    { "<leader>j", "<cmd>Jaq<CR>", desc = "Jaq", },
+    { "<leader>o", "<cmd>URLOpenUnderCursor<CR>", desc = "Open URL", },
+    { "<leader>f", function() require("telescope.builtin").find_files(require("telescope.themes")) end, desc = "Find files", nowait = true, remap = false, },
+    { "<leader>p", function() require("telescope").extensions.projects.projects( require("telescope.themes").get_dropdown({ previewer = false })) end, desc = "Projects", },
+    { "<leader>r", "<cmd>:Telescope oldfiles<cr>", desc = "Recent Files", },
+
+    { "<leader>g", group = "Git", },
+    { "<leader>gR", function() require 'gitsigns'.reset_buffer() end, desc = "Reset Buffer", },
+    { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch", },
+    { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit", },
+    { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Diff", },
+    { "<leader>gg", function() _LAZYGIT_TOGGLE()              end, desc = "Lazygit", },
+    { "<leader>gj", function() require 'gitsigns'.next_hunk() end, desc = "Next Hunk", },
+    { "<leader>gk", function() require 'gitsigns'.prev_hunk() end, desc = "Prev Hunk", },
+    { "<leader>gl", function() require 'gitsigns'.blame_line()end, desc = "Blame", },
+    { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file", },
+    { "<leader>gp", function() require 'gitsigns'.preview_hunk()   end, desc = "Preview Hunk", },
+    { "<leader>gr", function() require 'gitsigns'.reset_hunk()     end, desc = "Reset Hunk", },
+    { "<leader>gs", function() require 'gitsigns'.stage_hunk()     end, desc = "Stage Hunk", },
+    { "<leader>gu", function() require 'gitsigns'.undo_stage_hunk()end, desc = "Undo Stage Hunk", },
+
+    { "<leader>h", group = "Harpoon", },
+    { "<leader>ha", function() require("harpoon.mark").add_file()        end, desc = "Add file", },
+    { "<leader>hh", function() require("harpoon.ui").nav_file(1)         end, desc = "Goto 1", },
+    { "<leader>hj", function() require("harpoon.ui").nav_file(2)         end, desc = "Goto 2", },
+    { "<leader>hk", function() require("harpoon.ui").nav_file(3)         end, desc = "Goto 3", },
+    { "<leader>hl", function() require("harpoon.ui").nav_file(4)         end, desc = "Goto 4", },
+    { "<leader>hn", function() require("harpoon.ui").nav_next()          end, desc = "Goto next", },
+    { "<leader>hp", function() require("harpoon.ui").nav_prev()          end, desc = "Goto prev", },
+    { "<leader>ht", function() require("harpoon.ui").toggle_quick_menu() end, desc = "Toggle menu", },
+
+    { "<leader>d", group = "Debug", },
+    { "<leader>dO", function() require("dap").step_out() end, desc = "Out", nowait = true, remap = false, },
+    { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Breakpoint", nowait = true, remap = false, },
+    { "<leader>dc", function() require("dap").continue() end, desc = "Continue", nowait = true, remap = false, }, 
+    { "<leader>di", function() require("dap").step_into() end, desc = "Into", nowait = true, remap = false, }, 
+    { "<leader>dl", function() require("dap").run_last() end, desc = "Last", nowait = true, remap = false, },
+    { "<leader>do", function() require("dap").step_over() end, desc = "Over", nowait = true, remap = false, },
+    { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Repl", nowait = true, remap = false, },
+    { "<leader>du", function() require("dapui").toggle() end, desc = "UI", nowait = true, remap = false, },
+    { "<leader>dx", function() require("dap").terminate() end, desc = "Exit", nowait = true, remap = false, },
+
+    { "<leader>l", group = "LSP", },
+    { "<leader>lF", "<cmd>FormatToggle<cr>", desc = "Toggle Autoformat", },
+    { "<leader>lI", "<cmd>Mason<cr>", desc = "Installer Info", },
+    { "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", desc = "Workspace Symbols", },
+    { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action", },
+    { "<leader>lf", "<cmd>Format<cr>", desc = "Format", },
+    { "<leader>lh",
       function()
-        require("telescope.builtin").find_files(require("telescope.themes"))
-      end,
-      "Find files",
-    },
-    ["F"] = { "<cmd>Telescope live_grep<cr>", "Find Text" },
-    ["p"] = {
-      function()
-        require("telescope").extensions.projects.projects(
-          require("telescope.themes").get_dropdown({ previewer = false })
-        )
-      end,
-      "Projects",
-    },
-    ["r"] = { "<cmd>:Telescope oldfiles<cr>", "Recent Files" },
-    g = {
-      name = "Git",
-      --stylua: ignore start
-      g = { function() _LAZYGIT_TOGGLE()end, "Lazygit" },
-      j = { function() require 'gitsigns'.next_hunk() end, "Next Hunk" },
-      k = { function() require 'gitsigns'.prev_hunk() end, "Prev Hunk" },
-      l = { function() require 'gitsigns'.blame_line() end, "Blame" },
-      p = { function() require 'gitsigns'.preview_hunk() end, "Preview Hunk" },
-      r = { function() require 'gitsigns'.reset_hunk() end, "Reset Hunk" },
-      R = { function() require 'gitsigns'.reset_buffer() end, "Reset Buffer" },
-      s = { function() require 'gitsigns'.stage_hunk() end, "Stage Hunk" },
-      u = { function() require 'gitsigns'.undo_stage_hunk() end, "Undo Stage Hunk", },
-      --stylua: ignore end
-      o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-      b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-      c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-      d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
-    },
-    h = {
-      name = "Harpoon",
-      --stylua: ignore start
-      a = { function() require("harpoon.mark").add_file() end, "Add file" },
-      t = { function() require("harpoon.ui").toggle_quick_menu() end, "Toggle menu" },
-      n = { function() require("harpoon.ui").nav_next() end, "Goto next" },
-      p = { function() require("harpoon.ui").nav_prev() end, "Goto prev" },
-      h = { function() require("harpoon.ui").nav_file(1) end, "Goto 1" },
-      j = { function() require("harpoon.ui").nav_file(2) end, "Goto 2" },
-      k = { function() require("harpoon.ui").nav_file(3) end, "Goto 3" },
-      l = { function() require("harpoon.ui").nav_file(4) end, "Goto 4" },
-      --stylua: ignore end
-    },
-    d = {
-      name = "Debug",
-      --stylua: ignore start
-      b = { function() require'dap'.toggle_breakpoint() end, "Breakpoint" },
-      c = { function() require'dap'.continue() end, "Continue" },
-      i = { function() require'dap'.step_into() end, "Into" },
-      o = { function() require'dap'.step_over() end, "Over" },
-      O = { function() require'dap'.step_out() end, "Out" },
-      r = { function() require'dap'.repl.toggle() end, "Repl" },
-      l = { function() require'dap'.run_last() end, "Last" },
-      u = { function() require'dapui'.toggle() end, "UI" },
-      x = { function() require'dap'.terminate() end, "Exit" },
-      --stylua: ignore end
-    },
-    ["M"] = { "<cmd>MarkdownPreview<cr>", "Markdown preview" },
-    l = {
-      name = "LSP",
-      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-      f = { "<cmd>Format<cr>", "Format" },
-      F = { "<cmd>FormatToggle<cr>", "Toggle Autoformat" },
-      h = {
-        function()
           if vim.lsp.inlay_hint.is_enabled({}) then
             vim.lsp.inlay_hint.enable(false)
           else
             vim.lsp.inlay_hint.enable(true)
           end
-        end,
-        "Inlay Hints",
-      },
-      i = { "<cmd>LspInfo<cr>", "Info" },
-      I = { "<cmd>Mason<cr>", "Installer Info" },
-      j = {
-        "<cmd>lua vim.diagnostic.goto_next()<CR>",
-        "Next Diagnostic",
-      },
-      k = {
-        "<cmd>lua vim.diagnostic.goto_prev()<cr>",
-        "Prev Diagnostic",
-      },
-      l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-      q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
-      r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-      s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-      S = {
-        "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-        "Workspace Symbols",
-      },
-    },
-    s = {
-      name = "Search",
-      b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-      c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
-      h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
-      m = { "<cmd>lua require('cppman').search()<cr>", "Cpp Man Pages" },
-      M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-      r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
-      R = { "<cmd>Telescope registers<cr>", "Registers" },
-      k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
-      C = { "<cmd>Telescope commands<cr>", "Commands" },
-      f = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "Find in current buffer" },
-    },
-    t = {
-      name = "Terminal",
-      --stylua: ignore start
-      n = { function() _NODE_TOGGLE() end, "Node" },
-      u = { function() _NCDU_TOGGLE() end, "NCDU" },
-      H = { function() _HTOP_TOGGLE() end, "Htop" },
-      p = { function() _PYTHON_TOGGLE() end, "Python" },
-      --stylua: ignore end
-      f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-      h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-      v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
-      t = { "<cmd>ToggleTerm<cr>", "toggle" },
-      T = { "<cmd>terminal<cr>", "Neoterminal" },
-    },
-    C = {
-      name = "Cmp",
-      --stylua: ignore start
-      e = { function() vim.g.cmp_toggle = true end, "Enable" },
-      d = { function() vim.g.cmp_toggle = false end, "Enable" },
-      --stylua: ignore end
-    },
-    v = {
-      name = "Visual",
-      a = { "<cmd>norm mmggVG<cr>", "Select all" },
-      s = { "<cmd>%y<cr>", "Copy all" },
-      x = { "<cmd>norm ggVGx<cr>", "Delete all" },
-    },
-    x = {
-      name = "Trouble",
-      x = { "<cmd>Trouble diagnostics toggle focus filter.buf=0<cr>", "Toggle" },
-      w = { "<cmd>Trouble diagnostics toggle focus<cr>", "Workspace Diagnostics" },
-      d = { "<cmd>Trouble diagnostics toggle focus filter.buf=0<cr>", "Toggle" },
-      q = { "<cmd>Trouble qflist toggle<cr>", "Quickfix" },
-      l = { "<cmd>Trouble loclist toggle<cr>", "Loclist" },
-    },
-    ["z"] = { "<cmd>ZenMode<cr>", "Zen Mode" },
+        end,  desc = "Inlay Hints", },
+    { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info", },
+    { "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Next Diagnostic", },
+    { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic", },
+    { "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", desc = "CodeLens Action", },
+    { "<leader>lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", desc = "Quickfix", },
+    { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename", },
+    { "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", desc = "Document Symbols", },
+
+    { "<leader>s", group = "Search", },
+    { "<leader>sC", "<cmd>Telescope commands<cr>", desc = "Commands", },
+    { "<leader>sM", "<cmd>Telescope man_pages<cr>", desc = "Man Pages", },
+    { "<leader>sR", "<cmd>Telescope registers<cr>", desc = "Registers", },
+    { "<leader>sb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch", },
+    { "<leader>sc", "<cmd>Telescope colorscheme<cr>", desc = "Colorscheme", },
+    { "<leader>sf", "<cmd>Telescope current_buffer_fuzzy_find<cr>", desc = "Find in current buffer", },
+    { "<leader>sh", "<cmd>Telescope help_tags<cr>", desc = "Find Help", },
+    { "<leader>sk", "<cmd>Telescope keymaps<cr>", desc = "Keymaps", },
+    { "<leader>sm", "<cmd>lua require('cppman').search()<cr>", desc = "Cpp Man Pages", },
+    { "<leader>sr", "<cmd>Telescope oldfiles<cr>", desc = "Open Recent File", },
+
+    { "<leader>t", group = "Terminal", },
+    { "<leader>tH", function() _HTOP_TOGGLE() end, desc = "Htop", },
+    { "<leader>tT", "<cmd>terminal<cr>", desc = "Neoterminal", },
+    { "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", desc = "Float", },
+    { "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", desc = "Horizontal", },
+    { "<leader>tn", function() _NODE_TOGGLE() end, desc = "Node", },
+    { "<leader>tp", function() _PYTHON_TOGGLE() end, desc = "Python", },
+    { "<leader>tt", "<cmd>ToggleTerm<cr>", desc = "toggle", },
+    { "<leader>tu", function() _NCDU_TOGGLE() end, desc = "NCDU", },
+    { "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", desc = "Vertical", },
+
+    { "<leader>C", group = "Cmp", },
+    { "<leader>Cd", function() vim.g.cmp_toggle = false end, desc = "Disable", nowait = true, remap = false, },
+    { "<leader>Ce", function() vim.g.cmp_toggle = true end, desc = "Enable", nowait = true, remap = false, },
+
+    { "<leader>v", group = "Visual", },
+    { "<leader>va", "<cmd>norm mmggVG<cr>", desc = "Select all", },
+    { "<leader>vs", "<cmd>%y<cr>", desc = "Copy all", },
+    { "<leader>vx", "<cmd>norm ggVGx<cr>", desc = "Delete all", },
+
+    { "<leader>x", group = "Trouble", },
+    { "<leader>xd", "<cmd>Trouble diagnostics toggle focus filter.buf=0<cr>", desc = "Toggle", },
+    { "<leader>xl", "<cmd>Trouble loclist toggle<cr>", desc = "Loclist", },
+    { "<leader>xq", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix", },
+    { "<leader>xw", "<cmd>Trouble diagnostics toggle focus<cr>", desc = "Workspace Diagnostics", },
+    { "<leader>xx", "<cmd>Trouble diagnostics toggle focus filter.buf=0<cr>", desc = "Toggle", },
+    { "<leader>z", "<cmd>ZenMode<cr>", desc = "Zen Mode", },
+    --stylua: ignore end
   }
 
   which_key.setup(setup)
-  which_key.register(mappings, opts)
+  which_key.add(mappings, opts)
 end
 
 return M

@@ -26,7 +26,6 @@ local function lsp_keymaps()
   keymap("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
   keymap("n", "gR", '<cmd>lua require("trouble").toggle("lsp_references")<CR>', opts)
   keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-  keymap("n", "<leader>Q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 end
 
 M.on_attach = function(client, bufnr)
