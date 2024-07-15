@@ -210,8 +210,8 @@ function M.config()
     { "<leader>d", group = "Debug", },
     { "<leader>dO", function() require("dap").step_out() end, desc = "Out", nowait = true, remap = false, },
     { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "Breakpoint", nowait = true, remap = false, },
-    { "<leader>dc", function() require("dap").continue() end, desc = "Continue", nowait = true, remap = false, }, 
-    { "<leader>di", function() require("dap").step_into() end, desc = "Into", nowait = true, remap = false, }, 
+    { "<leader>dc", function() require("dap").continue() end, desc = "Continue", nowait = true, remap = false, },
+    { "<leader>di", function() require("dap").step_into() end, desc = "Into", nowait = true, remap = false, },
     { "<leader>dl", function() require("dap").run_last() end, desc = "Last", nowait = true, remap = false, },
     { "<leader>do", function() require("dap").step_over() end, desc = "Over", nowait = true, remap = false, },
     { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Repl", nowait = true, remap = false, },
@@ -226,12 +226,8 @@ function M.config()
     { "<leader>lf", "<cmd>Format<cr>", desc = "Format", },
     { "<leader>lh",
       function()
-          if vim.lsp.inlay_hint.is_enabled({}) then
-            vim.lsp.inlay_hint.enable(false)
-          else
-            vim.lsp.inlay_hint.enable(true)
-          end
-        end,  desc = "Inlay Hints", },
+         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
+      end,  desc = "Inlay Hints", },
     { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info", },
     { "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<CR>", desc = "Next Diagnostic", },
     { "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic", },
