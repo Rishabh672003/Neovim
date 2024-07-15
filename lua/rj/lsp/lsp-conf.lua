@@ -103,6 +103,12 @@ if vim.fn.executable("gopls") == 1 then
         analyses = {
           unusedparams = true,
         },
+        ["ui.inlayhint.hints"] = {
+          compositeLiteralFields = true,
+          constantValues = true,
+          parameterNames = true,
+          rangeVariableTypes = true,
+        },
       },
     },
   })
