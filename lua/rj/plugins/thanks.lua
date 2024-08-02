@@ -3,4 +3,5 @@ return {
   opts = {
     plugin_manager = "lazy",
   },
+  keys = "ThanksAll"
 }

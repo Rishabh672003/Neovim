@@ -1,6 +1,7 @@
 local M = {
   "max397574/better-escape.nvim",
-  enabled = true
+  enabled = true,
+  event = "InsertEnter",
 }
 
 function M.config()

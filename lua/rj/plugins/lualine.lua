@@ -1,8 +1,8 @@
 local M = {
   "nvim-lualine/lualine.nvim",
   enabled = true,
-  event = { "InsertEnter", "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
-  lazy = false,
+  event = { "BufAdd", "BufEnter" },
+  lazy = true,
 }
 
 function M.config()
@@ -88,7 +88,7 @@ function M.config()
         -- { "filename", file_status = true, path = 3 },
       },
       -- lualine_x = { "encoding", "fileformat", "filetype" },
-      lualine_x = { spaces, diff, filetype, },
+      lualine_x = { spaces, diff, filetype },
       lualine_y = { location },
       lualine_z = { progress },
     },

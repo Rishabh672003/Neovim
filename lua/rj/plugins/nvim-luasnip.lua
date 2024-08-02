@@ -33,6 +33,23 @@ function M.config()
     enable_autosnippets = true,
   })
 
+  ls.add_snippets("go", {
+    s(
+      "eren",
+      fmt(
+        [[
+if err != nil {{
+  panic(err)
+  {}
+}}
+        ]],
+        {
+          i(1),
+        }
+      )
+    ),
+  })
+
   ls.add_snippets("python", {
     s(
       "cc",

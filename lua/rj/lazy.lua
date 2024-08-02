@@ -22,7 +22,7 @@ require("lazy").setup("rj.plugins", {
     timeout = 600,
   },
   defaults = {
-    lazy = false,
+    lazy = true,
   },
   install = { colorscheme = { "catppuccin-mocha" } },
   performance = {
