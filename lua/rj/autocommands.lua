@@ -111,6 +111,11 @@ vim.cmd([[
 command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | endfor
 ]])
 
+vim.api.nvim_create_user_command("Grep", function(opts)
+  vim.cmd("silent grep " .. opts.args)
+  vim.cmd("Trouble quickfix")
+end, { nargs = 1 })
+
 -- Hyprlang LSP
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   callback = function(event)
