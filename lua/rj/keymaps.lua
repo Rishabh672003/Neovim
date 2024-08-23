@@ -20,6 +20,9 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 
 keymap("n", "\\", "<cmd>noh<cr>", opts)
 
+keymap("n", "[n", "<cmd>cnext<cr>", opts)
+keymap("n", "[p", "<cmd>cprevious<cr>", opts)
+
 -- Resize with arrows
 keymap("n", "<C-Up>", "<cmd>resize -2<CR>", opts)
 keymap("n", "<C-Down>", "<cmd>resize +2<CR>", opts)
@@ -29,6 +32,9 @@ keymap("n", "<C-Right>", "<cmd>vertical resize +2<CR>", opts)
 -- Navigate buffers
 keymap("n", "<S-l>", "<cmd>bnext<CR>", opts)
 keymap("n", "<S-h>", "<cmd>bprevious<CR>", opts)
+
+keymap("n", "j", "gj", opts)
+keymap("n", "k", "gk", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
