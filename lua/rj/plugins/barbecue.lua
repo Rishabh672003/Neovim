@@ -43,10 +43,10 @@ function M.config()
       prefix = " ",
       ---entry separator
       ---@type string
-      separator = require("rj.icons").ui.ChevronRight,
+      separator = ">",
       ---string to be shown when buffer is modified
       ---@type string
-      modified = require("rj.icons").ui.BigCircle,
+      modified = "",
       ---string to be shown when context is available but empty
       ---@type string
       default_context = "",

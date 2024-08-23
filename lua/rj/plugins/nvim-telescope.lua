@@ -19,7 +19,6 @@ local M = {
 function M.config()
   local telescope = require("telescope")
   local actions = require("telescope.actions")
-  local icons = require("rj.icons")
 
   require("project_nvim").setup({
     ---@usage set to false to disable project.nvim.
@@ -57,7 +56,7 @@ function M.config()
   telescope.setup({
     defaults = {
       initial_mode = "normal",
-      prompt_prefix = icons.ui.Telescope .. " ",
+      prompt_prefix = " ",
       selection_caret = " ",
       path_display = { "smart" },
       file_ignore_patterns = {
