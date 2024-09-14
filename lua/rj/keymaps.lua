@@ -73,12 +73,12 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 
 --keymaps for toggleterm
-keymap("n", "<M-1>", "<cmd>ToggleTerm direction=horizontal size=12<cr>", opts)
-keymap("t", "<M-1>", "<cmd>ToggleTerm direction=horizontal size=12<cr>", opts)
-keymap("n", "<M-2>", "<cmd>ToggleTerm direction=vertical size=50<cr>", opts)
-keymap("t", "<M-2>", "<cmd>ToggleTerm direction=vertical size=50<cr>", opts)
-keymap("n", "<M-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
-keymap("t", "<M-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
+keymap("n", "<C-1>", "<cmd>ToggleTerm direction=horizontal size=12<cr>", opts)
+keymap("t", "<C-1>", "<cmd>ToggleTerm direction=horizontal size=12<cr>", opts)
+keymap("n", "<C-2>", "<cmd>ToggleTerm direction=vertical size=50<cr>", opts)
+keymap("t", "<C-2>", "<cmd>ToggleTerm direction=vertical size=50<cr>", opts)
+keymap("n", "<C-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
+keymap("t", "<C-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
 
 --keymaps for tabs
 keymap("n", "<M-l>", "<cmd>tabnext<CR>", opts)
