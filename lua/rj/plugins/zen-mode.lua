@@ -29,12 +29,13 @@ function M.config()
         font = "15", -- font size
       },
     },
-    on_open = function()
-      vim.g.cmp_toggle = false
+    on_open = function(_)
+      vim.o.laststatus = 2
+      require("lualine").hide()
     end,
     on_close = function()
-      -- require("lsp-inlayhints").toggle()
-      vim.g.cmp_toggle = true
+      vim.o.laststatus = 3
+      require("lualine").hide({ unhide = true })
     end,
   })
 end

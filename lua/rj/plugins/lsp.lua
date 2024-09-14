@@ -42,7 +42,7 @@ return {
   },
   {
     "mrcjkb/rustaceanvim",
-    version = "^4", -- Recommended
+    version = "^5",
     ft = { "rust" },
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",

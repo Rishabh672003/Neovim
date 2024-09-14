@@ -40,7 +40,7 @@ function M.config()
       "pyright",
       "tailwindcss",
       "taplo",
-      "tsserver",
+      "ts_ls",
       "yamlls",
 
       -- debug adapters

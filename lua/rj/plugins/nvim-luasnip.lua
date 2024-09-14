@@ -39,9 +39,8 @@ function M.config()
       fmt(
         [[
 if err != nil {{
-  panic(err)
-  {}
-}}
+    log.Fatal(err)
+}}{}
         ]],
         {
           i(1),
