@@ -12,7 +12,7 @@ local servers = {
   lemminx = "lemminx",
   marksman = "marksman",
   taplo = "taplo",
-  tsserver = "typescript-language-server",
+  ts_ls = "typescript-language-server",
 }
 for k, v in pairs(servers) do
   if vim.fn.executable(v) == 1 then

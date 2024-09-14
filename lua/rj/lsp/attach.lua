@@ -9,9 +9,13 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 })
 
 local function attach_navic(client, bufnr)
-  vim.g.navic_silence = true
-  local navic = require("nvim-navic")
-  navic.attach(client, bufnr)
+  local ok, navic = pcall(require, "nvim-navic")
+  if ok then
+    vim.g.navic_silence = true
+    navic.attach(client, bufnr)
+  else
+    vim.notify("Navic not found")
+  end
 end
 
 local function lsp_keymaps()

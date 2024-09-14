@@ -58,7 +58,6 @@ conform.setup({
     if bufname:match("/node_modules/") then
       return
     end
-    -- ...additional logic...
     return { timeout_ms = 1000, lsp_fallback = true }, myCallback()
   end,
 
@@ -66,7 +65,7 @@ conform.setup({
     pyfix_imports = {
       command = "pyfix-imports",
       args = { "$FILENAME" },
-      cwd = require("conform.util").root_file({ "requirements.txt", "pyproject.toml" }),
+      cwd = require("conform.util").root_file({ "requirements.txt", "pyproject.toml", ".git" }),
     },
   },
 })

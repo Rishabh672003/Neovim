@@ -26,7 +26,7 @@ if vim.fn.executable("clangd") == 1 then
           ParameterNames = true,
           DeducedTypes = true,
         },
-        fallbackFlags = { "-std=c++20" },
+        fallbackFlags = { "-std=c++23" },
       },
     },
   })
