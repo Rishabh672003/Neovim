@@ -27,9 +27,12 @@ autocmd({ "FileType" }, {
 autocmd({ "FileType" }, {
   pattern = { "TelescopePrompt", "neo-tree-popup", "oil" },
   callback = function()
-    require("cmp").setup.buffer({
-      completion = { autocomplete = false },
-    })
+    local ok , cmp = pcall(require, "cmp")
+    if ok then
+      cmp.setup.buffer({
+        completion = { autocomplete = false },
+      })
+    end
   end,
 })
 --
@@ -47,11 +50,14 @@ autocmd({ "FileType" }, {
 autocmd({ "FileType" }, {
   pattern = { "cpp" },
   callback = function()
-    require("cmp").setup.buffer({
-      experimental = {
-        ghost_text = true,
-      },
-    })
+    local ok , cmp = pcall(require, "cmp")
+    if ok then
+      cmp.setup.buffer({
+        experimental = {
+          ghost_text = true,
+        },
+      })
+    end
   end,
 })
 

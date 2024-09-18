@@ -4,7 +4,7 @@ local M = {
     "InsertEnter",
     "CmdlineEnter",
   },
-  enabled = true,
+  enabled = false,
   dependencies = {
     "neovim/nvim-lspconfig",
     "hrsh7th/cmp-nvim-lsp",

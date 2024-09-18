@@ -44,9 +44,9 @@ return {
     "mrcjkb/rustaceanvim",
     version = "^5",
     ft = { "rust" },
-    dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
-    },
+    -- dependencies = {
+    --   "hrsh7th/cmp-nvim-lsp",
+    -- },
     config = function()
       require("rj.lsp.rustaceanvim")
     end,
