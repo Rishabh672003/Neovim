@@ -180,6 +180,10 @@ function M.config()
         theme = "dropdown",
         previewer = true,
       },
+      oldfiles = {
+        theme = "dropdown",
+        previewer = true,
+      },
       live_grep = {
         theme = "dropdown",
       },
