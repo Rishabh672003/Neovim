@@ -1,7 +1,26 @@
 local M = {
   "echasnovski/mini.indentscope",
-  event = { "BufReadPost", "BufNewFile" },
   enabled = false,
+  event = { "BufReadPost", "BufNewFile" },
+  init = function()
+    vim.api.nvim_create_autocmd("FileType", {
+      desc = "Disable indentscope for certain filetypes",
+      pattern = {
+        "help",
+        "Trouble",
+        "trouble",
+        "lazy",
+        "mason",
+        "notify",
+        "better_term",
+        "toggleterm",
+        "lazyterm",
+      },
+      callback = function()
+        vim.b.miniindentscope_disable = true
+      end,
+    })
+  end,
   version = false,
 }
 

@@ -20,6 +20,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 require("lazy").setup("rj.plugins", {
+  change_detection = {
+    enabled = true,
+    notify = false,
+  },
   git = {
     log = { "--since=3 days ago" }, -- show commits from the last 3 days
     timeout = 600,
@@ -33,43 +37,7 @@ require("lazy").setup("rj.plugins", {
       paths = {
         vim.fn.expand("~") .. "/.config/nvim",
       },
-      disabled_plugins = {
-        "loaded_python3_provider",
-        "python_provider",
-        "node_provider",
-        "ruby_provider",
-        "perl_provider",
-        "2html_plugin",
-        "getscript",
-        "getscriptPlugin",
-        "gzip",
-        "tar",
-        "tarPlugin",
-        "rrhelper",
-        "vimball",
-        "vimballPlugin",
-        "zip",
-        "zipPlugin",
-        "tutor",
-        "rplugin",
-        "logiPat",
-        "netrwSettings",
-        "netrwFileHandlers",
-        "syntax",
-        "synmenu",
-        "optwin",
-        "compiler",
-        "bugreport",
-        -- "ftplugin",
-        -- "load_ftplugin",
-        "indent_on",
-        "netrwPlugin",
-        "tohtml",
-        -- "man",
-        "matchit",
-        "editorconfig",
-        "matchparen",
-      },
+      disabled_plugins = {},
     },
   },
 })

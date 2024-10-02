@@ -1,58 +1,12 @@
 local M = {
-  "ahmedkhalf/project.nvim",
-  event = "VeryLazy",
-  dependencies = {
-    { "nvim-lua/plenary.nvim" },
-    {
-      "nvim-telescope/telescope.nvim",
-      cmd = { "Telescope" },
-      dependencies = {
-        {
-          "nvim-telescope/telescope-file-browser.nvim",
-          cmd = "Telescope file_browser",
-        },
-      },
-    },
-  },
+  "nvim-telescope/telescope.nvim",
+  lazy = false,
 }
 
 function M.config()
   local telescope = require("telescope")
   local actions = require("telescope.actions")
-
-  require("project_nvim").setup({
-    ---@usage set to false to disable project.nvim.
-    --- This is on by default since it's currently the expected behavior.
-    active = true,
-    on_config_done = nil,
-    ---@usage set to true to disable setting the current-woriking directory
-    --- Manual mode doesn't automatically change your root directory, so you have
-    --- the option to manually do so using `:ProjectRoot` command.
-    manual_mode = false,
-    ---@usage Methods of detecting the root directory
-    --- Allowed values: **"lsp"** uses the native neovim lsp
-    --- **"pattern"** uses vim-rooter like glob pattern matching. Here
-    --- order matters: if one is not detected, the other is used as fallback. You
-    --- can also delete or rearangne the detection methods.
-    -- detection_methods = { "lsp", "pattern" }, -- NOTE: lsp detection will get annoying with multiple langs in one project
-    detection_methods = { "pattern" },
-    ---@usage patterns used to detect root dir, when **"pattern"** is in detection_methods
-    patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "LICENSE", ".venv", "go.mod" },
-    ---@ Show hidden files in telescope when searching for files in a project
-    show_hidden = false,
-    ---@usage When set to false, you will get a message when project.nvim changes your directory.
-    -- When set to false, you will get a message when project.nvim changes your directory.
-    silent_chdir = true,
-    ---@usage list of lsp client names to ignore when using **lsp** detection. eg: { "efm", ... }
-    ignore_lsp = {},
-    ---@type string
-    ---@usage path to store the project history for use in telescope
-    datapath = vim.fn.stdpath("data"),
-  })
-
-  telescope.load_extension("projects")
-  telescope.load_extension("file_browser")
-
+  require("telescope").load_extension("projects")
   telescope.setup({
     defaults = {
       initial_mode = "normal",
@@ -217,6 +171,10 @@ function M.config()
       git_branches = {
         theme = "dropdown",
       },
+      git_branches = {
+        theme = "dropdown",
+        previewer = true,
+      },
       -- Default configuration for builtin pickers goes here:
       -- picker_name = {
       --   picker_config_key = value,
@@ -226,6 +184,10 @@ function M.config()
       -- builtin picker
     },
     extensions = {
+      projects = {
+        theme = "dropdown",
+        preview = false,
+      },
       file_browser = {
         theme = "ivy",
         -- disables netrw and use telescope-file-browser in its place
@@ -244,6 +206,9 @@ function M.config()
       },
     },
   })
-end
 
+  -- vim.keymap.set("n", "<leader>p", function()
+  --   require("telescope").extensions.projects.projects(require("telescope.themes").get_dropdown({ previewer = false }))
+  -- end, { silent = true })
+end
 return M

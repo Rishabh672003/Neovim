@@ -24,87 +24,6 @@ autocmd({ "FileType" }, {
   end,
 })
 
-autocmd({ "FileType" }, {
-  pattern = { "TelescopePrompt", "neo-tree-popup", "oil" },
-  callback = function()
-    require("cmp").setup.buffer({
-      completion = { autocomplete = false },
-    })
-  end,
-})
---
--- vim.cmd [[
--- au BufEnter,BufWinEnter,WinEnter,CmdwinEnter *
---                        \ call s:disable_statusline('NvimTree')
--- fun! s:disable_statusline(bn)
---    if a:bn == bufname('%')
---        set laststatus=0
---    else
---        set laststatus=2
---    endif
--- endfunction ]]
-
-autocmd({ "FileType" }, {
-  pattern = { "cpp" },
-  callback = function()
-    require("cmp").setup.buffer({
-      experimental = {
-        ghost_text = true,
-      },
-    })
-  end,
-})
-
-autocmd({ "VimResized" }, {
-  callback = function()
-    vim.cmd("tabdo wincmd =")
-  end,
-})
-
-autocmd({ "TextYankPost" }, {
-  callback = function()
-    vim.highlight.on_yank({ higroup = "Visual", timeout = 200 })
-  end,
-})
-
-autocmd({ "VimEnter" }, {
-  callback = function()
-    vim.cmd("hi link illuminatedWord LspReferenceText")
-  end,
-})
-
-autocmd({ "BufWinEnter" }, {
-  callback = function()
-    local line_count = vim.api.nvim_buf_line_count(0)
-    if line_count >= 10000 then
-      vim.cmd("IlluminatePauseBuf")
-    end
-  end,
-})
-
-autocmd({ "FileType" }, {
-  pattern = { "neo-tree", "alpha", "dashboard", "man" },
-  callback = function()
-    vim.opt_local.number = false
-    vim.opt_local.relativenumber = false
-  end,
-})
-
-autocmd({ "BufReadPost" }, {
-  pattern = "*.pdf",
-  callback = function(ev)
-    local filename = ev.file
-    vim.fn.jobstart({ "xdg-open", filename }, { detach = true })
-    vim.api.nvim_buf_delete(0, {})
-  end,
-})
-
-vim.filetype.add({
-  extension = {
-    rasi = "rasi",
-    conf = "conf",
-  },
-})
 
 -- make a command to clear registers
 vim.cmd([[
@@ -117,17 +36,19 @@ vim.api.nvim_create_user_command("Grep", function(opts)
   vim.cmd("Trouble quickfix focus")
 end, { nargs = 1 })
 
--- Hyprlang LSP
-vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-  callback = function(event)
-    local filepath = vim.fn.expand("<afile>:p")
-    if filepath:match("/hypr/") then
-      -- vim.notify(string.format("starting hyprls for %s", vim.inspect(event)))
-      vim.lsp.start({
-        name = "hyprlang",
-        cmd = { "hyprls" },
-        root_dir = vim.fn.getcwd(),
-      })
+vim.api.nvim_create_user_command("Format", function()
+  local function myCallback(err)
+    if err then
+      vim.notify("Error during formatting: ", err)
+    else
+      vim.notify("Formatting completed successfully.")
     end
-  end,
+  end
+  require("conform").format({
+    lsp_fallback = true,
+    async = false,
+    timeout_ms = 1000,
+  }, myCallback())
+end, {
+desc = "format",
 })
