@@ -21,7 +21,7 @@ for k, v in pairs(servers) do
       capabilities = require("rj.lsp.attach").capabilities,
     })
   else
-    vim.notify("LSP servers are not Installed.")
+    vim.notify(string.format("LSP server: %s is not Installed.", k))
     vim.notify("Run - :MasonToolsInstall to install all the LSP")
   end
 end

@@ -1,6 +1,7 @@
 local M = {
   "nvim-java/nvim-java",
   ft = "java",
+  enabled = false,
 }
 
 M.dependencies = {
