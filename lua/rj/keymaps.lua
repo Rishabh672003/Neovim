@@ -56,7 +56,6 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 
 -- Telescope --
-keymap("n", "<leader>f", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>p", function()
   require("telescope").extensions.projects.projects(require("telescope.themes").get_dropdown({ previewer = false }))
 end, opts)
