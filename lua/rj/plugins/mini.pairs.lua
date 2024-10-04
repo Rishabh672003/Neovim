@@ -2,7 +2,7 @@ local M = {
   'echasnovski/mini.pairs', 
   version = false,
   lazy = true,
-  event = { "InsertEnter", "CmdLineEnter"}
+  event = { "InsertEnter"}
 }
 
 M.config = function()

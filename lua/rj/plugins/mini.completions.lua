@@ -2,7 +2,7 @@ local M = {
   'echasnovski/mini.completion',
   version = false,
   lazy = false,
-  enabled = false,
+  enabled = true,
 }
 
 M.config = function()

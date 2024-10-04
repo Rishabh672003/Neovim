@@ -1,14 +1,14 @@
 local M = {
   "ahmedkhalf/project.nvim",
-  -- event = "VeryLazy",
   lazy = true,
   dependencies = {
     { "nvim-lua/plenary.nvim" },
-    { "nvim-telescope/telescope.nvim"},
+    { "nvim-telescope/telescope.nvim" },
   },
 }
 
 function M.config()
+  require("telescope").load_extension("projects")
   require("project_nvim").setup({
     ---@usage set to false to disable project.nvim.
     --- This is on by default since it's currently the expected behavior.

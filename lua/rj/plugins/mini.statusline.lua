@@ -9,6 +9,7 @@ function M.config()
     ["alpha"] = true,
     ["man"] = true,
     ["oil"] = true,
+    ["dashboard"] = true,
   }
   require("mini.statusline").setup({
     content = {

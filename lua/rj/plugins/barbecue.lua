@@ -1,6 +1,6 @@
 local M = {
   "utilyre/barbecue.nvim",
-  event = { "InsertEnter", "BufReadPre", "BufAdd", "BufNew" },
+  event = { "InsertEnter", "BufReadPre"},
   enabled = true,
   dependencies = {
     {

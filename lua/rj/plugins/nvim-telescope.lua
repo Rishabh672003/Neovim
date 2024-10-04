@@ -1,12 +1,15 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  lazy = false,
+  lazy = true,
+  enabled = true,
+  keys = {
+    {"<leader>f", "<cmd>Telescope find_files<cr>"}
+  }
 }
 
 function M.config()
   local telescope = require("telescope")
   local actions = require("telescope.actions")
-  require("telescope").load_extension("projects")
   telescope.setup({
     defaults = {
       initial_mode = "normal",
@@ -186,7 +189,7 @@ function M.config()
     extensions = {
       projects = {
         theme = "dropdown",
-        preview = false,
+        previewer = true,
       },
       file_browser = {
         theme = "ivy",
@@ -206,9 +209,6 @@ function M.config()
       },
     },
   })
-
-  -- vim.keymap.set("n", "<leader>p", function()
-  --   require("telescope").extensions.projects.projects(require("telescope.themes").get_dropdown({ previewer = false }))
-  -- end, { silent = true })
+  require("telescope").load_extension("projects")
 end
 return M
