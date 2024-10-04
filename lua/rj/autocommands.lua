@@ -1,11 +1,8 @@
 local autocmd = vim.api.nvim_create_autocmd
 
-autocmd({ "FileType" }, {
-  pattern = { "c", "go", "java", "cpp", "py", "sh" },
-  callback = function()
-    vim.opt_local.shiftwidth = 4
-    vim.opt_local.tabstop = 4
-  end,
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "dashboard",
+    command = "setlocal nocursorline"
 })
 
 autocmd({ "FileType" }, {
@@ -14,6 +11,11 @@ autocmd({ "FileType" }, {
     vim.keymap.set("n", "q", "<cmd>close<CR>", { silent = true, buffer = true })
     vim.api.nvim_set_option_value("buflisted", false, { buf = 0 })
   end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "go", "c", "cpp", "rust" },
+    command = "setlocal tabstop=4 shiftwidth=4"
 })
 
 autocmd({ "FileType" }, {
@@ -35,20 +37,3 @@ vim.api.nvim_create_user_command("Grep", function(opts)
   vim.cmd(command)
   vim.cmd("Trouble quickfix focus")
 end, { nargs = 1 })
-
-vim.api.nvim_create_user_command("Format", function()
-  local function myCallback(err)
-    if err then
-      vim.notify("Error during formatting: ", err)
-    else
-      vim.notify("Formatting completed successfully.")
-    end
-  end
-  require("conform").format({
-    lsp_fallback = true,
-    async = false,
-    timeout_ms = 1000,
-  }, myCallback())
-end, {
-desc = "format",
-})
