@@ -1,7 +1,8 @@
 local M = { 
-  'echasnovski/mini.pairs', 
+  'echasnovski/mini.pairs',
   version = false,
   lazy = true,
+  enabled = true,
   event = { "InsertEnter"}
 }
 

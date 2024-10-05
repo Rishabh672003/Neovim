@@ -6,9 +6,7 @@ local M = {
 }
 function M.config()
   local blocked_filetypes = {
-    ["alpha"] = true,
     ["man"] = true,
-    ["oil"] = true,
     ["dashboard"] = true,
   }
   require("mini.statusline").setup({

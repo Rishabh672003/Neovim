@@ -3,7 +3,8 @@ local M = {
   lazy = true,
   enabled = true,
   keys = {
-    {"<leader>f", "<cmd>Telescope find_files<cr>"}
+    {"<leader>f", "<cmd>Telescope find_files<cr>"},
+    {"<leader>F", "<cmd>Telescope live_grep<cr>"}
   }
 }
 
