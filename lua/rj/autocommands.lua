@@ -14,7 +14,7 @@ autocmd({ "FileType" }, {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "go", "c", "cpp", "rust" },
+    pattern = { "go", "c", "cpp", "rust", "java" },
     command = "setlocal tabstop=4 shiftwidth=4"
 })
 

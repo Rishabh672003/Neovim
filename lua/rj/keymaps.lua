@@ -61,16 +61,21 @@ keymap("n", "<leader>p", function()
 end, opts)
 
 -- Quality of Life stuff --
-keymap({ "n", "s", "v" }, "<leader>yy", '"+y', { desc = "Yank to clipboard" }, opts)
-keymap({ "n", "s", "v" }, "<leader>yY", '"+yy', { desc = "Yank line to clipboard" }, opts)
+keymap({ "n", "s", "v" }, "<leader>yy", '"+y', { desc = "Yank to clipboard" })
+keymap({ "n", "s", "v" }, "<leader>yY", '"+yy', { desc = "Yank line to clipboard" })
 keymap({ "n", "s", "v" }, "<leader>yp", '"+p', { desc = "Paste from clipboard" })
 keymap("n", "<leader>w", function()
   vim.cmd("silent! write!")
   vim.notify("File saved")
 end, opts)
+keymap('n', '<leader>va', '<cmd>norm! mmggVG<cr>', opts)
+keymap('n', '<leader>vs', '<cmd>%y<cr>', opts)
+keymap('n', '<leader>vx', '<cmd>norm! ggVGx<cr>', opts)
 keymap("n", "<leader>q", "<cmd>q!<cr>", opts)
+keymap("n", "<leader>c", "<cmd>close!<cr>", opts)
 
 keymap("n", "-", "<cmd>Oil --float<CR>", { desc = "Open parent directory" })
+keymap("n", "<leader>j", "<cmd>Jaq<CR>", opts)
 
 vim.cmd([[
 " Using arrow keys is far too ingrained in my muscle memory.
