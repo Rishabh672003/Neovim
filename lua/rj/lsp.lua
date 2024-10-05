@@ -70,7 +70,7 @@ capabilities.textDocument.foldingRange = {
   dynamicRegistration = true,
   lineFoldingOnly = true,
 }
-capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.snippetSupport = false
 -- }}}
 
 -- Servers definition {{{
@@ -229,7 +229,7 @@ local servers = {
     name = "cssls",
     cmd = { "vscode-css-language-server", "--stdio" },
     root_dir = vim.fs.root(0, { "package.json", ".git" }),
-    filetypes = { "css", "scss", "less" },
+    filetypes = { "css", "scss" },
     capabilities = capabilities,
     init_options = {
       provideFormatter = true,
@@ -280,7 +280,7 @@ local servers = {
       "jade",
       "leaf",
       "liquid",
-      "markdown",
+      -- "markdown",
       "mdx",
       "mustache",
       "njk",
@@ -377,10 +377,22 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     keymap("n", "gI", "<cmd>Telescope lsp_implementations<CR>", opts)
     keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    keymap("n", "<C-n>", "<cmd>ClangdSwitchSourceHeader<CR>", opts)
     keymap("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
     keymap("n", "gR", '<cmd>lua require("trouble").toggle("lsp_references")<CR>', opts)
     keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    keymap('n', '<leader>lF', '<cmd>FormatToggle<cr>', opts)
+    keymap('n', '<leader>lI', '<cmd>Mason<cr>', opts)
+    keymap('n', '<leader>lS', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', opts)
+    keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+    keymap('n', '<leader>lf', '<cmd>Format<cr>', opts)
+    keymap('n', '<leader>lh', ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<cr>', opts)
+    keymap('n', '<leader>li', '<cmd>LspInfo<cr>', opts)
+    keymap('n', '<leader>lj', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
+    keymap('n', '<leader>lk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
+    keymap('n', '<leader>ll', '<cmd>lua vim.lsp.codelens.run()<cr>', opts)
+    keymap('n', '<leader>lq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', opts)
+    keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+    keymap('n', '<leader>ls', '<cmd>Telescope lsp_document_symbols<cr>', opts)
   end,
 })
 -- }}}
