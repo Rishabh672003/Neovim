@@ -37,7 +37,22 @@ require("lazy").setup("rj.plugins", {
       paths = {
         vim.fn.expand("~") .. "/.config/nvim",
       },
-      disabled_plugins = {},
+      disabled_plugins = {
+        "editorconfig",
+        "gzip",
+        "man.lua",
+        "matchit",
+        "matchparen",
+        "netrwPlugin",
+        "osc52",
+        "rplugin",
+        "shada",
+        "spellfile",
+        "tarPlugin",
+        "tohtml",
+        "tutor",
+        "zipPlugin",
+      },
     },
   },
 })
