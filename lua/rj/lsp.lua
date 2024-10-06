@@ -151,9 +151,9 @@ local servers = {
   -- Go {{{
   gopls = {
     name = "gopls",
-    cmd = {"gopls"},
-    root_dir = vim.fs.root(0, {".git", "go.sum", "go.mod"}),
-    filetypes = {"go", "gomod", "gowork", "gotmpl"},
+    cmd = { "gopls" },
+    root_dir = vim.fs.root(0, { ".git", "go.sum", "go.mod" }),
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
     capabilities = capabilities,
     settings = {
       gopls = {
@@ -380,19 +380,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
     keymap("n", "gR", '<cmd>lua require("trouble").toggle("lsp_references")<CR>', opts)
     keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    keymap('n', '<leader>lF', '<cmd>FormatToggle<cr>', opts)
-    keymap('n', '<leader>lI', '<cmd>Mason<cr>', opts)
-    keymap('n', '<leader>lS', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', opts)
-    keymap('n', '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
-    keymap('n', '<leader>lf', '<cmd>Format<cr>', opts)
-    keymap('n', '<leader>lh', ':lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<cr>', opts)
-    keymap('n', '<leader>li', '<cmd>LspInfo<cr>', opts)
-    keymap('n', '<leader>lj', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
-    keymap('n', '<leader>lk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
-    keymap('n', '<leader>ll', '<cmd>lua vim.lsp.codelens.run()<cr>', opts)
-    keymap('n', '<leader>lq', '<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>', opts)
-    keymap('n', '<leader>lr', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
-    keymap('n', '<leader>ls', '<cmd>Telescope lsp_document_symbols<cr>', opts)
+    keymap("n", "<leader>lF", "<cmd>FormatToggle<cr>", opts)
+    keymap("n", "<leader>lI", "<cmd>Mason<cr>", opts)
+    keymap("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", opts)
+    keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+    keymap("n", "<leader>lf", "<cmd>Format<cr>", opts)
+    keymap("n", "<leader>lh", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<cr>", opts)
+    keymap("n", "<leader>li", "<cmd>LspInfo<cr>", opts)
+    keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
+    keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
+    keymap("n", "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
+    keymap("n", "<leader>lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", opts)
+    keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+    keymap("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", opts)
   end,
 })
 -- }}}
@@ -578,7 +578,15 @@ if vim.fn.expand("%:e") ~= "rs" then
   for _, config in pairs(servers) do
     vim.api.nvim_create_autocmd("FileType", {
       pattern = config.filetypes,
-      command = "LspStart",
+      callback = function(ev)
+        vim.cmd("LspStart")
+        -- local filetype = vim.fn.getbufvar(ev.bufnr, "&filetype")
+        -- if filetype == "rust" or filetype == "go" then
+        --   vim.lsp.inlay_hint.enable(false)
+        -- else
+        --   vim.lsp.inlay_hint.enable(true)
+        -- end
+      end,
     })
   end
 end
