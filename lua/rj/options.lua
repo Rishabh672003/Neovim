@@ -39,7 +39,6 @@ local options = {
   spelllang = "en_us", -- sets the language for spell checking
   textwidth = 80, -- limits the width of text that is being inserted
   foldexpr = "v:lua.vim.treesitter.foldexpr()", -- specifies the expression used to calculate folds
-  foldtext = "v:lua.vim.treesitter.foldtext()", -- specifies the function used to generate the text displayed for a closed fold
   indentexpr = "nvim_treesitter#indent()", -- specifies the function used to calculate the indentation level
   fillchars = { eob = " " }, -- defines the characters used for certain parts of the screen
 }
@@ -48,6 +47,8 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+vim.opt.foldtext = ""
+vim.opt.fillchars = { fold = ' ' }
 vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.opt.iskeyword:append("-")
 vim.opt.whichwrap:append("<,>,[,],h,l")
