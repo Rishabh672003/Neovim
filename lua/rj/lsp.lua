@@ -172,8 +172,7 @@ local servers = {
     },
   },
   -- }}}
-  -- -- C/C++ {{{
-  -- -- NOTE: the CORES environment variable is declared in my shell configuration
+  -- C/C++ {{{
   clangd = {
     name = "clangd",
     cmd = {

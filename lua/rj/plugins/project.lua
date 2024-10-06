@@ -1,6 +1,7 @@
 local M = {
   "ahmedkhalf/project.nvim",
   lazy = true,
+  event = { "VeryLazy" },
   dependencies = {
     { "nvim-lua/plenary.nvim" },
     { "nvim-telescope/telescope.nvim" },

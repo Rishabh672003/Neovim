@@ -1,12 +1,39 @@
 local M = {
   "echasnovski/mini.completion",
   version = false,
-  lazy = false,
+  event = { "VeryLazy", "LspAttach" },
+  lazy = true,
   enabled = true,
 }
 
 M.config = function()
-  require("mini.completion").setup()
+  require("mini.completion").setup({
+    delay = { completion = 100, info = 100, signature = 50 },
+
+    window = {
+      info = { height = 25, width = 80, border = "rounded" },
+      signature = { height = 25, width = 80, border = "rounded" },
+    },
+
+    -- Way of how module does LSP completion
+    lsp_completion = {
+      -- `source_func` should be one of 'completefunc' or 'omnifunc'.
+      source_func = "completefunc",
+
+      -- `auto_setup` should be boolean indicating if LSP completion is set up
+      -- on every `BufEnter` event.
+      auto_setup = true,
+    },
+    mappings = {
+      force_twostep = "<C-Space>", -- Force two-step completion
+      force_fallback = "<A-Space>", -- Force fallback completion
+    },
+
+    -- Whether to set Vim's settings for better experience (modifies
+    -- `shortmess` and `completeopt`)
+    set_vim_settings = true,
+  })
+
   -- mini.completions
   local keycode = vim.keycode or function(x)
     return vim.api.nvim_replace_termcodes(x, true, true, true)
@@ -29,7 +56,6 @@ M.config = function()
       return keys["cr"]
     end
   end
-  vim.keymap.set("i", "<CR>", "v:lua._G.cr_action()", { expr = true })
 end
 
 return M
