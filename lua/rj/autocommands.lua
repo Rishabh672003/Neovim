@@ -1,8 +1,8 @@
 local autocmd = vim.api.nvim_create_autocmd
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = "dashboard",
-    command = "setlocal nocursorline"
+  pattern = "dashboard",
+  command = "setlocal nocursorline",
 })
 
 autocmd({ "FileType" }, {
@@ -14,8 +14,8 @@ autocmd({ "FileType" }, {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "go", "c", "cpp", "rust", "java" },
-    command = "setlocal tabstop=4 shiftwidth=4"
+  pattern = { "go", "c", "cpp", "rust", "java" },
+  command = "setlocal tabstop=4 shiftwidth=4",
 })
 
 autocmd({ "FileType" }, {
@@ -25,7 +25,6 @@ autocmd({ "FileType" }, {
     vim.opt_local.spell = true
   end,
 })
-
 
 -- make a command to clear registers
 vim.cmd([[
@@ -37,3 +36,16 @@ vim.api.nvim_create_user_command("Grep", function(opts)
   vim.cmd(command)
   vim.cmd("Trouble quickfix focus")
 end, { nargs = 1 })
+
+-- Define an autocommand after LspAttach
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local bufnr = args.buf
+    local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+    if filetype == "rust" or filetype == "go" then
+      vim.lsp.inlay_hint.enable(false)
+    else
+      vim.lsp.inlay_hint.enable(true)
+    end
+  end,
+})

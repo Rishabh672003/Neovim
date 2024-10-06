@@ -25,7 +25,7 @@ local splash_screen = vim.schedule_wrap(function()
     [[                                                ░    ]],
   }
   local text = {
-    "", "", "", "", "", "",
+    "", "",
     [[Everything will be just fine in the end]]
   }
   local arg = vim.fn.argv(0)
