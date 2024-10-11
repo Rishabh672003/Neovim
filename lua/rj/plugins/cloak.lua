@@ -1,7 +1,8 @@
 local M = {
   "laytan/cloak.nvim",
   enabled = true,
-  lazy = false,
+  lazy = true,
+  ft = { "sh" },
 }
 
 function M.config()
