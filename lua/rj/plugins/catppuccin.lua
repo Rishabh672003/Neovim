@@ -1,12 +1,18 @@
-local M = {
-  "catppuccin/nvim",
-  name = "catppuccin",
-  lazy = false,
-  build = ":CatppuccinCompile",
-  priority = 1000,
-}
+-- Use 'mini.deps'. `now()` and `later()` are helpers for a safe two-stage
+-- startup and are optional.
+local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
 
-function M.config()
+now(function()
+  add({
+    source = "catppuccin/nvim",
+    name = "catppuccin",
+    hooks = {
+      post_checkout = function()
+        vim.cmd("CatppuccinCompile")
+      end,
+    },
+  })
+
   require("catppuccin").setup({
     flavour = "mocha", -- latte, frappe, macchiato, mocha
     background = {
@@ -45,16 +51,30 @@ function M.config()
       FloatBorder = { fg = "#89b4fa", bg = "none" },
     },
   })
+  vim.cmd("colorscheme catppuccin-mocha")
+end)
 
-  M.name = "catppuccin"
-  local status_ok, _ = pcall(vim.cmd.colorscheme, M.name)
-  if not status_ok then
-    return vim.notify("Catppuccin theme not found")
-  end
-end
-
-vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
-vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
-vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
-
-return M
+-- later(function()
+--   -- Use other plugins with `add()`. It ensures plugin is available in current
+--   -- session (installs if absent)
+--   add({
+--     source = 'neovim/nvim-lspconfig',
+--     -- Supply dependencies near target plugin
+--     depends = { 'williamboman/mason.nvim' },
+--   })
+-- end)
+--
+-- later(function()
+--   add({
+--     source = 'nvim-treesitter/nvim-treesitter',
+--     -- Use 'master' while monitoring updates in 'main'
+--     checkout = 'master',
+--     monitor = 'main',
+--     -- Perform action after every checkout
+--   })
+--   -- Possible to immediately execute code which depends on the added plugin
+--   require('nvim-treesitter.configs').setup({
+--     ensure_installed = { 'lua', 'vimdoc' },
+--     highlight = { enable = true },
+--   })
+-- end)

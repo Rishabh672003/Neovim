@@ -1,5 +1,10 @@
 local opts = { silent = true }
 
+--Remap space as leader key
+vim.keymap.set("", "<Space>", "<Nop>", { silent = true })
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- Shorten function name
 local keymap = vim.keymap.set
 
@@ -55,11 +60,6 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 
--- Telescope --
-keymap("n", "<leader>p", function()
-  require("telescope").extensions.projects.projects(require("telescope.themes").get_dropdown({ previewer = false }))
-end, opts)
-
 -- Quality of Life stuff --
 keymap({ "n", "s", "v" }, "<leader>yy", '"+y', { desc = "Yank to clipboard" })
 keymap({ "n", "s", "v" }, "<leader>yY", '"+yy', { desc = "Yank line to clipboard" })
@@ -72,7 +72,7 @@ keymap('n', '<leader>va', '<cmd>norm! mmggVG<cr>', opts)
 keymap('n', '<leader>vs', '<cmd>%y<cr>', opts)
 keymap('n', '<leader>vx', '<cmd>norm! ggVGx<cr>', opts)
 keymap("n", "<leader>q", "<cmd>q!<cr>", opts)
-keymap("n", "<leader>c", "<cmd>close!<cr>", opts)
+keymap("n", "<leader>c", "<cmd>bd!<cr>", opts)
 
 keymap("n", "-", "<cmd>Oil --float<CR>", { desc = "Open parent directory" })
 keymap("n", "<leader>j", "<cmd>Jaq<CR>", opts)

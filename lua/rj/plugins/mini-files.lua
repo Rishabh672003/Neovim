@@ -1,0 +1,6 @@
+Later(function()
+  require("mini.files").setup()
+  vim.keymap.set("n", "<leader>e", function()
+    MiniFiles.open()
+  end, { silent = true, desc = "opens mini.files" })
+end)

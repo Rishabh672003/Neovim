@@ -1,15 +1,7 @@
-local M = {
-  "stevearc/conform.nvim",
-  event = { "BufReadPost", "BufNewFile" },
-  enabled = true,
-  lazy = true,
-  init = function()
-    vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-  end,
-  keys = "Format",
-}
-
-M.config = function()
+Later(function()
+  Add({
+    source = "stevearc/conform.nvim",
+  })
   local conform = require("conform")
 
   conform.setup({
@@ -115,7 +107,5 @@ M.config = function()
     desc = "Toggle autoformat-on-save",
   })
 
-  vim.keymap.set("n", "<leader>lf", "<cmd>Format<cr>")
-end
-
-return M
+  vim.keymap.set("n", "<leader>lf", "<cmd>silent Format<cr>")
+end)

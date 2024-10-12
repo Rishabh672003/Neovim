@@ -1,10 +1,8 @@
-local M = {
-  "is0n/jaq-nvim",
-  cmd = "Jaq",
-  enabled = true,
-}
+Later(function()
+  Add({
+    source = "is0n/jaq-nvim",
+  })
 
-function M.config()
   require("jaq-nvim").setup({
     -- Commands used with 'Jaq'
     cmds = {
@@ -81,6 +79,4 @@ function M.config()
       },
     },
   })
-end
-
-return M
+end)

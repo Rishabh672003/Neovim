@@ -1,10 +1,4 @@
-local M = {
-  "echasnovski/mini.statusline",
-  version = false,
-  enabled = true,
-  lazy = false,
-}
-function M.config()
+Now(function()
   local blocked_filetypes = {
     ["man"] = true,
     ["dashboard"] = true,
@@ -37,6 +31,4 @@ function M.config()
     },
     use_icons = true,
   })
-end
-
-return M
+end)

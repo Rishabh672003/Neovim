@@ -11,7 +11,12 @@ end
 local splash_screen = vim.schedule_wrap(function()
   local xdg = vim.fn.fnamemodify(vim.fn.stdpath("config") --[[@as string]], ":h") .. "/"
   local header = {
-    "", "", "", "", "", "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
 
     [[  ███▄    █ ▓█████  ▒█████   ██▒   █▓ ██▓ ███▄ ▄███▓ ]],
     [[  ██ ▀█   █ ▓█   ▀ ▒██▒  ██▒▓██░   █▒▓██▒▓██▒▀█▀ ██▒ ]],
@@ -25,8 +30,9 @@ local splash_screen = vim.schedule_wrap(function()
     [[                                                ░    ]],
   }
   local text = {
-    "", "",
-    [[Everything will be just fine in the end]]
+    "",
+    "",
+    [[Everything will be just fine in the end]],
   }
   local arg = vim.fn.argv(0)
   if (vim.bo.ft ~= "lazy") and (vim.bo.ft ~= "netrw") and (arg == "") then

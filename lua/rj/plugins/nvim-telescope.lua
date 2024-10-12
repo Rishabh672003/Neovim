@@ -1,14 +1,8 @@
-local M = {
-  "nvim-telescope/telescope.nvim",
-  lazy = true,
-  enabled = true,
-  keys = {
-    {"<leader>f", "<cmd>Telescope find_files<cr>"},
-    {"<leader>F", "<cmd>Telescope live_grep<cr>"}
-  }
-}
-
-function M.config()
+Later(function()
+  Add({
+    source = "nvim-telescope/telescope.nvim",
+    depends = { "natecraddock/workspaces.nvim", "nvim-lua/plenary.nvim" },
+  })
   local telescope = require("telescope")
   local actions = require("telescope.actions")
   telescope.setup({
@@ -174,9 +168,6 @@ function M.config()
       },
       git_branches = {
         theme = "dropdown",
-      },
-      git_branches = {
-        theme = "dropdown",
         previewer = true,
       },
       -- Default configuration for builtin pickers goes here:
@@ -188,28 +179,23 @@ function M.config()
       -- builtin picker
     },
     extensions = {
-      projects = {
+      workspaces = {
         theme = "dropdown",
         previewer = true,
       },
-      file_browser = {
-        theme = "ivy",
-        -- disables netrw and use telescope-file-browser in its place
-        hijack_netrw = true,
-        mappings = {
-          ["i"] = {
-            -- your custom insert mode mappings
-          },
-          ["n"] = {
-            -- your custom normal mode mappings
-          },
-        },
-        opts = {
-          hidden = true,
-        },
-      },
     },
   })
-  require("telescope").load_extension("projects")
-end
-return M
+  telescope.load_extension("workspaces")
+
+  local keymap = vim.keymap.set
+  local opts = { noremap = true, silent = true }
+  keymap("n", "<leader>f", ":Telescope find_files<CR>", opts)
+  keymap("n", "<leader>F", ":Telescope live_grep<CR>", opts)
+  keymap("n", "<leader>r", ":Telescope oldfiles<CR>", opts)
+  keymap("n", "<leader>bb", ":Telescope buffers<CR>", opts)
+  keymap("n", "<leader>p", function()
+    require("telescope").extensions.workspaces.workspaces(
+      require("telescope.themes").get_dropdown({ previewer = false })
+    )
+  end, opts)
+end)
