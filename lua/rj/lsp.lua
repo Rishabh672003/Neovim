@@ -1,3 +1,5 @@
+local autocmd = vim.api.nvim_create_autocmd
+
 -- Diagnostics {{{
 local config = {
   virtual_text = false,
@@ -73,283 +75,6 @@ capabilities.textDocument.foldingRange = {
 capabilities.textDocument.completion.completionItem.snippetSupport = false
 -- }}}
 
--- Servers definition {{{
----@type table<string, vim.lsp.ClientConfig>
-local servers = {
-  -- Lua {{{
-  lua_ls = {
-    name = "lua_ls",
-    cmd = { "lua-language-server" },
-    root_dir = vim.fs.root(0, ".git"),
-    filetypes = { "lua" },
-    capabilities = capabilities,
-    on_init = function(client)
-      local path = client.workspace_folders and client.workspace_folders[1].name or vim.fs.root(0, ".")
-      ---@diagnostic disable-next-line undefined-field
-      if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
-        return
-      end
-
-      client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-        runtime = {
-          -- Tell the language server which version of Lua you're using
-          -- (most likely LuaJIT in the case of Neovim)
-          version = "LuaJIT",
-        },
-        hint = {
-          enable = true,
-        },
-        diagnostics = {
-          globals = { "_G", "vim" },
-        },
-        -- Make the server aware of Neovim runtime files
-        workspace = {
-          preloadFileSize = 500,
-          checkThirdParty = false,
-          -- library = {
-          --   vim.env.VIMRUNTIME
-          -- }
-          -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
-          library = vim.api.nvim_get_runtime_file("", true),
-        },
-      })
-    end,
-    settings = {
-      Lua = {
-        telemetry = {
-          enable = false,
-        },
-      },
-    },
-  },
-  -- }}}
-  -- Python {{{
-  pyright = {
-    name = "pyright",
-    cmd = { "pyright-langserver", "--stdio" },
-    root_dir = vim.fs.root(
-      0,
-      { "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt", "Pipfile", "pyrightconfig.json", ".git" }
-    ),
-    filetypes = { "python" },
-    capabilities = capabilities,
-    settings = {
-      python = {
-        analysis = {
-          -- showDiagnostics = true,
-          typeCheckingMode = "basic",
-          -- diagnosticMode = "workspace",
-          inlayHints = {
-            variableTypes = true,
-            functionReturnTypes = true,
-          },
-        },
-      },
-    },
-  },
-  -- }}}
-  -- Go {{{
-  gopls = {
-    name = "gopls",
-    cmd = { "gopls" },
-    root_dir = vim.fs.root(0, { "go.sum", "go.mod" }),
-    filetypes = { "go", "gomod", "gowork", "gotmpl" },
-    capabilities = capabilities,
-    settings = {
-      gopls = {
-        completeUnimported = true,
-        usePlaceholders = true,
-        analyses = {
-          unusedparams = true,
-        },
-        ["ui.inlayhint.hints"] = {
-          compositeLiteralFields = true,
-          constantValues = true,
-          parameterNames = true,
-          rangeVariableTypes = true,
-        },
-      },
-    },
-  },
-  -- }}}
-  -- C/C++ {{{
-  clangd = {
-    name = "clangd",
-    cmd = {
-      "clangd",
-      "-j=" .. 2,
-      "--background-index",
-      "--clang-tidy",
-      "--inlay-hints",
-      "--fallback-style=llvm",
-      "--all-scopes-completion",
-      "--completion-style=detailed",
-      "--header-insertion=iwyu",
-      "--header-insertion-decorators",
-      "--pch-storage=memory",
-    },
-    root_dir = vim.fs.root(0, {
-      ".clangd",
-      ".clang-tidy",
-      ".clang-format",
-      "compile_commands.json",
-      "compile_flags.txt",
-      "configure.ac",
-      ".git",
-      ---@diagnostic disable-next-line undefined-field
-      vim.uv.cwd(), -- equivalent of `single_file_mode` in lspconfig
-    }),
-    filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-    capabilities = capabilities,
-  },
-  -- -- }}}
-  -- TSServer {{{
-  tsserver = {
-    name = "tsserver",
-    cmd = { "typescript-language-server", "--stdio" },
-    root_dir = vim.fs.root(0, { "tsconfig.json", "jsconfig.json", "package.json", ".git" }),
-    filetypes = {
-      "javascript",
-      "javascriptreact",
-      "javascript.jsx",
-      "typescript",
-      "typescriptreact",
-      "typescript.tsx",
-    },
-    capabilities = capabilities,
-    init_options = {
-      hostInfo = "neovim",
-    },
-  },
-  -- }}}
-  -- CSSLS {{{
-  -- NOTE: install with 'npm i -g vscode-langservers-extracted'
-  cssls = {
-    name = "cssls",
-    cmd = { "vscode-css-language-server", "--stdio" },
-    root_dir = vim.fs.root(0, { "package.json", ".git" }),
-    filetypes = { "css", "scss" },
-    capabilities = capabilities,
-    init_options = {
-      provideFormatter = true,
-    },
-  },
-  -- }}}
-  -- TailwindCSS {{{
-  -- NOTE: install with 'npm install -g @tailwindcss/language-server'
-  tailwind = {
-    name = "tailwindcss",
-    cmd = { "tailwindcss-language-server", "--stdio" },
-    root_dir = vim.fs.root(0, {
-      "tailwind.config.js",
-      "tailwind.config.cjs",
-      "tailwind.config.mjs",
-      "tailwind.config.ts",
-      "postcss.config.js",
-      "postcss.config.cjs",
-      "postcss.config.mjs",
-      "postcss.config.ts",
-      "package.json",
-      "node_modules",
-      ".git",
-    }),
-    filetypes = {
-      "aspnetcorerazor",
-      "astro",
-      "astro-markdown",
-      "blade",
-      "clojure",
-      "django-html",
-      "htmldjango",
-      "edge",
-      "eelixir",
-      "elixir",
-      "ejs",
-      "erb",
-      "eruby",
-      "gohtml",
-      "gohtmltmpl",
-      "haml",
-      "handlebars",
-      "hbs",
-      "html",
-      "htmlangular",
-      "html-eex",
-      "heex",
-      "jade",
-      "leaf",
-      "liquid",
-      -- "markdown",
-      "mdx",
-      "mustache",
-      "njk",
-      "nunjucks",
-      "php",
-      "razor",
-      "slim",
-      "twig",
-      "css",
-      "less",
-      "postcss",
-      "sass",
-      "scss",
-      "stylus",
-      "sugarss",
-      "javascript",
-      "javascriptreact",
-      "reason",
-      "rescript",
-      "typescript",
-      "typescriptreact",
-      "vue",
-      "svelte",
-      "templ",
-    },
-    capabilities = capabilities,
-    settings = {
-      tailwindCSS = {
-        classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
-        includeLanguages = {
-          eelixir = "html-eex",
-          eruby = "erb",
-          htmlangular = "html",
-          templ = "html",
-        },
-        lint = {
-          cssConflict = "warning",
-          invalidApply = "error",
-          invalidConfigPath = "error",
-          invalidScreen = "error",
-          invalidTailwindDirective = "error",
-          invalidVariant = "error",
-          recommendedVariantOrder = "warning",
-        },
-        validate = true,
-      },
-    },
-  },
-  -- }}}
-  -- HTML {{{
-  -- NOTE: installed with 'npm i -g vscode-langservers-extracted'
-  html = {
-    name = "html",
-    cmd = { "vscode-html-language-server", "--stdio" },
-    root_dir = vim.fs.root(0, { "package.json", ".git" }),
-    filetypes = { "html", "templ" },
-    capabilities = capabilities,
-    init_options = {
-      configurationSection = { "html", "css", "javascript" },
-      embeddedLanguages = {
-        css = true,
-        javascript = true,
-      },
-      provideFormatter = true,
-    },
-  },
-  -- }}}
-}
--- }}}
-
 -- Create keybindings, commands and autocommands on LSP attach {{{
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
@@ -396,199 +121,390 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 -- }}}
 
--- Global commands (start, stop, restart, etc) {{{
--- rust-analyzer is handled by rustaceanvim so we save some time ignoring it
-if vim.fn.expand("%:e") ~= "rs" then
-  -- Start {{{
-  -- Initializes all the possible clients for the current buffer if no arguments were passed
-  local function start_lsp_client(name, filetypes)
-    -- Do not try to initialize the LSP if it is not installed
-    if
-      vim.iter(filetypes):find(vim.api.nvim_get_option_value("filetype", { buf = 0 }))
-      and vim.fn.executable(servers[name].cmd[1]) == 1
-    then
-      local active_clients_in_buffer = vim
-        .iter(vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() }))
-        :map(function(client)
-          return client.name
-        end)
-        :totable()
-      -- Do not duplicate the server if there is already a server attached to the buffer
-      if not vim.iter(active_clients_in_buffer):find(servers[name].name) then
-        vim.notify("[core.lsp] Starting " .. name .. ", it could take a bit of time ...")
-        ---@diagnostic disable-next-line
-        vim.lsp.start(servers[name], { bufnr = vim.api.nvim_get_current_buf() })
-      end
-    end
-  end
-
-  vim.api.nvim_create_user_command("LspStart", function(args)
-    if #args.fargs < 1 then
-      vim
-        .iter(servers)
-        :map(function(s)
-          return { [s] = servers[s].filetypes }
-        end)
-        :map(function(s)
-          for server, filetypes in pairs(s) do
-            start_lsp_client(server, filetypes)
-          end
-        end)
-        :totable()
-    else
-      for _, server in ipairs(args.fargs) do
+-- Servers {{{
+-- Lua_ls {{{
+autocmd("FileType", {
+  pattern = "lua",
+  callback = function()
+    local root_dir = vim.fs.root(0, { ".git" })
+    local client = vim.lsp.start({
+      name = "lua_ls",
+      cmd = { "lua-language-server" },
+      capabilities = capabilities,
+      on_init = function(client)
+        local path = client.workspace_folders and client.workspace_folders[1].name or vim.fs.root(0, ".")
         ---@diagnostic disable-next-line undefined-field
-        start_lsp_client(server, servers[server].filetypes)
-      end
-    end
-  end, {
-    nargs = "*",
-    complete = function(args)
-      local server_names = vim
-        .iter(servers)
-        :map(function(s)
-          return s
-        end)
-        :totable()
-      if #args < 1 then
-        return server_names
-      end
-
-      local match = vim
-        .iter(server_names)
-        :filter(function(server)
-          if string.find(server, "^" .. args) then
-            return server
-            ---@diagnostic disable-next-line missing-return
-          end
-        end)
-        :totable()
-      return match
-    end,
-  })
-  -- }}}
-
-  -- Stop {{{
-  -- Stops all the active clients in the current buffer if no arguments were passed
-  vim.api.nvim_create_user_command("LspStop", function(args)
-    local active_clients_in_buffer = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
-
-    if #args.fargs < 1 then
-      for _, client in ipairs(active_clients_in_buffer) do
-        vim.notify("[core.lsp] Shutting down " .. client.name .. " ...")
-        client.stop(true)
-      end
-    else
-      for _, name in ipairs(args.fargs) do
-        for _, client in ipairs(active_clients_in_buffer) do
-          if name == client.name then
-            vim.notify("[core.lsp] Shutting down " .. client.name .. " ...")
-            client.stop(true)
-          end
+        if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
+          return
         end
-      end
+
+        client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+          runtime = {
+            -- (most likely LuaJIT in the case of Neovim)
+            version = "LuaJIT",
+          },
+          hint = {
+            enable = true,
+          },
+          diagnostics = {
+            globals = { "_G", "vim" },
+          },
+          workspace = {
+            preloadFileSize = 500,
+            checkThirdParty = false,
+          },
+        })
+      end,
+      root_dir = root_dir,
+      settings = {
+        Lua = {
+          telemetry = {
+            enable = false,
+          },
+        },
+      },
+    })
+    if client then
+      vim.lsp.buf_attach_client(0, client)
     end
-  end, {
-    nargs = "*",
-    complete = function(args)
-      local active_clients_in_buffer = vim
-        .iter(vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() }))
-        :map(function(s)
-          return s.name
-        end)
-        :totable()
-      if #args < 1 then
-        return active_clients_in_buffer
-      end
-
-      local match = vim
-        .iter(active_clients_in_buffer)
-        :filter(function(client)
-          if string.find(client, "^" .. args) then
-            return client
-            ---@diagnostic disable-next-line missing-return
-          end
-        end)
-        :totable()
-      return match
-    end,
-  })
-  -- }}}
-
-  -- Restart {{{
-  vim.api.nvim_create_user_command("LspRestart", function(args)
-    local active_clients_in_buffer = vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() })
-
-    local using_fargs = #args.fargs > 0
-    for _, client in ipairs(using_fargs and args.fargs or active_clients_in_buffer) do
-      if using_fargs then
-        -- NOTE: I don't think I'll ever have more than one instance of the same client in a buffer
-        client = vim.lsp.get_clients({ name = client.name })[1]
-      end
-      if not client.is_stopped() then
-        vim.notify("[core.lsp] Restarting " .. client.name .. ", it could take a bit of time ...")
-        local server = client.name
-        client.stop(true)
-        -- We defer the initialization to wait for the client to completely stop
-        vim.defer_fn(function()
-          ---@diagnostic disable-next-line
-          vim.lsp.start(servers[server], { bufnr = vim.api.nvim_get_current_buf() })
-        end, 500)
-      end
-    end
-  end, {
-    nargs = "*",
-    complete = function(args)
-      local active_clients_in_buffer = vim
-        .iter(vim.lsp.get_clients({ bufnr = vim.api.nvim_get_current_buf() }))
-        :map(function(s)
-          return s.name
-        end)
-        :totable()
-      if #args < 1 then
-        return active_clients_in_buffer
-      end
-
-      local match = vim
-        .iter(active_clients_in_buffer)
-        :filter(function(client)
-          if string.find(client, "^" .. args) then
-            return client
-            ---@diagnostic disable-next-line missing-return
-          end
-        end)
-        :totable()
-      return match
-    end,
-  })
-  -- }}}
-
-  -- Log {{{
-  vim.api.nvim_create_user_command("LspLog", function()
-    vim.cmd.vsplit(vim.lsp.log.get_filename())
-  end, {})
-  -- }}}
-end
+  end,
+})
 -- }}}
 
--- Start LSP servers as soon as possible {{{
--- rust-analyzer is handled by rustaceanvim so we save some time ignoring it
-if vim.fn.expand("%:e") ~= "rs" then
-  for _, config in pairs(servers) do
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = config.filetypes,
-      callback = function(ev)
-        vim.cmd("LspStart")
-        -- local filetype = vim.fn.getbufvar(ev.bufnr, "&filetype")
-        -- if filetype == "rust" or filetype == "go" then
-        --   vim.lsp.inlay_hint.enable(false)
-        -- else
-        --   vim.lsp.inlay_hint.enable(true)
-        -- end
-      end,
+-- Gopls {{{
+autocmd("FileType", {
+  pattern = { "go", "gotempl", "gowork", "gomod" },
+  callback = function()
+    local root_dir = vim.fs.root(0, { "go.mod", "go.work", ".git" })
+    local client = vim.lsp.start({
+      name = "gopls",
+      cmd = { "gopls" },
+      root_dir = root_dir,
+      capabilities = capabilities,
+      settings = {
+        gopls = {
+          completeUnimported = true,
+          usePlaceholders = true,
+          analyses = {
+            unusedparams = true,
+          },
+          ["ui.inlayhint.hints"] = {
+            compositeLiteralFields = true,
+            constantValues = true,
+            parameterNames = true,
+            rangeVariableTypes = true,
+          },
+        },
+      },
     })
+    if client then
+      vim.lsp.buf_attach_client(0, client)
+    end
+  end,
+})
+
+--}}}
+
+-- C/C++ {{{
+autocmd("FileType", {
+  pattern = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+  callback = function()
+    local root_dir = vim.fs.root(0, {
+      "CMakeLists.txt",
+      ".clangd",
+      ".clang-tidy",
+      ".clang-format",
+      "compile_commands.json",
+      "compile_flags.txt",
+      "configure.ac",
+      ".git",
+      ---@diagnostic disable-next-line undefined-field
+      vim.uv.cwd(), -- equivalent of `single_file_mode` in lspconfig
+    })
+    local client = vim.lsp.start({
+      name = "clangd",
+      cmd = {
+        "clangd",
+        "-j=" .. 2,
+        "--background-index",
+        "--clang-tidy",
+        "--inlay-hints",
+        "--fallback-style=llvm",
+        "--all-scopes-completion",
+        "--completion-style=detailed",
+        "--header-insertion=iwyu",
+        "--header-insertion-decorators",
+        "--pch-storage=memory",
+      },
+      root_dir = root_dir,
+      capabilities = capabilities,
+    })
+    if client then
+      vim.lsp.buf_attach_client(0, client)
+    end
+  end,
+})
+-- }}}
+
+-- Python {{{
+autocmd("FileType", {
+  pattern = { "python" },
+  callback = function()
+    local root_dir = vim.fs.root(0, {
+      "pyproject.toml",
+      "setup.py",
+      "setup.cfg",
+      "requirements.txt",
+      "Pipfile",
+      "pyrightconfig.json",
+      ".git",
+      vim.fn.getcwd(),
+    })
+    local client = vim.lsp.start({
+      name = "pyright",
+      cmd = { "pyright-langserver", "--stdio" },
+      root_dir = root_dir,
+      capabilities = capabilities,
+      settings = {
+        python = {
+          analysis = {
+            -- showDiagnostics = true,
+            typeCheckingMode = "basic",
+            -- diagnosticMode = "workspace",
+            inlayHints = {
+              variableTypes = true,
+              functionReturnTypes = true,
+            },
+          },
+        },
+      },
+    })
+    if client then
+      vim.lsp.buf_attach_client(0, client)
+    end
+  end,
+})
+-- }}}
+
+-- TSServer {{{
+autocmd("FileType", {
+  pattern = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  callback = function()
+    local root_dir = vim.fs.root(0, { "tsconfig.json", "jsconfig.json", "package.json", ".git" })
+    local client = vim.lsp.start({
+      name = "ts_ls",
+      cmd = { "typescript-language-server", "--stdio" },
+      root_dir = root_dir,
+      capabilities = capabilities,
+      init_options = {
+        hostInfo = "neovim",
+      },
+    })
+    if client then
+      vim.lsp.buf_attach_client(0, client)
+    end
+  end,
+})
+-- }}}
+
+-- CSSls {{{
+autocmd("FileType", {
+  pattern = { "css", "scss" },
+  callback = function()
+    local root_dir = vim.fs.root(0, { "package.json", ".git" })
+    local client = vim.lsp.start({
+      name = "cssls",
+      cmd = { "vscode-css-language-server", "--stdio" },
+      root_dir = root_dir,
+      capabilities = capabilities,
+      init_options = {
+        provideFormatter = true,
+      },
+    })
+    if client then
+      vim.lsp.buf_attach_client(0, client)
+    end
+  end,
+})
+-- }}}
+
+-- TailwindCss {{{
+autocmd("FileType", {
+  -- pattern {{{
+  pattern = {
+    "aspnetcorerazor",
+    "astro",
+    "astro-markdown",
+    "blade",
+    "clojure",
+    "django-html",
+    "htmldjango",
+    "edge",
+    "eelixir",
+    "elixir",
+    "ejs",
+    "erb",
+    "eruby",
+    "gohtml",
+    "gohtmltmpl",
+    "haml",
+    "handlebars",
+    "hbs",
+    "html",
+    "htmlangular",
+    "html-eex",
+    "heex",
+    "jade",
+    "leaf",
+    "liquid",
+    -- "markdown",
+    "mdx",
+    "mustache",
+    "njk",
+    "nunjucks",
+    "php",
+    "razor",
+    "slim",
+    "twig",
+    "css",
+    "less",
+    "postcss",
+    "sass",
+    "scss",
+    "stylus",
+    "sugarss",
+    "javascript",
+    "javascriptreact",
+    "reason",
+    "rescript",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "svelte",
+    "templ",
+  },
+  -- }}}
+  callback = function()
+    local root_dir = vim.fs.root(0, {
+      "tailwind.config.js",
+      "tailwind.config.cjs",
+      "tailwind.config.mjs",
+      "tailwind.config.ts",
+      "postcss.config.js",
+      "postcss.config.cjs",
+      "postcss.config.mjs",
+      "postcss.config.ts",
+      "package.json",
+      "node_modules",
+      ".git",
+    })
+    local client = vim.lsp.start({
+      name = "tailwindcss",
+      cmd = { "tailwindcss-language-server", "--stdio" },
+      root_dir = root_dir,
+      capabilities = capabilities,
+      settings = {
+        tailwindCSS = {
+          classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+          includeLanguages = {
+            eelixir = "html-eex",
+            eruby = "erb",
+            htmlangular = "html",
+            templ = "html",
+          },
+          lint = {
+            cssConflict = "warning",
+            invalidApply = "error",
+            invalidConfigPath = "error",
+            invalidScreen = "error",
+            invalidTailwindDirective = "error",
+            invalidVariant = "error",
+            recommendedVariantOrder = "warning",
+          },
+          validate = true,
+        },
+      },
+    })
+    if client then
+      vim.lsp.buf_attach_client(0, client)
+    end
+  end,
+})
+-- }}}
+
+-- HTML {{{
+autocmd("FileType", {
+  pattern = { "html" },
+  callback = function()
+    local root_dir = vim.fs.root(0, { "package.json", ".git" })
+    local client = vim.lsp.start({
+      name = "html",
+      cmd = { "vscode-html-language-server", "--stdio" },
+      root_dir = root_dir,
+      capabilities = capabilities,
+      init_options = {
+        configurationSection = { "html", "css", "javascript" },
+        embeddedLanguages = {
+          css = true,
+          javascript = true,
+        },
+        provideFormatter = true,
+      },
+    })
+    if client then
+      vim.lsp.buf_attach_client(0, client)
+    end
+  end,
+})
+-- }}}
+--}}}
+
+-- Stop, Restart, Log commands {{{
+vim.api.nvim_create_user_command("LspStop", function(kwargs)
+  local name = kwargs.fargs[1]
+  for _, client in ipairs(vim.lsp.get_clients({ name = name })) do
+    client.stop()
   end
-end
+end, {
+  nargs = 1,
+  complete = function()
+    return vim.tbl_map(function(c)
+      return c.name
+    end, vim.lsp.get_clients())
+  end,
+})
+
+vim.api.nvim_create_user_command("LspRestart", function(kwargs)
+  local name = kwargs.fargs[1]
+  for _, client in ipairs(vim.lsp.get_clients({ name = name })) do
+    local bufs = vim.lsp.get_buffers_by_client_id(client.id)
+    client.stop()
+    vim.wait(10000, function()
+      return vim.lsp.get_client_by_id(client.id) == nil
+    end)
+    local client_id = vim.lsp.start_client(client.config)
+    if client_id then
+      for _, buf in ipairs(bufs) do
+        vim.lsp.buf_attach_client(buf, client_id)
+      end
+    end
+  end
+end, {
+  nargs = 1,
+  complete = function()
+    return vim.tbl_map(function(c)
+      return c.name
+    end, vim.lsp.get_clients())
+  end,
+})
+
+vim.api.nvim_create_user_command("LspLog", function()
+  vim.cmd.vsplit(vim.lsp.log.get_filename())
+end, {})
+
+vim.api.nvim_create_user_command("LspInfo", function()
+  vim.cmd("checkhealth vim.lsp")
+end, {})
 -- }}}
 
 -- vim: fdm=marker:fdl=0

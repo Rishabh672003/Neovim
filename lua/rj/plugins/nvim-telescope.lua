@@ -1,7 +1,7 @@
 Later(function()
   Add({
     source = "nvim-telescope/telescope.nvim",
-    depends = { "natecraddock/workspaces.nvim", "nvim-lua/plenary.nvim" },
+    depends = { "ahmedkhalf/project.nvim", "nvim-lua/plenary.nvim" },
   })
   local telescope = require("telescope")
   local actions = require("telescope.actions")
@@ -185,7 +185,7 @@ Later(function()
       },
     },
   })
-  telescope.load_extension("workspaces")
+  telescope.load_extension("projects")
 
   local keymap = vim.keymap.set
   local opts = { noremap = true, silent = true }
@@ -194,7 +194,7 @@ Later(function()
   keymap("n", "<leader>r", ":Telescope oldfiles<CR>", opts)
   keymap("n", "<leader>bb", ":Telescope buffers<CR>", opts)
   keymap("n", "<leader>p", function()
-    require("telescope").extensions.workspaces.workspaces(
+    require("telescope").extensions.projects.projects(
       require("telescope.themes").get_dropdown({ previewer = false })
     )
   end, opts)

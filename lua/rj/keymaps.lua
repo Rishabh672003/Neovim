@@ -62,7 +62,7 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 
 -- Quality of Life stuff --
 keymap({ "n", "s", "v" }, "<leader>yy", '"+y', { desc = "Yank to clipboard" })
-keymap({ "n", "s", "v" }, "<leader>yY", '"+yy', { desc = "Yank line to clipboard" })
+keymap({ "n", "s", "v" }, "<leader>y<shift>y", '"+yy', { desc = "Yank line to clipboard" })
 keymap({ "n", "s", "v" }, "<leader>yp", '"+p', { desc = "Paste from clipboard" })
 keymap("n", "<leader>w", function()
   vim.cmd("silent! write!")
