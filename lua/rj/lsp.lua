@@ -80,7 +80,7 @@ local servers = {
   lua_ls = {
     name = "lua_ls",
     cmd = { "lua-language-server" },
-    root_dir = ".git",
+    root_dir = vim.fs.root(0, ".git"),
     filetypes = { "lua" },
     capabilities = capabilities,
     on_init = function(client)
@@ -152,7 +152,7 @@ local servers = {
   gopls = {
     name = "gopls",
     cmd = { "gopls" },
-    root_dir = vim.fs.root(0, { ".git", "go.sum", "go.mod" }),
+    root_dir = vim.fs.root(0, { "go.sum", "go.mod" }),
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
     capabilities = capabilities,
     settings = {
@@ -385,7 +385,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
     keymap("n", "<leader>lf", "<cmd>Format<cr>", opts)
     keymap("n", "<leader>lh", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<cr>", opts)
-    keymap("n", "<leader>li", "<cmd>LspInfo<cr>", opts)
+    keymap("n", "<leader>li", "<cmd>checkhealth vim.lsp<cr>", opts)
     keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
     keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
     keymap("n", "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
