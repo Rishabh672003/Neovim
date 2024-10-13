@@ -1,6 +1,6 @@
-require("rj.dashboard")
 vim.loader.enable()
 
+require("rj.dashboard")
 require("rj.options")
 require("rj.keymaps")
 require("rj.autocommands")
