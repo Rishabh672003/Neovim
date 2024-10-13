@@ -1,4 +1,4 @@
-Later(function()
+Now(function()
   require("mini.indentscope").setup({
     -- Draw options
     draw = {
@@ -59,6 +59,7 @@ Later(function()
       "better_term",
       "toggleterm",
       "lazyterm",
+      "dashboard",
     },
     callback = function()
       vim.b.miniindentscope_disable = true

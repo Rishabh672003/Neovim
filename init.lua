@@ -1,6 +1,6 @@
 vim.loader.enable()
 
-vim.cmd("colorscheme catppuccin-mocha")
+vim.cmd.colorscheme("catppuccin-mocha")
 require("rj.dashboard")
 require("rj.options")
 require("rj.keymaps")
