@@ -1,4 +1,4 @@
-Now(function()
+Later(function()
   local blocked_filetypes = {
     ["man"] = true,
     ["dashboard"] = true,

@@ -1,4 +1,4 @@
-Now(function()
+Later(function()
   Add({
     source = "okuuva/auto-save.nvim",
   })

@@ -1,4 +1,4 @@
-Now(function()
+Later(function()
   Add({
     source = "AckslD/swenv.nvim",
     depends = { "stevearc/dressing.nvim", "nvim-lua/plenary.nvim", "ahmedkhalf/project.nvim" },

@@ -1,6 +1,6 @@
+require("rj.dashboard")
 vim.loader.enable()
 
-require("rj.dashboard")
 require("rj.options")
 require("rj.keymaps")
 require("rj.autocommands")
@@ -20,8 +20,12 @@ require("rj.plugins.project")
 require("rj.plugins.conform")
 require("rj.plugins.cybu")
 require("rj.plugins.jaq")
+require("rj.plugins.barbecue")
 
 require("rj.plugins.nvim-treesitter")
 require("rj.plugins.mason")
 require("rj.plugins.swenv")
+require("rj.plugins.autocomplete")
 require("rj.lsp")
+
+require("rj.plugins.leetcode")

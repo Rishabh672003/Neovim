@@ -34,7 +34,7 @@ command! WipeReg for i in range(34,122) | silent! call setreg(nr2char(i), []) | 
 vim.api.nvim_create_user_command("Grep", function(opts)
   local command = string.format('silent cgetexpr system("rg --vimgrep -S %s")', opts.args)
   vim.cmd(command)
-  vim.cmd("Trouble quickfix focus")
+  vim.cmd("copen")
 end, { nargs = 1 })
 
 -- Define an autocommand after LspAttach

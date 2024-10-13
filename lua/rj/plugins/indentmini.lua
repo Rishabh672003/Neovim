@@ -1,4 +1,4 @@
-Later(function()
+Now(function()
   Add({
     source = "nvimdev/indentmini.nvim",
   })
