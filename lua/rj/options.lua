@@ -42,6 +42,7 @@ local options = {
   foldexpr = "v:lua.vim.treesitter.foldexpr()", -- specifies the expression used to calculate folds
   indentexpr = "nvim_treesitter#indent()", -- specifies the function used to calculate the indentation level
   fillchars = { eob = " ", fold = " " }, -- defines the characters used for certain parts of the screen
+  wildoptions = { "fuzzy", "pum", "tagfile" },
 }
 
 for k, v in pairs(options) do

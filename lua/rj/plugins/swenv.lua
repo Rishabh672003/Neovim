@@ -26,4 +26,10 @@ Later(function()
       vim.notify("No virtual environment selected", vim.log.levels.WARN)
     end
   end, { desc = "Current venv" })
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "python" },
+    callback = function()
+      require("swenv.api").auto_venv()
+    end,
+  })
 end)

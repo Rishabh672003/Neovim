@@ -190,7 +190,7 @@ Later(function()
   local keymap = vim.keymap.set
   local opts = { noremap = true, silent = true }
   keymap("n", "<leader>f", ":Telescope find_files<CR>", opts)
-  keymap("n", "<leader>F", ":Telescope live_grep<CR>", opts)
+  keymap("n", "<leader><shift>f", ":Telescope live_grep<CR>", opts)
   keymap("n", "<leader>r", ":Telescope oldfiles<CR>", opts)
   keymap("n", "<leader>bb", ":Telescope buffers<CR>", opts)
   keymap("n", "<leader>p", function()

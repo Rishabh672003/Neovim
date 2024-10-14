@@ -79,4 +79,6 @@ Later(function()
       },
     },
   })
+
+  vim.keymap.set("n", "<leader>j", "<cmd>Jaq<CR>", { silent = true, noremap = true })
 end)

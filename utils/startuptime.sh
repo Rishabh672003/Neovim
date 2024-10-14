@@ -11,15 +11,15 @@ pf() {
 # FIXME: I could not add >/dev/null at the end of each warmup as Neovim
 #        segfaults in WSL for some reason when redirecting to stdout lmao
 echo "Warmup #1"
-nvim -c q 2>&1 | tee -a /dev/null
+nvim -c q &> /dev/null
 echo "Warmup #2"
-nvim -c q 2>&1 | tee -a /dev/null
+nvim -c q &> /dev/null
 echo "Warmup #3"
-nvim -c q 2>&1 | tee -a /dev/null
+nvim -c q &> /dev/null
 echo "Warmup #4"
-nvim -c q 2>&1 | tee -a /dev/null
+nvim -c q &> /dev/null
 echo "Warmup #5"
-nvim -c q 2>&1 | tee -a /dev/null
+nvim -c q &> /dev/null
 
 pf "No config"
 nvim --clean -nu NORC --startuptime tmp
