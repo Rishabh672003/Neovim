@@ -1,7 +1,6 @@
 Later(function()
   Add({
     source = "nvim-treesitter/nvim-treesitter",
-    -- depends = { "JoosepAlviste/nvim-ts-context-commentstring" },
   })
   local configs = require("nvim-treesitter.configs")
   configs.setup({
@@ -39,15 +38,7 @@ Later(function()
     },
     indent = {
       enable = true,
-      disable = { --[[ "python", ]]
-        "html",
-        "cpp",
-        "css",
-      },
+      disable = { --[[ "python", ]] "html", "cpp", "css", },
     },
   })
-  -- require("ts_context_commentstring").setup({
-  --   enable_autocmd = false,
-  -- })
-  -- vim.g.skip_ts_context_commentstring_module = true
 end)
