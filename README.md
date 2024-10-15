@@ -1,10 +1,6 @@
 # Neovim
 
-[![Plugins](https://dotfyle.com/Rishabh672003/neovim/badges/plugins?style=for-the-badge)](https://dotfyle.com/Rishabh672003/neovim)
-[![Leader Key](https://dotfyle.com/Rishabh672003/neovim/badges/leaderkey?style=for-the-badge)](https://dotfyle.com/Rishabh672003/neovim)
-[![Plugin Manager](https://dotfyle.com/Rishabh672003/neovim/badges/plugin-manager?style=for-the-badge)](https://dotfyle.com/Rishabh672003/neovim)
-
-This repo contains all my [neovim](https://github.com/neovim/neovim) configs files, which I use. Now made with [lazy.nvim](https://github.com/folke/lazy.nvim)
+This repository contains all my [neovim](https://github.com/neovim/neovim) config files, which I use. Now made with [mini.deps](https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-deps.md)
 
 ## 🛠️ If you also want to use it
 
