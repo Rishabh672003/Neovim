@@ -77,7 +77,7 @@ Capabilities.textDocument.foldingRange = {
 Capabilities.textDocument.completion.completionItem.snippetSupport = false
 -- }}}
 
--- Create keybindings, commands and autocommands on LSP attach {{{
+-- Create keybindings, commands, inlay hints and autocommands on LSP attach {{{
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local bufnr = ev.buf
@@ -96,6 +96,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
     ---@diagnostic disable-next-line need-check-nil
     client.server_capabilities.semanticTokensProvider = nil
 
+    -- Inlay hints only on filetypes i want
+    local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+    if filetype == "rust" or filetype == "go" or filetype == "lua" then
+      vim.lsp.inlay_hint.enable(false)
+    else
+      vim.lsp.inlay_hint.enable(true)
+    end
+
+    -- All the keymaps
     local keymap = vim.keymap.set
     local opts = { noremap = true, silent = true, buffer = true }
     keymap("n", "gD", "<cmd>Telescope lsp_document_symbols<CR>", opts)
@@ -106,9 +115,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
     keymap("n", "gR", '<cmd>lua require("trouble").toggle("lsp_references")<CR>', opts)
     keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    keymap("n", "<leader>lF", "<cmd>FormatToggle<cr>", opts)
-    keymap("n", "<leader>lI", "<cmd>Mason<cr>", opts)
-    keymap("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", opts)
+    keymap("n", "<leader>l<shift>F", "<cmd>FormatToggle<cr>", opts)
+    keymap("n", "<leader>l<shift>I", "<cmd>Mason<cr>", opts)
+    keymap("n", "<leader>l<shift>S", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", opts)
     keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
     keymap("n", "<leader>lf", "<cmd>Format<cr>", opts)
     keymap("n", "<leader>lh", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<cr>", opts)
@@ -288,6 +297,50 @@ autocmd("FileType", {
 })
 -- }}}
 
+-- Bash {{{
+autocmd("FileType", {
+  pattern = { "bash", "sh", "zsh" },
+  callback = function()
+    local root_dir = vim.fs.root(0, { ".git" })
+    local client = vim.lsp.start({
+      name = "bashls",
+      cmd = { "bash-language-server", "start" },
+      root_dir = root_dir,
+      capabilities = Capabilities,
+      settings = {
+        bashIde = {
+          globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command)",
+        },
+      },
+      single_file_support = true,
+    })
+    if client then
+      vim.lsp.buf_attach_client(0, client)
+    end
+  end,
+})
+-- }}}
+
+-- Markdown {{{
+autocmd("FileType", {
+  pattern = { "markdown" },
+  callback = function()
+    local root_dir = vim.fs.root(0, {".marksman.toml", ".git" })
+    local client = vim.lsp.start({
+      name = "marksman",
+      cmd = { "marksman", "server" },
+      root_dir = root_dir,
+      capabilities = Capabilities,
+      settings = {},
+      single_file_support = true,
+    })
+    if client then
+      vim.lsp.buf_attach_client(0, client)
+    end
+  end,
+})
+-- }}}
+-- Web-dev {{{
 -- TSServer {{{
 autocmd("FileType", {
   pattern = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
@@ -458,6 +511,7 @@ autocmd("FileType", {
     end
   end,
 })
+-- }}}
 -- }}}
 --}}}
 
