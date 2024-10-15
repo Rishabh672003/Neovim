@@ -28,17 +28,13 @@ function TermToggle(width, cmd)
   end
 end
 
+-- Term Toggle Keymaps
 local keymap = vim.keymap.set
 local opts = { noremap = true, silent = true }
--- Term Toggle Keymaps
-keymap("n", "<A-t>", function()
-  TermToggle(80)
-end, opts)
+keymap("n", "<A-t>", function() TermToggle(80) end, opts)
 keymap("n", "<A-g>", ':lua TermToggle(80, "lazygit")<CR>', opts)
 keymap("t", "<A-t>", "<C-\\><C-n>:lua TermToggle(80)<CR>", opts)
 keymap("t", "<A-g>", "<C-\\><C-n>:lua TermToggle(80)<CR>", opts)
-keymap("t", "<esc><esc>", "<C-\\><C-n>", opts)
-keymap("n", "<A-p>", function()
-  TermToggle(80, "python")
-end, opts)
-keymap("n", "<A-S>t", "<cmd>tab term<cr>", opts)
+keymap("t", "<C-q>", "<C-\\><C-n>", opts)
+keymap("n", "<A-p>", function() TermToggle(80, "python") end, opts)
+keymap("n", "<A-S-t>", "<cmd>tab term<cr>", opts)
