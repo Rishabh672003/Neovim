@@ -17,21 +17,14 @@ Later(function()
       -- language servers
       "bashls",
       "clangd",
-      "cmake",
       "cssls",
-      "dockerls",
       "gopls",
       "html-lsp",
-      "hyprls",
-      "jsonls",
-      "lemminx",
       "lua_ls",
       "marksman",
       "pyright",
       "tailwindcss",
-      "taplo",
       "ts_ls",
-      "yamlls",
 
       -- debug adapters
       "codelldb",
@@ -41,7 +34,6 @@ Later(function()
       "biome",
       "clang-format",
       "cmakelang",
-      -- "codespell",
       "goimports",
       "prettier",
       "ruff",
@@ -49,7 +41,6 @@ Later(function()
       "stylua",
 
       -- linters
-      -- cppcheck missing
       "eslint_d",
       "luacheck",
       "proselint",
