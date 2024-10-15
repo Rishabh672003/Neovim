@@ -45,15 +45,13 @@ For Rust support install `rust-analyzer` yourself.
 **Note: this will install the optional dependencies so use it only after reading the script and if you know what you are doing, I will not be responsible if you break anything on your system**
 
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/Rishabh672003/Neovim/main/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/Rishabh672003/Neovim/main/utils/install.sh)
 ```
 
 ### Preview
 
-![image](https://github.com/Rishabh672003/Neovim/assets/53911515/20c2dde6-c369-4bea-be24-eaf9ff359581)
-![image](https://github.com/Rishabh672003/Neovim/assets/53911515/be32d082-6ade-4166-a63b-032749cef49d)
-![image](https://github.com/Rishabh672003/Neovim/assets/53911515/2003cd47-61b3-4244-a2c0-5866c5159673)
-![image](https://github.com/Rishabh672003/Neovim/assets/53911515/80b9cde3-af3e-477d-bb30-53358c7e5959)
+![image](https://github.com/user-attachments/assets/85680266-ebe3-4edd-82cf-f17e15f9fa7c)
+![image](https://github.com/user-attachments/assets/bfb84c0f-5bdf-41ad-ab98-1c69f4699cd5)
 
 ## Uninstallation and Cleanup
 
