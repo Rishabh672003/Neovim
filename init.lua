@@ -1,4 +1,4 @@
--- vim.loader.enable()
+vim.loader.enable()
 vim.cmd.colorscheme("catppuccin-mocha")
 
 require("rj.dashboard")
