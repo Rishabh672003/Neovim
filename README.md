@@ -61,6 +61,7 @@ The credit goes to [Neovim-from-scratch](https://github.com/LunarVim/Neovim-from
 also I took configs and ideas from [Lunarvim](https://github.com/LunarVim/LunarVim), [Astronvim](https://github.com/AstroNvim/AstroNvim), [LazyVim](https://github.com/LazyVim/LazyVim) and [nvim-basic-ide](https://github.com/lunarvim/nvim-basic-ide)
 
 <div align="center" id="madewithlua"></div>
+
 [![Lua](https://img.shields.io/badge/Made%20with%20Lua-blue.svg?style=for-the-badge&logo=lua)](#madewithlua)
 
 </div>
