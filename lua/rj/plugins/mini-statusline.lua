@@ -2,6 +2,7 @@ Later(function()
   local blocked_filetypes = {
     ["man"] = true,
     ["dashboard"] = true,
+    ["leetcode.nvim"] = true,
   }
   local MiniStatusline = require("mini.statusline")
   require("mini.statusline").setup({
