@@ -72,19 +72,6 @@ keymap('n', '<leader>va', '<cmd>norm! mmggVG<cr>', opts)
 keymap('n', '<leader>vs', '<cmd>%y<cr>', opts)
 keymap('n', '<leader>vx', '<cmd>norm! ggVGx<cr>', opts)
 
-vim.cmd([[
-" Using arrow keys is far too ingrained in my muscle memory.
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
-]])
-
 keymap("n", "i", function()
   if #vim.fn.getline(".") == 0 then
     return [["_cc]]
