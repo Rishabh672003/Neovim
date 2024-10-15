@@ -1,7 +1,6 @@
 local options = {
   backup = false, -- creates a backup file
-  -- clipboard = "unnamedplus", -- allows neovim to access the system clipboard
-  cmdheight = 0, -- more space in the neovim command line for displaying messages
+  cmdheight = 1, -- more space in the neovim command line for displaying messages
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   conceallevel = 0, -- so that `` is visible in markdown files
   fileencoding = "utf-8", -- the encoding written to a file
@@ -32,16 +31,17 @@ local options = {
   scrolloff = 8, -- is one of my fav
   guifont = "JetBrainsMono NF:h14", -- the font used in graphical neovim applications
   sidescrolloff = 8, -- the number of lines to keep visible at the top and bottom of the screen
-  laststatus = 0, -- controls how the command line looks when there is no message to display
+  laststatus = 3, -- controls how the command line looks when there is no message to display
   virtualedit = "onemore", -- allows the cursor to move beyond the end of a line
   linebreak = true, -- determines whether text will wrap at the edge of the screen
   showtabline = 1, -- determines whether the tab line will be displayed
   spelllang = "en_us", -- sets the language for spell checking
   textwidth = 80, -- limits the width of text that is being inserted
+  foldtext = "",
   foldexpr = "v:lua.vim.treesitter.foldexpr()", -- specifies the expression used to calculate folds
-  foldtext = "v:lua.vim.treesitter.foldtext()", -- specifies the function used to generate the text displayed for a closed fold
   indentexpr = "nvim_treesitter#indent()", -- specifies the function used to calculate the indentation level
-  fillchars = { eob = " " }, -- defines the characters used for certain parts of the screen
+  fillchars = { eob = " ", fold = " " }, -- defines the characters used for certain parts of the screen
+  wildoptions = { "fuzzy", "pum", "tagfile" },
 }
 
 for k, v in pairs(options) do
@@ -53,8 +53,7 @@ vim.opt.iskeyword:append("-")
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.splitkeep = "screen"
 vim.opt.diffopt:append("linematch:60")
-vim.opt.shortmess:append({ C = true })
+vim.opt.shortmess:append({ C = true, c = true })
 vim.opt.cinkeys:remove(":")
 vim.opt.indentkeys:remove(":")
-vim.g.cmp_toggle = true
 vim.g.c_syntax_for_h = true

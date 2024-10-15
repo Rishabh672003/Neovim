@@ -1,15 +1,9 @@
-local M = {
-  "utilyre/barbecue.nvim",
-  event = { "InsertEnter", "BufReadPre", "BufAdd", "BufNew" },
-  enabled = true,
-  dependencies = {
-    {
-      "SmiteshP/nvim-navic",
-    },
-  },
-}
+Later(function()
+  Add({
+    source = "utilyre/barbecue.nvim",
+    depends = { "SmiteshP/nvim-navic" },
+  })
 
-function M.config()
   local barbecue = require("barbecue")
 
   vim.api.nvim_set_hl(0, "NavicSeparator", { link = "Normal" })
@@ -89,6 +83,4 @@ function M.config()
       Variable = "",
     },
   })
-end
-
-return M
+end)

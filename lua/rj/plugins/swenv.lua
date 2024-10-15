@@ -1,12 +1,8 @@
-local M = {
-  "AckslD/swenv.nvim",
-  ft = "py",
-  dependencies = {
-    "stevearc/dressing.nvim",
-  },
-}
-
-M.config = function()
+Later(function()
+  Add({
+    source = "AckslD/swenv.nvim",
+    depends = { "stevearc/dressing.nvim", "nvim-lua/plenary.nvim", "ahmedkhalf/project.nvim" },
+  })
   require("swenv").setup({
     -- Should return a list of tables with a `name` and a `path` entry each.
     -- Gets the argument `venvs_path` set below.
@@ -19,6 +15,21 @@ M.config = function()
     -- Something to do after setting an environment, for example call vim.cmd.LspRestart
     post_set_venv = nil,
   })
-end
 
-return M
+  local swenv = require("swenv.api")
+  vim.keymap.set("n", "<leader>lps", swenv.pick_venv, { desc = "Pick venv" })
+  vim.keymap.set("n", "<leader>lpc", function()
+    local venv = swenv.get_current_venv()
+    if venv then
+      vim.notify(venv.name)
+    else
+      vim.notify("No virtual environment selected", vim.log.levels.WARN)
+    end
+  end, { desc = "Current venv" })
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "python" },
+    callback = function()
+      require("swenv.api").auto_venv()
+    end,
+  })
+end)

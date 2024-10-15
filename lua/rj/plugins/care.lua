@@ -1,10 +1,16 @@
-local M = {
-  "max397574/care.nvim",
-  enabled = false,
-  lazy = false,
-}
-
-M.config = function()
+Now(function()
+  Add({
+    source = "max397574/care.nvim",
+    depends = {
+      {
+        source = "romgrk/fzy-lua-native",
+        post_install = function()
+          vim.cmd("make")
+        end,
+      },
+    },
+  })
+  require("care").setup()
   vim.keymap.set("i", "<c-n>", function()
     vim.snippet.jump(1)
   end)
@@ -14,7 +20,6 @@ M.config = function()
   vim.keymap.set("i", "<c-space>", function()
     require("care").api.complete()
   end)
-
   vim.keymap.set("i", "<cr>", "<Plug>(CareConfirm)")
   vim.keymap.set("i", "<c-e>", "<Plug>(CareClose)")
   vim.keymap.set("i", "<tab>", "<Plug>(CareSelectNext)")
@@ -35,6 +40,4 @@ M.config = function()
       vim.api.nvim_feedkeys(vim.keycode("<c-f>"), "n", false)
     end
   end)
-end
-
-return M
+end)

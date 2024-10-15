@@ -1,10 +1,8 @@
-local M = {
-  "is0n/jaq-nvim",
-  cmd = "Jaq",
-  enabled = true,
-}
+Later(function()
+  Add({
+    source = "is0n/jaq-nvim",
+  })
 
-function M.config()
   require("jaq-nvim").setup({
     -- Commands used with 'Jaq'
     cmds = {
@@ -27,7 +25,6 @@ function M.config()
         zsh = "zsh %",
         lua = "lua %",
       },
-
       -- Uses internal commands such as 'source' and 'luafile'
       internal = {
         -- lua = "luafile %",
@@ -83,7 +80,5 @@ function M.config()
     },
   })
 
-  vim.keymap.set("n", "<m-r>", ":silent only | Jaq<cr>", { noremap = true, silent = true })
-end
-
-return M
+  vim.keymap.set("n", "<leader>j", "<cmd>Jaq<CR>", { silent = true, noremap = true })
+end)

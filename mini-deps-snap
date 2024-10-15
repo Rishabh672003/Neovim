@@ -1,0 +1,22 @@
+return {
+  ["auto-save.nvim"] = "5fbcaac0a2698c87a9a1bd2083cb6949505cca12",
+  ["barbecue.nvim"] = "3e31404f0b93a2c30d151abf0648650ac811c664",
+  ["conform.nvim"] = "40d4e98fcc3e6f485f0e8924c63734bc7e305967",
+  ["cybu.nvim"] = "c0866ef6735a85f85d4cf77ed6d9bc92046b5a99",
+  ["dressing.nvim"] = "1b7921eecc65af1baf8ac1dc06f0794934cbcfb2",
+  ["gitsigns.nvim"] = "863903631e676b33e8be2acb17512fdc1b80b4fb",
+  ["jaq-nvim"] = "236296aae555657487d1bb4d066cbde9d79d8cd4",
+  ["leetcode.nvim"] = "02fb2c855658ad6b60e43671f6b040c812181a1d",
+  ["mason-lspconfig.nvim"] = "25c11854aa25558ee6c03432edfa0df0217324be",
+  ["mason-tool-installer.nvim"] = "c5e07b8ff54187716334d585db34282e46fa2932",
+  ["mason.nvim"] = "e2f7f9044ec30067bc11800a9e266664b88cda22",
+  ["mini.nvim"] = "df1559e2ed7ece458e0a97a8bb9556d465d1c775",
+  ["nui.nvim"] = "b58e2bfda5cea347c9d58b7f11cf3012c7b3953f",
+  ["nvim-navic"] = "8649f694d3e76ee10c19255dece6411c29206a54",
+  ["nvim-treesitter"] = "39904fd016120d87010a93ccb9845c821ba2f1dd",
+  ["nvim-web-devicons"] = "19d257cf889f79f4022163c3fbb5e08639077bd8",
+  ["plenary.nvim"] = "2d9b06177a975543726ce5c73fca176cedbffe9d",
+  ["project.nvim"] = "8c6bad7d22eef1b71144b401c9f74ed01526a4fb",
+  ["swenv.nvim"] = "d760a8f956b0058ffef1434df7ba7a6e2dc3a782",
+  ["telescope.nvim"] = "df534c3042572fb958586facd02841e10186707c"
+}

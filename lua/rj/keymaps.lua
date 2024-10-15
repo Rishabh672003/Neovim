@@ -1,5 +1,10 @@
 local opts = { silent = true }
 
+--Remap space as leader key
+vim.keymap.set("", "<Space>", "<Nop>", { silent = true })
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 -- Shorten function name
 local keymap = vim.keymap.set
 
@@ -11,27 +16,14 @@ local keymap = vim.keymap.set
 --   term_mode = "t",
 --   command_mode = "c",
 
--- Normal --
--- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<leader>w", function() vim.cmd("silent! write!") vim.notify("File saved") end, opts)
+keymap("n", "<leader>q", "<cmd>q!<cr>", opts)
+keymap("n", "<leader>c", "<cmd>bd!<cr>", opts)
 
 keymap("n", "\\", "<cmd>noh<cr>", opts)
 
 keymap("n", "[n", "<cmd>cnext<cr>", opts)
 keymap("n", "[p", "<cmd>cprevious<cr>", opts)
-
--- Resize with arrows
-keymap("n", "<C-Up>", "<cmd>resize -2<CR>", opts)
-keymap("n", "<C-Down>", "<cmd>resize +2<CR>", opts)
-keymap("n", "<C-Left>", "<cmd>vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", "<cmd>vertical resize +2<CR>", opts)
-
--- Navigate buffers
-keymap("n", "<S-l>", "<cmd>bnext<CR>", opts)
-keymap("n", "<S-h>", "<cmd>bprevious<CR>", opts)
 
 keymap("n", "j", "gj", opts)
 keymap("n", "k", "gk", opts)
@@ -72,34 +64,13 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 
---keymaps for toggleterm
-keymap("n", "<C-1>", "<cmd>ToggleTerm direction=horizontal size=12<cr>", opts)
-keymap("t", "<C-1>", "<cmd>ToggleTerm direction=horizontal size=12<cr>", opts)
-keymap("n", "<C-2>", "<cmd>ToggleTerm direction=vertical size=50<cr>", opts)
-keymap("t", "<C-2>", "<cmd>ToggleTerm direction=vertical size=50<cr>", opts)
-keymap("n", "<C-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
-keymap("t", "<C-3>", "<cmd>ToggleTerm direction=float<cr>", opts)
-
---keymaps for tabs
-keymap("n", "<M-l>", "<cmd>tabnext<CR>", opts)
-keymap("n", "<M-h>", "<cmd>tabprevious<CR>", opts)
-keymap("n", "<A-q>", "<cmd>tabclose<CR>", opts)
-keymap("n", "<A-i>", "<cmd>tabnew<CR>", opts)
-
-keymap("n", "-", "<cmd>Oil --float<CR>", { desc = "Open parent directory" })
-
-vim.cmd([[
-" Using arrow keys is far too ingrained in my muscle memory.
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
-
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
-]])
+-- Quality of Life stuff --
+keymap({ "n", "s", "v" }, "<leader>yy", '"+y', { desc = "Yank to clipboard" })
+keymap({ "n", "s", "v" }, "<leader>yY", '"+yy', { desc = "Yank line to clipboard" })
+keymap({ "n", "s", "v" }, "<leader>yp", '"+p', { desc = "Paste from clipboard" })
+keymap('n', '<leader>va', '<cmd>norm! mmggVG<cr>', opts)
+keymap('n', '<leader>vs', '<cmd>%y<cr>', opts)
+keymap('n', '<leader>vx', '<cmd>norm! ggVGx<cr>', opts)
 
 keymap("n", "i", function()
   if #vim.fn.getline(".") == 0 then

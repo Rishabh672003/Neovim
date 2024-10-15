@@ -1,6 +1,11 @@
 vim.loader.enable()
+vim.cmd.colorscheme("catppuccin-mocha")
 
+require("rj.dashboard")
 require("rj.options")
-require("rj.lazy")
-require("rj.autocommands")
 require("rj.keymaps")
+require("rj.autocommands")
+require("rj.terminal")
+require("rj.mini-deps")
+require("rj.plugins")
+require("rj.lsp")

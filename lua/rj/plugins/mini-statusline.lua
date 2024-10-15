@@ -1,24 +1,10 @@
-local M = {
-  "echasnovski/mini.statusline",
-  enabled = false,
-  version = false,
-  lazy = false,
-}
-function M.config()
-  -- this is required so that neo-tree doesnt get deactivated while in Lazy
-  local set_active_stl = function()
-    vim.wo.statusline = "%!v:lua.MiniStatusline.active()"
-  end
-  vim.api.nvim_create_autocmd("Filetype", {
-    pattern = { "lazy", "neo-tree-popup", "noice" },
-    callback = set_active_stl,
-  })
-  --
-  local MiniStatusline = require("mini.statusline")
+Later(function()
   local blocked_filetypes = {
-    ["alpha"] = true,
     ["man"] = true,
+    ["dashboard"] = true,
+    ["leetcode.nvim"] = true,
   }
+  local MiniStatusline = require("mini.statusline")
   require("mini.statusline").setup({
     content = {
       active = function()
@@ -46,12 +32,5 @@ function M.config()
       end,
     },
     use_icons = true,
-
-    -- Whether to set Vim's settings for statusline (make it always shown with
-    -- 'laststatus' set to 2). To use global statusline in Neovim>=0.7.0, set
-    -- this to `false` and 'laststatus' to 3.
-    set_vim_settings = false,
   })
-end
-
-return M
+end)
