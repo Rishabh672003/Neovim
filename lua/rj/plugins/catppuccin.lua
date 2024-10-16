@@ -1,9 +1,5 @@
--- Use 'mini.deps'. `now()` and `later()` are helpers for a safe two-stage
--- startup and are optional.
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
-
-now(function()
-  add({
+Now(function()
+  Add({
     source = "catppuccin/nvim",
     name = "catppuccin",
     hooks = {
@@ -53,28 +49,3 @@ now(function()
   })
   vim.cmd("colorscheme catppuccin-mocha")
 end)
-
--- later(function()
---   -- Use other plugins with `add()`. It ensures plugin is available in current
---   -- session (installs if absent)
---   add({
---     source = 'neovim/nvim-lspconfig',
---     -- Supply dependencies near target plugin
---     depends = { 'williamboman/mason.nvim' },
---   })
--- end)
---
--- later(function()
---   add({
---     source = 'nvim-treesitter/nvim-treesitter',
---     -- Use 'master' while monitoring updates in 'main'
---     checkout = 'master',
---     monitor = 'main',
---     -- Perform action after every checkout
---   })
---   -- Possible to immediately execute code which depends on the added plugin
---   require('nvim-treesitter.configs').setup({
---     ensure_installed = { 'lua', 'vimdoc' },
---     highlight = { enable = true },
---   })
--- end)
