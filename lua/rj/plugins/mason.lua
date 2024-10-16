@@ -21,7 +21,6 @@ Later(function()
       "gopls",
       "html-lsp",
       "lua_ls",
-      "marksman",
       "pyright",
       "tailwindcss",
       "ts_ls",
