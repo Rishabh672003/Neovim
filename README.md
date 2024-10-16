@@ -65,6 +65,3 @@ also I took configs and ideas from [Lunarvim](https://github.com/LunarVim/LunarV
 [![Lua](https://img.shields.io/badge/Made%20with%20Lua-blue.svg?style=for-the-badge&logo=lua)](#madewithlua)
 
 </div>
-
-
-</div>
