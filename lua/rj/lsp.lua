@@ -74,6 +74,7 @@ Capabilities.textDocument.foldingRange = {
   dynamicRegistration = true,
   lineFoldingOnly = true,
 }
+
 Capabilities.textDocument.completion.completionItem.snippetSupport = false
 -- }}}
 
@@ -115,29 +116,30 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
     keymap("n", "gR", '<cmd>lua require("trouble").toggle("lsp_references")<CR>', opts)
     keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    keymap("n", "<leader>l<shift>F", "<cmd>FormatToggle<cr>", opts)
-    keymap("n", "<leader>l<shift>I", "<cmd>Mason<cr>", opts)
-    keymap("n", "<leader>l<shift>S", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", opts)
     keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
     keymap("n", "<leader>lf", "<cmd>Format<cr>", opts)
+    keymap("n", "<leader>lF", "<cmd>FormatToggle<cr>", opts)
     keymap("n", "<leader>lh", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<cr>", opts)
     keymap("n", "<leader>li", "<cmd>checkhealth vim.lsp<cr>", opts)
+    keymap("n", "<leader>lI", "<cmd>Mason<cr>", opts)
     keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
     keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
     keymap("n", "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
     keymap("n", "<leader>lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", opts)
     keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
     keymap("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", opts)
+    keymap("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", opts)
   end,
 })
 -- }}}
 
 -- Servers {{{
+
 -- Lua_ls {{{
 autocmd("FileType", {
   pattern = "lua",
   callback = function()
-    local root_dir = vim.fs.root(0, { ".git" })
+    local root_dir = vim.fs.root(0, { ".git", vim.uv.cwd() })
     local client = vim.lsp.start({
       name = "lua_ls",
       cmd = { "lua-language-server" },
@@ -163,6 +165,7 @@ autocmd("FileType", {
           workspace = {
             preloadFileSize = 500,
             checkThirdParty = false,
+            -- library = vim.api.nvim_get_runtime_file("", true),
           },
         })
       end,
@@ -269,7 +272,7 @@ autocmd("FileType", {
       "Pipfile",
       "pyrightconfig.json",
       ".git",
-      vim.fn.getcwd(),
+      vim.uv.cwd(),
     })
     local client = vim.lsp.start({
       name = "pyright",
@@ -312,7 +315,6 @@ autocmd("FileType", {
           globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command)",
         },
       },
-      single_file_support = true,
     })
     if client then
       vim.lsp.buf_attach_client(0, client)
@@ -321,25 +323,6 @@ autocmd("FileType", {
 })
 -- }}}
 
--- Markdown {{{
-autocmd("FileType", {
-  pattern = { "markdown" },
-  callback = function()
-    local root_dir = vim.fs.root(0, {".marksman.toml", ".git" })
-    local client = vim.lsp.start({
-      name = "marksman",
-      cmd = { "marksman", "server" },
-      root_dir = root_dir,
-      capabilities = Capabilities,
-      settings = {},
-      single_file_support = true,
-    })
-    if client then
-      vim.lsp.buf_attach_client(0, client)
-    end
-  end,
-})
--- }}}
 -- Web-dev {{{
 -- TSServer {{{
 autocmd("FileType", {
@@ -516,10 +499,15 @@ autocmd("FileType", {
 --}}}
 
 -- Stop, Restart, Log commands {{{
+vim.api.nvim_create_user_command("LspStart", function()
+  vim.cmd("e")
+end, {})
+
 vim.api.nvim_create_user_command("LspStop", function(kwargs)
   local name = kwargs.fargs[1]
   for _, client in ipairs(vim.lsp.get_clients({ name = name })) do
     client.stop()
+    vim.notify(client .. " stopped")
   end
 end, {
   nargs = 1,
