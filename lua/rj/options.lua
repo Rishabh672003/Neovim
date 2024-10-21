@@ -53,7 +53,7 @@ vim.opt.iskeyword:append("-")
 vim.opt.whichwrap:append("<,>,[,],h,l")
 vim.opt.splitkeep = "screen"
 vim.opt.diffopt:append("linematch:60")
-vim.opt.shortmess:append({ C = true, c = true })
+vim.opt.shortmess:append({ C = true, c = true, I = true })
 vim.opt.cinkeys:remove(":")
 vim.opt.indentkeys:remove(":")
 vim.g.c_syntax_for_h = true
