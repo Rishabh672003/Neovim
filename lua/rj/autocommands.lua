@@ -32,3 +32,25 @@ vim.api.nvim_create_user_command("Grep", function(opts)
   vim.cmd(command)
   vim.cmd("copen")
 end, { nargs = 1 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Disable indentscope for certain filetypes",
+  pattern = {
+    "Trouble",
+    "better_term",
+    "dashboard",
+    "help",
+    "lazy",
+    "lazyterm",
+    "leetcode.nvim",
+    "man",
+    "mason",
+    "notify",
+    "terminal",
+    "toggleterm",
+    "trouble",
+  },
+  callback = function()
+    vim.b.miniindentscope_disable = true
+  end,
+})

@@ -1,4 +1,4 @@
-Now(function()
+Later(function()
   require("mini.indentscope").setup({
     -- Draw options
     draw = {
@@ -40,26 +40,5 @@ Now(function()
     --[[ "|" ]]
     symbol = "▏",
     -- symbol = "│",
-  })
-  vim.api.nvim_create_autocmd("FileType", {
-    desc = "Disable indentscope for certain filetypes",
-    pattern = {
-      "man",
-      "terminal",
-      "help",
-      "Trouble",
-      "trouble",
-      "lazy",
-      "mason",
-      "notify",
-      "better_term",
-      "toggleterm",
-      "lazyterm",
-      "dashboard",
-      "leetcode.nvim",
-    },
-    callback = function()
-      vim.b.miniindentscope_disable = true
-    end,
   })
 end)
