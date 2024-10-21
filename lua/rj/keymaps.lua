@@ -25,9 +25,6 @@ keymap("n", "\\", "<cmd>noh<cr>", opts)
 keymap("n", "[n", "<cmd>cnext<cr>", opts)
 keymap("n", "[p", "<cmd>cprevious<cr>", opts)
 
-keymap("n", "j", "gj", opts)
-keymap("n", "k", "gk", opts)
-
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
 keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
@@ -46,6 +43,8 @@ keymap("i", "<C-j>", "<Down>", opts)
 keymap("i", "<C-k>", "<Up>", opts)
 keymap("i", "<C-h>", "<Left>", opts)
 keymap("i", "<C-l>", "<Right>", opts)
+-- keymap("i", "jk", "<esc>", opts)
+keymap("i", "<C-f>", "<C-x><C-f>")
 
 keymap("v", "p", "P", opts)
 keymap("n", "dc", "^dg_", opts)
