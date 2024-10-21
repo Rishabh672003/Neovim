@@ -2,6 +2,9 @@ Later(function()
   Add({
     source = "WhoIsSethDaniel/mason-tool-installer.nvim",
     depends = { "williamboman/mason-lspconfig.nvim", "williamboman/mason.nvim" },
+    post_checkout = function()
+      vim.cmd("MasonToolsInstall")
+    end
   })
   require("mason").setup({
     ui = {
