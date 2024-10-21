@@ -114,7 +114,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "gI", "<cmd>Telescope lsp_implementations<CR>", opts)
     keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     keymap("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
-    keymap("n", "gR", '<cmd>lua require("trouble").toggle("lsp_references")<CR>', opts)
+    keymap("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
     keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
     keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
     keymap("n", "<leader>lf", "<cmd>Format<cr>", opts)
@@ -219,46 +219,46 @@ autocmd("FileType", {
 
 --}}}
 
--- -- C/C++ {{{
--- autocmd("FileType", {
---   pattern = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
---   callback = function()
---     local root_dir = vim.fs.root(0, {
---       "CMakeLists.txt",
---       ".clangd",
---       ".clang-tidy",
---       ".clang-format",
---       "compile_commands.json",
---       "compile_flags.txt",
---       "configure.ac",
---       ".git",
---       ---@diagnostic disable-next-line undefined-field
---       vim.uv.cwd(), -- equivalent of `single_file_mode` in lspconfig
---     })
---     local client = vim.lsp.start({
---       name = "clangd",
---       cmd = {
---         "clangd",
---         "-j=" .. 2,
---         "--background-index",
---         "--clang-tidy",
---         "--inlay-hints",
---         "--fallback-style=llvm",
---         "--all-scopes-completion",
---         "--completion-style=detailed",
---         "--header-insertion=iwyu",
---         "--header-insertion-decorators",
---         "--pch-storage=memory",
---       },
---       root_dir = root_dir,
---       capabilities = Capabilities,
---     })
---     if client then
---       vim.lsp.buf_attach_client(0, client)
---     end
---   end,
--- })
--- -- }}}
+-- C/C++ {{{
+autocmd("FileType", {
+  pattern = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+  callback = function()
+    local root_dir = vim.fs.root(0, {
+      "CMakeLists.txt",
+      ".clangd",
+      ".clang-tidy",
+      ".clang-format",
+      "compile_commands.json",
+      "compile_flags.txt",
+      "configure.ac",
+      ".git",
+      ---@diagnostic disable-next-line undefined-field
+      vim.uv.cwd(), -- equivalent of `single_file_mode` in lspconfig
+    })
+    local client = vim.lsp.start({
+      name = "clangd",
+      cmd = {
+        "clangd",
+        "-j=" .. 2,
+        "--background-index",
+        "--clang-tidy",
+        "--inlay-hints",
+        "--fallback-style=llvm",
+        "--all-scopes-completion",
+        "--completion-style=detailed",
+        "--header-insertion=iwyu",
+        "--header-insertion-decorators",
+        "--pch-storage=memory",
+      },
+      root_dir = root_dir,
+      capabilities = Capabilities,
+    })
+    if client then
+      vim.lsp.buf_attach_client(0, client)
+    end
+  end,
+})
+-- }}}
 
 -- Python {{{
 autocmd("FileType", {
@@ -498,48 +498,51 @@ autocmd("FileType", {
 -- }}}
 --}}}
 
--- Stop, Restart, Log commands {{{
+-- Start, Stop, Restart, Log commands {{{
 vim.api.nvim_create_user_command("LspStart", function()
   vim.cmd("e")
 end, {})
 
-vim.api.nvim_create_user_command("LspStop", function(kwargs)
-  local name = kwargs.fargs[1]
-  for _, client in ipairs(vim.lsp.get_clients({ name = name })) do
+vim.api.nvim_create_user_command("LspStop", function()
+  for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
     client.stop()
-    vim.notify(client .. " stopped")
+    vim.notify(client.name .. " stopped")
   end
 end, {
-  nargs = 1,
-  complete = function()
-    return vim.tbl_map(function(c)
-      return c.name
-    end, vim.lsp.get_clients())
-  end,
+  desc = "Stop all LSP clients attached to the current buffer.",
 })
 
-vim.api.nvim_create_user_command("LspRestart", function(kwargs)
-  local name = kwargs.fargs[1]
-  for _, client in ipairs(vim.lsp.get_clients({ name = name })) do
-    local bufs = vim.lsp.get_buffers_by_client_id(client.id)
+vim.api.nvim_create_user_command("LspRestart", function()
+  local detach_clients = {}
+  for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
     client.stop()
-    vim.wait(10000, function()
-      return vim.lsp.get_client_by_id(client.id) == nil
-    end)
-    local client_id = vim.lsp.start_client(client.config)
-    if client_id then
-      for _, buf in ipairs(bufs) do
-        vim.lsp.buf_attach_client(buf, client_id)
-      end
+    if vim.tbl_count(client.attached_buffers) > 0 then
+      detach_clients[client.name] = { client, vim.lsp.get_buffers_by_client_id(client.id) }
     end
   end
+  local timer = vim.uv.new_timer()
+
+  timer:start(
+    200,
+    50,
+    vim.schedule_wrap(function()
+      for name, client in pairs(detach_clients) do
+        vim.notify(name .. " :started")
+        local client_id = vim.lsp.start(client[1].config)
+        if client_id then
+          for _, buf in ipairs(client[2]) do
+            vim.lsp.buf_attach_client(buf, client_id)
+          end
+        end
+        detach_clients[name] = nil
+      end
+      if next(detach_clients) == nil and not timer:is_closing() then
+        timer:close()
+      end
+    end)
+  )
 end, {
-  nargs = 1,
-  complete = function()
-    return vim.tbl_map(function(c)
-      return c.name
-    end, vim.lsp.get_clients())
-  end,
+  desc = "Restart the all language client(s)",
 })
 
 vim.api.nvim_create_user_command("LspLog", function()
