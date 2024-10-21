@@ -83,10 +83,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local bufnr = ev.buf
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    --- Set omnifunc completion and use LSP for finding tags whenever possible
     ---@diagnostic disable-next-line need-check-nil
     if client.server_capabilities.completionProvider then
-      vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+      -- vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+      vim.bo[bufnr].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
     end
     ---@diagnostic disable-next-line need-check-nil
     if client.server_capabilities.definitionProvider then

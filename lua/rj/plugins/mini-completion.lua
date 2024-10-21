@@ -17,23 +17,12 @@ Later(
       -- Way of how module does LSP completion
       lsp_completion = {
         -- `source_func` should be one of 'completefunc' or 'omnifunc'.
-        source_func = 'completefunc',
+        source_func = 'omnifunc',
 
         -- `auto_setup` should be boolean indicating if LSP completion is set up
         -- on every `BufEnter` event.
-        auto_setup = true,
-
-        -- A function which takes LSP 'textDocument/completion' response items
-        -- and word to complete. Output should be a table of the same nature as
-        -- input items. Common use case is custom filter/sort.
-        -- process_items = --<function: MiniCompletion.default_process_items>,
+        auto_setup = false,
       },
-
-      -- Fallback action. It will always be run in Insert mode. To use Neovim's
-      -- built-in completion (see `:h ins-completion`), supply its mapping as
-      -- string. Example: to use 'whole lines' completion, supply '<C-x><C-l>'.
-      -- fallback_action = --<function: like `<C-n>` completion>,
-
         -- Module mappings. Use `''` (empty string) to disable one. Some of them
         -- might conflict with system mappings.
         mappings = {
