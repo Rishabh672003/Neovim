@@ -528,7 +528,7 @@ vim.api.nvim_create_user_command("LspRestart", function()
     vim.schedule_wrap(function()
       for name, client in pairs(detach_clients) do
         vim.notify(name .. " :started")
-        local client_id = vim.lsp.start(client[1].config)
+        local client_id = vim.lsp.start_client(client[1].config)
         if client_id then
           for _, buf in ipairs(client[2]) do
             vim.lsp.buf_attach_client(buf, client_id)
