@@ -1,6 +1,7 @@
 require("rj.plugins.auto-save")
 -- require("rj.plugins.catppuccin")
 
+-- All the mini plugins
 require("rj.plugins.mini-statusline")
 require("rj.plugins.mini-notify")
 require("rj.plugins.mini-pairs")
@@ -13,6 +14,9 @@ require("rj.plugins.mini-indentscope")
 require("rj.plugins.mini-completion")
 require("rj.plugins.mini-cursorword")
 require("rj.plugins.mini-hipatterns")
+require("rj.plugins.mini-surround")
+
+require("rj.plugins.gitsigns")
 require("rj.plugins.hop")
 require("rj.plugins.nvim-telescope")
 require("rj.plugins.project")
@@ -24,6 +28,9 @@ require("rj.plugins.nvim-treesitter")
 require("rj.plugins.mason")
 require("rj.plugins.swenv")
 require("rj.plugins.autocomplete")
+require("rj.plugins.toggleterm")
 -- require("rj.plugins.care")
+
+-- this has potential to replace mini.completion still needs more cooking
+-- require("rj.plugins.blink")
 require("rj.plugins.leetcode")
-require("rj.plugins.gitsigns")
