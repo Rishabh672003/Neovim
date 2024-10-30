@@ -41,8 +41,8 @@ nvim tmp.py --startuptime tmp
 get_time
 rm tmp
 
-pf "Opening C File"
-nvim tmp.c --startuptime tmp
+pf "Opening CPP File"
+nvim tmp.cpp --startuptime tmp
 get_time
 rm tmp
 
