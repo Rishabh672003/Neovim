@@ -8,9 +8,9 @@ vim.filetype.add({
         return vim.bo[buf]
             and vim.bo[buf].filetype ~= "bigfile"
             and path
-            and vim.fn.getfsize(path) > 1024 * 500
+            and vim.fn.getfsize(path) > 1024 * 1000
             and "bigfile"
-          or nil -- bigger than 500KB
+          or nil -- bigger than 1MB
       end,
     },
   },

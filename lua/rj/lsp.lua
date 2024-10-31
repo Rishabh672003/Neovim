@@ -32,8 +32,11 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
   vim.lsp.handlers.signature_help,
   { border = "rounded", close_events = { "CursorMoved", "BufHidden", "InsertCharPre" } }
 )
-vim.lsp.handlers["textDocument/hover"] =
-  vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded", close_events = { "CursorMoved", "BufHidden" } })
+
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+  border = "rounded",
+  close_events = { "CursorMoved", "BufHidden" },
+})
 
 local icons = {
   Class = " ",
@@ -75,7 +78,7 @@ Capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
-Capabilities.textDocument.completion.completionItem.snippetSupport = false
+Capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- }}}
 
 -- Create keybindings, commands, inlay hints and autocommands on LSP attach {{{
@@ -85,13 +88,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
     ---@diagnostic disable-next-line need-check-nil
     if client.server_capabilities.completionProvider then
-      -- vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
-      vim.bo[bufnr].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
+      vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
+      -- vim.bo[bufnr].omnifunc = "v:lua.MiniCompletion.completefunc_lsp"
     end
     ---@diagnostic disable-next-line need-check-nil
     if client.server_capabilities.definitionProvider then
       vim.bo[bufnr].tagfunc = "v:lua.vim.lsp.tagfunc"
     end
+
+    -- -- nightly has inbuilt completions, this can replace all completion plugins
+    -- if client.supports_method("textDocument/completion") then
+    --  -- Enable auto-completion
+    --  vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+    -- end
 
     --- Disable semantic tokens
     ---@diagnostic disable-next-line need-check-nil
@@ -108,27 +117,27 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- All the keymaps
     local keymap = vim.keymap.set
     local opts = { noremap = true, silent = true, buffer = true }
-    keymap("n", "gD", "<cmd>Telescope lsp_document_symbols<CR>", opts)
-    keymap("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-    keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-    keymap("n", "gI", "<cmd>Telescope lsp_implementations<CR>", opts)
-    keymap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    keymap("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
-    keymap("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-    keymap("n", "<leader>lf", "<cmd>Format<cr>", opts)
-    keymap("n", "<leader>lF", "<cmd>FormatToggle<cr>", opts)
-    keymap("n", "<leader>lh", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<cr>", opts)
-    keymap("n", "<leader>li", "<cmd>checkhealth vim.lsp<cr>", opts)
-    keymap("n", "<leader>lI", "<cmd>Mason<cr>", opts)
-    keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next()<cr>", opts)
-    keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev()<cr>", opts)
-    keymap("n", "<leader>ll", "<cmd>lua vim.lsp.codelens.run()<cr>", opts)
-    keymap("n", "<leader>lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", opts)
-    keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-    keymap("n", "<leader>ls", "<cmd>Telescope lsp_document_symbols<cr>", opts)
-    keymap("n", "<leader>lS", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", opts)
+    keymap("n", "gD", "<Cmd>Telescope lsp_document_symbols<CR>", opts)
+    keymap("n", "gd", "<Cmd>Telescope lsp_definitions<CR>", opts)
+    keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    keymap("n", "gI", "<Cmd>Telescope lsp_implementations<CR>", opts)
+    keymap("n", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+    keymap("n", "gr", "<Cmd>Telescope lsp_references<CR>", opts)
+    keymap("n", "gR", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
+    keymap("n", "gl", "<Cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    keymap("n", "<Leader>la", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+    keymap("n", "<Leader>lf", "<Cmd>Format<CR>", opts)
+    keymap("n", "<Leader>lF", "<Cmd>FormatToggle<CR>", opts)
+    keymap("n", "<Leader>lh", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<CR>", opts)
+    keymap("n", "<Leader>li", "<Cmd>checkhealth vim.lsp<CR>", opts)
+    keymap("n", "<Leader>lI", "<Cmd>Mason<CR>", opts)
+    keymap("n", "<Leader>lj", "<Cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+    keymap("n", "<Leader>lk", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+    keymap("n", "<Leader>ll", "<Cmd>lua vim.lsp.codelens.run()<CR>", opts)
+    keymap("n", "<Leader>lq", "<Cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+    keymap("n", "<Leader>lr", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
+    keymap("n", "<Leader>ls", "<Cmd>Telescope lsp_document_symbols<CR>", opts)
+    keymap("n", "<Leader>lS", "<Cmd>Telescope lsp_dynamic_workspace_symbols<CR>", opts)
   end,
 })
 -- }}}
@@ -153,14 +162,13 @@ autocmd("FileType", {
 
         client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
           runtime = {
-            -- (most likely LuaJIT in the case of Neovim)
             version = "LuaJIT",
           },
           hint = {
             enable = true,
           },
           diagnostics = {
-            globals = { "_G", "vim" },
+            globals = { "_G", "vim", "MiniFiles", "MiniDeps" },
           },
           workspace = {
             preloadFileSize = 500,
@@ -434,7 +442,6 @@ autocmd("FileType", {
       "postcss.config.ts",
       "package.json",
       "node_modules",
-      ".git",
     })
     local client = vim.lsp.start({
       name = "tailwindcss",
@@ -521,17 +528,16 @@ vim.api.nvim_create_user_command("LspRestart", function()
     end
   end
   local timer = vim.uv.new_timer()
-
   timer:start(
     200,
     50,
     vim.schedule_wrap(function()
       for name, client in pairs(detach_clients) do
-        vim.notify(name .. " :started")
         local client_id = vim.lsp.start_client(client[1].config)
         if client_id then
           for _, buf in ipairs(client[2]) do
             vim.lsp.buf_attach_client(buf, client_id)
+            vim.notify(name .. ": restarted")
           end
         end
         detach_clients[name] = nil
@@ -542,16 +548,20 @@ vim.api.nvim_create_user_command("LspRestart", function()
     end)
   )
 end, {
-  desc = "Restart the all language client(s)",
+  desc = "Restart all the language client(s) attached to the current buffer",
 })
 
 vim.api.nvim_create_user_command("LspLog", function()
   vim.cmd.vsplit(vim.lsp.log.get_filename())
-end, {})
+end, {
+  desc = "Get all the lsp logs",
+})
 
 vim.api.nvim_create_user_command("LspInfo", function()
   vim.cmd("checkhealth vim.lsp")
-end, {})
+end, {
+  desc = "Get all the information about all LSP attached",
+})
 -- }}}
 
 -- vim: fdm=marker:fdl=0

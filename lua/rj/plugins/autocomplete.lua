@@ -8,7 +8,7 @@ Later(function()
     mappings = {
       accept = "<C-y>",
       reject = "<C-e>",
-      complete = "<C-space>",
+      complete = "<C-Space>",
       next = "<C-n>",
       previous = "<C-p>",
     },

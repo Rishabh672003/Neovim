@@ -1,9 +1,9 @@
 Later(function()
   require("mini.files").setup()
-  vim.keymap.set("n", "<leader>e", function()
+  vim.keymap.set("n", "<Leader>e", function()
     MiniFiles.open()
   end, { silent = true, desc = "opens mini.files" })
-  vim.keymap.set("n", "<leader><leader>e", function()
+  vim.keymap.set("n", "<Leader><Leader>e", function()
     MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
   end, { silent = true, desc = "opens mini.files" })
 

@@ -11,8 +11,8 @@ Later(function()
 
       -- Uses external commands such as 'g++' and 'cargo'
       external = {
-        typescript = "deno run %",
-        javascript = "bun run %",
+        typescript = "bun run --hot %",
+        javascript = "bun run --hot %",
         java = "java %",
         markdown = "glow %",
         python = "python %",
@@ -80,5 +80,5 @@ Later(function()
     },
   })
 
-  vim.keymap.set("n", "<leader>j", "<cmd>Jaq<CR>", { silent = true, noremap = true })
+  vim.keymap.set("n", "<Leader>j", "<Cmd>Jaq<CR>", { silent = true, noremap = true })
 end)

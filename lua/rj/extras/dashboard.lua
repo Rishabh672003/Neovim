@@ -51,14 +51,14 @@ local splash_screen = vim.schedule_wrap(function()
     vim.api.nvim_put(center(text), "l", true, true)
     vim.cmd([[silent! setl nonu nornu nobl acd ft=dashboard bh=wipe bt=nofile]])
     for k, f in pairs(keys) do
-      map(k, "<cmd>e " .. xdg .. f .. " | setl noacd<CR>")
+      map(k, "<Cmd>e " .. xdg .. f .. " | setl noacd<CR>")
     end
-    map("q", "<cmd>q<cr>")
-    map("o", "<cmd>e #<1<cr>")
+    map("q", "<Cmd>q<CR>")
+    map("o", "<Cmd>e #<1<CR>")
     map("p", function()
       require("telescope").extensions.projects.projects(require("telescope.themes").get_dropdown({ previewer = false }))
     end)
-    map("r", "<cmd>Telescope oldfiles<cr>")
+    map("r", "<Cmd>Telescope oldfiles<CR>")
     vim.cmd("setlocal nomodifiable")
     vim.cmd("norm 2w")
   end

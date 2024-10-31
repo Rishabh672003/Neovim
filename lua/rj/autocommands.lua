@@ -8,13 +8,13 @@ vim.api.nvim_create_autocmd("FileType", {
 autocmd({ "FileType" }, {
   pattern = { "qf", "help", "lspinfo", "spectre_panel", "oil", "Jaq", "man" },
   callback = function()
-    vim.keymap.set("n", "q", "<cmd>close!<CR>", { silent = true, buffer = true })
+    vim.keymap.set("n", "q", "<Cmd>close!<CR>", { silent = true, buffer = true })
     vim.api.nvim_set_option_value("buflisted", false, { buf = 0 })
   end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "go", "c", "cpp", "rust", "java", "js" },
+  pattern = { "go", "c", "cpp", "rust", "java", "js", "zsh", "sh", "bash", "ts" },
   command = "setlocal tabstop=4 shiftwidth=4",
 })
 

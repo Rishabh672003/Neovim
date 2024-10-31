@@ -40,4 +40,7 @@ Later(function()
       col = 1,
     },
   })
+  local opts = { noremap = true, silent = true }
+  vim.keymap.set("n", "<Leader>gp", "<Cmd>Gitsigns preview_hunk_inline<CR>", opts)
+  vim.keymap.set("n", "<Leader>gP", "<Cmd>Gitsigns preview_hunk<CR>", opts)
 end)

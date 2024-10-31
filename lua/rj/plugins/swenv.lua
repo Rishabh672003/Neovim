@@ -17,8 +17,8 @@ Later(function()
   })
 
   local swenv = require("swenv.api")
-  vim.keymap.set("n", "<leader>lps", swenv.pick_venv, { desc = "Pick venv" })
-  vim.keymap.set("n", "<leader>lpc", function()
+  vim.keymap.set("n", "<Leader>lps", swenv.pick_venv, { desc = "Pick venv" })
+  vim.keymap.set("n", "<Leader>lpc", function()
     local venv = swenv.get_current_venv()
     if venv then
       vim.notify(venv.name)

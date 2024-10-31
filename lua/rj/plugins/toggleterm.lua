@@ -55,13 +55,13 @@ Later(function()
   -- Function Mappings
   --stylua: ignore start
   local keymap = vim.keymap.set
-  keymap("n", "<A-t>", "<cmd>ToggleTerm<cr>", { desc = "Toggle" })
-  keymap("n", "<leader>gg", function()_LAZYGIT_TOGGLE()end, {desc = "lazygit"})
-  keymap("n", "<leader>tT", "<cmd>terminal<cr>", { desc = "Neoterminal" })
-  keymap("n", "<leader>tf", "<cmd>ToggleTerm direction=float<cr>", { desc = "Float" })
-  keymap("n", "<leader>th", "<cmd>ToggleTerm size=10 direction=horizontal<cr>", { desc = "Horizontal" })
-  keymap("n", "<leader>tt", "<cmd>ToggleTerm<cr>", { desc = "Toggle" })
-  keymap("n", "<leader>tv", "<cmd>ToggleTerm size=80 direction=vertical<cr>", { desc = "Vertical" })
-  keymap("t", "<A-t>", "<cmd>ToggleTerm<cr>", { desc = "Toggle" })
+  keymap("n", "<A-t>", "<Cmd>ToggleTerm<CR>", { desc = "Toggle" })
+  keymap("n", "<Leader>gg", function()_LAZYGIT_TOGGLE()end, {desc = "lazygit"})
+  keymap("n", "<Leader>tT", "<Cmd>terminal<CR>", { desc = "Neoterminal" })
+  keymap("n", "<Leader>tf", "<Cmd>ToggleTerm direction=float<CR>", { desc = "Float" })
+  keymap("n", "<Leader>th", "<Cmd>ToggleTerm size=10 direction=horizontal<CR>", { desc = "Horizontal" })
+  keymap("n", "<Leader>tt", "<Cmd>ToggleTerm<CR>", { desc = "Toggle" })
+  keymap("n", "<Leader>tv", "<Cmd>ToggleTerm size=80 direction=vertical<CR>", { desc = "Vertical" })
+  keymap("t", "<A-t>", "<Cmd>ToggleTerm<CR>", { desc = "Toggle" })
   --stylua: ignore end
 end)

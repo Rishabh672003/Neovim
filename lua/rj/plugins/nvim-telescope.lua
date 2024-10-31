@@ -170,13 +170,6 @@ Later(function()
         theme = "dropdown",
         previewer = true,
       },
-      -- Default configuration for builtin pickers goes here:
-      -- picker_name = {
-      --   picker_config_key = value,
-      --   ...
-      -- }
-      -- Now the picker_config_key will be applied every time you call this
-      -- builtin picker
     },
     extensions = {
       workspaces = {
@@ -189,11 +182,11 @@ Later(function()
 
   local keymap = vim.keymap.set
   local opts = { noremap = true, silent = true }
-  keymap("n", "<leader>f", "<cmd>Telescope find_files<CR>", opts)
-  keymap("n", "<leader>F", "<cmd>Telescope live_grep<CR>", opts)
-  keymap("n", "<leader>r", "<cmd>Telescope oldfiles<CR>", opts)
-  keymap("n", "<leader>bb", "<cmd>Telescope buffers<CR>", opts)
-  keymap("n", "<leader>p", function()
+  keymap("n", "<Leader>f", "<Cmd>Telescope find_files<CR>", opts)
+  keymap("n", "<Leader>F", "<Cmd>Telescope live_grep<CR>", opts)
+  keymap("n", "<Leader>r", "<Cmd>Telescope oldfiles<CR>", opts)
+  keymap("n", "<Leader>bb", "<Cmd>Telescope buffers<CR>", opts)
+  keymap("n", "<Leader>p", function()
     require("telescope").extensions.projects.projects(
       require("telescope.themes").get_dropdown({ previewer = false })
     )

@@ -16,14 +16,17 @@ local keymap = vim.keymap.set
 --   term_mode = "t",
 --   command_mode = "c",
 
-keymap("n", "<leader>w", function() vim.cmd("silent! write!") vim.notify("File saved") end, opts)
-keymap("n", "<leader>q", "<cmd>q!<cr>", opts)
-keymap("n", "<leader>c", "<cmd>bd!<cr>", opts)
+keymap("n", "<Leader>w", function()
+  vim.cmd("silent! write!")
+  vim.notify("File saved")
+end, opts)
+keymap("n", "<Leader>q", "<Cmd>q!<CR>", opts)
+keymap("n", "<Leader>c", "<Cmd>bd!<CR>", opts)
 
-keymap("n", "\\", "<cmd>noh<cr>", opts)
+keymap("n", "\\", "<Cmd>noh<CR>", opts)
 
-keymap("n", "[n", "<cmd>cnext<cr>", opts)
-keymap("n", "[p", "<cmd>cprevious<cr>", opts)
+keymap("n", "[n", "<Cmd>cnext<CR>", opts)
+keymap("n", "[p", "<Cmd>cprevious<CR>", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
@@ -44,7 +47,6 @@ keymap("i", "<C-k>", "<Up>", opts)
 keymap("i", "<C-h>", "<Left>", opts)
 keymap("i", "<C-l>", "<Right>", opts)
 -- keymap("i", "jk", "<esc>", opts)
-keymap("i", "<C-f>", "<C-x><C-f>")
 
 keymap("v", "p", "P", opts)
 keymap("n", "dc", "^dg_", opts)
@@ -64,12 +66,12 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 
 -- Quality of Life stuff --
-keymap({ "n", "s", "v" }, "<leader>yy", '"+y', { desc = "Yank to clipboard" })
-keymap({ "n", "s", "v" }, "<leader>yY", '"+yy', { desc = "Yank line to clipboard" })
-keymap({ "n", "s", "v" }, "<leader>yp", '"+p', { desc = "Paste from clipboard" })
-keymap('n', '<leader>va', '<cmd>norm! mmggVG<cr>', opts)
-keymap('n', '<leader>vs', '<cmd>%y<cr>', opts)
-keymap('n', '<leader>vx', '<cmd>norm! ggVGx<cr>', opts)
+keymap({ "n", "s", "v" }, "<Leader>yy", '"+y', { desc = "Yank to clipboard" })
+keymap({ "n", "s", "v" }, "<Leader>yY", '"+yy', { desc = "Yank line to clipboard" })
+keymap({ "n", "s", "v" }, "<Leader>yp", '"+p', { desc = "Paste from clipboard" })
+keymap("n", "<Leader>va", "<Cmd>norm! mmggVG<CR>", opts)
+keymap("n", "<Leader>vs", "<Cmd>%y<CR>", opts)
+keymap("n", "<Leader>vx", "<Cmd>norm! ggVGx<CR>", opts)
 
 keymap("n", "i", function()
   if #vim.fn.getline(".") == 0 then
