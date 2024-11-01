@@ -1,0 +1,14 @@
+{
+	"Python Solution Class": {
+		"prefix": "cc",
+		"body": [
+			"class Solution:",
+			"    $1",
+			"",
+			"",
+			"sol = Solution()",
+			"print(sol.$2)"
+		],
+		"description": "Template for a Solution class in Python"
+	}
+}

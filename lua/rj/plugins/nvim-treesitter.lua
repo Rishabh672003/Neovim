@@ -1,6 +1,7 @@
 Later(function()
   Add({
     source = "nvim-treesitter/nvim-treesitter",
+    depends = { "windwp/nvim-ts-autotag" },
   })
   local configs = require("nvim-treesitter.configs")
   configs.setup({
@@ -38,7 +39,12 @@ Later(function()
     },
     indent = {
       enable = true,
-      disable = { --[[ "python", ]] "html", "cpp", "css", },
+      disable = { --[[ "python", ]]
+        "html",
+        "cpp",
+        "css",
+      },
     },
   })
+  require("nvim-ts-autotag").setup({})
 end)

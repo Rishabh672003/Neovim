@@ -1,4 +1,3 @@
--- use a release tag to download pre-built binaries
 Later(function()
   Add({
     source = "saghen/blink.cmp",
@@ -12,11 +11,11 @@ Later(function()
     -- experimental auto-brackets support
     accept = { auto_brackets = { enabled = true } },
     -- experimental signature help support
-    trigger = { signature_help = { enabled = true } },
+    trigger = { signature_help = { enabled = false } },
 
     windows = {
       documentation = {
-        auto_show = true,
+        auto_show = false,
       },
     },
   })

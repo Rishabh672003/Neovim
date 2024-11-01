@@ -1,0 +1,43 @@
+{
+	"C Function with Main Loop": {
+		"prefix": "cc",
+		"body": [
+			"#include <math.h>",
+			"#include <stdio.h>",
+			"#include <stdlib.h>",
+			"#include <string.h>",
+			"",
+			"void solve() {",
+			"    int x, y;",
+			"    scanf(\"%i%i\", &x, &y);",
+			"    $1",
+			"};",
+			"",
+			"int main() {",
+			"    int t;",
+			"    scanf(\"%i\", &t);",
+			"    while (t--) {",
+			"        solve();",
+			"    }",
+			"    return 0;",
+			"}"
+		],
+		"description": "C program with function and main loop template"
+	},
+
+	"C Program Main Template": {
+		"prefix": "c",
+		"body": [
+			"#include <math.h>",
+			"#include <stdio.h>",
+			"#include <stdlib.h>",
+			"#include <string.h>",
+			"",
+			"int main() {",
+			"    $1",
+			"    return 0;",
+			"}"
+		],
+		"description": "Basic main template in C"
+	}
+}
