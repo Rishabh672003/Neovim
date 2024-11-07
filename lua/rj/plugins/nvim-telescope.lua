@@ -132,6 +132,10 @@ Later(function()
         theme = "dropdown",
         previewer = true,
       },
+      quickfix = {
+        theme = "dropdown",
+        previewer = true,
+      },
       oldfiles = {
         theme = "dropdown",
         previewer = true,
