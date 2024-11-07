@@ -24,7 +24,7 @@ Later(function()
       "gopls",
       "html-lsp",
       "lua_ls",
-      "pyright",
+      "basedpyright",
       "tailwindcss",
       "ts_ls",
 

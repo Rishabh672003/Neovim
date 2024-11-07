@@ -1,5 +1,3 @@
-local autocmd = vim.api.nvim_create_autocmd
-
 -- Diagnostics {{{
 local config = {
   virtual_text = false,
@@ -98,28 +96,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     -- -- nightly has inbuilt completions, this can replace all completion plugins
     -- if client.supports_method("textDocument/completion") then
-    --  -- Enable auto-completion
-    --  vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+    --   -- Enable auto-completion
+    --   vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
     -- end
 
     --- Disable semantic tokens
     ---@diagnostic disable-next-line need-check-nil
     client.server_capabilities.semanticTokensProvider = nil
 
-    -- Inlay hints only on filetypes i want
-    local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
-    if filetype == "rust" or filetype == "go" or filetype == "lua" then
-      vim.lsp.inlay_hint.enable(false)
-    else
-      vim.lsp.inlay_hint.enable(true)
-    end
-
     -- All the keymaps
     local keymap = vim.keymap.set
     local opts = { noremap = true, silent = true, buffer = true }
     keymap("n", "gD", "<Cmd>Telescope lsp_document_symbols<CR>", opts)
     keymap("n", "gd", "<Cmd>Telescope lsp_definitions<CR>", opts)
-    keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+    keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover({border='rounded'})<CR>", opts)
     keymap("n", "gI", "<Cmd>Telescope lsp_implementations<CR>", opts)
     keymap("n", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     keymap("n", "gr", "<Cmd>Telescope lsp_references<CR>", opts)
@@ -143,10 +133,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- }}}
 
 -- Servers {{{
+local autocmd = vim.api.nvim_create_autocmd
+
+vim.api.nvim_create_augroup("LSP", {
+  clear = false,
+})
 
 -- Lua_ls {{{
 autocmd("FileType", {
   pattern = "lua",
+  group = "LSP",
   callback = function()
     local root_dir = vim.fs.root(0, { ".git", vim.uv.cwd() })
     local client = vim.lsp.start({
@@ -196,6 +192,7 @@ autocmd("FileType", {
 -- Gopls {{{
 autocmd("FileType", {
   pattern = { "go", "gotempl", "gowork", "gomod" },
+  group = "LSP",
   callback = function()
     local root_dir = vim.fs.root(0, { "go.mod", "go.work", ".git" })
     local client = vim.lsp.start({
@@ -230,6 +227,7 @@ autocmd("FileType", {
 -- C/C++ {{{
 autocmd("FileType", {
   pattern = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+  group = "LSP",
   callback = function()
     local root_dir = vim.fs.root(0, {
       "CMakeLists.txt",
@@ -271,6 +269,7 @@ autocmd("FileType", {
 -- Python {{{
 autocmd("FileType", {
   pattern = { "python" },
+  group = "LSP",
   callback = function()
     local root_dir = vim.fs.root(0, {
       "pyproject.toml",
@@ -283,19 +282,24 @@ autocmd("FileType", {
       vim.uv.cwd(),
     })
     local client = vim.lsp.start({
-      name = "pyright",
-      cmd = { "pyright-langserver", "--stdio" },
+      name = "basedpyright",
+      cmd = { "basedpyright-langserver", "--stdio" },
       root_dir = root_dir,
       capabilities = Capabilities,
       settings = {
-        python = {
+        basedpyright = {
+          disableOrganizeImports = true,
           analysis = {
-            -- showDiagnostics = true,
-            typeCheckingMode = "basic",
-            -- diagnosticMode = "workspace",
+            autoSearchPaths = true,
+            autoImportCompletions = true,
+            useLibraryCodeForTypes = true,
+            diagnosticMode = "openFilesOnly",
+            typeCheckingMode = "strict",
             inlayHints = {
               variableTypes = true,
+              callArgumentNames = true,
               functionReturnTypes = true,
+              genericTypes = false,
             },
           },
         },
@@ -311,6 +315,7 @@ autocmd("FileType", {
 -- Bash {{{
 autocmd("FileType", {
   pattern = { "bash", "sh", "zsh" },
+  group = "LSP",
   callback = function()
     local root_dir = vim.fs.root(0, { ".git" })
     local client = vim.lsp.start({
@@ -335,6 +340,7 @@ autocmd("FileType", {
 -- TSServer {{{
 autocmd("FileType", {
   pattern = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  group = "LSP",
   callback = function()
     local root_dir = vim.fs.root(0, { "tsconfig.json", "jsconfig.json", "package.json", ".git" })
     local client = vim.lsp.start({
@@ -356,6 +362,7 @@ autocmd("FileType", {
 -- CSSls {{{
 autocmd("FileType", {
   pattern = { "css", "scss" },
+  group = "LSP",
   callback = function()
     local root_dir = vim.fs.root(0, { "package.json", ".git" })
     local client = vim.lsp.start({
@@ -378,58 +385,17 @@ autocmd("FileType", {
 autocmd("FileType", {
   -- pattern {{{
   pattern = {
-    "aspnetcorerazor",
-    "astro",
-    "astro-markdown",
-    "blade",
-    "clojure",
-    "django-html",
-    "htmldjango",
-    "edge",
-    "eelixir",
-    "elixir",
     "ejs",
-    "erb",
-    "eruby",
-    "gohtml",
-    "gohtmltmpl",
-    "haml",
-    "handlebars",
-    "hbs",
     "html",
-    "htmlangular",
-    "html-eex",
-    "heex",
-    "jade",
-    "leaf",
-    "liquid",
-    -- "markdown",
-    "mdx",
-    "mustache",
-    "njk",
-    "nunjucks",
-    "php",
-    "razor",
-    "slim",
-    "twig",
     "css",
-    "less",
-    "postcss",
-    "sass",
     "scss",
-    "stylus",
-    "sugarss",
     "javascript",
     "javascriptreact",
-    "reason",
-    "rescript",
     "typescript",
     "typescriptreact",
-    "vue",
-    "svelte",
-    "templ",
   },
   -- }}}
+  group = "LSP",
   callback = function()
     local root_dir = vim.fs.root(0, {
       "tailwind.config.js",
@@ -480,6 +446,7 @@ autocmd("FileType", {
 -- HTML {{{
 autocmd("FileType", {
   pattern = { "html" },
+  group = "LSP",
   callback = function()
     local root_dir = vim.fs.root(0, { "package.json", ".git" })
     local client = vim.lsp.start({
