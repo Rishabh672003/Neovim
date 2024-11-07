@@ -1,3 +1,6 @@
+-- Initially taken from [NTBBloodbath](https://github.com/NTBBloodbath/nvim/blob/main/lua/core/lsp.lua)
+-- Modiefied almost 80% by me
+
 -- Diagnostics {{{
 local config = {
   virtual_text = false,
