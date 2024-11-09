@@ -9,15 +9,10 @@ Later(function()
       defer_save = { "InsertLeave", "TextChanged" }, -- vim events that trigger a deferred save (saves after `debounce_delay`)
       cancel_deffered_save = { "InsertEnter" }, -- vim events that cancel a pending deferred save
     },
-    -- function that takes the buffer handle and determines whether to save the current buffer or not
-    -- return true: if buffer is ok to be saved
-    -- return false: if it's not ok to be saved
-    -- if set to `nil` then no specific condition is applied
     condition = function(buf)
       local fn = vim.fn
-      local utils = require("auto-save.utils.data")
 
-      if fn.getbufvar(buf, "&modifiable") == 1 and utils.not_in(fn.getbufvar(buf, "&filetype"), { "oil" }) then
+      if fn.getbufvar(buf, "&modifiable") == 1 then
         return true -- met condition(s), can save
       end
       return false -- can't save
