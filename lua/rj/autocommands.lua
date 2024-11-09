@@ -1,6 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
+local usercmd = vim.api.nvim_create_user_command
 
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
   pattern = "dashboard",
   command = "setlocal nocursorline",
 })
@@ -13,7 +14,7 @@ autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("FileType", {
   pattern = { "go", "c", "cpp", "rust", "java", "js", "zsh", "sh", "bash", "ts", "json" },
   command = "setlocal tabstop=4 shiftwidth=4",
 })
@@ -27,13 +28,26 @@ autocmd({ "FileType" }, {
   end,
 })
 
-vim.api.nvim_create_user_command("Grep", function(opts)
+usercmd("Grep", function(opts)
   local command = string.format('silent cgetexpr system("rg --vimgrep -S %s")', opts.args)
   vim.cmd(command)
   vim.cmd("copen")
 end, { nargs = 1 })
 
-vim.api.nvim_create_autocmd("FileType", {
+autocmd("BufWritePre", {
+  pattern = "*",
+  desc = "Create parent directories of a file, if they dont exist",
+  callback = function()
+    local fpath = vim.fn.expand("<afile>")
+    local dir = vim.fn.fnamemodify(fpath, ":p:h")
+
+    if vim.fn.isdirectory(dir) ~= 1 then
+      vim.fn.mkdir(dir, "p")
+    end
+  end,
+})
+
+autocmd("FileType", {
   desc = "Disable indentscope for certain filetypes",
   pattern = {
     "Trouble",
