@@ -1,5 +1,6 @@
 -- credit to: [lewis6991](https://github.com/lewis6991)
--- adapted from https://github.com/ethanholz/nvim-lastplace/blob/main/lua/nvim-lastplace/init.lua
+-- who adapted this from https://github.com/ethanholz/nvim-lastplace/blob/main/lua/nvim-lastplace/init.lua
+
 local ignore_buftype = { "quickfix", "nofile", "help" }
 local ignore_filetype = { "gitcommit", "gitrebase", "svn", "hgcommit" }
 

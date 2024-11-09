@@ -1,5 +1,6 @@
 -- credit to: [vloe](https://github.com/vloe) who got it from [Lazyvim](https://github.com/LazyVim/LazyVim)
 -- Disable certain features when opening large files
+
 local big_file = vim.api.nvim_create_augroup("BigFile", { clear = true })
 vim.filetype.add({
   pattern = {
