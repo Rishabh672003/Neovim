@@ -1,7 +1,6 @@
 Later(function()
   Add({
     source = "nvim-treesitter/nvim-treesitter",
-    depends = { "windwp/nvim-ts-autotag" },
   })
   local configs = require("nvim-treesitter.configs")
   configs.setup({
@@ -46,5 +45,4 @@ Later(function()
       },
     },
   })
-  require("nvim-ts-autotag").setup({})
 end)

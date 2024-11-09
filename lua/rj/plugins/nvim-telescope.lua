@@ -182,7 +182,6 @@ Later(function()
       },
     },
   })
-  telescope.load_extension("projects")
 
   local keymap = vim.keymap.set
   local opts = { noremap = true, silent = true }
@@ -190,9 +189,4 @@ Later(function()
   keymap("n", "<Leader>F", "<Cmd>Telescope live_grep<CR>", opts)
   keymap("n", "<Leader>r", "<Cmd>Telescope oldfiles<CR>", opts)
   keymap("n", "<Leader>bb", "<Cmd>Telescope buffers<CR>", opts)
-  keymap("n", "<Leader>p", function()
-    require("telescope").extensions.projects.projects(
-      require("telescope.themes").get_dropdown({ previewer = false })
-    )
-  end, opts)
 end)

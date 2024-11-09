@@ -18,4 +18,9 @@ Later(function()
     ---@usage path to store the project history for use in telescope
     datapath = vim.fn.stdpath("data"),
   })
+
+  require("telescope").load_extension("projects")
+  vim.keymap.set("n", "<Leader>p", function()
+    require("telescope").extensions.projects.projects(require("telescope.themes").get_dropdown({ previewer = false }))
+  end, { noremap = true, silent = true })
 end)
