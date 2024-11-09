@@ -1,5 +1,5 @@
 -- Initially taken from [NTBBloodbath](https://github.com/NTBBloodbath/nvim/blob/main/lua/core/lsp.lua)
--- Modiefied almost 80% by me
+-- modified almost 80% by me
 
 -- Diagnostics {{{
 local config = {
@@ -72,14 +72,14 @@ end
 
 -- Lsp capabilities {{{
 -- Here we grab default Neovim capabilities and extend them with ones we want on top
-Capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-Capabilities.textDocument.foldingRange = {
+capabilities.textDocument.foldingRange = {
   dynamicRegistration = true,
   lineFoldingOnly = true,
 }
 
-Capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- }}}
 
 -- Create keybindings, commands, inlay hints and autocommands on LSP attach {{{
@@ -151,7 +151,7 @@ autocmd("FileType", {
     local client = vim.lsp.start({
       name = "lua_ls",
       cmd = { "lua-language-server" },
-      capabilities = Capabilities,
+      capabilities = capabilities,
       on_init = function(client)
         local path = client.workspace_folders and client.workspace_folders[1].name or vim.fs.root(0, ".")
         ---@diagnostic disable-next-line undefined-field
@@ -202,7 +202,7 @@ autocmd("FileType", {
       name = "gopls",
       cmd = { "gopls" },
       root_dir = root_dir,
-      capabilities = Capabilities,
+      capabilities = capabilities,
       settings = {
         gopls = {
           completeUnimported = true,
@@ -260,7 +260,7 @@ autocmd("FileType", {
         "--pch-storage=memory",
       },
       root_dir = root_dir,
-      capabilities = Capabilities,
+      capabilities = capabilities,
     })
     if client then
       vim.lsp.buf_attach_client(0, client)
@@ -288,7 +288,7 @@ autocmd("FileType", {
       name = "basedpyright",
       cmd = { "basedpyright-langserver", "--stdio" },
       root_dir = root_dir,
-      capabilities = Capabilities,
+      capabilities = capabilities,
       settings = {
         basedpyright = {
           disableOrganizeImports = true,
@@ -325,7 +325,7 @@ autocmd("FileType", {
       name = "bashls",
       cmd = { "bash-language-server", "start" },
       root_dir = root_dir,
-      capabilities = Capabilities,
+      capabilities = capabilities,
       settings = {
         bashIde = {
           globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command)",
@@ -350,7 +350,7 @@ autocmd("FileType", {
       name = "ts_ls",
       cmd = { "typescript-language-server", "--stdio" },
       root_dir = root_dir,
-      capabilities = Capabilities,
+      capabilities = capabilities,
       init_options = {
         hostInfo = "neovim",
       },
@@ -372,7 +372,7 @@ autocmd("FileType", {
       name = "cssls",
       cmd = { "vscode-css-language-server", "--stdio" },
       root_dir = root_dir,
-      capabilities = Capabilities,
+      capabilities = capabilities,
       init_options = {
         provideFormatter = true,
       },
@@ -416,7 +416,7 @@ autocmd("FileType", {
       name = "tailwindcss",
       cmd = { "tailwindcss-language-server", "--stdio" },
       root_dir = root_dir,
-      capabilities = Capabilities,
+      capabilities = capabilities,
       settings = {
         tailwindCSS = {
           classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
@@ -456,7 +456,7 @@ autocmd("FileType", {
       name = "html",
       cmd = { "vscode-html-language-server", "--stdio" },
       root_dir = root_dir,
-      capabilities = Capabilities,
+      capabilities = capabilities,
       init_options = {
         configurationSection = { "html", "css", "javascript" },
         embeddedLanguages = {
