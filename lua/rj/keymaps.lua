@@ -46,10 +46,7 @@ keymap("i", "<C-j>", "<Down>", opts)
 keymap("i", "<C-k>", "<Up>", opts)
 keymap("i", "<C-h>", "<Left>", opts)
 keymap("i", "<C-l>", "<Right>", opts)
--- keymap("i", "jk", "<esc>", opts)
-
 keymap("v", "p", "P", opts)
-keymap("n", "dc", "^dg_", opts)
 
 -- Visual Block --
 -- Move text up and down
@@ -80,3 +77,7 @@ keymap("n", "i", function()
     return "i"
   end
 end, { expr = true, desc = "properly indent on empty line when insert" })
+
+keymap("n", "<Leader>sw", function ()
+  require("rj.extras.sudo-write").write()
+end, opts)
