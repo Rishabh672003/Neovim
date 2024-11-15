@@ -1,5 +1,7 @@
 -- credit to: [tomtom-aquib](https://github.com/tamton-aquib)
 
+local first = true
+
 local center = function(dict)
   local new_dict = {}
   for _, v in pairs(dict) do
@@ -11,6 +13,7 @@ local center = function(dict)
 end
 
 local splash_screen = vim.schedule_wrap(function()
+  first = false
   local xdg = vim.fn.fnamemodify(vim.fn.stdpath("config") --[[@as string]], ":h") .. "/"
   local header = {
     "",
@@ -64,7 +67,13 @@ local splash_screen = vim.schedule_wrap(function()
     vim.cmd("norm 2w")
   end
 end)
-local au = function(events, ptn, cb)
-  vim.api.nvim_create_autocmd(events, { pattern = ptn, [type(cb) == "function" and "callback" or "command"] = cb })
-end
-au("UIEnter", "*", splash_screen)
+
+vim.api.nvim_create_autocmd("UIEnter", {
+  pattern = "*",
+  callback = function()
+    -- Have to do this so that splash screen doesnt show and mess up the screen
+    -- after <C-z> and `fg`, so we make sure that dashboard only appears once
+    if first then splash_screen()
+    else return end
+  end
+})
