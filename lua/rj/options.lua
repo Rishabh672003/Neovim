@@ -57,3 +57,4 @@ vim.opt.shortmess:append({ C = true, c = true, I = true })
 vim.opt.cinkeys:remove(":")
 vim.opt.indentkeys:remove(":")
 vim.g.c_syntax_for_h = true
+require("rj.extras.statuscolumn").setup_statuscolumn()
