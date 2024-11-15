@@ -56,7 +56,7 @@ Later(function()
   --stylua: ignore start
   local keymap = vim.keymap.set
   keymap("n", "<A-t>", "<Cmd>ToggleTerm<CR>", { desc = "Toggle" })
-  keymap("n", "<Leader>gg", function()_LAZYGIT_TOGGLE()end, {desc = "lazygit"})
+  keymap("n", "<Leader>gg", function()_LAZYGIT_TOGGLE()end, { desc = "lazygit" })
   keymap("n", "<Leader>tT", "<Cmd>terminal<CR>", { desc = "Neoterminal" })
   keymap("n", "<Leader>tf", "<Cmd>ToggleTerm direction=float<CR>", { desc = "Float" })
   keymap("n", "<Leader>th", "<Cmd>ToggleTerm size=10 direction=horizontal<CR>", { desc = "Horizontal" })

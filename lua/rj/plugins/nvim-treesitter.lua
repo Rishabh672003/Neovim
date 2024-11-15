@@ -36,6 +36,9 @@ Later(function()
         return vim.api.nvim_buf_line_count(bufnr) > 10000
       end,
     },
+    matchup = {
+      enable = true
+    },
     indent = {
       enable = true,
       disable = { --[[ "python", ]]

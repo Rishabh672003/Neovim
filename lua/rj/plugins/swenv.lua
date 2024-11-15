@@ -27,6 +27,7 @@ Later(function()
     end
   end, { desc = "Current venv" })
   vim.api.nvim_create_autocmd("FileType", {
+    group = vim.api.nvim_create_augroup("swenv", { clear = true }),
     pattern = { "python" },
     callback = function()
       require("swenv.api").auto_venv()
