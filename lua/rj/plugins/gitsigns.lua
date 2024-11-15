@@ -40,7 +40,9 @@ Later(function()
       col = 1,
     },
   })
-  local opts = { noremap = true, silent = true }
-  vim.keymap.set("n", "<Leader>gp", "<Cmd>Gitsigns preview_hunk_inline<CR>", opts)
-  vim.keymap.set("n", "<Leader>gP", "<Cmd>Gitsigns preview_hunk<CR>", opts)
+  vim.keymap.set( "n", "<Leader>gp", "<Cmd>Gitsigns preview_hunk_inline<CR>", { silent = true, desc = "Preview Hunk Inline" })
+  vim.keymap.set("n", "<Leader>gP", "<Cmd>Gitsigns preview_hunk<CR>", { silent = true, desc = "Preview Hunk Float" })
+  vim.keymap.set("n", "<Leader>gb", "<Cmd>Gitsigns blame_line<CR>", { silent = true, desc = "Blame Line" })
+  vim.keymap.set("n", "<Leader>gn", "<Cmd>Gitsigns next_hunk<CR>", { silent = true, desc = "Next Hunk" })
+  vim.keymap.set("n", "<Leader>gh", "<Cmd>Gitsigns prev_hunk<CR>", { silent = true, desc = "Prev Hunk" })
 end)

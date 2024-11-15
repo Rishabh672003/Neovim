@@ -1,7 +1,7 @@
 Later(function()
   Add({
     source = "nvim-telescope/telescope.nvim",
-    depends = { "ahmedkhalf/project.nvim", "nvim-lua/plenary.nvim" },
+    depends = { "nvim-lua/plenary.nvim" },
   })
   local telescope = require("telescope")
   local actions = require("telescope.actions")
@@ -184,9 +184,8 @@ Later(function()
   })
 
   local keymap = vim.keymap.set
-  local opts = { noremap = true, silent = true }
-  keymap("n", "<Leader>f", "<Cmd>Telescope find_files<CR>", opts)
-  keymap("n", "<Leader>F", "<Cmd>Telescope live_grep<CR>", opts)
-  keymap("n", "<Leader>r", "<Cmd>Telescope oldfiles<CR>", opts)
-  keymap("n", "<Leader>bb", "<Cmd>Telescope buffers<CR>", opts)
+  keymap("n", "<Leader>f", "<Cmd>Telescope find_files<CR>", { desc = "Find Files" })
+  keymap("n", "<Leader>F", "<Cmd>Telescope live_grep<CR>", { desc = "Live Grep" })
+  keymap("n", "<Leader>r", "<Cmd>Telescope oldfiles<CR>", { desc = "Oldfiles" })
+  keymap("n", "<Leader>bb", "<Cmd>Telescope buffers<CR>", { desc = "Buffers" })
 end)

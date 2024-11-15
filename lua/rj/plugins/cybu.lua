@@ -23,6 +23,6 @@ Later(function()
     },
   })
 
-  vim.keymap.set("n", "<Leader>bn", "<Cmd>CybuNext<CR>")
-  vim.keymap.set("n", "<Leader>bp", "<Cmd>CybuPrev<CR>")
+  vim.keymap.set("n", "<Leader>bn", "<Cmd>CybuNext<CR>", { desc = "Next buffer" })
+  vim.keymap.set("n", "<Leader>bp", "<Cmd>CybuPrev<CR>", { desc = "Prev buffer" })
 end)

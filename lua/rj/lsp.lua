@@ -108,8 +108,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     client.server_capabilities.semanticTokensProvider = nil
 
     -- All the keymaps
+    -- stylua: ignore start
     local keymap = vim.keymap.set
-    local opts = { noremap = true, silent = true, buffer = true }
+    local opts = { silent = true, buffer = true }
+    local function opt(desc, others)
+      return vim.tbl_extend("force", opts, { desc = desc }, others or {})
+    end
     keymap("n", "gD", "<Cmd>Telescope lsp_document_symbols<CR>", opts)
     keymap("n", "gd", "<Cmd>Telescope lsp_definitions<CR>", opts)
     keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover({border='rounded'})<CR>", opts)
@@ -118,19 +122,20 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "gr", "<Cmd>Telescope lsp_references<CR>", opts)
     keymap("n", "gR", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
     keymap("n", "gl", "<Cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    keymap("n", "<Leader>la", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-    keymap("n", "<Leader>lf", "<Cmd>Format<CR>", opts)
-    keymap("n", "<Leader>lF", "<Cmd>FormatToggle<CR>", opts)
-    keymap("n", "<Leader>lh", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<CR>", opts)
-    keymap("n", "<Leader>li", "<Cmd>checkhealth vim.lsp<CR>", opts)
-    keymap("n", "<Leader>lI", "<Cmd>Mason<CR>", opts)
-    keymap("n", "<Leader>lj", "<Cmd>lua vim.diagnostic.goto_next()<CR>", opts)
-    keymap("n", "<Leader>lk", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
-    keymap("n", "<Leader>ll", "<Cmd>lua vim.lsp.codelens.run()<CR>", opts)
-    keymap("n", "<Leader>lq", "<Cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-    keymap("n", "<Leader>lr", "<Cmd>lua vim.lsp.buf.rename()<CR>", opts)
-    keymap("n", "<Leader>ls", "<Cmd>Telescope lsp_document_symbols<CR>", opts)
-    keymap("n", "<Leader>lS", "<Cmd>Telescope lsp_dynamic_workspace_symbols<CR>", opts)
+    keymap("n", "<Leader>la", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opt("Code Action"))
+    keymap("n", "<Leader>lf", "<Cmd>Format<CR>", opt("Format"))
+    keymap("n", "<Leader>lF", "<Cmd>FormatToggle<CR>", opt("Toggle AutoFormat"))
+    keymap( "n", "<Leader>lh", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<CR>", opt("Toggle Inlayhints"))
+    keymap("n", "<Leader>li", "<Cmd>checkhealth vim.lsp<CR>", opt("LspInfo"))
+    keymap("n", "<Leader>lI", "<Cmd>Mason<CR>", opt("Mason"))
+    keymap("n", "<Leader>lj", "<Cmd>lua vim.diagnostic.goto_next()<CR>", opt("Next Diagnostic"))
+    keymap("n", "<Leader>lk", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", opt("Prev Diagnostic"))
+    keymap("n", "<Leader>ll", "<Cmd>lua vim.lsp.codelens.run()<CR>", opt("Run CodeLens"))
+    keymap("n", "<Leader>lq", "<Cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opt("Set LocList"))
+    keymap("n", "<Leader>lr", "<Cmd>lua vim.lsp.buf.rename()<CR>", opt("Rename"))
+    keymap("n", "<Leader>ls", "<Cmd>Telescope lsp_document_symbols<CR>", opt("Document Symbols"))
+    keymap("n", "<Leader>lS", "<Cmd>Telescope lsp_dynamic_workspace_symbols<CR>", opt("Workspace Symbols"))
+    -- stylua: ignore end
   end,
 })
 -- }}}
@@ -290,6 +295,9 @@ autocmd("FileType", {
       root_dir = root_dir,
       capabilities = capabilities,
       settings = {
+        python = {
+          venvPath = vim.fn.expand("~") .. "/.virtualenvs",
+        },
         basedpyright = {
           disableOrganizeImports = true,
           analysis = {
@@ -507,8 +515,8 @@ vim.api.nvim_create_user_command("LspRestart", function()
         if client_id then
           for _, buf in ipairs(client[2]) do
             vim.lsp.buf_attach_client(buf, client_id)
-            vim.notify(name .. ": restarted")
           end
+          vim.notify(name .. ": restarted")
         end
         detach_clients[name] = nil
       end
