@@ -73,7 +73,6 @@ vim.api.nvim_create_autocmd("UIEnter", {
   callback = function()
     -- Have to do this so that splash screen doesnt show and mess up the screen
     -- after <C-z> and `fg`, so we make sure that dashboard only appears once
-    if first then splash_screen()
-    else return end
-  end
+    if first and vim.bo.filetype ~= "man" then splash_screen() else return end
+  end,
 })
