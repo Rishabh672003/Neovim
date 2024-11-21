@@ -1,4 +1,4 @@
--- credit to: [Biggybi](https://gitlab.com/Biggybi/neovim-config)
+-- Credit to: [Biggybi](https://gitlab.com/Biggybi/neovim-config)
 local M = {}
 
 function M.wrap_symbol()
@@ -26,7 +26,7 @@ function M.setup_statuscolumn()
       if
         buftype == ""
         and not vim.tbl_contains({ "terminal", "nofile" }, buftype)
-        and not vim.tbl_contains({ "dashboard", "mason", "toggleterm" }, filetype)
+        and not vim.tbl_contains({ "dashboard", "mason", "toggleterm", "leetcode.nvim" }, filetype)
       then
         vim.wo.statuscolumn = "%s%=%{v:lua.require('rj.extras.statuscolumn').wrap_symbol()}"
       elseif not vim.wo.number and not vim.wo.relativenumber then
