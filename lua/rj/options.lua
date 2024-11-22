@@ -1,7 +1,7 @@
 local options = {
   backup = false, -- creates a backup file
   cmdheight = 1, -- more space in the neovim command line for displaying messages
-  completeopt = { "menuone", "noselect", --[["noinsert", "fuzzy"]]}, -- mostly just for completion plugins
+  completeopt = { "menuone", "noselect", --[["noinsert", "fuzzy"]] }, -- mostly just for completion plugins
   conceallevel = 0, -- so that `` is visible in markdown files
   fileencoding = "utf-8", -- the encoding written to a file
   hlsearch = true, -- highlight all matches on previous search pattern
@@ -59,3 +59,4 @@ vim.opt.indentkeys:remove(":")
 vim.g.c_syntax_for_h = true
 require("rj.extras.statuscolumn").setup_statuscolumn()
 require("rj.extras.gui-apps")
+require("rj.extras.quickfix")

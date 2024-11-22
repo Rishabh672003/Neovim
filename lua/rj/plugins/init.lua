@@ -17,6 +17,7 @@ require("rj.plugins.mini-hipatterns")
 require("rj.plugins.mini-surround")
 require("rj.plugins.mini-clue")
 
+require("rj.plugins.nvim-bqf")
 require("rj.plugins.gitsigns")
 require("rj.plugins.hop")
 require("rj.plugins.nvim-telescope")
