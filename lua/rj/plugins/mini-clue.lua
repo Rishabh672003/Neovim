@@ -1,4 +1,4 @@
-Now(function()
+Later(function()
   local miniclue = require("mini.clue")
   miniclue.setup({
     window = {
