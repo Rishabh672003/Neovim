@@ -1,4 +1,4 @@
-Now(function()
+Later(function()
   Add({
     source = "kevinhwang91/nvim-bqf",
   })
