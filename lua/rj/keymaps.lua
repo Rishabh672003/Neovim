@@ -29,8 +29,8 @@ keymap("n", "<Leader>c", "<Cmd>bd!<CR>", opt("Close"))
 
 keymap("n", "\\", "<Cmd>noh<CR>", opt("Remove highlight"))
 
-keymap("n", "[n", "<Cmd>cnext<CR>", opt("Next QF item"))
-keymap("n", "[p", "<Cmd>cprevious<CR>", opt("Prev QF item"))
+keymap("n", "<C-n>", "<Cmd>silent cnext<CR>", opt("Next QF item"))
+keymap("n", "<C-p>", "<Cmd>silent cprevious<CR>", opt("Prev QF item"))
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
@@ -66,6 +66,15 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 
+-- stylua: ignore start
+keymap("t", "<C-q>", [[<C-\><C-n>]], opt("Escape in terminal window"))
+keymap({ "n", "t" }, "<A-t>", function() require("rj.extras.terminal").toggle("zsh") end, opt("Shell"))
+keymap({ "n", "t" }, "<A-g>", function() require("rj.extras.terminal").toggle("lazygit") end, opt("Lazygit"))
+keymap({ "n", "t" }, "<A-b>", function() require("rj.extras.terminal").toggle("btop") end, opt("Btop"))
+keymap("n", "<Leader>gg", function() require("rj.extras.terminal").toggle("lazygit") end, opt("Lazygit"))
+keymap("n", "<Leader>tT", "<Cmd>terminal<CR>", opt("Neoterminal"))
+-- stylua:ignore end
+
 -- Quality of Life stuff --
 keymap({ "n", "s", "v" }, "<Leader>yy", '"+y', opt("Yank to clipboard"))
 keymap({ "n", "s", "v" }, "<Leader>yY", '"+yy', opt("Yank line to clipboard"))
@@ -85,3 +94,19 @@ end, { expr = true, desc = "properly indent on empty line when insert" })
 keymap("n", "<Leader>sw", function()
   require("rj.extras.sudo-write").write()
 end, opt("Write File with sudo"))
+
+keymap("i", "<M-i>", function()
+  local c = vim.api.nvim_win_get_cursor(0)
+  local line = vim.api.nvim_get_current_line()
+  local indent = line:match("^(%s*)")
+  indent = #indent
+  vim.v.lnum = c[1]
+  local ok, correct_indent = pcall(vim.fn.eval, vim.bo.indentexpr)
+  if not ok then
+    return
+  end
+
+  line = line:gsub("^%s*", (" "):rep(correct_indent))
+  vim.api.nvim_buf_set_lines(0, c[1] - 1, c[1], false, { line })
+  vim.api.nvim_win_set_cursor(0, { c[1], c[2] + correct_indent - indent })
+end)
