@@ -58,3 +58,4 @@ vim.opt.cinkeys:remove(":")
 vim.opt.indentkeys:remove(":")
 vim.g.c_syntax_for_h = true
 require("rj.extras.statuscolumn").setup_statuscolumn()
+require("rj.extras.gui-apps")
