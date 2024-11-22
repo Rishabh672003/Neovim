@@ -110,31 +110,31 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- All the keymaps
     -- stylua: ignore start
     local keymap = vim.keymap.set
+    local lsp = vim.lsp.buf
     local opts = { silent = true, buffer = true }
     local function opt(desc, others)
       return vim.tbl_extend("force", opts, { desc = desc }, others or {})
     end
-    keymap("n", "gD", "<Cmd>Telescope lsp_document_symbols<CR>", opts)
-    keymap("n", "gd", "<Cmd>Telescope lsp_definitions<CR>", opts)
-    keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover({border='rounded'})<CR>", opts)
-    keymap("n", "gI", "<Cmd>Telescope lsp_implementations<CR>", opts)
+
+    keymap("n", "<Leader>ls", function() lsp.document_symbol() end, opt("Doument Symbols"))
+    keymap("n", "<Leader>lS", function() lsp.workspace_symbol() end, opt("Workspace Symbols"))
+    keymap("n", "gd", function() lsp.definition() end, opts)
+    keymap("n", "gI", function() lsp.implementation()  end, opts)
+    keymap("n", "gr", function() lsp.references() end, opts)
     keymap("n", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    keymap("n", "gr", "<Cmd>Telescope lsp_references<CR>", opts)
-    keymap("n", "gR", "<Cmd>lua vim.lsp.buf.references()<CR>", opts)
+    keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover({border='rounded'})<CR>", opts)
     keymap("n", "gl", "<Cmd>lua vim.diagnostic.open_float()<CR>", opts)
     keymap("n", "<Leader>la", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opt("Code Action"))
     keymap("n", "<Leader>lf", "<Cmd>Format<CR>", opt("Format"))
     keymap("n", "<Leader>lF", "<Cmd>FormatToggle<CR>", opt("Toggle AutoFormat"))
-    keymap( "n", "<Leader>lh", ":lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))<CR>", opt("Toggle Inlayhints"))
+    keymap("n", "<Leader>lh", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({})) end, opt("Toggle Inlayhints"))
     keymap("n", "<Leader>li", "<Cmd>checkhealth vim.lsp<CR>", opt("LspInfo"))
     keymap("n", "<Leader>lI", "<Cmd>Mason<CR>", opt("Mason"))
     keymap("n", "<Leader>lj", "<Cmd>lua vim.diagnostic.goto_next()<CR>", opt("Next Diagnostic"))
     keymap("n", "<Leader>lk", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", opt("Prev Diagnostic"))
     keymap("n", "<Leader>ll", "<Cmd>lua vim.lsp.codelens.run()<CR>", opt("Run CodeLens"))
-    keymap("n", "<Leader>lq", "<Cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opt("Set LocList"))
+    keymap("n", "<Leader>lq", "<Cmd>lua vim.diagnostic.setloclist()<CR>", opt("Set LocList"))
     keymap("n", "<Leader>lr", "<Cmd>lua vim.lsp.buf.rename()<CR>", opt("Rename"))
-    keymap("n", "<Leader>ls", "<Cmd>Telescope lsp_document_symbols<CR>", opt("Document Symbols"))
-    keymap("n", "<Leader>lS", "<Cmd>Telescope lsp_dynamic_workspace_symbols<CR>", opt("Workspace Symbols"))
     -- stylua: ignore end
   end,
 })
@@ -323,6 +323,14 @@ autocmd("FileType", {
 })
 -- }}}
 
+-- Rust {{{
+Now(function()
+  Add({
+    source = "mrcjkb/rustaceanvim",
+  })
+end)
+-- }}}
+
 -- Bash {{{
 autocmd("FileType", {
   pattern = { "bash", "sh", "zsh" },
@@ -507,7 +515,7 @@ vim.api.nvim_create_user_command("LspRestart", function()
   end
   local timer = vim.uv.new_timer()
   timer:start(
-    200,
+    100,
     50,
     vim.schedule_wrap(function()
       for name, client in pairs(detach_clients) do
