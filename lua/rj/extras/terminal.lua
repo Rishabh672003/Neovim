@@ -128,7 +128,7 @@ function M.terminal_lost_focus(term_cofig)
     end
     M.hide_terminal(term_cofig)
   end)
-  vim.loop.new_timer():start(100, 100, track)
+  vim.uv.new_timer():start(100, 100, track)
 end
 
 --- Toggles a terminal by its executable name.
