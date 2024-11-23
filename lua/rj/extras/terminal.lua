@@ -10,14 +10,13 @@ local terminals = {
   { execn = "btop", hidden = false, win_id = nil, curr_id = nil },
 }
 
-
 --- Helper function to create a floating window buffer.
 ---@return integer buffer ID
 local function create_scratch_buf()
   local buf = vim.api.nvim_create_buf(false, true)
-  vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
-  vim.api.nvim_buf_set_option(buf, "modifiable", false)
-  vim.api.nvim_buf_set_option(buf, "filetype", "terminal")
+  vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = buf })
+  vim.api.nvim_set_option_value("modifiable", false, { buf = buf })
+  vim.api.nvim_set_option_value("filetype", "terminal", { buf = buf })
   return buf
 end
 
