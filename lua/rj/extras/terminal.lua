@@ -123,7 +123,8 @@ end
 
 function M.terminal_lost_focus(term_cofig)
   local track = vim.schedule_wrap(function()
-    if vim.api.nvim_get_current_win() == term_cofig.win_id then
+    local ft = vim.bo.filetype
+    if ft == "terminal" then
       return
     end
     M.hide_terminal(term_cofig)
