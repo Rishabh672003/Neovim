@@ -10,13 +10,14 @@ local terminals = {
   { execn = "btop", hidden = false, win_id = nil, curr_id = nil },
 }
 
+
 --- Helper function to create a floating window buffer.
 ---@return integer buffer ID
 local function create_scratch_buf()
-  local buf = vim.api.nvim_create_buf(false, true) -- No file, scratch buffer
-  vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe") -- Wipe on hide
-  vim.api.nvim_buf_set_option(buf, "modifiable", false) -- Non-modifiable
-  vim.api.nvim_buf_set_option(buf, "filetype", "terminal") -- Terminal filetype
+  local buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
+  vim.api.nvim_buf_set_option(buf, "modifiable", false)
+  vim.api.nvim_buf_set_option(buf, "filetype", "terminal")
   return buf
 end
 
@@ -33,8 +34,9 @@ local function calculate_float_win_config(term_name)
     height = height,
     row = math.ceil((vim.o.lines - height) / 2.5),
     col = math.ceil((vim.o.columns - width) / 2),
-    border = "rounded",
-    title = term_name,
+    border = "single",
+    ---@diagnostic disable-next-line: undefined-global
+    title = { { term_name, visual } },
     title_pos = "left",
   }
 end
@@ -49,7 +51,7 @@ function M.open_terminal(term_config)
   term_config.curr_id = vim.api.nvim_get_current_win()
 
   if is_valid(term_config.win_id) then
-    vim.api.nvim_set_current_win(term_config.win_id)
+    pcall(vim.api.nvim_set_current_win, term_config.win_id)
     vim.cmd.startinsert()
     return
   end
@@ -80,7 +82,7 @@ function M.hide_terminal(term_config)
   if not term_config.hidden and is_valid(term_config.win_id) then
     vim.api.nvim_win_set_config(term_config.win_id, { hide = true })
     term_config.hidden = true
-    vim.api.nvim_set_current_win(term_config.curr_id)
+    pcall(vim.api.nvim_set_current_win, term_config.curr_id)
   end
 end
 
@@ -91,7 +93,7 @@ function M.unhide_terminal(term_config)
   if term_config.hidden and is_valid(term_config.win_id) then
     vim.api.nvim_win_set_config(term_config.win_id, { hide = false })
     term_config.hidden = false
-    vim.api.nvim_set_current_win(term_config.win_id)
+    pcall(vim.api.nvim_set_current_win, term_config.win_id)
     vim.cmd.startinsert()
   end
 end
@@ -120,6 +122,16 @@ local function find_terminal_by_exec(exec_name)
   return nil
 end
 
+function M.terminal_lost_focus(term_cofig)
+  local track = vim.schedule_wrap(function()
+    if vim.api.nvim_get_current_win() == term_cofig.win_id then
+      return
+    end
+    M.hide_terminal(term_cofig)
+  end)
+  vim.loop.new_timer():start(100, 100, track)
+end
+
 --- Toggles a terminal by its executable name.
 ---@param exec_name string The name of the executable (e.g., "zsh")
 function M.toggle(exec_name)
@@ -129,6 +141,7 @@ function M.toggle(exec_name)
     return
   end
   M.toggle_terminal(term_config)
+  M.terminal_lost_focus(term_config)
 end
 
 return M
