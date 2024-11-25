@@ -66,12 +66,14 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 
+local term = require("rj.extras.terminal")
+
 -- stylua: ignore start
 keymap("t", "<C-q>", [[<C-\><C-n>]], opt("Escape in terminal window"))
-keymap({ "n", "t" }, "<A-t>", function() require("rj.extras.terminal").toggle("zsh") end, opt("Shell"))
-keymap({ "n", "t" }, "<A-g>", function() require("rj.extras.terminal").toggle("lazygit") end, opt("Lazygit"))
-keymap({ "n", "t" }, "<A-b>", function() require("rj.extras.terminal").toggle("btop") end, opt("Btop"))
-keymap("n", "<Leader>gg", function() require("rj.extras.terminal").toggle("lazygit") end, opt("Lazygit"))
+keymap({ "n", "t" }, "<A-t>", function() term:new("zsh"):toggle() end, opt("Open Shell"))
+keymap({ "n", "t" }, "<A-g>", function() term:new("lazygit"):toggle() end, opt("Open Lazygit"))
+keymap({ "n", "t" }, "<A-b>", function() term:new("btop"):toggle() end, opt("Open Btop"))
+keymap("n", "<Leader>gg", function() term:new("lazygit"):toggle() end, opt("Lazygit"))
 keymap("n", "<Leader>tT", "<Cmd>terminal<CR>", opt("Neoterminal"))
 -- stylua:ignore end
 
