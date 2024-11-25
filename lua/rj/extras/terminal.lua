@@ -79,20 +79,27 @@ local function is_valid(win_id)
 end
 
 function M:open_term()
-  vim.fn.termopen({ self.execn }, {
+  local term = vim.fn.termopen({ self.execn }, {
     on_exit = function(_, _, _)
       if is_valid(self.win) then
         vim.api.nvim_win_close(self.win, true)
       end
-      vim.api.nvim_buf_delete(self.buf, { force = true })
+      if self.buf and vim.api.nvim_buf_is_valid(self.buf) then
+        vim.api.nvim_buf_delete(self.buf, { force = true })
+      end
+
       self.win = nil
-      self.curr = nil
+      self.buf = nil
+      self.terminal = nil
     end,
   })
+  self.terminal = term
+
   return self:prompt()
 end
 
 function M:remember_cursor()
+  self.last_tab = vim.api.nvim_get_current_tabpage()
   self.last_win = vim.api.nvim_get_current_win()
   self.prev_win = vim.fn.winnr("#")
   self.last_pos = vim.api.nvim_win_get_cursor(self.last_win)
@@ -108,6 +115,9 @@ function M:restore_cursor()
 
     if is_valid(self.last_win) then
       vim.api.nvim_set_current_win(self.last_win)
+      if self.last_tab == vim.api.nvim_get_current_tabpage() then
+        vim.api.nvim_set_current_win(self.last_win)
+      end
       vim.api.nvim_win_set_cursor(self.last_win, self.last_pos)
     end
 
@@ -146,7 +156,6 @@ function M:close()
   vim.api.nvim_win_close(self.win, false)
   self.win = nil
 end
-
 
 function M:terminal_lost_focus()
   local track = vim.schedule_wrap(function()
