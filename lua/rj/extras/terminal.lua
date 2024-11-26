@@ -1,39 +1,75 @@
 -- Credit to: [numToStr](https://github.com/numToStr/FTerm.nvim)
+
+---@alias WinId number # Floating Window's ID
+---@alias BufId number # Terminal Buffer's ID
+
+---@class CommandMode
+---@field command? string | function Command to execute in terminal
+---@field executed boolean Whether the command has been executed
+---@field run_once? boolean If true, the command will only run once
+
+---@class M
+---@field win? WinId Floating window ID
+---@field buf? BufId Buffer ID associated with the terminal
+---@field terminal? number Terminal's job ID
+---@field execn? string Shell or command to execute in the terminal
+---@field name? string Name of the terminal
+---@field command_mode CommandMode State of the terminal's command mode
+---@field last_tab? number Last tabpage ID
+---@field last_win? number Last window ID
+---@field prev_win? number Previous window number
+---@field last_pos? number[] Cursor position in the last window
 local M = {}
 
 local instances = {}
 
----@alias win_id number Floating Window's ID
----@alias buf_id number Terminal Buffer's ID
----@class M
----@field win WinId
----@field buf BufId
----@field terminal? number Terminal's job id
+---@class TerminalOpts
+---@field execn? string The executable to use for the terminal (defaults to vim.o.shell)
+---@field name? string Optional name for the terminal instance
 
-function M:new(execn)
-  if instances[execn] then
-    return instances[execn]
+---Creates a new terminal instance
+---@param opts? TerminalOpts
+---@return M
+function M:new(opts)
+  opts = opts or {}
+  local execn = opts.execn or vim.o.shell
+  local name = opts.name
+
+  if instances[name or execn] then
+    return instances[name or execn]
   end
 
+  ---@type M
   local instance = setmetatable({
+    name = name,
     execn = execn,
+    command_mode = {
+      command = nil,
+      executed = false,
+      run_once = false
+    },
     win = nil,
     buf = nil,
     terminal = nil,
   }, { __index = self })
 
   -- Store the new instance in cache
-  instances[execn] = instance
-
+  instances[name or execn] = instance
   return instance
 end
 
+---Store the floating window and buffer IDs.
+---@param win_id WinId Window ID
+---@param buf_id BufId Buffer ID
+---@return M
 function M:store(win_id, buf_id)
   self.win = win_id
   self.buf = buf_id
   return self
 end
 
+---Create a new buffer for the terminal.
+---@return BufId
 function M:create_buf()
   local prev_buf = self.buf
   if prev_buf and vim.api.nvim_buf_is_valid(prev_buf) then
@@ -48,6 +84,9 @@ function M:create_buf()
   return buf
 end
 
+---Create a new floating window for the terminal buffer.
+---@param buf BufId Buffer ID
+---@return WinId
 function M:create_win(buf)
   local height = math.ceil(vim.o.lines * 0.75)
   local width = math.ceil(vim.o.columns * 0.9)
@@ -61,12 +100,14 @@ function M:create_win(buf)
     col = math.ceil((vim.o.columns - width) / 2),
     border = "single",
     ---@diagnostic disable-next-line: undefined-global
-    title = { { self.execn, visual } },
+    title = { { self.name, visual } },
     title_pos = "left",
   })
   return win
 end
 
+---Switch to terminal mode and start insert mode if needed.
+---@return M
 function M:prompt()
   if vim.bo.filetype == "terminal" then
     vim.cmd.startinsert()
@@ -74,12 +115,17 @@ function M:prompt()
   return self
 end
 
+---Check if a window ID is valid.
+---@param win_id WinId
+---@return boolean
 local function is_valid(win_id)
   return win_id and vim.api.nvim_win_is_valid(win_id)
 end
 
+---Open a terminal in a floating window.
+---@return M
 function M:open_term()
-  local term = vim.fn.termopen({ self.execn }, {
+  local term = vim.fn.termopen({ self.execn or vim.o.shell }, {
     on_exit = function(_, _, _)
       if is_valid(self.win) then
         vim.api.nvim_win_close(self.win, true)
@@ -98,6 +144,8 @@ function M:open_term()
   return self:prompt()
 end
 
+---Remember the current cursor and window positions.
+---@return M
 function M:remember_cursor()
   self.last_tab = vim.api.nvim_get_current_tabpage()
   self.last_win = vim.api.nvim_get_current_win()
@@ -107,6 +155,8 @@ function M:remember_cursor()
   return self
 end
 
+---Restore the cursor and window positions.
+---@return M
 function M:restore_cursor()
   if self.last_win and self.last_pos ~= nil then
     if self.prev_win > 0 then
@@ -129,6 +179,8 @@ function M:restore_cursor()
   return self
 end
 
+---Open the terminal manager's floating terminal.
+---@return M
 function M:open()
   if is_valid(self.win) then
     vim.api.nvim_set_current_win(self.win)
@@ -146,6 +198,8 @@ function M:open()
   return self:store(win, buf):open_term()
 end
 
+---Close the floating terminal window.
+---@return M
 function M:close()
   if not is_valid(self.win) then
     return self
@@ -155,8 +209,10 @@ function M:close()
   end
   vim.api.nvim_win_close(self.win, false)
   self.win = nil
+  return self
 end
 
+---Handle terminal losing focus by automatically closing it.
 function M:terminal_lost_focus()
   local track = vim.schedule_wrap(function()
     local ft = vim.bo.filetype
@@ -168,14 +224,56 @@ function M:terminal_lost_focus()
   vim.uv.new_timer():start(100, 100, track)
 end
 
+---Toggle the terminal between open and closed states.
+---@return M
 function M:toggle()
   if is_valid(self.win) then
     self:close()
+    if self.command_mode.command then
+      self.command_mode.executed = true
+    end
   else
     self:open()
     self:terminal_lost_focus()
+    if self.command_mode.command and not self.command_mode.run_once then
+      self.command_mode.executed = false
+    end
   end
   return self
+end
+
+---Run a command in the terminal.
+---@param command string | function Command to run
+function M:run(command)
+  if not command then
+    return
+  end
+  self.command_mode.command = command
+  self:toggle()
+
+  -- type(cmd) == "function" and cmd() or cmd
+  local exec = type(command) == "function" and command() or command
+  if self.command_mode.executed then
+    return
+  end
+  vim.defer_fn(function ()
+    vim.api.nvim_chan_send(
+      self.terminal,
+      table.concat({
+        type(exec) == "table" and table.concat(exec, " ") or exec,
+        vim.api.nvim_replace_termcodes("<CR>", true, true, true),
+      })
+    )
+  end, 40)
+  return self
+end
+
+---Run a command only once in the terminal.
+---@param command string | function Command to run once
+function M:run_once(command)
+  self.command_mode.command = command
+  self.command_mode.run_once = true
+  return self:run(self.command_mode.command)
 end
 
 return M

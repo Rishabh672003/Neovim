@@ -70,11 +70,14 @@ local term = require("rj.extras.terminal")
 
 -- stylua: ignore start
 keymap("t", "<C-q>", [[<C-\><C-n>]], opt("Escape in terminal window"))
-keymap({ "n", "t" }, "<A-t>", function() term:new("zsh"):toggle() end, opt("Open Shell"))
-keymap({ "n", "t" }, "<A-g>", function() term:new("lazygit"):toggle() end, opt("Open Lazygit"))
-keymap({ "n", "t" }, "<A-b>", function() term:new("btop"):toggle() end, opt("Open Btop"))
-keymap("n", "<Leader>gg", function() term:new("lazygit"):toggle() end, opt("Lazygit"))
+keymap({ "n", "t" }, "<A-t>", function() term:new({ execn = "zsh", name = "Shell" }):toggle() end, opt("Open Shell"))
+keymap({ "n", "t" }, "<A-g>", function() term:new({ execn = "lazygit",name = "Lazygit" }):toggle() end, opt("Open Lazygit"))
+keymap({ "n", "t" }, "<A-b>", function() term:new({ execn = "btop", name = "Btop" }):toggle() end, opt("Open Btop"))
+keymap("n", "<Leader>gg", function() term:new({ name = "Lazygit",execn = "lazygit" }):toggle() end, opt("Lazygit"))
 keymap("n", "<Leader>tT", "<Cmd>terminal<CR>", opt("Neoterminal"))
+-- for run_once dont provide a name, default shell will be used to launch the command
+keymap({ "n", "t" }, "<A-s>", function() term:new({ name = "npm" }):run_once("npm run dev") end)
+keymap({ "n", "t" }, "<A-l>", function() term:new({ name = "rust" }):run("cargo run") end)
 -- stylua:ignore end
 
 -- Quality of Life stuff --
