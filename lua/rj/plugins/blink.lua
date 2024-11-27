@@ -4,7 +4,7 @@ Later(function()
     depends = {
       "rafamadriz/friendly-snippets",
     },
-    checkout = "v0.5.0", -- check releases for latest tag
+    checkout = "v0.6.1", -- check releases for latest tag
   })
   require("blink.cmp").setup({
     keymap = "default",
