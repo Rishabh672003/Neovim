@@ -1,4 +1,5 @@
 -- Credit to: [numToStr](https://github.com/numToStr/FTerm.nvim)
+-- modified by me and added more functionality and added more functionality
 
 ---@alias WinId number # Floating Window's ID
 ---@alias BufId number # Terminal Buffer's ID
