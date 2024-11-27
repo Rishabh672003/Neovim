@@ -75,10 +75,14 @@ keymap({ "n", "t" }, "<A-g>", function() term:new({ execn = "lazygit",name = "La
 keymap({ "n", "t" }, "<A-b>", function() term:new({ execn = "btop", name = "Btop" }):toggle() end, opt("Open Btop"))
 keymap("n", "<Leader>gg", function() term:new({ name = "Lazygit",execn = "lazygit" }):toggle() end, opt("Lazygit"))
 keymap("n", "<Leader>tT", "<Cmd>terminal<CR>", opt("Neoterminal"))
--- for run_once dont provide a name, default shell will be used to launch the command
-keymap({ "n", "t" }, "<A-s>", function() term:new({ name = "npm" }):run_once("npm run dev") end)
-keymap({ "n", "t" }, "<A-l>", function() term:new({ name = "rust" }):run("cargo run") end)
+keymap({ "n"}, "<A-r>", function()
+  term
+    :new({ name = "scratch" })
+    :run_once(vim.fn.expandcmd(vim.fn.input("Enter the command to execute: ")))
+end, opt("Run a command once"))
 -- stylua:ignore end
+
+
 
 -- Quality of Life stuff --
 keymap({ "n", "s", "v" }, "<Leader>yy", '"+y', opt("Yank to clipboard"))

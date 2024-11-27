@@ -21,7 +21,7 @@
 ---@field last_pos? number[] Cursor position in the last window
 local M = {}
 
-local instances = {}
+local instances = setmetatable({}, { __mode = "v" })
 
 ---@class TerminalOpts
 ---@field execn? string The executable to use for the terminal (defaults to vim.o.shell)
@@ -46,7 +46,7 @@ function M:new(opts)
     command_mode = {
       command = nil,
       executed = false,
-      run_once = false
+      run_once = false,
     },
     win = nil,
     buf = nil,
@@ -101,7 +101,7 @@ function M:create_win(buf)
     border = "single",
     ---@diagnostic disable-next-line: undefined-global
     title = { { self.name, visual } },
-    title_pos = "left",
+    title_pos = "center",
   })
   return win
 end
@@ -204,9 +204,7 @@ function M:close()
   if not is_valid(self.win) then
     return self
   end
-  if vim.bo.filetype ~= "terminal" then
-    self:restore_cursor()
-  end
+  self:restore_cursor()
   vim.api.nvim_win_close(self.win, false)
   self.win = nil
   return self
@@ -251,12 +249,11 @@ function M:run(command)
   self.command_mode.command = command
   self:toggle()
 
-  -- type(cmd) == "function" and cmd() or cmd
   local exec = type(command) == "function" and command() or command
   if self.command_mode.executed then
     return
   end
-  vim.defer_fn(function ()
+  vim.defer_fn(function()
     vim.api.nvim_chan_send(
       self.terminal,
       table.concat({
@@ -264,7 +261,7 @@ function M:run(command)
         vim.api.nvim_replace_termcodes("<CR>", true, true, true),
       })
     )
-  end, 40)
+  end, 50)
   return self
 end
 
