@@ -7,7 +7,7 @@ autocmd("FileType", {
 })
 
 autocmd({ "FileType" }, {
-  pattern = { "qf", "help", "lspinfo", "spectre_panel", "oil", "Jaq", "man" },
+  pattern = { "qf", "help", "Jaq", "man" },
   callback = function()
     vim.keymap.set("n", "q", "<Cmd>close!<CR>", { silent = true, buffer = true })
     vim.api.nvim_set_option_value("buflisted", false, { buf = 0 })
@@ -20,7 +20,7 @@ autocmd("FileType", {
 })
 
 autocmd({ "FileType" }, {
-  pattern = { "gitcommit", "markdown" },
+  pattern = { "gitcommit", "markdown", "text", "man" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
@@ -50,12 +50,8 @@ autocmd("BufWritePre", {
 autocmd("FileType", {
   desc = "Disable indentscope for certain filetypes",
   pattern = {
-    "Trouble",
-    "better_term",
     "dashboard",
     "help",
-    "lazy",
-    "lazyterm",
     "leetcode.nvim",
     "man",
     "mason",

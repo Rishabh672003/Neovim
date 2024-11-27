@@ -8,7 +8,7 @@ Later(function()
   })
   require("mason").setup({
     ui = {
-      border = "rounded",
+      border = "single",
     },
     registries = {
       "github:nvim-java/mason-registry",
