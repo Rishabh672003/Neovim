@@ -29,7 +29,7 @@ function M.get_win()
   return win
 end
 
-function M.get_doc()
+function M.get_def()
   vim.lsp.buf.definition({
     on_list = function(options)
       if #options.items > 0 then
@@ -38,7 +38,7 @@ function M.get_doc()
         vim.api.nvim_set_current_win(win)
 
         local def = options.items[1]
-        vim.cmd("e " .. def.filename)
+        vim.cmd.edit(def.filename)
         vim.api.nvim_win_set_cursor(0, { def.lnum, def.col - 1 })
         M.float_lost_focus(win)
       else
