@@ -119,6 +119,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<Leader>ls", function() lsp.document_symbol() end, opt("Doument Symbols"))
     keymap("n", "<Leader>lS", function() lsp.workspace_symbol() end, opt("Workspace Symbols"))
     keymap("n", "gd", function() lsp.definition() end, opts)
+    keymap("n", "gD", function() require("rj.extras.definition").get_doc() end, opts)
     keymap("n", "gI", function() lsp.implementation()  end, opts)
     keymap("n", "gr", function() lsp.references() end, opts)
     keymap("n", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
