@@ -12,7 +12,6 @@ Later(function()
     patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json", "LICENSE", ".venv", "go.mod" },
     show_hidden = false,
     silent_chdir = true,
-    ---@usage list of lsp client names to ignore when using **lsp** detection. eg: { "efm", ... }
     ignore_lsp = {},
     ---@type string
     ---@usage path to store the project history for use in telescope
@@ -20,7 +19,16 @@ Later(function()
   })
 
   require("telescope").load_extension("projects")
-  vim.keymap.set("n", "<Leader>p", function()
-    require("telescope").extensions.projects.projects(require("telescope.themes").get_dropdown({ previewer = false }))
-  end, { silent = true, desc = "Projects" })
+
+  vim.api.nvim_create_user_command("Projects", function()
+    require("telescope").extensions.projects.projects(require("telescope.themes").get_dropdown({
+      previewer = false,
+      borderchars = {
+        prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+        results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
+        preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+      },
+    }))
+  end, {})
+  vim.keymap.set("n", "<Leader>p", "<Cmd>Projects<CR>", { silent = true, desc = "Projects" })
 end)

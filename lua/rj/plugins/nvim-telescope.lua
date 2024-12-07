@@ -5,12 +5,19 @@ Later(function()
   })
   local telescope = require("telescope")
   local actions = require("telescope.actions")
+  local border = {
+    prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+    results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
+    preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+  }
   telescope.setup({
     defaults = {
       initial_mode = "normal",
       prompt_prefix = " ",
       selection_caret = " ",
       path_display = { "smart" },
+      border = true,
+      borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
       file_ignore_patterns = {
         ".git/",
         "target/",
@@ -131,46 +138,58 @@ Later(function()
       current_buffer_fuzzy_find = {
         theme = "dropdown",
         previewer = true,
+        borderchars = border,
       },
       quickfix = {
         theme = "dropdown",
         previewer = true,
+        borderchars = border,
       },
       oldfiles = {
         theme = "dropdown",
         previewer = true,
+        borderchars = border,
       },
       live_grep = {
         theme = "dropdown",
+        borderchars = border,
       },
       grep_string = {
         theme = "dropdown",
+        borderchars = border,
       },
       find_files = {
         theme = "dropdown",
         previewer = true,
+        borderchars = border,
       },
       buffers = {
         theme = "dropdown",
         previewer = false,
+        borderchars = border,
       },
       planets = {
         show_pluto = true,
         show_moon = true,
       },
       lsp_references = {
+        borderchars = border,
         theme = "dropdown",
       },
       lsp_definitions = {
+        borderchars = border,
         theme = "dropdown",
       },
       lsp_declarations = {
+        borderchars = border,
         theme = "dropdown",
       },
       lsp_implementations = {
+        borderchars = border,
         theme = "dropdown",
       },
       git_branches = {
+        borderchars = border,
         theme = "dropdown",
         previewer = true,
       },
