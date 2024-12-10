@@ -19,6 +19,7 @@
 ---@field last_tab? number Last tabpage ID
 ---@field last_win? number Last window ID
 ---@field prev_win? number Previous window number
+---@field last_ft? string Filetype of the last buffer
 ---@field last_pos? number[] Cursor position in the last window
 local M = {}
 
@@ -152,7 +153,8 @@ function M:remember_cursor()
   self.last_win = vim.api.nvim_get_current_win()
   self.prev_win = vim.fn.winnr("#")
   self.last_pos = vim.api.nvim_win_get_cursor(self.last_win)
-
+  local last_buf = vim.api.nvim_get_current_buf()
+  self.last_ft = vim.api.nvim_buf_get_option(last_buf, "filetype")
   return self
 end
 
@@ -205,7 +207,9 @@ function M:close()
   if not is_valid(self.win) then
     return self
   end
-  self:restore_cursor()
+  if not self.last_ft == "terminal" then
+    self:restore_cursor()
+  end
   vim.api.nvim_win_close(self.win, false)
   self.win = nil
   return self
@@ -213,14 +217,16 @@ end
 
 ---Handle terminal losing focus by automatically closing it.
 function M:terminal_lost_focus()
+  local timer = vim.uv.new_timer()
   local track = vim.schedule_wrap(function()
     local ft = vim.bo.filetype
     if ft == "terminal" then
       return
     end
+    timer:close()
     self:close()
   end)
-  vim.uv.new_timer():start(100, 100, track)
+  timer:start(100, 100, track)
 end
 
 ---Toggle the terminal between open and closed states.
