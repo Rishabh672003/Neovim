@@ -29,16 +29,6 @@ vim.diagnostic.config(config)
 -- }}}
 
 -- Improve LSPs UI {{{
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-  vim.lsp.handlers.signature_help,
-  { border = "single", close_events = { "CursorMoved", "BufHidden", "InsertCharPre" } }
-)
-
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-  border = "single",
-  close_events = { "CursorMoved", "BufHidden" },
-})
-
 local icons = {
   Class = " ",
   Color = " ",
@@ -80,6 +70,17 @@ capabilities.textDocument.foldingRange = {
 }
 
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+vim.lsp.config("*", {
+  capabilities = capabilities,
+})
+-- }}}
+
+-- Disable the default keybinds {{{
+vim.keymap.del("n", "grn")
+vim.keymap.del("n", "gra")
+vim.keymap.del("n", "gri")
+vim.keymap.del("n", "grr")
 -- }}}
 
 -- Create keybindings, commands, inlay hints and autocommands on LSP attach {{{
@@ -110,218 +111,178 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- All the keymaps
     -- stylua: ignore start
     local keymap = vim.keymap.set
-    local lsp = vim.lsp.buf
+    local lsp = vim.lsp
     local opts = { silent = true, buffer = true }
     local function opt(desc, others)
       return vim.tbl_extend("force", opts, { desc = desc }, others or {})
     end
 
-    keymap("n", "<Leader>ls", function() lsp.document_symbol() end, opt("Doument Symbols"))
-    keymap("n", "<Leader>lS", function() lsp.workspace_symbol() end, opt("Workspace Symbols"))
-    keymap("n", "gd", function() lsp.definition() end, opts)
-    keymap("n", "gD", function() require("rj.extras.definition").get_doc() end, opts)
-    keymap("n", "gI", function() lsp.implementation()  end, opts)
-    keymap("n", "gr", function() lsp.references() end, opts)
-    keymap("n", "<C-k>", "<Cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover({border='rounded'})<CR>", opts)
-    keymap("n", "gl", "<Cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    keymap("n", "<Leader>la", "<Cmd>lua vim.lsp.buf.code_action()<CR>", opt("Code Action"))
+    keymap("n", "<Leader>ls", function() lsp.buf.document_symbol() end, opt("Doument Symbols"))
+    keymap("n", "<Leader>lS", function() lsp.buf.workspace_symbol() end, opt("Workspace Symbols"))
+    keymap("n", "gd", function() lsp.buf.definition() end, opt("Go to definition"))
+    keymap("n", "gD", function() require("rj.extras.definition").get_def() end, opt("Get the definition in a float"))
+    keymap("n", "gi", function() lsp.buf.implementation({ border = "single" })  end, opt("Go to implementation"))
+    keymap("n", "gr", function() lsp.buf.references() end, opt("Show References"))
+    keymap("n", "<Leader>lr", function() lsp.buf.rename({ border = "single" }) end, opt("Rename"))
+    keymap("n", "<C-k>", function() lsp.buf.signature_help() end, opts)
+    keymap("n", "K", function() lsp.buf.hover({ border = "single" }) end,opts)
+    keymap("n", "<Leader>lh", function() lsp.inlay_hint.enable(not lsp.inlay_hint.is_enabled({})) end, opt("Toggle Inlayhints"))
+    keymap("n", "gl", function() vim.diagnostic.open_float() end, opt("Open diagnostic in float"))
+    keymap("n", "<Leader>la", function() lsp.buf.code_action() end, opt("Code Action"))
+    keymap("n", "<Leader>lj", function() vim.diagnostic.goto_next() end, opt("Next Diagnostic"))
+    keymap("n", "<Leader>lk", function() vim.diagnostic.goto_prev() end, opt("Prev Diagnostic"))
+    keymap("n", "<Leader>ll", function() lsp.codelens.run() end, opt("Run CodeLens"))
+    keymap("n", "<Leader>lq", function() vim.diagnostic.setloclist() end, opt("Set LocList"))
     keymap("n", "<Leader>lf", "<Cmd>Format<CR>", opt("Format"))
     keymap("n", "<Leader>lF", "<Cmd>FormatToggle<CR>", opt("Toggle AutoFormat"))
-    keymap("n", "<Leader>lh", function() vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({})) end, opt("Toggle Inlayhints"))
     keymap("n", "<Leader>li", "<Cmd>checkhealth vim.lsp<CR>", opt("LspInfo"))
     keymap("n", "<Leader>lI", "<Cmd>Mason<CR>", opt("Mason"))
-    keymap("n", "<Leader>lj", "<Cmd>lua vim.diagnostic.goto_next()<CR>", opt("Next Diagnostic"))
-    keymap("n", "<Leader>lk", "<Cmd>lua vim.diagnostic.goto_prev()<CR>", opt("Prev Diagnostic"))
-    keymap("n", "<Leader>ll", "<Cmd>lua vim.lsp.codelens.run()<CR>", opt("Run CodeLens"))
-    keymap("n", "<Leader>lq", "<Cmd>lua vim.diagnostic.setloclist()<CR>", opt("Set LocList"))
-    keymap("n", "<Leader>lr", "<Cmd>lua vim.lsp.buf.rename()<CR>", opt("Rename"))
     -- stylua: ignore end
   end,
 })
 -- }}}
 
 -- Servers {{{
-local autocmd = vim.api.nvim_create_autocmd
 
-vim.api.nvim_create_augroup("LSP", {
-  clear = false,
+vim.lsp.config("*", {
+  root_markers = { ".git" },
 })
 
--- Lua_ls {{{
-autocmd("FileType", {
-  pattern = "lua",
-  group = "LSP",
-  callback = function()
-    local root_dir = vim.fs.root(0, { ".git", vim.uv.cwd() })
-    local client = vim.lsp.start({
-      name = "lua_ls",
-      cmd = { "lua-language-server" },
-      capabilities = capabilities,
-      on_init = function(client)
-        local path = client.workspace_folders and client.workspace_folders[1].name or vim.fs.root(0, ".")
-        ---@diagnostic disable-next-line undefined-field
-        if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
-          return
-        end
+-- Lua {{{
+vim.lsp.config.lua_ls = {
+  cmd = { "lua-language-server" },
+  filetypes = { "lua" },
+  root_markers = { ".git", vim.uv.cwd() },
+  -- on_init {{{
+  on_init = function(client)
+    local path = client.workspace_folders and client.workspace_folders[1].name or vim.fs.root(0, ".")
+    ---@diagnostic disable-next-line undefined-field
+    if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
+      return
+    end
 
-        client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-          runtime = {
-            version = "LuaJIT",
-          },
-          hint = {
-            enable = true,
-          },
-          diagnostics = {
-            globals = { "_G", "vim", "MiniFiles", "MiniDeps" },
-          },
-          workspace = {
-            preloadFileSize = 500,
-            checkThirdParty = false,
-            -- library = vim.api.nvim_get_runtime_file("", true),
-          },
-        })
-      end,
-      root_dir = root_dir,
-      settings = {
-        Lua = {
-          telemetry = {
-            enable = false,
-          },
-        },
+    client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+      runtime = {
+        version = "LuaJIT",
+      },
+      hint = {
+        enable = true,
+      },
+      diagnostics = {
+        globals = { "_G", "vim", "MiniFiles", "MiniDeps" },
+      },
+      workspace = {
+        preloadFileSize = 500,
+        checkThirdParty = false,
+        -- library = vim.api.nvim_get_runtime_file("", true),
       },
     })
-    if client then
-      vim.lsp.buf_attach_client(0, client)
-    end
   end,
-})
--- }}}
+  -- }}}
 
--- Gopls {{{
-autocmd("FileType", {
-  pattern = { "go", "gotempl", "gowork", "gomod" },
-  group = "LSP",
-  callback = function()
-    local root_dir = vim.fs.root(0, { "go.mod", "go.work", ".git" })
-    local client = vim.lsp.start({
-      name = "gopls",
-      cmd = { "gopls" },
-      root_dir = root_dir,
-      capabilities = capabilities,
-      settings = {
-        gopls = {
-          completeUnimported = true,
-          usePlaceholders = true,
-          analyses = {
-            unusedparams = true,
-          },
-          ["ui.inlayhint.hints"] = {
-            compositeLiteralFields = true,
-            constantValues = true,
-            parameterNames = true,
-            rangeVariableTypes = true,
-          },
-        },
+  settings = {
+    Lua = {
+      telemetry = {
+        enable = false,
       },
-    })
-    if client then
-      vim.lsp.buf_attach_client(0, client)
-    end
-  end,
-})
-
---}}}
-
--- C/C++ {{{
-autocmd("FileType", {
-  pattern = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
-  group = "LSP",
-  callback = function()
-    local root_dir = vim.fs.root(0, {
-      "CMakeLists.txt",
-      ".clangd",
-      ".clang-tidy",
-      ".clang-format",
-      "compile_commands.json",
-      "compile_flags.txt",
-      "configure.ac",
-      ".git",
-      ---@diagnostic disable-next-line undefined-field
-      vim.uv.cwd(), -- equivalent of `single_file_mode` in lspconfig
-    })
-    local client = vim.lsp.start({
-      name = "clangd",
-      cmd = {
-        "clangd",
-        "-j=" .. 2,
-        "--background-index",
-        "--clang-tidy",
-        "--inlay-hints",
-        "--fallback-style=llvm",
-        "--all-scopes-completion",
-        "--completion-style=detailed",
-        "--header-insertion=iwyu",
-        "--header-insertion-decorators",
-        "--pch-storage=memory",
-      },
-      root_dir = root_dir,
-      capabilities = capabilities,
-    })
-    if client then
-      vim.lsp.buf_attach_client(0, client)
-    end
-  end,
-})
+    },
+  },
+}
+vim.lsp.enable("lua_ls")
 -- }}}
 
 -- Python {{{
-autocmd("FileType", {
-  pattern = { "python" },
-  group = "LSP",
-  callback = function()
-    local root_dir = vim.fs.root(0, {
-      "pyproject.toml",
-      "setup.py",
-      "setup.cfg",
-      "requirements.txt",
-      "Pipfile",
-      "pyrightconfig.json",
-      ".git",
-      vim.uv.cwd(),
-    })
-    local client = vim.lsp.start({
-      name = "basedpyright",
-      cmd = { "basedpyright-langserver", "--stdio" },
-      root_dir = root_dir,
-      capabilities = capabilities,
-      settings = {
-        python = {
-          venvPath = vim.fn.expand("~") .. "/.virtualenvs",
-        },
-        basedpyright = {
-          disableOrganizeImports = true,
-          analysis = {
-            autoSearchPaths = true,
-            autoImportCompletions = true,
-            useLibraryCodeForTypes = true,
-            diagnosticMode = "openFilesOnly",
-            typeCheckingMode = "strict",
-            inlayHints = {
-              variableTypes = true,
-              callArgumentNames = true,
-              functionReturnTypes = true,
-              genericTypes = false,
-            },
-          },
+vim.lsp.config.basedpyright = {
+  cmd = { "basedpyright-langserver", "--stdio" },
+  filetypes = { "python" },
+  root_markers = {
+    "pyproject.toml",
+    "setup.py",
+    "setup.cfg",
+    "requirements.txt",
+    "Pipfile",
+    "pyrightconfig.json",
+    ".git",
+    vim.uv.cwd(),
+  },
+  settings = {
+    python = {
+      venvPath = vim.fn.expand("~") .. "/.virtualenvs",
+    },
+    basedpyright = {
+      disableOrganizeImports = true,
+      analysis = {
+        autoSearchPaths = true,
+        autoImportCompletions = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "openFilesOnly",
+        typeCheckingMode = "strict",
+        inlayHints = {
+          variableTypes = true,
+          callArgumentNames = true,
+          functionReturnTypes = true,
+          genericTypes = false,
         },
       },
-    })
-    if client then
-      vim.lsp.buf_attach_client(0, client)
-    end
-  end,
-})
+    },
+  },
+}
+vim.lsp.enable("basedpyright")
+-- }}}
+
+-- Go {{{
+vim.lsp.config.gopls = {
+  cmd = { "gopls" },
+  filetypes = { "go", "gotempl", "gowork", "gomod" },
+  root_markers = { ".git", "go.mod", "go.work", vim.uv.cwd() },
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+      },
+      ["ui.inlayhint.hints"] = {
+        compositeLiteralFields = true,
+        constantValues = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
+    },
+  },
+}
+vim.lsp.enable("gopls")
+-- }}}
+
+-- C/C++ {{{
+vim.lsp.config.clangd = {
+  cmd = {
+    "clangd",
+    "-j=" .. 2,
+    "--background-index",
+    "--clang-tidy",
+    "--inlay-hints",
+    "--fallback-style=llvm",
+    "--all-scopes-completion",
+    "--completion-style=detailed",
+    "--header-insertion=iwyu",
+    "--header-insertion-decorators",
+    "--pch-storage=memory",
+  },
+  filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+  root_markers = {
+    "CMakeLists.txt",
+    ".clangd",
+    ".clang-tidy",
+    ".clang-format",
+    "compile_commands.json",
+    "compile_flags.txt",
+    "configure.ac",
+    ".git",
+    vim.uv.cwd(),
+  },
+}
+vim.lsp.enable("clangd")
 -- }}}
 
 -- Rust {{{
@@ -333,78 +294,47 @@ end)
 -- }}}
 
 -- Bash {{{
-autocmd("FileType", {
-  pattern = { "bash", "sh", "zsh" },
-  group = "LSP",
-  callback = function()
-    local root_dir = vim.fs.root(0, { ".git" })
-    local client = vim.lsp.start({
-      name = "bashls",
-      cmd = { "bash-language-server", "start" },
-      root_dir = root_dir,
-      capabilities = capabilities,
-      settings = {
-        bashIde = {
-          globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command)",
-        },
-      },
-    })
-    if client then
-      vim.lsp.buf_attach_client(0, client)
-    end
-  end,
-})
+vim.lsp.config.bashls = {
+  cmd = { "bash-language-server", "start" },
+  filetypes = { "bash", "sh", "zsh" },
+  root_markers = { ".git", vim.uv.cwd() },
+  settings = {
+    bashIde = {
+      globPattern = vim.env.GLOB_PATTERN or "*@(.sh|.inc|.bash|.command)",
+    },
+  },
+}
+vim.lsp.enable("bashls")
 -- }}}
 
 -- Web-dev {{{
 -- TSServer {{{
-autocmd("FileType", {
-  pattern = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
-  group = "LSP",
-  callback = function()
-    local root_dir = vim.fs.root(0, { "tsconfig.json", "jsconfig.json", "package.json", ".git" })
-    local client = vim.lsp.start({
-      name = "ts_ls",
-      cmd = { "typescript-language-server", "--stdio" },
-      root_dir = root_dir,
-      capabilities = capabilities,
-      init_options = {
-        hostInfo = "neovim",
-      },
-    })
-    if client then
-      vim.lsp.buf_attach_client(0, client)
-    end
-  end,
-})
+vim.lsp.config.ts_ls = {
+  cmd = { "typescript-language-server", "--stdio" },
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
+
+  init_options = {
+    hostInfo = "neovim",
+  },
+}
 -- }}}
 
 -- CSSls {{{
-autocmd("FileType", {
-  pattern = { "css", "scss" },
-  group = "LSP",
-  callback = function()
-    local root_dir = vim.fs.root(0, { "package.json", ".git" })
-    local client = vim.lsp.start({
-      name = "cssls",
-      cmd = { "vscode-css-language-server", "--stdio" },
-      root_dir = root_dir,
-      capabilities = capabilities,
-      init_options = {
-        provideFormatter = true,
-      },
-    })
-    if client then
-      vim.lsp.buf_attach_client(0, client)
-    end
-  end,
-})
+vim.lsp.config.cssls = {
+  cmd = { "vscode-css-language-server", "--stdio" },
+  filetypes = { "css", "scss" },
+  root_markers = { "package.json", ".git" },
+  init_options = {
+    provideFormatter = true,
+  },
+}
 -- }}}
 
 -- TailwindCss {{{
-autocmd("FileType", {
-  -- pattern {{{
-  pattern = {
+vim.lsp.config.tailwindcssls = {
+  cmd = { "tailwindcss-language-server", "--stdio" },
+  filetypes = {
     "ejs",
     "html",
     "css",
@@ -414,96 +344,80 @@ autocmd("FileType", {
     "typescript",
     "typescriptreact",
   },
-  -- }}}
-  group = "LSP",
-  callback = function()
-    local root_dir = vim.fs.root(0, {
-      "tailwind.config.js",
-      "tailwind.config.cjs",
-      "tailwind.config.mjs",
-      "tailwind.config.ts",
-      "postcss.config.js",
-      "postcss.config.cjs",
-      "postcss.config.mjs",
-      "postcss.config.ts",
-      "package.json",
-      "node_modules",
-    })
-    local client = vim.lsp.start({
-      name = "tailwindcss",
-      cmd = { "tailwindcss-language-server", "--stdio" },
-      root_dir = root_dir,
-      capabilities = capabilities,
-      settings = {
-        tailwindCSS = {
-          classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
-          includeLanguages = {
-            eelixir = "html-eex",
-            eruby = "erb",
-            htmlangular = "html",
-            templ = "html",
-          },
-          lint = {
-            cssConflict = "warning",
-            invalidApply = "error",
-            invalidConfigPath = "error",
-            invalidScreen = "error",
-            invalidTailwindDirective = "error",
-            invalidVariant = "error",
-            recommendedVariantOrder = "warning",
-          },
-          validate = true,
-        },
+  root_markers = {
+    "tailwind.config.js",
+    "tailwind.config.cjs",
+    "tailwind.config.mjs",
+    "tailwind.config.ts",
+    "postcss.config.js",
+    "postcss.config.cjs",
+    "postcss.config.mjs",
+    "postcss.config.ts",
+    "package.json",
+    "node_modules",
+  },
+  settings = {
+    tailwindCSS = {
+      classAttributes = { "class", "className", "class:list", "classList", "ngClass" },
+      includeLanguages = {
+        eelixir = "html-eex",
+        eruby = "erb",
+        htmlangular = "html",
+        templ = "html",
       },
-    })
-    if client then
-      vim.lsp.buf_attach_client(0, client)
-    end
-  end,
-})
+      lint = {
+        cssConflict = "warning",
+        invalidApply = "error",
+        invalidConfigPath = "error",
+        invalidScreen = "error",
+        invalidTailwindDirective = "error",
+        invalidVariant = "error",
+        recommendedVariantOrder = "warning",
+      },
+      validate = true,
+    },
+  },
+}
 -- }}}
 
 -- HTML {{{
-autocmd("FileType", {
-  pattern = { "html" },
-  group = "LSP",
-  callback = function()
-    local root_dir = vim.fs.root(0, { "package.json", ".git" })
-    local client = vim.lsp.start({
-      name = "html",
-      cmd = { "vscode-html-language-server", "--stdio" },
-      root_dir = root_dir,
-      capabilities = capabilities,
-      init_options = {
-        configurationSection = { "html", "css", "javascript" },
-        embeddedLanguages = {
-          css = true,
-          javascript = true,
-        },
-        provideFormatter = true,
-      },
-    })
-    if client then
-      vim.lsp.buf_attach_client(0, client)
-    end
-  end,
-})
+vim.lsp.config.htmlls = {
+  cmd = { "vscode-html-language-server", "--stdio" },
+  filetypes = { "html" },
+  root_markers = { "package.json", ".git" },
+
+  init_options = {
+    configurationSection = { "html", "css", "javascript" },
+    embeddedLanguages = {
+      css = true,
+      javascript = true,
+    },
+    provideFormatter = true,
+  },
+}
 -- }}}
+
+vim.lsp.enable({ "ts_ls", "cssls", "tailwindcssls", "htmlls" })
+
 -- }}}
---}}}
+
+-- }}}
 
 -- Start, Stop, Restart, Log commands {{{
 vim.api.nvim_create_user_command("LspStart", function()
   vim.cmd("e")
 end, {})
 
-vim.api.nvim_create_user_command("LspStop", function()
+vim.api.nvim_create_user_command("LspStop", function(opts)
   for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-    client.stop()
-    vim.notify(client.name .. " stopped")
+    if opts.args == "" or client.name == opts.args then
+      client.stop()
+      vim.notify(client.name .. " stopped")
+    end
   end
 end, {
-  desc = "Stop all LSP clients attached to the current buffer.",
+  desc = "Stop all LSP clients or a specific client attached to the current buffer.",
+  nargs = "?",
 })
 
 vim.api.nvim_create_user_command("LspRestart", function()
@@ -520,6 +434,8 @@ vim.api.nvim_create_user_command("LspRestart", function()
     50,
     vim.schedule_wrap(function()
       for name, client in pairs(detach_clients) do
+        -- NOTE: this will be deprecated in 0.11
+        -- so will need to change to vim.lsp.start() then
         local client_id = vim.lsp.start_client(client[1].config)
         if client_id then
           for _, buf in ipairs(client[2]) do
@@ -545,7 +461,7 @@ end, {
 })
 
 vim.api.nvim_create_user_command("LspInfo", function()
-  vim.cmd("checkhealth vim.lsp")
+  vim.cmd("silent checkhealth vim.lsp")
 end, {
   desc = "Get all the information about all LSP attached",
 })

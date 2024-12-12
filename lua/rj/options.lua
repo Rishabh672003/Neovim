@@ -1,7 +1,12 @@
 local options = {
   backup = false, -- creates a backup file
+  autochdir = false,
   cmdheight = 1, -- more space in the neovim command line for displaying messages
-  completeopt = { "menuone","popup", "noselect", --[["noinsert", "fuzzy"]] }, -- mostly just for completion plugins
+  completeopt = {
+    "menuone",
+    "popup",
+    "noselect", --[["noinsert", "fuzzy"]]
+  }, -- mostly just for completion plugins
   conceallevel = 0, -- so that `` is visible in markdown files
   fileencoding = "utf-8", -- the encoding written to a file
   hlsearch = true, -- highlight all matches on previous search pattern
@@ -20,8 +25,8 @@ local options = {
   updatetime = 300, -- faster completion (4000ms default)
   writebackup = false, -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
   expandtab = true, -- convert tabs to spaces
-  shiftwidth = 2, -- the number of spaces inserted for each indentation
-  tabstop = 2, -- insert 2 spaces for a tab
+  shiftwidth = 4, -- the number of spaces inserted for each indentation
+  tabstop = 4, -- insert 2 spaces for a tab
   cursorline = true, -- highlight the current line
   number = true, -- set numbered lines
   relativenumber = true, -- set relative numbered lines
@@ -42,6 +47,8 @@ local options = {
   indentexpr = "nvim_treesitter#indent()", -- specifies the function used to calculate the indentation level
   fillchars = { eob = " ", fold = " " }, -- defines the characters used for certain parts of the screen
   wildoptions = { "fuzzy", "pum", "tagfile" },
+  messagesopt = "wait:2000,history:1000",
+  splitkeep = "screen",
 }
 
 for k, v in pairs(options) do
@@ -51,7 +58,6 @@ end
 vim.opt.formatoptions:remove({ "c", "r", "o" })
 vim.opt.iskeyword:append("-")
 vim.opt.whichwrap:append("<,>,[,],h,l")
-vim.opt.splitkeep = "screen"
 vim.opt.diffopt:append("linematch:60")
 vim.opt.shortmess:append({ C = true, c = true, I = true })
 vim.opt.cinkeys:remove(":")

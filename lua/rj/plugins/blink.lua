@@ -5,8 +5,9 @@ Later(function()
     depends = {
       "rafamadriz/friendly-snippets",
     },
-    checkout = "v0.7.3", -- check releases for latest tag
+    checkout = "v0.7.6",
   })
+
   require("blink.cmp").setup({
     keymap = { preset = "default" },
 
@@ -34,4 +35,7 @@ Later(function()
       },
     },
   })
+
+  local capabilities = require("blink.cmp").get_lsp_capabilities()
+  vim.lsp.config("*", { capabilities = capabilities })
 end)
