@@ -1,11 +1,12 @@
 Later(function()
   require("mini.files").setup()
+
   vim.keymap.set("n", "<Leader>e", function()
     MiniFiles.open()
-  end, { silent = true, desc = "opens mini.files" })
+  end, { silent = true, desc = "Opens mini.files" })
   vim.keymap.set("n", "<Leader>E", function()
     MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
-  end, { silent = true, desc = "opens mini.files" })
+  end, { silent = true, desc = "Opens mini.files in currect dir" })
 
   local map_split = function(buf_id, lhs, direction)
     local rhs = function()
