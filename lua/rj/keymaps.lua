@@ -66,31 +66,22 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 
+-- stylua: ignore start
 local term = require("rj.extras.terminal")
 
--- stylua: ignore start
 keymap("t", "<C-q>", [[<C-\><C-n>]], opt("Escape in terminal window"))
 keymap({ "n", "t" }, "<A-t>", function() term:new({ execn = "zsh", name = "Shell" }):toggle() end, opt("Open Shell"))
 keymap({ "n", "t" }, "<A-g>", function() term:new({ execn = "lazygit",name = "Lazygit" }):toggle() end, opt("Open Lazygit"))
 keymap({ "n", "t" }, "<A-b>", function() term:new({ execn = "btop", name = "Btop" }):toggle() end, opt("Open Btop"))
+keymap({ "n", "t" }, "<A-p>", function() term:new({ execn = "python", name = "Python" }):toggle() end, opt("Open Python"))
 keymap("n", "<Leader>gg", function() term:new({ name = "Lazygit",execn = "lazygit" }):toggle() end, opt("Lazygit"))
-keymap("n", "<Leader>tT", "<Cmd>terminal<CR>", opt("Neoterminal"))
-keymap({ "n"}, "<A-r>", function()
-  term
-    :new({ name = "scratch" })
-    :run_once(vim.fn.expandcmd(vim.fn.input("Enter the command to execute: ")))
-end, opt("Run a command once"))
 -- stylua:ignore end
-
-
 
 -- Quality of Life stuff --
 keymap({ "n", "s", "v" }, "<Leader>yy", '"+y', opt("Yank to clipboard"))
 keymap({ "n", "s", "v" }, "<Leader>yY", '"+yy', opt("Yank line to clipboard"))
 keymap({ "n", "s", "v" }, "<Leader>yp", '"+p', opt("Paste from clipboard"))
-keymap("n", "<Leader>va", "<Cmd>norm! mmggVG<CR>", opt("Select All"))
-keymap("n", "<Leader>vs", "<Cmd>%y<CR>", opt("Save All"))
-keymap("n", "<Leader>vx", "<Cmd>norm! ggVGx<CR>", opt("Delete All"))
+keymap({ "n", "s", "v" }, "<Leader>yd", '"+d', opt("Delete into clipboard"))
 
 keymap("n", "i", function()
   if #vim.fn.getline(".") == 0 then
