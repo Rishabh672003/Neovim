@@ -6,6 +6,12 @@ autocmd("FileType", {
   command = "setlocal nocursorline",
 })
 
+autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank({ higroup = "Visual", timeout = 150 })
+  end,
+})
+
 autocmd({ "FileType" }, {
   pattern = { "qf", "help", "Jaq", "man" },
   callback = function()
@@ -15,8 +21,8 @@ autocmd({ "FileType" }, {
 })
 
 autocmd("FileType", {
-  pattern = { "go", "c", "cpp", "rust", "java", "js", "zsh", "sh", "bash", "ts", "json" },
-  command = "setlocal tabstop=4 shiftwidth=4",
+  pattern = { "lua" },
+  command = "setlocal tabstop=2 shiftwidth=2",
 })
 
 autocmd({ "FileType" }, {
@@ -62,5 +68,40 @@ autocmd("FileType", {
   },
   callback = function()
     vim.b.miniindentscope_disable = true
+  end,
+})
+
+local cmdline_group = vim.api.nvim_create_augroup("CmdlineLinenr", {})
+-- debounce cmdline enter events to make sure we dont have flickering for non user cmdline use
+-- e.g. mappings using : instead of <cmd>
+local cmdline_debounce_timer
+
+autocmd("CmdlineEnter", {
+  group = cmdline_group,
+  callback = function()
+    cmdline_debounce_timer = vim.uv.new_timer()
+    cmdline_debounce_timer:start(
+      100,
+      0,
+      vim.schedule_wrap(function()
+        if vim.o.number then
+          vim.o.relativenumber = false
+          vim.api.nvim__redraw({ statuscolumn = true })
+        end
+      end)
+    )
+  end,
+})
+
+autocmd("CmdlineLeave", {
+  group = cmdline_group,
+  callback = function()
+    if cmdline_debounce_timer then
+      cmdline_debounce_timer:stop()
+      cmdline_debounce_timer = nil
+    end
+    if vim.o.number then
+      vim.o.relativenumber = true
+    end
   end,
 })
