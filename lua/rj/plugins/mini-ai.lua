@@ -4,18 +4,18 @@ Later(function()
     depends = { "nvim-treesitter/nvim-treesitter" },
   })
 
-  require("nvim-treesitter.configs").setup({})
   local gen_spec = require("mini.ai").gen_spec
+  local gen_ai_spec = require("mini.extra").gen_ai_spec
   require("mini.ai").setup({
     custom_textobjects = {
-      -- Tweak argument to be recognized only inside `()` between `;`
-      a = gen_spec.argument({ brackets = { "%b()" }, separator = ";" }),
+      -- Make `|` select both edges in non-balanced way
+      ["|"] = gen_spec.pair("|", "|", { type = "non-balanced" }),
 
       -- Tweak function call to not detect dot in function name
-      F = gen_spec.function_call({ name_pattern = "[%w_]" }),
+      f = gen_spec.function_call({ name_pattern = "[%w_]" }),
 
       -- Function definition (needs treesitter queries with these captures)
-      f = gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
+      F = gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
       o = gen_spec.treesitter({
         a = { "@conditional.outer", "@loop.outer" },
         i = { "@conditional.inner", "@loop.inner" },
@@ -25,8 +25,12 @@ Later(function()
         a = { "@class.outer" },
       }),
 
-      -- Make `|` select both edges in non-balanced way
-      ["|"] = gen_spec.pair("|", "|", { type = "non-balanced" }),
+      A = gen_ai_spec.buffer(),
+      D = gen_ai_spec.diagnostic(),
+      I = gen_ai_spec.indent(),
+      L = gen_ai_spec.line(),
+      N = gen_ai_spec.number(),
     },
   })
 end)
+
