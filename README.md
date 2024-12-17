@@ -6,7 +6,7 @@ This repository contains all my [neovim](https://github.com/neovim/neovim) confi
 
 Supported Neovim versions: Nightly
 
-You can see the installation instruction here - [Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+You can see the installation instruction here - [Neovim](https://github.com/neovim/neovim/blob/master/BUILD.md)
 
 ### Make a backup of your current nvim folder
 
