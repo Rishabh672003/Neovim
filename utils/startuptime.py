@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import time
 from subprocess import DEVNULL, run
 
@@ -46,4 +48,8 @@ run(["rm", startup_log_file])
 
 run(["nvim", "tmp.go", "--startuptime", startup_log_file])
 print(f"Opening Go file: {time()}ms")
+run(["rm", startup_log_file])
+
+run(["nvim", "tmp.rs", "--startuptime", startup_log_file])
+print(f"Opening Rust file: {time()}ms")
 run(["rm", startup_log_file])

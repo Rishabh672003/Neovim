@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 # Maintainer: Rishabh672003
 # only supported for ArchLinux and Windows
 
