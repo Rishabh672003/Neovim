@@ -12,7 +12,7 @@ Later(function()
     condition = function(buf)
       local fn = vim.fn
 
-      if fn.getbufvar(buf, "&modifiable") == 1 then
+      if fn.getbufvar(buf, "&modifiable") == 1 and vim.bo.filetype ~= "harpoon" then
         return true -- met condition(s), can save
       end
       return false -- can't save

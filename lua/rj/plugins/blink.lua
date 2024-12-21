@@ -5,11 +5,16 @@ Later(function()
     depends = {
       "rafamadriz/friendly-snippets",
     },
-    checkout = "v0.7.6",
+    checkout = "v0.8.0",
   })
 
   require("blink.cmp").setup({
-    keymap = { preset = "default" },
+    keymap = {
+      preset = "default",
+      cmdline = {
+        preset = "default",
+      },
+    },
 
     appearance = {
       use_nvim_cmp_as_default = true,
@@ -25,14 +30,13 @@ Later(function()
           enabled = true,
         },
       },
-      signature = {
-        enabled = false,
-      },
+      -- signature = {
+      --   enabled = false,
+      -- },
     },
     sources = {
-      completion = {
-        enabled_providers = { "lsp", "path", "snippets", "buffer" },
-      },
+      default = { "lsp", "path", "snippets", "buffer" },
+      cmdline = {},
     },
   })
 

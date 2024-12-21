@@ -34,6 +34,9 @@ Later(function()
       -- `z` key
       { mode = "n", keys = "z" },
       { mode = "x", keys = "z" },
+
+      { mode = "n", keys = "[" },
+      { mode = "n", keys = "]" },
     },
 
     clues = {

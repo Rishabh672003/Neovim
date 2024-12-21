@@ -70,6 +70,7 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 local term = require("rj.extras.terminal")
 
 keymap("t", "<C-q>", [[<C-\><C-n>]], opt("Escape in terminal window"))
+keymap("t", "<Esc>gt", [[<C-\><C-n>gt]], opt("Change tabs in terminal window"))
 keymap({ "n", "t" }, "<A-t>", function() term:new({ execn = "zsh", name = "Shell" }):toggle() end, opt("Open Shell"))
 keymap({ "n", "t" }, "<A-g>", function() term:new({ execn = "lazygit",name = "Lazygit" }):toggle() end, opt("Open Lazygit"))
 keymap({ "n", "t" }, "<A-b>", function() term:new({ execn = "btop", name = "Btop" }):toggle() end, opt("Open Btop"))
@@ -95,18 +96,4 @@ keymap("n", "<Leader>sw", function()
   require("rj.extras.sudo-write").write()
 end, opt("Write File with sudo"))
 
-keymap("i", "<M-i>", function()
-  local c = vim.api.nvim_win_get_cursor(0)
-  local line = vim.api.nvim_get_current_line()
-  local indent = line:match("^(%s*)")
-  indent = #indent
-  vim.v.lnum = c[1]
-  local ok, correct_indent = pcall(vim.fn.eval, vim.bo.indentexpr)
-  if not ok then
-    return
-  end
-
-  line = line:gsub("^%s*", (" "):rep(correct_indent))
-  vim.api.nvim_buf_set_lines(0, c[1] - 1, c[1], false, { line })
-  vim.api.nvim_win_set_cursor(0, { c[1], c[2] + correct_indent - indent })
-end)
+keymap("n", "<Leader>x", "<Cmd>so %<CR>", opt("Source the current file"))

@@ -123,7 +123,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "gD", function() require("rj.extras.definition").get_def() end, opt("Get the definition in a float"))
     keymap("n", "gi", function() lsp.buf.implementation({ border = "single" })  end, opt("Go to implementation"))
     keymap("n", "gr", function() lsp.buf.references() end, opt("Show References"))
-    keymap("n", "<Leader>lr", function() lsp.buf.rename({ border = "single" }) end, opt("Rename"))
+    keymap("n", "<Leader>lr", function() lsp.buf.rename() end, opt("Rename"))
     keymap("n", "<C-k>", function() lsp.buf.signature_help() end, opts)
     keymap("n", "K", function() lsp.buf.hover({ border = "single" }) end,opts)
     keymap("n", "<Leader>lh", function() lsp.inlay_hint.enable(not lsp.inlay_hint.is_enabled({})) end, opt("Toggle Inlayhints"))
@@ -144,10 +144,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 -- Servers {{{
 
-vim.lsp.config("*", {
-  root_markers = { ".git" },
-})
-
 -- Lua {{{
 vim.lsp.config.lua_ls = {
   cmd = { "lua-language-server" },
@@ -155,6 +151,7 @@ vim.lsp.config.lua_ls = {
   root_markers = { ".git", vim.uv.cwd() },
   -- on_init {{{
   on_init = function(client)
+
     local path = client.workspace_folders and client.workspace_folders[1].name or vim.fs.root(0, ".")
     ---@diagnostic disable-next-line undefined-field
     if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
@@ -169,12 +166,13 @@ vim.lsp.config.lua_ls = {
         enable = true,
       },
       diagnostics = {
-        globals = { "_G", "vim", "MiniFiles", "MiniDeps" },
+        globals = { "_G", "vim", "MiniFiles", "MiniDeps", "MiniSessions" },
       },
       workspace = {
         preloadFileSize = 500,
         checkThirdParty = false,
-        -- library = vim.api.nvim_get_runtime_file("", true),
+        library = { vim.env.VIMRUNTIME },
+        -- library = vim.api.nvim_get_runtime_file("*", true)
       },
     })
   end,
@@ -192,42 +190,54 @@ vim.lsp.enable("lua_ls")
 -- }}}
 
 -- Python {{{
-vim.lsp.config.basedpyright = {
-  cmd = { "basedpyright-langserver", "--stdio" },
-  filetypes = { "python" },
-  root_markers = {
-    "pyproject.toml",
-    "setup.py",
-    "setup.cfg",
-    "requirements.txt",
-    "Pipfile",
-    "pyrightconfig.json",
-    ".git",
-    vim.uv.cwd(),
-  },
-  settings = {
-    python = {
-      venvPath = vim.fn.expand("~") .. "/.virtualenvs",
-    },
-    basedpyright = {
-      disableOrganizeImports = true,
-      analysis = {
-        autoSearchPaths = true,
-        autoImportCompletions = true,
-        useLibraryCodeForTypes = true,
-        diagnosticMode = "openFilesOnly",
-        typeCheckingMode = "strict",
-        inlayHints = {
-          variableTypes = true,
-          callArgumentNames = true,
-          functionReturnTypes = true,
-          genericTypes = false,
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "python",
+  callback = function()
+    require("rj.extras.venv").set_venv()
+    -- start lsp {{{
+    local root_dir = vim.fs.root(0, {
+      "pyproject.toml",
+      "setup.py",
+      "setup.cfg",
+      "requirements.txt",
+      "Pipfile",
+      "pyrightconfig.json",
+      ".git",
+      vim.uv.cwd(),
+    })
+    local client = vim.lsp.start({
+      name = "basedpyright",
+      cmd = { "basedpyright-langserver", "--stdio" },
+      capabilities = capabilities,
+      root_dir = root_dir,
+      settings = {
+        python = {
+          venvPath = vim.fn.expand("~") .. "/.virtualenvs",
+        },
+        basedpyright = {
+          disableOrganizeImports = true,
+          analysis = {
+            autoSearchPaths = true,
+            autoImportCompletions = true,
+            useLibraryCodeForTypes = true,
+            diagnosticMode = "openFilesOnly",
+            typeCheckingMode = "strict",
+            inlayHints = {
+              variableTypes = true,
+              callArgumentNames = true,
+              functionReturnTypes = true,
+              genericTypes = false,
+            },
+          },
         },
       },
-    },
-  },
-}
-vim.lsp.enable("basedpyright")
+    })
+    if client then
+      vim.lsp.buf_attach_client(0, client)
+    end
+    -- }}}
+  end,
+})
 -- }}}
 
 -- Go {{{

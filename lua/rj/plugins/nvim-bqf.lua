@@ -3,7 +3,6 @@ Later(function()
     source = "kevinhwang91/nvim-bqf",
   })
 
-  -- Adapt fzf's delimiter in nvim-bqf
   require("bqf").setup({
     auto_resize_height = true,
     preview = {

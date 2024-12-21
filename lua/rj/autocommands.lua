@@ -6,6 +6,21 @@ autocmd("FileType", {
   command = "setlocal nocursorline",
 })
 
+autocmd({ "BufEnter" }, {
+  pattern = "*",
+  callback = function(args)
+    local dir = vim.fn.expand("%:p:h")
+    if vim.bo.filetype == "dashboard" then
+      return
+    end
+    local root = vim.fs.root(args.buf, { ".git", "Makefile" })
+    if root then
+      dir = root
+    end
+    vim.fn.chdir(dir)
+  end,
+})
+
 autocmd("TextYankPost", {
   callback = function()
     vim.highlight.on_yank({ higroup = "Visual", timeout = 150 })
@@ -23,6 +38,14 @@ autocmd({ "FileType" }, {
 autocmd("FileType", {
   pattern = { "lua" },
   command = "setlocal tabstop=2 shiftwidth=2",
+})
+
+autocmd({ "FileType" }, {
+  pattern = { "python" },
+  callback = function()
+    vim.opt_local.listchars = { multispace = "---+", tab = "> " }
+    vim.opt_local.list = true
+  end,
 })
 
 autocmd({ "FileType" }, {

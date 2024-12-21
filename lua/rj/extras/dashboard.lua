@@ -53,14 +53,21 @@ local splash_screen = vim.schedule_wrap(function()
     }
     vim.api.nvim_put(center(header), "l", true, true)
     vim.api.nvim_put(center(text), "l", true, true)
-    vim.cmd([[silent! setl nonu nornu nobl acd ft=dashboard bh=wipe bt=nofile]])
+    local lopt = vim.opt_local
+    lopt.number = false
+    lopt.relativenumber = false
+    lopt.buflisted = false
+    lopt.filetype = "dashboard"
+    lopt.bufhidden = "wipe"
+    lopt.buftype = "nofile"
     for k, f in pairs(keys) do
-      map(k, "<Cmd>e " .. xdg .. f .. " | setl noacd<CR>")
+      map(k, "<Cmd>e " .. xdg .. f .. "<CR>")
     end
     map("q", "<Cmd>q<CR>")
     map("o", "<Cmd>e #<1<CR>")
     map("p", "<Cmd>Projects<CR>")
-    map("r", "<Cmd>Telescope oldfiles<CR>")
+    map("r", "<Cmd>lua MiniExtra.pickers.oldfiles()<CR>")
+    map("s", "<Cmd>lua MiniSessions.select()<CR>")
     vim.cmd("setlocal nomodifiable")
     vim.cmd("norm 2w")
   end
@@ -71,6 +78,9 @@ vim.api.nvim_create_autocmd("UIEnter", {
   callback = function()
     -- Have to do this so that splash screen doesnt show and mess up the screen
     -- after <C-z> and `fg`, so we make sure that dashboard only appears once
-    if first and vim.bo.filetype ~= "man" then splash_screen() else return end
+    if not first or vim.bo.filetype == "man" then
+      return
+    end
+    splash_screen()
   end,
 })
