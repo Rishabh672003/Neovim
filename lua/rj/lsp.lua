@@ -149,35 +149,6 @@ vim.lsp.config.lua_ls = {
   cmd = { "lua-language-server" },
   filetypes = { "lua" },
   root_markers = { ".git", vim.uv.cwd() },
-  -- on_init {{{
-  on_init = function(client)
-
-    local path = client.workspace_folders and client.workspace_folders[1].name or vim.fs.root(0, ".")
-    ---@diagnostic disable-next-line undefined-field
-    if vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc") then
-      return
-    end
-
-    client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
-      runtime = {
-        version = "LuaJIT",
-      },
-      hint = {
-        enable = true,
-      },
-      diagnostics = {
-        globals = { "_G", "vim", "MiniFiles", "MiniDeps", "MiniSessions" },
-      },
-      workspace = {
-        preloadFileSize = 500,
-        checkThirdParty = false,
-        library = { vim.env.VIMRUNTIME },
-        -- library = vim.api.nvim_get_runtime_file("*", true)
-      },
-    })
-  end,
-  -- }}}
-
   settings = {
     Lua = {
       telemetry = {
