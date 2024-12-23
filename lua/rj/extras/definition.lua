@@ -34,7 +34,7 @@ function M.get_def()
     on_list = function(options)
       if #options.items > 0 then
         local win = M.get_win()
-        vim.api.nvim_win_set_option(win, "winblend", 15) -- Adjust transparency level
+        vim.api.nvim_set_option_value("winblend", 15, { win = win }) -- Adjust transparency level
         vim.api.nvim_set_current_win(win)
 
         local def = options.items[1]

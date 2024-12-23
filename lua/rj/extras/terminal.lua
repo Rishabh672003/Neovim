@@ -127,7 +127,8 @@ end
 ---Open a terminal in a floating window.
 ---@return M
 function M:open_term()
-  local term = vim.fn.termopen({ self.execn or vim.o.shell }, {
+  local term = vim.fn.jobstart(self.execn or vim.o.shell, {
+    term = true,
     on_exit = function(_, _, _)
       if is_valid(self.win) then
         vim.api.nvim_win_close(self.win, true)
@@ -154,7 +155,7 @@ function M:remember_cursor()
   self.prev_win = vim.fn.winnr("#")
   self.last_pos = vim.api.nvim_win_get_cursor(self.last_win)
   local last_buf = vim.api.nvim_get_current_buf()
-  self.last_ft = vim.api.nvim_buf_get_option(last_buf, "filetype")
+  self.last_ft = vim.api.nvim_get_option_value("filetype", { buf = last_buf })
   return self
 end
 

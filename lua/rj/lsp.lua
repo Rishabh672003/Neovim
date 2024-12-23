@@ -129,8 +129,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<Leader>lh", function() lsp.inlay_hint.enable(not lsp.inlay_hint.is_enabled({})) end, opt("Toggle Inlayhints"))
     keymap("n", "gl", function() vim.diagnostic.open_float() end, opt("Open diagnostic in float"))
     keymap("n", "<Leader>la", function() lsp.buf.code_action() end, opt("Code Action"))
-    keymap("n", "<Leader>lj", function() vim.diagnostic.goto_next() end, opt("Next Diagnostic"))
-    keymap("n", "<Leader>lk", function() vim.diagnostic.goto_prev() end, opt("Prev Diagnostic"))
+    keymap("n", "<Leader>lj", function() vim.diagnostic.jump({ count = 1, float = true }) end, opt("Next Diagnostic"))
+    keymap("n", "<Leader>lk", function() vim.diagnostic.jump({ count =-1, float = true }) end, opt("Prev Diagnostic"))
     keymap("n", "<Leader>ll", function() lsp.codelens.run() end, opt("Run CodeLens"))
     keymap("n", "<Leader>lq", function() vim.diagnostic.setloclist() end, opt("Set LocList"))
     keymap("n", "<Leader>lf", "<Cmd>Format<CR>", opt("Format"))
@@ -421,7 +421,7 @@ end, {})
 vim.api.nvim_create_user_command("LspStop", function(opts)
   for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
     if opts.args == "" or client.name == opts.args then
-      client.stop()
+      client:stop()
       vim.notify(client.name .. " stopped")
     end
   end
@@ -433,7 +433,7 @@ end, {
 vim.api.nvim_create_user_command("LspRestart", function()
   local detach_clients = {}
   for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-    client.stop()
+    client:stop()
     if vim.tbl_count(client.attached_buffers) > 0 then
       detach_clients[client.name] = { client, vim.lsp.get_buffers_by_client_id(client.id) }
     end
@@ -446,7 +446,7 @@ vim.api.nvim_create_user_command("LspRestart", function()
       for name, client in pairs(detach_clients) do
         -- NOTE: this will be deprecated in 0.11
         -- so will need to change to vim.lsp.start() then
-        local client_id = vim.lsp.start_client(client[1].config)
+        local client_id = vim.lsp.start(client[1].config, { attach = false })
         if client_id then
           for _, buf in ipairs(client[2]) do
             vim.lsp.buf_attach_client(buf, client_id)
