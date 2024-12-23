@@ -1,0 +1,6 @@
+Later(function()
+  require("mini.bufremove").setup()
+  vim.keymap.set("n", "<Leader>c", function()
+    MiniBufremove.delete(0)
+  end, { silent = true, desc = "Close the buffer" })
+end)

@@ -3,6 +3,7 @@ require("rj.plugins.auto-save")
 
 -- All the mini plugins
 require("rj.plugins.mini-ai")
+require("rj.plugins.mini-bufremove")
 require("rj.plugins.mini-bracketed")
 require("rj.plugins.mini-clue")
 require("rj.plugins.mini-color")
@@ -21,7 +22,6 @@ require("rj.plugins.mini-surround")
 require("rj.plugins.mini-sessions")
 
 require("rj.plugins.nvim-bqf")
-require("rj.plugins.bufdelete")
 require("rj.plugins.gitsigns")
 require("rj.plugins.hop")
 require("rj.plugins.harpoon")
