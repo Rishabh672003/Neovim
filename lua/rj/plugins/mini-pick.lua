@@ -1,5 +1,5 @@
----@diagnostic disable: undefined-global
-Now(function()
+---@diagnostic disable: undefined-global, undefined-field
+Later(function()
   require("mini.extra").setup()
   require("mini.pick").setup({
     -- General options
@@ -21,16 +21,17 @@ Now(function()
   require("rj.extras.mini-pickproject")
 
   vim.ui.select = MiniPick.ui_select
+
   local keymap = vim.keymap.set
   keymap("n", "<Leader>f", function()
-    MiniPick.builtin.files({ tool = "rg", cwd = nil }, { source = { cwd = vim.uv.cwd() } })
+    MiniPick.builtin.files({ tool = "fd", cwd = nil }, { source = { cwd = vim.uv.cwd() } })
   end, { desc = "Find Files" })
 
   keymap("n", "<Leader>F", function()
     MiniPick.builtin.grep_live({ tool = "rg" }, { source = { cwd = vim.uv.cwd() } })
   end, { desc = "Live Grep" })
 
-  keymap("n", "<Leader>bb", function()
+  keymap("n", "<Leader>\\", function()
     local wipeout_cur = function()
       vim.api.nvim_buf_delete(MiniPick.get_picker_matches().current.bufnr, {})
     end
@@ -42,7 +43,9 @@ Now(function()
     MiniExtra.pickers.oldfiles()
   end, { desc = "Oldfiles" })
 
-  keymap("n", "<Leader>p", "<Cmd>Projects<CR>", { desc = "Projects" })
+  keymap("n", "<Leader>p", function()
+    vim.cmd.Projects()
+  end, { desc = "Projects" })
 
   keymap("n", "<Leader>sk", function()
     MiniExtra.pickers.keymaps({}, {
@@ -54,7 +57,27 @@ Now(function()
       },
     })
   end, { desc = "Search Keymaps" })
+
   keymap("n", "<Leader>sh", function()
     MiniPick.builtin.help()
   end, { desc = "Search Help" })
+
+  keymap("n", "<Leader>se", function()
+    MiniExtra.pickers.explorer()
+  end, { desc = "Explorer in Pick" })
+
+  keymap("n", "<Leader>sd", function()
+    MiniExtra.pickers.diagnostic()
+  end, { desc = "Lsp diagnostics" })
+
+  keymap("n", "<Leader>sg", function()
+    MiniExtra.pickers.git_hunks({}, {
+      window = {
+        config = {
+          width = 100,
+          height = 20,
+        },
+      },
+    })
+  end, { desc = "Git hunks" })
 end)
