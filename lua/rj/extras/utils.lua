@@ -60,10 +60,14 @@ end
 function M.read_file_to_table(filename)
   local f = io.open(filename, "r")
   local line_table = {}
-  while true do
-    line = f:read()
-    if line == nil or line == "\n" then break end
-    table.insert(line_table, M.strip(line))
+  if f then
+    while true do
+      local line = f:read()
+      if line == nil or line == "\n" then
+        break
+      end
+      table.insert(line_table, M.strip(line))
+    end
   end
 
   return line_table
