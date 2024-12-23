@@ -28,12 +28,20 @@ function M.projects(_, opts)
   end
 
   local function choose(item)
-    if not item then
-      return
-    end
-
+    local dir = item.dir
     vim.schedule(function()
-      MiniPick.builtin.files({ tool = "fd" }, { source = { cwd = item.dir } })
+      local choose_file_continue = function(selected_item)
+        local target = dir .. "/" .. selected_item
+        if vim.fn.filereadable(target) == 0 then
+          return
+        end
+        vim.api.nvim_win_call(MiniPick.get_picker_state().windows.target, function()
+          vim.cmd("edit " .. target)
+          MiniPick.set_picker_target_window(vim.api.nvim_get_current_win())
+          return true
+        end)
+      end
+      MiniPick.builtin.files({ tool = "fd" }, { source = { cwd = item.dir, choose = choose_file_continue } })
     end)
   end
 
