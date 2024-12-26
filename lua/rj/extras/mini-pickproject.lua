@@ -18,12 +18,31 @@ local function extract_last_two_dirs(path)
   end
 end
 
-function M.projects(_, opts)
-  local projects = {}
-  local projects_file_path = vim.fn.stdpath("data") .. "/projects"
-  local projects_dirs = utils.read_file_to_table(projects_file_path)
+local function ensure_projects_file()
+  local projects_file_path = vim.fn.stdpath("data") .. "/projects.json"
+  if vim.fn.filereadable(projects_file_path) == 0 then
+    local default_content = { directories = {} }
+    vim.fn.writefile({ vim.json.encode(default_content) }, projects_file_path)
+  end
+  return projects_file_path
+end
 
-  for _, dir in ipairs(projects_dirs) do
+local function read_projects_file()
+  local projects_file_path = ensure_projects_file()
+  local content = utils.read_file_to_string(projects_file_path)
+  return content and vim.json.decode(content) or { directories = {} }
+end
+
+local function write_projects_file(data)
+  local projects_file_path = ensure_projects_file()
+  vim.fn.writefile({ vim.json.encode(data) }, projects_file_path)
+end
+
+function M.projects(_, opts)
+  local projects_data = read_projects_file()
+  local projects = {}
+
+  for _, dir in ipairs(projects_data.directories) do
     table.insert(projects, { text = " " .. extract_last_two_dirs(dir), dir = dir })
   end
 
@@ -49,14 +68,12 @@ function M.projects(_, opts)
     if not item then
       return
     end
-
     local files = {}
     for name, type in vim.fs.dir(item.dir) do
       if type == "file" and not name:match("^%.") then
         table.insert(files, name)
       end
     end
-
     vim.api.nvim_buf_set_lines(buf_id, 0, -1, false, files)
   end
 
@@ -70,23 +87,26 @@ function M.add_project()
   if not root then
     return
   end
-  local projects_file_path = vim.fn.stdpath("data") .. "/projects"
-  local projects_dirs = utils.read_file_to_table(projects_file_path)
+  root = vim.fn.fnamemodify(root, ":p:h")
 
-  if utils.in_array(projects_dirs, root) then
+  local projects_data = read_projects_file()
+  if utils.in_array(projects_data.directories, root) then
     return
   end
+  table.insert(projects_data.directories, root)
+  table.sort(projects_data.directories)
+  write_projects_file(projects_data)
+end
 
-  local file = io.open(projects_file_path, "a")
-  if file then
-    file:write(root .. "\n")
-    file:close()
-  end
+function M.edit_project()
+  local projects_file_path = ensure_projects_file()
+  vim.cmd.vsplit()
+  vim.cmd.edit(projects_file_path)
 end
 
 local usercmd = vim.api.nvim_create_user_command
-
-usercmd("AddProjects", function() M.add_project() end, {})
-usercmd("Projects", function() M.projects() end, {})
+usercmd("Projects", M.projects, { desc = "Choose a project in mini.pick" })
+usercmd("AddProject", M.add_project, { desc = "Add the current project to the list" })
+usercmd("EditProject", M.edit_project, { desc = "Open the project file" })
 
 return M
