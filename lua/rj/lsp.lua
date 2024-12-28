@@ -117,26 +117,25 @@ vim.api.nvim_create_autocmd("LspAttach", {
       return vim.tbl_extend("force", opts, { desc = desc }, others or {})
     end
 
-    keymap("n", "<Leader>ls", function() lsp.buf.document_symbol() end, opt("Doument Symbols"))
-    keymap("n", "<Leader>lS", function() lsp.buf.workspace_symbol() end, opt("Workspace Symbols"))
-    keymap("n", "gd", function() lsp.buf.definition() end, opt("Go to definition"))
-    keymap("n", "gD", function() require("rj.extras.definition").get_def() end, opt("Get the definition in a float"))
+    keymap("n", "<Leader>ls", lsp.buf.document_symbol, opt("Doument Symbols"))
+    keymap("n", "<Leader>lS", lsp.buf.workspace_symbol, opt("Workspace Symbols"))
+    keymap("n", "gd", lsp.buf.definition, opt("Go to definition"))
+    keymap("n", "gD", require("rj.extras.definition").get_def, opt("Get the definition in a float"))
     keymap("n", "gi", function() lsp.buf.implementation({ border = "single" })  end, opt("Go to implementation"))
-    keymap("n", "gr", function() lsp.buf.references() end, opt("Show References"))
-    keymap("n", "<Leader>lr", function() lsp.buf.rename() end, opt("Rename"))
-    keymap("n", "<C-k>", function() lsp.buf.signature_help() end, opts)
+    keymap("n", "gr", lsp.buf.references, opt("Show References"))
+    keymap("n", "<Leader>lr", lsp.buf.rename, opt("Rename"))
+    keymap("n", "<C-k>", lsp.buf.signature_help, opts)
     keymap("n", "K", function() lsp.buf.hover({ border = "single" }) end,opts)
     keymap("n", "<Leader>lh", function() lsp.inlay_hint.enable(not lsp.inlay_hint.is_enabled({})) end, opt("Toggle Inlayhints"))
-    keymap("n", "gl", function() vim.diagnostic.open_float() end, opt("Open diagnostic in float"))
-    keymap("n", "<Leader>la", function() lsp.buf.code_action() end, opt("Code Action"))
+    keymap("n", "gl", vim.diagnostic.open_float, opt("Open diagnostic in float"))
+    keymap("n", "<Leader>la", lsp.buf.code_action, opt("Code Action"))
     keymap("n", "<Leader>lj", function() vim.diagnostic.jump({ count = 1, float = true }) end, opt("Next Diagnostic"))
     keymap("n", "<Leader>lk", function() vim.diagnostic.jump({ count =-1, float = true }) end, opt("Prev Diagnostic"))
-    keymap("n", "<Leader>ll", function() lsp.codelens.run() end, opt("Run CodeLens"))
-    keymap("n", "<Leader>lq", function() vim.diagnostic.setloclist() end, opt("Set LocList"))
-    keymap("n", "<Leader>lf", "<Cmd>Format<CR>", opt("Format"))
-    keymap("n", "<Leader>lF", "<Cmd>FormatToggle<CR>", opt("Toggle AutoFormat"))
-    keymap("n", "<Leader>li", "<Cmd>checkhealth vim.lsp<CR>", opt("LspInfo"))
-    keymap("n", "<Leader>lI", "<Cmd>Mason<CR>", opt("Mason"))
+    keymap("n", "<Leader>ll", lsp.codelens.run, opt("Run CodeLens"))
+    keymap("n", "<Leader>lq", vim.diagnostic.setloclist, opt("Set LocList"))
+    keymap("n", "<Leader>lF", vim.cmd.FormatToggle, opt("Toggle AutoFormat"))
+    keymap("n", "<Leader>li", vim.cmd.LspInfo, opt("LspInfo"))
+    keymap("n", "<Leader>lI", vim.cmd.Mason, opt("Mason"))
     -- stylua: ignore end
   end,
 })
@@ -148,7 +147,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 vim.lsp.config.lua_ls = {
   cmd = { "lua-language-server" },
   filetypes = { "lua" },
-  root_markers = { ".git", vim.uv.cwd() },
+  root_markers = { ".luarc.json", ".git", vim.uv.cwd() },
   settings = {
     Lua = {
       telemetry = {
@@ -267,11 +266,33 @@ vim.lsp.enable("clangd")
 -- }}}
 
 -- Rust {{{
-Now(function()
-  Add({
-    source = "mrcjkb/rustaceanvim",
-  })
-end)
+vim.lsp.config.rust_analyzer = {
+  filetypes = { "rust" },
+  cmd = { "rust-analyzer" },
+  root_dir = function(cb)
+    local root = vim.fs.root(0, { "Cargo.toml" })
+    local out = vim.system({ "cargo", "metadata", "--no-deps", "--format-version", "1" }, { cwd = root }):wait()
+    if out.code ~= 0 then
+      return cb(root)
+    end
+
+    local ok, result = pcall(vim.json.decode, out.stdout)
+    if ok and result.workspace_root then
+      return cb(result.workspace_root)
+    end
+
+    return cb(root)
+  end,
+  settings = {
+    autoformat = false,
+    ["rust-analyzer"] = {
+      check = {
+        command = "clippy",
+      },
+    },
+  },
+}
+vim.lsp.enable("rust_analyzer")
 -- }}}
 
 -- Bash {{{
@@ -391,9 +412,9 @@ end, {})
 
 vim.api.nvim_create_user_command("LspStop", function(opts)
   for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-    if opts.args == "" or client.name == opts.args then
-      client:stop()
-      vim.notify(client.name .. " stopped")
+    if opts.args == "" or opts.args == client.name then
+      client:stop(true)
+      vim.notify(client.name .. ": stopped")
     end
   end
 end, {
@@ -404,7 +425,7 @@ end, {
 vim.api.nvim_create_user_command("LspRestart", function()
   local detach_clients = {}
   for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
-    client:stop()
+    client:stop(true)
     if vim.tbl_count(client.attached_buffers) > 0 then
       detach_clients[client.name] = { client, vim.lsp.get_buffers_by_client_id(client.id) }
     end
@@ -415,8 +436,6 @@ vim.api.nvim_create_user_command("LspRestart", function()
     50,
     vim.schedule_wrap(function()
       for name, client in pairs(detach_clients) do
-        -- NOTE: this will be deprecated in 0.11
-        -- so will need to change to vim.lsp.start() then
         local client_id = vim.lsp.start(client[1].config, { attach = false })
         if client_id then
           for _, buf in ipairs(client[2]) do
