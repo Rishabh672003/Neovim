@@ -70,7 +70,6 @@ keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 local term = require("rj.extras.terminal")
 
 keymap("t", "<C-q>", [[<C-\><C-n>]], opt("Escape in terminal window"))
-keymap("t", "<Esc>gt", [[<C-\><C-n>gt]], opt("Change tabs in terminal window"))
 keymap({ "n", "t" }, "<A-t>", function() term:new({ execn = "zsh", name = "Shell" }):toggle() end, opt("Open Shell"))
 keymap({ "n", "t" }, "<A-g>", function() term:new({ execn = "lazygit",name = "Lazygit" }):toggle() end, opt("Open Lazygit"))
 keymap({ "n", "t" }, "<A-b>", function() term:new({ execn = "btop", name = "Btop" }):toggle() end, opt("Open Btop"))
@@ -92,7 +91,7 @@ keymap("n", "i", function()
   end
 end, { expr = true, desc = "properly indent on empty line when insert" })
 
-keymap("n", "<Leader>sw", function()
+keymap("n", "<C-S-s>", function()
   require("rj.extras.sudo-write").write()
 end, opt("Write File with sudo"))
 

@@ -80,5 +80,5 @@ Later(function()
     },
   })
 
-  vim.keymap.set("n", "<Leader>j", "<Cmd>Jaq<CR>", { silent = true, desc = "Run the File" })
+  vim.keymap.set("n", "<Leader>j", vim.cmd.Jaq, { silent = true, desc = "Run the File" })
 end)

@@ -4,6 +4,7 @@ Later(function()
   vim.keymap.set("n", "<Leader>e", function()
     MiniFiles.open()
   end, { silent = true, desc = "Opens mini.files" })
+
   vim.keymap.set("n", "<Leader>E", function()
     MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
   end, { silent = true, desc = "Opens mini.files in currect dir" })
@@ -33,6 +34,16 @@ Later(function()
       -- Tweak keys to your liking
       map_split(buf_id, "<C-s>", "belowright horizontal")
       map_split(buf_id, "<C-v>", "belowright vertical")
+    end,
+  })
+
+  vim.api.nvim_create_autocmd("User", {
+    pattern = "MiniFilesWindowOpen",
+    callback = function(args)
+      local buf_id = args.data.buf_id
+      vim.keymap.set("n", "<Leader>q", function()
+        vim.cmd.norm("q")
+      end, { buffer = buf_id })
     end,
   })
 end)

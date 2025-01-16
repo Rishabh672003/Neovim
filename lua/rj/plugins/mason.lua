@@ -15,16 +15,17 @@ Later(function()
       "github:mason-org/mason-registry",
     },
   })
+
   require("mason-tool-installer").setup({
     ensure_installed = {
       -- language servers
+      "basedpyright",
       "bashls",
       "clangd",
       "cssls",
       "gopls",
       "html-lsp",
       "lua_ls",
-      "basedpyright",
       "tailwindcss",
       "ts_ls",
 

@@ -19,5 +19,5 @@ Later(function()
     MiniSessions.select("write")
   end, { desc = "Select and write a session" })
 
-  keymap("n", "<Leader>mq", "<Cmd>qa<CR>", { desc = "close all" })
+  keymap("n", "<Leader>mq", "<Cmd>qa!<CR>", { desc = "close all" })
 end)

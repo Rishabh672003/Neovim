@@ -1,3 +1,1 @@
-Later(function()
-  require("mini.comment").setup()
-end)
+Later(require("mini.comment").setup)

@@ -23,6 +23,8 @@ Later(function()
     },
   })
 
-  vim.keymap.set("n", "<Leader>bn", "<Cmd>CybuNext<CR>", { desc = "Next buffer" })
-  vim.keymap.set("n", "<Leader>bp", "<Cmd>CybuPrev<CR>", { desc = "Prev buffer" })
+  vim.keymap.set("n", "<Leader>bn", vim.cmd.CybuNext, { desc = "Next buffer" })
+  vim.keymap.set("n", "<Tab>", vim.cmd.CybuNext, { desc = "Cycle buffer" })
+  vim.keymap.set("n", "<S-Tab>", vim.cmd.CybuPrev, { desc = "Cycle buffer" })
+  vim.keymap.set("n", "<Leader>bp", vim.cmd.CybuPrev, { desc = "Prev buffer" })
 end)

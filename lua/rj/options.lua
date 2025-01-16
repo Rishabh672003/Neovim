@@ -48,7 +48,9 @@ local options = {
   fillchars = { eob = " ", fold = " " }, -- defines the characters used for certain parts of the screen
   wildoptions = { "fuzzy", "pum", "tagfile" },
   -- messagesopt = "wait:2000,history:1000",
+  -- messagesopt = "wait:10000,history:1000",
   splitkeep = "screen",
+  inccommand = "split",
 }
 
 for k, v in pairs(options) do

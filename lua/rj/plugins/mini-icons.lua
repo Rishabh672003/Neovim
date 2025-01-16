@@ -1,3 +1,1 @@
-Later(function()
-  require("mini.icons").setup()
-end)
+Later(require("mini.icons").setup)

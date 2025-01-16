@@ -7,7 +7,8 @@
 		"MiniFiles",
 		"MiniDeps",
 		"MiniSessions",
-		"MiniBufremove"
+		"MiniBufremove",
+		"MiniExtra"
 	],
 	"workspace.checkThirdParty": false,
 	"hint.enable": true,

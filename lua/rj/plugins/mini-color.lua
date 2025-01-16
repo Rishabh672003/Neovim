@@ -1,5 +1,1 @@
-Later(
-  function()
-    require("mini.colors").setup()
-  end
-)
+Later(require("mini.colors").setup)

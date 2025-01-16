@@ -2,7 +2,6 @@
 Later(function()
   require("mini.extra").setup()
   require("mini.pick").setup({
-    -- General options
     window = {
       config = {
         width = 70,
@@ -23,11 +22,11 @@ Later(function()
   vim.ui.select = MiniPick.ui_select
 
   local keymap = vim.keymap.set
-  keymap("n", "<Leader>f", function()
+  keymap("n", "<Leader>sf", function()
     MiniPick.builtin.files({ tool = "fd", cwd = nil }, { source = { cwd = vim.uv.cwd() } })
   end, { desc = "Find Files" })
 
-  keymap("n", "<Leader>F", function()
+  keymap("n", "<Leader>sF", function()
     MiniPick.builtin.grep_live({ tool = "rg" }, { source = { cwd = vim.uv.cwd() } })
   end, { desc = "Live Grep" })
 
@@ -39,11 +38,11 @@ Later(function()
     MiniPick.builtin.buffers({}, { mappings = buffer_mappings })
   end, { desc = "Buffers" })
 
-  keymap("n", "<Leader>r", function()
+  keymap("n", "<Leader>sr", function()
     MiniExtra.pickers.oldfiles()
   end, { desc = "Oldfiles" })
 
-  keymap("n", "<Leader>p", function()
+  keymap("n", "<Leader>sp", function()
     vim.cmd.Projects()
   end, { desc = "Projects" })
 

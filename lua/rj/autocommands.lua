@@ -1,18 +1,15 @@
 local autocmd = vim.api.nvim_create_autocmd
 local usercmd = vim.api.nvim_create_user_command
-
-autocmd("FileType", {
-  pattern = "dashboard",
-  command = "setlocal nocursorline",
-})
+local lopt = vim.opt_local
 
 autocmd({ "BufEnter" }, {
   pattern = "*",
   callback = function(args)
-    local dir = vim.fn.expand("%:p:h")
-    if vim.bo.filetype == "dashboard" then
+    local disable_filetypes = { "terminal", "Jaq", "dashboard", "gitcommit", "man", "help", "checkhealth" }
+    if vim.tbl_contains(disable_filetypes, vim.bo.filetype) then
       return
     end
+    local dir = vim.fn.expand("%:p:h")
     local root = vim.fs.root(args.buf, { ".git", "Makefile" })
     if root then
       dir = root
@@ -23,7 +20,7 @@ autocmd({ "BufEnter" }, {
 
 autocmd("TextYankPost", {
   callback = function()
-    vim.highlight.on_yank({ higroup = "Visual", timeout = 150 })
+    vim.hl.on_yank({ higroup = "Visual", timeout = 150 })
   end,
 })
 
@@ -43,17 +40,17 @@ autocmd("FileType", {
 autocmd({ "FileType" }, {
   pattern = { "python" },
   callback = function()
-    vim.opt_local.listchars = { multispace = "---+", tab = "> " }
-    vim.opt_local.list = true
+    lopt.listchars = { multispace = "---+", tab = "> " }
+    lopt.list = true
   end,
 })
 
 autocmd({ "FileType" }, {
   pattern = { "gitcommit", "markdown", "text", "man" },
   callback = function()
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
-    vim.opt.textwidth = 120
+    lopt.wrap = true
+    lopt.spell = true
+    lopt.textwidth = 120
   end,
 })
 
@@ -91,40 +88,5 @@ autocmd("FileType", {
   },
   callback = function()
     vim.b.miniindentscope_disable = true
-  end,
-})
-
-local cmdline_group = vim.api.nvim_create_augroup("CmdlineLinenr", {})
--- debounce cmdline enter events to make sure we dont have flickering for non user cmdline use
--- e.g. mappings using : instead of <cmd>
-local cmdline_debounce_timer
-
-autocmd("CmdlineEnter", {
-  group = cmdline_group,
-  callback = function()
-    cmdline_debounce_timer = vim.uv.new_timer()
-    cmdline_debounce_timer:start(
-      100,
-      0,
-      vim.schedule_wrap(function()
-        if vim.o.number then
-          vim.o.relativenumber = false
-          vim.api.nvim__redraw({ statuscolumn = true })
-        end
-      end)
-    )
-  end,
-})
-
-autocmd("CmdlineLeave", {
-  group = cmdline_group,
-  callback = function()
-    if cmdline_debounce_timer then
-      cmdline_debounce_timer:stop()
-      cmdline_debounce_timer = nil
-    end
-    if vim.o.number then
-      vim.o.relativenumber = true
-    end
   end,
 })

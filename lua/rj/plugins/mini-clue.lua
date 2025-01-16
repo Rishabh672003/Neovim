@@ -45,6 +45,10 @@ Later(function()
       { mode = "n", keys = "<Leader>b", desc = "+Buffers" },
       { mode = "n", keys = "<Leader>l", desc = "+LSP" },
       { mode = "n", keys = "<Leader>t", desc = "+Terminal" },
+      { mode = "n", keys = "<Leader>n", desc = "+Notify" },
+      { mode = "n", keys = "<Leader>m", desc = "+Sessions" },
+      { mode = "n", keys = "<Leader>s", desc = "+Search" },
+      { mode = "n", keys = "<Leader>y", desc = "+Yank" },
 
       miniclue.gen_clues.builtin_completion(),
       miniclue.gen_clues.g(),
