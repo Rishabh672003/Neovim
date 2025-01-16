@@ -160,12 +160,36 @@ vim.lsp.enable("lua_ls")
 -- }}}
 
 -- Python {{{
+vim.lsp.config.basedpyright = {
+  name = "basedpyright",
+  cmd = { "basedpyright-langserver", "--stdio" },
+  settings = {
+    python = {
+      venvPath = vim.fn.expand("~") .. "/.virtualenvs",
+    },
+    basedpyright = {
+      disableOrganizeImports = true,
+      analysis = {
+        autoSearchPaths = true,
+        autoImportCompletions = true,
+        useLibraryCodeForTypes = true,
+        diagnosticMode = "openFilesOnly",
+        typeCheckingMode = "strict",
+        inlayHints = {
+          variableTypes = true,
+          callArgumentNames = true,
+          functionReturnTypes = true,
+          genericTypes = false,
+        },
+      },
+    },
+  },
+}
+
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "python",
   callback = function()
-    require("rj.extras.venv").set_venv()
-    -- start lsp {{{
-    local root_dir = vim.fs.root(0, {
+    local root = vim.fs.root(0, {
       "pyproject.toml",
       "setup.py",
       "setup.cfg",
@@ -175,37 +199,12 @@ vim.api.nvim_create_autocmd("FileType", {
       ".git",
       vim.uv.cwd(),
     })
-    local client = vim.lsp.start({
-      name = "basedpyright",
-      cmd = { "basedpyright-langserver", "--stdio" },
-      capabilities = capabilities,
-      root_dir = root_dir,
-      settings = {
-        python = {
-          venvPath = vim.fn.expand("~") .. "/.virtualenvs",
-        },
-        basedpyright = {
-          disableOrganizeImports = true,
-          analysis = {
-            autoSearchPaths = true,
-            autoImportCompletions = true,
-            useLibraryCodeForTypes = true,
-            diagnosticMode = "openFilesOnly",
-            typeCheckingMode = "strict",
-            inlayHints = {
-              variableTypes = true,
-              callArgumentNames = true,
-              functionReturnTypes = true,
-              genericTypes = false,
-            },
-          },
-        },
-      },
-    })
+    require("rj.extras.venv").setup()
+    local client =
+      vim.lsp.start(vim.tbl_extend("force", vim.lsp.config.basedpyright, { root_dir = root }), { attach = false })
     if client then
       vim.lsp.buf_attach_client(0, client)
     end
-    -- }}}
   end,
 })
 -- }}}
@@ -407,7 +406,7 @@ vim.lsp.enable({ "ts_ls", "cssls", "tailwindcssls", "htmlls" })
 
 -- Start, Stop, Restart, Log commands {{{
 vim.api.nvim_create_user_command("LspStart", function()
-  vim.cmd("e")
+  vim.cmd.e()
 end, {})
 
 vim.api.nvim_create_user_command("LspStop", function(opts)
@@ -420,6 +419,14 @@ vim.api.nvim_create_user_command("LspStop", function(opts)
 end, {
   desc = "Stop all LSP clients or a specific client attached to the current buffer.",
   nargs = "?",
+  complete = function(_, _, _)
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+    local client_names = {}
+    for _, client in ipairs(clients) do
+      table.insert(client_names, client.name)
+    end
+    return client_names
+  end,
 })
 
 vim.api.nvim_create_user_command("LspRestart", function()

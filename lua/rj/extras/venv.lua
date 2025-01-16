@@ -4,7 +4,6 @@ local M = {}
 ---@type string
 local ORIGINAL_PATH = vim.fn.getenv("PATH") or ""
 
-
 --- The current virtual environment path, or nil if none is set.
 ---@type string|nil
 M.cur_env = nil
@@ -38,7 +37,7 @@ local function find_env()
 end
 
 --- Set the virtual environment for the current project.
-function M.set_venv()
+function M.setup()
   ---@type string|nil
   local virtual_env = find_env()
 
