@@ -71,7 +71,7 @@ function M.projects(_, opts)
     local files = {}
     for name, type in vim.fs.dir(item.dir) do
       if type == "file" and not name:match("^%.") then
-        table.insert(files, name)
+        table.insert(files, MiniIcons.get("file", name) .. " " .. name)
       end
     end
     vim.api.nvim_buf_set_lines(buf_id, 0, -1, false, files)

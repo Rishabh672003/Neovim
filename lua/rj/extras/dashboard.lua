@@ -51,6 +51,7 @@ local splash_screen = vim.schedule_wrap(function()
     vim.api.nvim_put(center(header), "l", true, true)
     vim.api.nvim_put(center(text), "l", true, true)
     local lopt = vim.opt_local
+
     lopt.number = false
     lopt.relativenumber = false
     lopt.buflisted = false
@@ -76,9 +77,7 @@ vim.api.nvim_create_autocmd("UIEnter", {
   pattern = "*",
   once = true,
   callback = function()
-    if vim.bo.filetype == "man" then
-      return
-    end
+    if vim.bo.filetype == "man" then return end
     splash_screen()
   end,
 })
