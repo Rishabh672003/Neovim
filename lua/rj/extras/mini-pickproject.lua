@@ -48,6 +48,10 @@ function M.projects(_, opts)
 
   local function choose(item)
     local dir = item.dir
+    if vim.fn.isdirectory(dir) == 0 then
+      vim.notify("Directory doesnt exist", vim.log.levels.ERROR)
+      return
+    end
     vim.schedule(function()
       local choose_file_continue = function(selected_item)
         local target = dir .. "/" .. selected_item
@@ -104,9 +108,20 @@ function M.edit_project()
   vim.cmd.edit(projects_file_path)
 end
 
+function M.sanitize_project()
+  local projects_data = read_projects_file()
+  for index, dir in ipairs(projects_data.directories) do
+    if vim.fn.isdirectory(dir) == 0 then
+      table.remove(projects_data.directories, index)
+    end
+  end
+  write_projects_file(projects_data)
+end
+
 local usercmd = vim.api.nvim_create_user_command
 usercmd("Projects", M.projects, { desc = "Choose a project in mini.pick" })
 usercmd("AddProject", M.add_project, { desc = "Add the current project to the list" })
 usercmd("EditProject", M.edit_project, { desc = "Open the project file" })
+usercmd("SanitizeProject", M.sanitize_project, { desc = "Remove the projects that dont exist" })
 
 return M
