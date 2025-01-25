@@ -1,9 +1,9 @@
+---@diagnostic disable: undefined-field
 -- Initially taken from [NTBBloodbath](https://github.com/NTBBloodbath/nvim/blob/main/lua/core/lsp.lua)
 -- modified almost 80% by me
 
 -- Diagnostics {{{
 local config = {
-  virtual_text = false,
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "",
@@ -60,7 +60,7 @@ for i, kind in ipairs(completion_kinds) do
 end
 -- }}}
 
--- Lsp capabilities {{{
+-- Lsp capabilities and on_attach {{{
 -- Here we grab default Neovim capabilities and extend them with ones we want on top
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -69,10 +69,14 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
+capabilities.textDocument.semanticTokens.multilineTokenSupport = true
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 vim.lsp.config("*", {
   capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    require("rj.extras.workspace-diagnostic").populate_workspace_diagnostics(client, bufnr)
+  end,
 })
 -- }}}
 
@@ -116,26 +120,32 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local function opt(desc, others)
       return vim.tbl_extend("force", opts, { desc = desc }, others or {})
     end
-
-    keymap("n", "<Leader>ls", lsp.buf.document_symbol, opt("Doument Symbols"))
-    keymap("n", "<Leader>lS", lsp.buf.workspace_symbol, opt("Workspace Symbols"))
     keymap("n", "gd", lsp.buf.definition, opt("Go to definition"))
     keymap("n", "gD", require("rj.extras.definition").get_def, opt("Get the definition in a float"))
     keymap("n", "gi", function() lsp.buf.implementation({ border = "single" })  end, opt("Go to implementation"))
     keymap("n", "gr", lsp.buf.references, opt("Show References"))
-    keymap("n", "<Leader>lr", lsp.buf.rename, opt("Rename"))
+    keymap("n", "gl", vim.diagnostic.open_float, opt("Open diagnostic in float"))
     keymap("n", "<C-k>", lsp.buf.signature_help, opts)
     keymap("n", "K", function() lsp.buf.hover({ border = "single" }) end,opts)
-    keymap("n", "<Leader>lh", function() lsp.inlay_hint.enable(not lsp.inlay_hint.is_enabled({})) end, opt("Toggle Inlayhints"))
-    keymap("n", "gl", vim.diagnostic.open_float, opt("Open diagnostic in float"))
-    keymap("n", "<Leader>la", lsp.buf.code_action, opt("Code Action"))
-    keymap("n", "<Leader>lj", function() vim.diagnostic.jump({ count = 1, float = true }) end, opt("Next Diagnostic"))
-    keymap("n", "<Leader>lk", function() vim.diagnostic.jump({ count =-1, float = true }) end, opt("Prev Diagnostic"))
-    keymap("n", "<Leader>ll", lsp.codelens.run, opt("Run CodeLens"))
-    keymap("n", "<Leader>lq", vim.diagnostic.setloclist, opt("Set LocList"))
     keymap("n", "<Leader>lF", vim.cmd.FormatToggle, opt("Toggle AutoFormat"))
-    keymap("n", "<Leader>li", vim.cmd.LspInfo, opt("LspInfo"))
     keymap("n", "<Leader>lI", vim.cmd.Mason, opt("Mason"))
+    keymap("n", "<Leader>lS", lsp.buf.workspace_symbol, opt("Workspace Symbols"))
+    keymap("n", "<Leader>la", lsp.buf.code_action, opt("Code Action"))
+    keymap("n", "<Leader>lh", function() lsp.inlay_hint.enable(not lsp.inlay_hint.is_enabled({})) end, opt("Toggle Inlayhints"))
+    keymap("n", "<Leader>li", vim.cmd.LspInfo, opt("LspInfo"))
+    keymap("n", "<Leader>ll", lsp.codelens.run, opt("Run CodeLens"))
+    keymap("n", "<Leader>lr", lsp.buf.rename, opt("Rename"))
+    keymap("n", "<Leader>ls", lsp.buf.document_symbol, opt("Doument Symbols"))
+
+    keymap("n", "<Leader>dd", function()
+      for _, cur_client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+        require("rj.extras.workspace-diagnostic").populate_workspace_diagnostics(cur_client, 0)
+      end
+      vim.notify("Diagnostic populated")
+    end, opt("Popluate diagnostic for the whole workspace"))
+    keymap("n", "<Leader>dn", function() vim.diagnostic.jump({ count = 1, float = true }) end, opt("Next Diagnostic"))
+    keymap("n", "<Leader>dp", function() vim.diagnostic.jump({ count =-1, float = true }) end, opt("Prev Diagnostic"))
+    keymap("n", "<Leader>dq", vim.diagnostic.setloclist, opt("Set LocList"))
     -- stylua: ignore end
   end,
 })
