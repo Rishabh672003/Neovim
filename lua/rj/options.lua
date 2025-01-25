@@ -47,7 +47,6 @@ local options = {
   indentexpr = "nvim_treesitter#indent()", -- specifies the function used to calculate the indentation level
   fillchars = { eob = " ", fold = " " }, -- defines the characters used for certain parts of the screen
   wildoptions = { "fuzzy", "pum", "tagfile" },
-  -- messagesopt = "wait:2000,history:1000",
   -- messagesopt = "wait:10000,history:1000",
   splitkeep = "screen",
   inccommand = "split",

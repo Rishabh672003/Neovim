@@ -107,5 +107,5 @@ Later(function()
     desc = "Toggle autoformat-on-save",
   })
 
-  vim.keymap.set("n", "<Leader>lf", "<Cmd>silent Format<CR>")
+  vim.keymap.set("n", "<Leader>lf", "<Cmd>silent Format<CR>", { desc = "Format the current file", silent = true })
 end)

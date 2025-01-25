@@ -49,6 +49,7 @@ Later(function()
       { mode = "n", keys = "<Leader>m", desc = "+Sessions" },
       { mode = "n", keys = "<Leader>s", desc = "+Search" },
       { mode = "n", keys = "<Leader>y", desc = "+Yank" },
+      { mode = "n", keys = "<Leader>d", desc = "+Diagnostic" },
 
       miniclue.gen_clues.builtin_completion(),
       miniclue.gen_clues.g(),

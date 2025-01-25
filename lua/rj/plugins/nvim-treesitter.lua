@@ -27,25 +27,21 @@ Later(function()
     -- ensure_installed = "all",
     sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
     ignore_install = {}, -- List of parsers to ignore installing
-    autopairs = {
-      enable = true,
-    },
     highlight = {
       enable = true, -- false will disable the whole extension
-      disable = function(lang, bufnr) -- Disable in files with more than 10K lines
+      disable = function(_, bufnr) -- Disable in files with more than 10K lines
         return vim.api.nvim_buf_line_count(bufnr) > 10000
       end,
     },
     matchup = {
-      enable = true
+      enable = true,
     },
     indent = {
       enable = true,
-      disable = { --[[ "python", ]]
-        "html",
-        "cpp",
-        "css",
-      },
+      disable = function(lang, bufnr) -- Disable in files with more than 10K lines
+        local langs = { "html", "cpp", "css" }
+        return vim.api.nvim_buf_line_count(bufnr) > 10000 or vim.tbl_contains(langs, lang)
+      end,
     },
   })
 end)
