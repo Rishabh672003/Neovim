@@ -1,4 +1,4 @@
----@diagnostic disable: undefined-global
+---@diagnostic disable: undefined-global, undefined-field
 local M = {}
 local utils = require("rj.extras.utils")
 
@@ -20,7 +20,7 @@ end
 
 local function ensure_projects_file()
   local projects_file_path = vim.fn.stdpath("data") .. "/projects.json"
-  if vim.fn.filereadable(projects_file_path) == 0 then
+  if not vim.uv.fs_stat(projects_file_path) then
     local default_content = { directories = {} }
     vim.fn.writefile({ vim.json.encode(default_content) }, projects_file_path)
   end
@@ -48,14 +48,14 @@ function M.projects(_, opts)
 
   local function choose(item)
     local dir = item.dir
-    if vim.fn.isdirectory(dir) == 0 then
+    if not vim.uv.fs_stat(dir) then
       vim.notify("Directory doesnt exist", vim.log.levels.ERROR)
       return
     end
     vim.schedule(function()
       local choose_file_continue = function(selected_item)
         local target = dir .. "/" .. selected_item
-        if vim.fn.filereadable(target) == 0 then
+        if not vim.uv.fs_stat(target) then
           return
         end
         vim.api.nvim_win_call(MiniPick.get_picker_state().windows.target, function()
@@ -111,7 +111,7 @@ end
 function M.sanitize_project()
   local projects_data = read_projects_file()
   for index, dir in ipairs(projects_data.directories) do
-    if vim.fn.isdirectory(dir) == 0 then
+    if not vim.uv.fs_stat(dir) then
       table.remove(projects_data.directories, index)
     end
   end
