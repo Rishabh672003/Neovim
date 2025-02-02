@@ -70,7 +70,7 @@ Later(function()
   end, { desc = "Lsp diagnostics" })
 
   keymap("n", "<Leader>sg", function()
-    MiniExtra.pickers.git_hunks({}, {
+    local success, err = pcall(MiniExtra.pickers.git_hunks, {}, {
       window = {
         config = {
           width = 100,
@@ -78,5 +78,8 @@ Later(function()
         },
       },
     })
+    if not success then
+      vim.notify("Error opening git hunks: " .. tostring(err), vim.log.levels.ERROR)
+    end
   end, { desc = "Git hunks" })
 end)

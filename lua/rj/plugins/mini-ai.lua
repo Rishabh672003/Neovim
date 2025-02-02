@@ -10,7 +10,7 @@ Later(function()
     custom_textobjects = {
       -- Make `|` select both edges in non-balanced way
       ["|"] = gen_spec.pair("|", "|", { type = "non-balanced" }),
-      A = require('mini.ai').gen_spec.argument({ brackets = { '%b()' } }),
+      a = require('mini.ai').gen_spec.argument({ brackets = { '%b()' } }),
 
       -- Tweak function call to not detect dot in function name
       f = gen_spec.function_call({ name_pattern = "[%w_]" }),
@@ -26,7 +26,7 @@ Later(function()
         a = { "@class.outer" },
       }),
 
-      a = gen_ai_spec.buffer(),
+      A = gen_ai_spec.buffer(),
       D = gen_ai_spec.diagnostic(),
       I = gen_ai_spec.indent(),
       L = gen_ai_spec.line(),
