@@ -81,10 +81,9 @@ vim.lsp.config("*", {
 -- }}}
 
 -- Disable the default keybinds {{{
-vim.keymap.del("n", "grn")
-vim.keymap.del("n", "gra")
-vim.keymap.del("n", "gri")
-vim.keymap.del("n", "grr")
+for _, bind in ipairs({ "grn", "gra", "gri", "grr" }) do
+  vim.keymap.del("n", bind)
+end
 -- }}}
 
 -- Create keybindings, commands, inlay hints and autocommands on LSP attach {{{
@@ -137,7 +136,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<Leader>lr", lsp.buf.rename, opt("Rename"))
     keymap("n", "<Leader>ls", lsp.buf.document_symbol, opt("Doument Symbols"))
 
-    keymap("n", "<Leader>dd", function()
+    -- diagnostic mappings
+    keymap("n", "<Leader>dD", function()
       for _, cur_client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
         require("rj.extras.workspace-diagnostic").populate_workspace_diagnostics(cur_client, 0)
       end
@@ -146,6 +146,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<Leader>dn", function() vim.diagnostic.jump({ count = 1, float = true }) end, opt("Next Diagnostic"))
     keymap("n", "<Leader>dp", function() vim.diagnostic.jump({ count =-1, float = true }) end, opt("Prev Diagnostic"))
     keymap("n", "<Leader>dq", vim.diagnostic.setloclist, opt("Set LocList"))
+    keymap("n", "<Leader>dv", function()
+      local new_config = not vim.diagnostic.config().virtual_lines
+      vim.diagnostic.config({ virtual_lines = new_config })
+    end, opt("Toggle diagnostic virtual_lines"))
     -- stylua: ignore end
   end,
 })
@@ -172,6 +176,7 @@ vim.lsp.enable("lua_ls")
 -- Python {{{
 vim.lsp.config.basedpyright = {
   name = "basedpyright",
+  filetypes = { "python" },
   cmd = { "basedpyright-langserver", "--stdio" },
   settings = {
     python = {
@@ -199,6 +204,7 @@ vim.lsp.config.basedpyright = {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "python",
   callback = function()
+    require("rj.extras.venv").setup()
     local root = vim.fs.root(0, {
       "pyproject.toml",
       "setup.py",
@@ -209,7 +215,6 @@ vim.api.nvim_create_autocmd("FileType", {
       ".git",
       vim.uv.cwd(),
     })
-    require("rj.extras.venv").setup()
     local client =
       vim.lsp.start(vim.tbl_extend("force", vim.lsp.config.basedpyright, { root_dir = root }), { attach = false })
     if client then
@@ -417,7 +422,7 @@ vim.lsp.enable({ "ts_ls", "cssls", "tailwindcssls", "htmlls" })
 -- Start, Stop, Restart, Log commands {{{
 vim.api.nvim_create_user_command("LspStart", function()
   vim.cmd.e()
-end, {})
+end, { desc = "Starts LSP clients in the current buffer" })
 
 vim.api.nvim_create_user_command("LspStop", function(opts)
   for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
