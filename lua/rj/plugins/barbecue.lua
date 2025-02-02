@@ -1,6 +1,6 @@
 Later(function()
   Add({
-    source = "utilyre/barbecue.nvim",
+    source = "mbwilding/barbecue.nvim",
     depends = { "SmiteshP/nvim-navic" },
   })
 
