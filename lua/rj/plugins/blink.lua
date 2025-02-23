@@ -5,31 +5,12 @@ Later(function()
     depends = {
       "rafamadriz/friendly-snippets",
     },
-    checkout = "v0.11.0",
+    checkout = "v0.12.4",
   })
 
   require("blink.cmp").setup({
     keymap = {
       preset = "default",
-      cmdline = {
-        preset = "default",
-        ["<Tab>"] = {
-          function(cmp)
-            if not cmp.is_visible() then
-              cmp.show()
-            end
-            return cmp.select_next()
-          end,
-        },
-        ["<S-Tab>"] = {
-          function(cmp)
-            if not cmp.is_visible() then
-              cmp.show()
-            end
-            return cmp.select_prev()
-          end,
-        },
-      },
     },
 
     appearance = {
@@ -64,7 +45,29 @@ Later(function()
 
     sources = {
       default = { "lsp", "path", "snippets", "buffer" },
-      cmdline = function()
+    },
+    cmdline = {
+      enabled = true,
+      keymap = {
+        preset = "default",
+        ["<Tab>"] = {
+          function(cmp)
+            if not cmp.is_visible() then
+              cmp.show()
+            end
+            return cmp.select_next()
+          end,
+        },
+        ["<S-Tab>"] = {
+          function(cmp)
+            if not cmp.is_visible() then
+              cmp.show()
+            end
+            return cmp.select_prev()
+          end,
+        },
+      },
+      sources = function()
         local type = vim.fn.getcmdtype()
         if type == ":" then
           return { "cmdline" }
