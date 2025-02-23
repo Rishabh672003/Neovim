@@ -8,9 +8,12 @@
 		"MiniDeps",
 		"MiniSessions",
 		"MiniBufremove",
-		"MiniExtra"
+		"MiniExtra",
+		"MiniPick",
+		"MiniIcons"
 	],
 	"workspace.checkThirdParty": false,
 	"hint.enable": true,
-	"workspace.library": ["$VIMRUNTIME"]
+	"workspace.library": ["lua", "$VIMRUNTIME", "${3rd}/luv/library"],
+	"diagnostics.workspaceEvent": "OnSave"
 }
