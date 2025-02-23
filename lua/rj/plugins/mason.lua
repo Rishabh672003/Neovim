@@ -44,9 +44,9 @@ Later(function()
       "stylua",
 
       -- linters
-      "eslint_d",
-      "luacheck",
-      "proselint",
+      -- "eslint_d",
+      -- "luacheck",
+      -- "proselint",
       "shellcheck",
     },
   })

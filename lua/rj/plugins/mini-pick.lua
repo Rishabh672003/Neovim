@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global, undefined-field
 Later(function()
   require("mini.extra").setup()
   require("mini.pick").setup({
