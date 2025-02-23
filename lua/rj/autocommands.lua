@@ -5,8 +5,9 @@ local lopt = vim.opt_local
 autocmd({ "BufEnter" }, {
   pattern = "*",
   callback = function(args)
-    local disable_filetypes = { "terminal", "Jaq", "dashboard", "gitcommit", "man", "help", "checkhealth" }
-    if vim.tbl_contains(disable_filetypes, vim.bo.filetype) then
+    local disabled_filetypes = { "terminal", "Jaq", "dashboard", "gitcommit", "man", "help", "checkhealth" }
+    local disabled_buftypes = { "nofile" }
+    if vim.tbl_contains(disabled_filetypes, vim.bo.filetype) or vim.tbl_contains(disabled_buftypes, vim.bo.buftype) then
       return
     end
     local dir = vim.fn.expand("%:p:h")

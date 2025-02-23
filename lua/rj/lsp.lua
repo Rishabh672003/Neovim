@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-field
 -- Initially taken from [NTBBloodbath](https://github.com/NTBBloodbath/nvim/blob/main/lua/core/lsp.lua)
 -- modified almost 80% by me
 
@@ -91,6 +90,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(ev)
     local bufnr = ev.buf
     local client = vim.lsp.get_client_by_id(ev.data.client_id)
+    if not client then
+      return
+    end
     ---@diagnostic disable-next-line need-check-nil
     if client.server_capabilities.completionProvider then
       vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
@@ -102,7 +104,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     -- -- nightly has inbuilt completions, this can replace all completion plugins
-    -- if client.supports_method("textDocument/completion") then
+    -- if client:supports_method("textDocument/completion", bufnr) then
     --   -- Enable auto-completion
     --   vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
     -- end
@@ -452,6 +454,9 @@ vim.api.nvim_create_user_command("LspRestart", function()
     end
   end
   local timer = vim.uv.new_timer()
+  if not timer then
+    return vim.notify("Servers are stopped but havent been restarted")
+  end
   timer:start(
     100,
     50,

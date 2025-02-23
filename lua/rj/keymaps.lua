@@ -71,6 +71,7 @@ local term = require("rj.extras.terminal")
 
 keymap("t", "<C-q>", [[<C-\><C-n>]], opt("Escape in terminal window"))
 keymap({ "n", "t" }, "<A-t>", function() term:new({ execn = "zsh", name = "Shell" }):toggle() end, opt("Open Shell"))
+keymap({ "n", "t" }, "<A-T>", function() term:new({ execn = "zsh", name = "Shell2" }):toggle() end, opt("Open Shell"))
 keymap({ "n", "t" }, "<A-g>", function() term:new({ execn = "lazygit",name = "Lazygit" }):toggle() end, opt("Open Lazygit"))
 keymap({ "n", "t" }, "<A-b>", function() term:new({ execn = "btop", name = "Btop" }):toggle() end, opt("Open Btop"))
 keymap({ "n", "t" }, "<A-p>", function() term:new({ execn = "python", name = "Python" }):toggle() end, opt("Open Python"))
