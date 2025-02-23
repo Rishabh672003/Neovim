@@ -147,8 +147,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<Leader>dp", function() vim.diagnostic.jump({ count =-1, float = true }) end, opt("Prev Diagnostic"))
     keymap("n", "<Leader>dq", vim.diagnostic.setloclist, opt("Set LocList"))
     keymap("n", "<Leader>dv", function()
-      local new_config = not vim.diagnostic.config().virtual_lines
-      vim.diagnostic.config({ virtual_lines = new_config })
+      vim.diagnostic.config({ virtual_lines = not vim.diagnostic.config().virtual_lines })
     end, opt("Toggle diagnostic virtual_lines"))
     -- stylua: ignore end
   end,

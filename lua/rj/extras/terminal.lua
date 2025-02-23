@@ -219,6 +219,7 @@ end
 ---Handle terminal losing focus by automatically closing it.
 function M:terminal_lost_focus()
   local timer = vim.uv.new_timer()
+  if not timer then return end
   local track = vim.schedule_wrap(function()
     local ft = vim.bo.filetype
     if ft == "terminal" then

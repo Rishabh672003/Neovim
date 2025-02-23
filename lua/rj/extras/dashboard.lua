@@ -68,7 +68,6 @@ local splash_screen = vim.schedule_wrap(function()
     map("o", "<Cmd>e #<1<CR>")
     map("p", "<Cmd>Projects<CR>")
     map("r", "<Cmd>lua MiniExtra.pickers.oldfiles()<CR>")
-    map("s", "<Cmd>lua MiniSessions.select()<CR>")
     vim.cmd("norm 2w")
   end
 end)

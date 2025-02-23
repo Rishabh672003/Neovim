@@ -140,7 +140,7 @@ function M.populate_workspace_diagnostics(client, bufnr)
   end
 
   if not vim.tbl_get(client.config, "filetypes") then
-    local msg = "[workspace-diagnostics.nvim] "
+    local msg = "[workspace-diagnostics] "
       .. client.name
       .. " is skipped: please define `config.filetypes` when setting up the client."
     vim.api.nvim_echo({ { msg, "WarningMsg" } }, true, {})

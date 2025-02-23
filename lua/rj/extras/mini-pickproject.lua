@@ -1,4 +1,3 @@
----@diagnostic disable: undefined-global, undefined-field
 local M = {}
 local utils = require("rj.extras.utils")
 

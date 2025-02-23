@@ -15,8 +15,8 @@ local function password()
 end
 
 local function test(pw, k)
-  ---@diagnostic disable-next-line undefined-field
   local stdin = uv.new_pipe()
+  if not stdin then return end
   ---@diagnostic disable-next-line undefined-field
   uv.spawn("sudo", {
     args = { "-S", "-k", "true" },
@@ -29,8 +29,8 @@ local function test(pw, k)
 end
 
 local function write(pw, buf, lines, k)
-  ---@diagnostic disable-next-line undefined-field
   local stdin = uv.new_pipe()
+  if not stdin then return end
   ---@diagnostic disable-next-line undefined-field
   uv.spawn("sudo", {
     args = { "-S", "-k", "tee", buf },

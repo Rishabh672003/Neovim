@@ -21,7 +21,6 @@ local function find_env()
   ---@type string
   local path = root .. "/.venv"
 
-  ---@diagnostic disable-next-line: undefined-field
   local stat = vim.loop.fs_stat(path)
   if stat then
     if stat.type == "directory" then

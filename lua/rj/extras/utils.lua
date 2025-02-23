@@ -53,7 +53,7 @@ function M.read_file_to_string(filename)
 
   local data = uv.fs_read(fd, stat.size, 0)
   uv.fs_close(fd)
-
+  if not data then return end
   return M.strip(data)
 end
 
