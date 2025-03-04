@@ -81,7 +81,7 @@ vim.lsp.config("*", {
 
 -- Disable the default keybinds {{{
 for _, bind in ipairs({ "grn", "gra", "gri", "grr" }) do
-  vim.keymap.del("n", bind)
+  pcall(vim.keymap.del, "n", bind)
 end
 -- }}}
 
@@ -117,7 +117,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- stylua: ignore start
     local keymap = vim.keymap.set
     local lsp = vim.lsp
-    local opts = { silent = true, buffer = true }
+    local opts = { silent = true }
     local function opt(desc, others)
       return vim.tbl_extend("force", opts, { desc = desc }, others or {})
     end
@@ -127,7 +127,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "gr", lsp.buf.references, opt("Show References"))
     keymap("n", "gl", vim.diagnostic.open_float, opt("Open diagnostic in float"))
     keymap("n", "<C-k>", lsp.buf.signature_help, opts)
-    keymap("n", "K", function() lsp.buf.hover({ border = "single" }) end,opts)
+    -- disable the default binding first before using a custom one
+    pcall(vim.keymap.del, "n", "K", { buffer = ev.buf })
+    keymap("n", "K", function() lsp.buf.hover({ border = "single" }) end, opt("Toggle hover"))
     keymap("n", "<Leader>lF", vim.cmd.FormatToggle, opt("Toggle AutoFormat"))
     keymap("n", "<Leader>lI", vim.cmd.Mason, opt("Mason"))
     keymap("n", "<Leader>lS", lsp.buf.workspace_symbol, opt("Workspace Symbols"))
