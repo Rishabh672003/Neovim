@@ -5,7 +5,7 @@ Later(function()
     depends = {
       "rafamadriz/friendly-snippets",
     },
-    checkout = "v0.12.4",
+    checkout = "v0.13.1",
   })
 
   require("blink.cmp").setup({
@@ -48,20 +48,25 @@ Later(function()
     },
     cmdline = {
       enabled = true,
+      completion = {
+        menu = {
+          auto_show = false,
+        },
+      },
       keymap = {
         preset = "default",
         ["<Tab>"] = {
           function(cmp)
-            if not cmp.is_visible() then
-              cmp.show()
+            if not cmp.is_menu_visible() then
+              cmp.show_and_insert()
             end
             return cmp.select_next()
           end,
         },
         ["<S-Tab>"] = {
           function(cmp)
-            if not cmp.is_visible() then
-              cmp.show()
+            if not cmp.is_menu_visible() then
+              cmp.show_and_insert()
             end
             return cmp.select_prev()
           end,

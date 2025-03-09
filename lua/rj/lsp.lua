@@ -129,7 +129,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     keymap("n", "<C-k>", lsp.buf.signature_help, opts)
     -- disable the default binding first before using a custom one
     pcall(vim.keymap.del, "n", "K", { buffer = ev.buf })
-    keymap("n", "K", function() lsp.buf.hover({ border = "single" }) end, opt("Toggle hover"))
+    keymap("n", "K", function() lsp.buf.hover({ border = "single", max_height = 30, max_width = 120 }) end, opt("Toggle hover"))
     keymap("n", "<Leader>lF", vim.cmd.FormatToggle, opt("Toggle AutoFormat"))
     keymap("n", "<Leader>lI", vim.cmd.Mason, opt("Mason"))
     keymap("n", "<Leader>lS", lsp.buf.workspace_symbol, opt("Workspace Symbols"))

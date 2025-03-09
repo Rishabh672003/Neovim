@@ -26,7 +26,7 @@ Later(function()
         a = { "@class.outer" },
       }),
 
-      A = gen_ai_spec.buffer(),
+      g = gen_ai_spec.buffer(),
       D = gen_ai_spec.diagnostic(),
       I = gen_ai_spec.indent(),
       L = gen_ai_spec.line(),
