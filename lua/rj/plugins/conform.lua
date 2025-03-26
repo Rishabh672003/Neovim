@@ -69,6 +69,7 @@ Later(function()
       pyfix_imports = {
         command = "pyfix-imports",
         args = { "$FILENAME" },
+        stdin = true,
         cwd = require("conform.util").root_file({ "requirements.txt", "pyproject.toml", ".git" }),
       },
     },

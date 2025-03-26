@@ -1,0 +1,24 @@
+{
+    "Leetcode snip": {
+        "prefix": "cc",
+        "body": [
+            "struct Solution;",
+            "",
+            "impl Solution {",
+            "    pub fn $1($2) {",
+            "        $3",
+            "    }",
+            "}",
+            "",
+            "#[cfg(test)]",
+            "mod test {",
+            "    use super::*;",
+            "    #[test]",
+            "    fn test_case() {",
+            "        let a = Solution::$0();",
+            "        assert!(a);",
+            "    }",
+            "}"
+        ]
+    }
+}

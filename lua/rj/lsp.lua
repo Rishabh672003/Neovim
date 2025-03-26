@@ -286,8 +286,8 @@ vim.lsp.enable("clangd")
 vim.lsp.config.rust_analyzer = {
   filetypes = { "rust" },
   cmd = { "rust-analyzer" },
-  root_dir = function(cb)
-    local root = vim.fs.root(0, { "Cargo.toml" })
+  root_dir = function(buf, cb)
+    local root = vim.fs.root(buf, { "Cargo.toml" })
     local out = vim.system({ "cargo", "metadata", "--no-deps", "--format-version", "1" }, { cwd = root }):wait()
     if out.code ~= 0 then
       return cb(root)
