@@ -4,7 +4,7 @@ This repository contains all my [neovim](https://github.com/neovim/neovim) confi
 
 ## 🛠️ If you also want to use it
 
-Supported Neovim versions: Nightly
+Supported Neovim versions: 0.11
 
 You can see the installation instruction here - [Neovim](https://github.com/neovim/neovim/blob/master/BUILD.md)
 

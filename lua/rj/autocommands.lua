@@ -11,7 +11,7 @@ autocmd({ "BufEnter" }, {
       return
     end
     local dir = vim.fn.expand("%:p:h")
-    local root = vim.fs.root(args.buf, { ".git", "Makefile" })
+    local root = vim.fs.root(args.buf, { ".git", "Makefile", "Cargo.toml" })
     if root then
       dir = root
     end

@@ -86,7 +86,7 @@ function M.projects(_, opts)
 end
 
 function M.add_project()
-  local root = vim.fs.root(0, { ".git", "Makefile", "LICENSE" })
+  local root = vim.fs.root(0, { ".git", "Makefile", "LICENSE", "Cargo.toml" })
   if not root then
     return
   end
