@@ -5,7 +5,7 @@ Later(function()
     depends = {
       "rafamadriz/friendly-snippets",
     },
-    checkout = "v1.0.0",
+    checkout = "v1.1.1",
   })
 
   require("blink.cmp").setup({
