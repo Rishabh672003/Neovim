@@ -43,6 +43,7 @@ Later(function()
       cpp = { "clang_format" },
       go = { "gofmt", "goimports" },
       cmake = { "cmake_format" },
+      typst = { "typstfmt" },
     },
 
     format_on_save = function(bufnr)

@@ -327,6 +327,16 @@ vim.lsp.config.rust_analyzer = {
 vim.lsp.enable("rust_analyzer")
 -- }}}
 
+-- Typst {{{
+vim.lsp.config.tinymist = {
+  cmd = { "tinymist" },
+  filetypes = { "typst" },
+  root_markers = { ".git", vim.uv.cwd() },
+}
+
+vim.lsp.enable("tinymist")
+-- }}}
+
 -- Bash {{{
 vim.lsp.config.bashls = {
   cmd = { "bash-language-server", "start" },
