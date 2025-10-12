@@ -1,5 +1,5 @@
-require("rj.extras.gui-apps")
-require("rj.extras.quickfix")
+pcall(require, "rj.extras.gui-apps")
+pcall(require, "rj.extras.quickfix")
 
 local options = {
   backup = false, -- creates a backup file
@@ -37,7 +37,7 @@ local options = {
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
   wrap = false, -- display lines as one long line
   scrolloff = 8, -- is one of my fav
-  guifont = "JetBrainsMono NF:h14", -- the font used in graphical neovim applications
+  guifont = "JetBrainsMono NF:h13", -- the font used in graphical neovim applications
   sidescrolloff = 8, -- the number of lines to keep visible at the top and bottom of the screen
   laststatus = 3, -- controls how the command line looks when there is no message to display
   virtualedit = "onemore", -- allows the cursor to move beyond the end of a line

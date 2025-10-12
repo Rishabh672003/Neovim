@@ -21,7 +21,6 @@ Later(function()
 
       -- prettier filetypes
       typescriptreact = { "prettier" },
-      svelte = { "prettier" },
       css = { "prettier" },
       html = { "prettier" },
       yaml = { "prettier" },
@@ -43,7 +42,7 @@ Later(function()
       cpp = { "clang_format" },
       go = { "gofmt", "goimports" },
       cmake = { "cmake_format" },
-      typst = { "typstfmt" },
+      typst = { "typstyle" },
     },
 
     format_on_save = function(bufnr)

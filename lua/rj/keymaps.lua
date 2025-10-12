@@ -67,15 +67,16 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", opts)
 
 -- stylua: ignore start
-local term = require("rj.extras.terminal")
-
-keymap("t", "<C-q>", [[<C-\><C-n>]], opt("Escape in terminal window"))
-keymap({ "n", "t" }, "<A-t>", function() term:new({ execn = "zsh", name = "Shell" }):toggle() end, opt("Open Shell"))
-keymap({ "n", "t" }, "<A-T>", function() term:new({ execn = "zsh", name = "Shell2" }):toggle() end, opt("Open Shell"))
-keymap({ "n", "t" }, "<A-g>", function() term:new({ execn = "lazygit",name = "Lazygit" }):toggle() end, opt("Open Lazygit"))
-keymap({ "n", "t" }, "<A-b>", function() term:new({ execn = "btop", name = "Btop" }):toggle() end, opt("Open Btop"))
-keymap({ "n", "t" }, "<A-p>", function() term:new({ execn = "python", name = "Python" }):toggle() end, opt("Open Python"))
-keymap("n", "<Leader>gg", function() term:new({ name = "Lazygit",execn = "lazygit" }):toggle() end, opt("Lazygit"))
+local ok, term = pcall(require, "rj.extras.terminal")
+if ok then
+  keymap("t", "<C-q>", [[<C-\><C-n>]], opt("Escape in terminal window"))
+  keymap({ "n", "t" }, "<A-t>", function() term:new({ execn = "zsh", name = "Shell" }):toggle() end, opt("Open Shell"))
+  keymap({ "n", "t" }, "<A-T>", function() term:new({ execn = "zsh", name = "Shell2" }):toggle() end, opt("Open Shell"))
+  keymap({ "n", "t" }, "<A-g>", function() term:new({ execn = "lazygit",name = "Lazygit" }):toggle() end, opt("Open Lazygit"))
+  keymap({ "n", "t" }, "<A-b>", function() term:new({ execn = "btop", name = "Btop" }):toggle() end, opt("Open Btop"))
+  keymap({ "n", "t" }, "<A-p>", function() term:new({ execn = "python", name = "Python" }):toggle() end, opt("Open Python"))
+  keymap("n", "<Leader>gg", function() term:new({ name = "Lazygit", execn = "lazygit" }):toggle() end, opt("Lazygit"))
+end
 -- stylua:ignore end
 
 -- Quality of Life stuff --
@@ -92,8 +93,5 @@ keymap("n", "i", function()
   end
 end, { expr = true, desc = "properly indent on empty line when insert" })
 
-keymap("n", "<C-S-s>", function()
-  require("rj.extras.sudo-write").write()
-end, opt("Write File with sudo"))
-
+keymap("n", "<Leader>S", require("rj.extras.sudo-write").write, { desc = "Write File with sudo" })
 keymap("n", "<Leader>x", "<Cmd>so %<CR>", opt("Source the current file"))

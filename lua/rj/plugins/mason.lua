@@ -4,7 +4,7 @@ Later(function()
     depends = { "williamboman/mason-lspconfig.nvim", "williamboman/mason.nvim" },
     post_checkout = function()
       vim.cmd("MasonToolsInstall")
-    end
+    end,
   })
   require("mason").setup({
     ui = {
@@ -28,9 +28,10 @@ Later(function()
       "lua_ls",
       "tailwindcss",
       "ts_ls",
+      "tinymist",
 
-      -- debug adapters
-      "codelldb",
+      -- -- debug adapters
+      -- "codelldb",
 
       -- formatters
       -- astyle missing
@@ -39,6 +40,8 @@ Later(function()
       "cmakelang",
       "goimports",
       "prettier",
+      "typstyle",
+
       "ruff",
       "shfmt",
       "stylua",
@@ -47,7 +50,7 @@ Later(function()
       -- "eslint_d",
       -- "luacheck",
       -- "proselint",
-      "shellcheck",
+      -- "shellcheck",
     },
   })
 end)

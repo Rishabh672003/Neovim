@@ -10,12 +10,10 @@ autocmd({ "BufEnter" }, {
     if vim.tbl_contains(disabled_filetypes, vim.bo.filetype) or vim.tbl_contains(disabled_buftypes, vim.bo.buftype) then
       return
     end
-    local dir = vim.fn.expand("%:p:h")
     local root = vim.fs.root(args.buf, { ".git", "Makefile", "Cargo.toml" })
     if root then
-      dir = root
+      vim.fn.chdir(root)
     end
-    vim.fn.chdir(dir)
   end,
 })
 
@@ -34,12 +32,12 @@ autocmd({ "FileType" }, {
 })
 
 autocmd("FileType", {
-  pattern = { "lua" },
+  pattern = "lua",
   command = "setlocal tabstop=2 shiftwidth=2",
 })
 
 autocmd({ "FileType" }, {
-  pattern = { "python" },
+  pattern = "python",
   callback = function()
     lopt.listchars = { multispace = "---+", tab = "> " }
     lopt.list = true
