@@ -2,7 +2,6 @@ Later(function()
   Add({
     source = "kawre/leetcode.nvim",
     depends = {
-      "nvim-telescope/telescope.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
     },

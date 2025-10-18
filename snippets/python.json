@@ -1,10 +1,31 @@
 {
 	"Python Solution Class": {
 		"prefix": "cc",
-		"body": [
-			"sol = Solution()",
-			"print(sol.$0)"
-		],
+		"body": ["sol = Solution()", "print(sol.$0)"],
 		"description": "Template for a Solution class in Python"
+	},
+	"TreeNode Class": {
+		"prefix": "tn",
+		"body": [
+			"class TreeNode:",
+			"    def __init__(self, val: int = 0):",
+			"        self.val = val",
+			"        self.left: TreeNode | None = None",
+			"        self.right: TreeNode | None = None",
+			"$0"
+		],
+		"description": "Definition for a binary tree node"
+	},
+	"Node Class": {
+		"prefix": "node",
+		"body": [
+			"class Node:",
+			"    def __init__(self, val: int):",
+			"        self.data = val",
+			"        self.left : None | Node = None",
+			"        self.right: None | Node = None",
+			"$0"
+		],
+		"description": "Definition for a Node with data attribute"
 	}
 }
