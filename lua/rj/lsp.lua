@@ -6,9 +6,9 @@ local config = {
   signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = "",
-      [vim.diagnostic.severity.WARN]  = "",
-      [vim.diagnostic.severity.HINT]  = "",
-      [vim.diagnostic.severity.INFO]  = "",
+      [vim.diagnostic.severity.WARN] = "",
+      [vim.diagnostic.severity.HINT] = "",
+      [vim.diagnostic.severity.INFO] = "",
     },
   },
   update_in_insert = true,
@@ -16,7 +16,7 @@ local config = {
   severity_sort = true,
   float = {
     focusable = false,
-    style  = "minimal",
+    style = "minimal",
     border = "single",
     source = "always",
     header = "",
@@ -364,14 +364,6 @@ vim.lsp.config.ts_ls = {
 }
 -- }}}
 
--- {{{
-vim.lsp.config.svelte = {
-  cmd = { "svelteserver", "--stdio" },
-  filetypes = { "svelte" },
-  root_markers = { "tsconfig.json", "jsconfig.json", "package.json", ".git" },
-}
--- }}}
-
 -- CSSls {{{
 vim.lsp.config.cssls = {
   cmd = { "vscode-css-language-server", "--stdio" },
@@ -449,7 +441,15 @@ vim.lsp.config.htmlls = {
 }
 -- }}}
 
-vim.lsp.enable({ "ts_ls", "cssls", "tailwindcssls", "htmlls", "svelte" })
+-- PHP {{{
+vim.lsp.config.intelephense = {
+  cmd = { "intelephense", "--stdio" },
+  filetypes = { "php" },
+  root_markers = { ".git", "composer.json" },
+}
+-- }}}
+
+vim.lsp.enable({ "ts_ls", "cssls", "tailwindcssls", "htmlls", "intelephense" })
 
 -- }}}
 

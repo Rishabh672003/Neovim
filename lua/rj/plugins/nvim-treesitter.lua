@@ -39,7 +39,7 @@ Later(function()
     indent = {
       enable = true,
       disable = function(lang, bufnr) -- Disable in files with more than 10K lines
-        local langs = { "html", "cpp", "css" }
+        local langs = { "html", "cpp", "css", "php" }
         return vim.api.nvim_buf_line_count(bufnr) > 10000 or vim.tbl_contains(langs, lang)
       end,
     },

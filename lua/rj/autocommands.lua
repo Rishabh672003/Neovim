@@ -32,7 +32,7 @@ autocmd({ "FileType" }, {
 })
 
 autocmd("FileType", {
-  pattern = "lua",
+  pattern = { "lua", "html" },
   command = "setlocal tabstop=2 shiftwidth=2",
 })
 
@@ -88,4 +88,8 @@ autocmd("FileType", {
   callback = function()
     vim.b.miniindentscope_disable = true
   end,
+})
+
+autocmd("VimResized", {
+  command = "wincmd =",
 })

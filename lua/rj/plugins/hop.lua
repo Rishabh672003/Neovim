@@ -2,8 +2,9 @@ Later(function()
   Add({
     source = "smoka7/hop.nvim",
   })
+
   require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
-  -- place this in one of your configuration file(s)
+
   local hop = require("hop")
   local directions = require("hop.hint").HintDirection
 

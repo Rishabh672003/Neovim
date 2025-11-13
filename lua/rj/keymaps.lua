@@ -27,6 +27,9 @@ end, opt("Save"))
 keymap("n", "<Leader>q", "<Cmd>q!<CR>", opt("Quit"))
 keymap("n", "<Leader>c", "<Cmd>bd!<CR>", opt("Close"))
 
+keymap({ "n", "x", "o" }, "H", "v:count ? 'H' : '^'", opt("End of Line", { expr = true }))
+keymap({ "n", "x", "o" }, "L", "v:count ? 'L' : 'g_'", opt("Start of Line", { expr = true }))
+
 keymap("n", "\\", "<Cmd>noh<CR>", opt("Remove highlight"))
 
 keymap("n", "<C-n>", "<Cmd>silent cnext<CR>", opt("Next QF item"))
@@ -95,3 +98,10 @@ end, { expr = true, desc = "properly indent on empty line when insert" })
 
 keymap("n", "<Leader>S", require("rj.extras.sudo-write").write, { desc = "Write File with sudo" })
 keymap("n", "<Leader>x", "<Cmd>so %<CR>", opt("Source the current file"))
+
+-- Command-line mode mappings
+vim.keymap.set('c', '<C-a>', '<Home>',  opt("Go to begining of Commandline"))
+vim.keymap.set('c', '<C-e>', '<End>',   opt("Go to end of Commandline"))
+vim.keymap.set('c', '<C-b>', '<Left>',  opt("Go left"))
+vim.keymap.set('c', '<C-f>', '<Right>', opt("Go left"))
+vim.keymap.set('c', '<C-d>', '<Delete>',opt("Delete character"))

@@ -19,6 +19,10 @@ Later(function()
       ["rust"] = {
         before = { "#[allow(dead_code)]", "fn main(){}", "#[allow(dead_code)]", "struct Solution;" },
       }, ---@type table<lc.lang, lc.inject>
+      ["cpp"] = {
+        before = { "#include <bits/stdc++.h>", "using namespace std;" },
+        after = "int main() {}",
+      },
     },
     hooks = {
       ---@type fun(question: lc.ui.Question)[]
