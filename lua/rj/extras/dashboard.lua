@@ -47,6 +47,7 @@ local splash_screen = vim.schedule_wrap(function()
       G = "ghostty/config",
       I = "nvim/init.lua",
       H = "hypr/hyprland.conf",
+      Z = "zsh/.zshrc"
     }
     vim.api.nvim_put(center(header), "l", true, true)
     vim.api.nvim_put(center(text), "l", true, true)
